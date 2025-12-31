@@ -1,0 +1,199 @@
+{
+    "global_variable": {
+        "declarations": [
+            "bit_reversed[F_SIZE]",
+            "real[F_SIZE]",
+            "imag[F_SIZE]",
+            "real_[F_SIZE]",
+            "imag_[F_SIZE]",
+            "costable[F_SIZE]",
+            "sintable[F_SIZE]",
+            "xn[32]",
+            "yo[32]"
+        ],
+        "initializations": {
+            "bit_reversed[F_SIZE]": null,
+            "real[F_SIZE]": null,
+            "imag[F_SIZE]": [
+                0
+            ],
+            "real_[F_SIZE]": null,
+            "imag_[F_SIZE]": [
+                0
+            ],
+            "costable[F_SIZE]": null,
+            "sintable[F_SIZE]": null,
+            "xn[32]": [
+                32768,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "yo[32]": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    },
+    "functions": [
+        {
+            "function_name": "checkclkfibo",
+            "initializations": {
+                "i": 0,
+                "iT": 50,
+                "cur": 0,
+                "curT": 100,
+                "p0": 1,
+                "p1": 0
+            },
+            "for_loops": [
+                {
+                    "variable": "i=0",
+                    "condition": "i<iT",
+                    "increment": "i=i+1",
+                    "body": [
+                        "cur = p0+p1;",
+                        "p1  = p0;",
+                        "p0  = cur;",
+                        "if(cur>curT) {",
+                        "break;"
+                    ]
+                }
+            ],
+            "if_stmts": [
+                {
+                    "condition": "cur>curT",
+                    "body": [
+                        "break;"
+                    ]
+                }
+            ]
+        },
+        {
+            "function_name": "checkclkfir",
+            "initializations": {
+                "i": 0,
+                "xv0": 0,
+                "xv1": 0,
+                "xv2": 0,
+                "xv3": 0,
+                "xv4": 0,
+                "xv5": 0,
+                "xv6": 0,
+                "xv7": 0,
+                "xv8": 0,
+                "xv9": 0,
+                "xv10": 0,
+                "xv11": 0,
+                "xv12": 0,
+                "h0": 65536,
+                "h1": 4294901760,
+                "h2": 131072,
+                "h3": 4294836224,
+                "h4": 196608,
+                "h5": 4294770688,
+                "h6": 262144,
+                "h7": 4294770688,
+                "h8": 196608,
+                "h9": 4294836224,
+                "h10": 131072,
+                "h11": 4294901760,
+                "h12": 65536
+            },
+            "for_loops": [
+                {
+                    "variable": "i=0",
+                    "condition": "i<15",
+                    "increment": "i++",
+                    "body": [
+                        "xv12 = xv11;",
+                        "xv11 = xv10;",
+                        "xv10 = xv9;",
+                        "xv9  = xv8;",
+                        "xv8  = xv7;",
+                        "xv7  = xv6;",
+                        "xv6  = xv5;",
+                        "xv5  = xv4;",
+                        "xv4  = xv3;",
+                        "xv3  = xv2;",
+                        "xv2  = xv1;",
+                        "xv1  = xv0;",
+                        "xv0  = xn[i];",
+                        "yo[i] =  ((long long int)(h0)  * xv0  +",
+                        "(long long int)(h1)  * xv1  +",
+                        "(long long int)(h2)  * xv2  +",
+                        "(long long int)(h3)  * xv3  +",
+                        "(long long int)(h4)  * xv4  +",
+                        "(long long int)(h5)  * xv5  +",
+                        "(long long int)(h6)  * xv6  +",
+                        "(long long int)(h7)  * xv7  +",
+                        "(long long int)(h8)  * xv8  +",
+                        "(long long int)(h9)  * xv9  +",
+                        "(long long int)(h10) * xv10 +",
+                        "(long long int)(h11) * xv11 +",
+                        "(long long int)(h12) * xv12 ) >>31;"
+                    ]
+                }
+            ],
+            "if_stmts": []
+        }
+    ]
+}
