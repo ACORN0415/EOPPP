@@ -7,6 +7,7 @@ class CParser:
         self.c_text = self._read_file()
 
     def _read_file(self):
+        # 파일을 읽어서 텍스트를 반환하는 함수
         try:
             with open(self.file_path, 'rt', encoding='UTF8') as file:
                 return file.read()
@@ -16,20 +17,25 @@ class CParser:
             raise Exception(f"파일 읽기 오류: {str(e)}")
 
     def parse_global_variables(self):
+        # C 파일의 상단에서 전역 변수 선언 및 초기화 내용을 추출
         global_vars = {"declarations": [], "initializations": {}}
         lines = self.c_text.split('\n')
         i = 0
         while i < len(lines):
+            #함수부
             line = lines[i].strip()
             func_match = re.match(r'(void|int)\s+\w+\s*\(.+\)(\s*\{)?', line)
             if func_match:
-                break
+                break  # 함수부 시작 시 전역 변수 파싱 종료
+
+            #선언 및 초기화 파싱
             decl_match = re.match(r'(int|float|double|long long int)\s+(\w+)\s*;', line)
             if decl_match:
                 type_name, var_name = decl_match.groups()
                 if var_name not in global_vars["declarations"]:
                     global_vars["declarations"].append(var_name)
                     global_vars["initializations"][var_name] = None
+            #초기화 파싱 int부분과 longlong int가 아닌 부분 float
             init_match = re.match(r'(int|float|double|long long int)\s+(\w+)\s*=\s*(0x[0-9a-fA-F]+|\d*\.?\d+)\s*;', line)
             if init_match:
                 type_name, var_name, value = init_match.groups()
@@ -39,6 +45,7 @@ class CParser:
                     global_vars["initializations"][var_name] = int(value, 16) if value.startswith('0x') else int(float(value))
                 else:
                     global_vars["initializations"][var_name] = float(value)
+            #배열 초기화 파싱
             array_match = re.match(r'(int|float|double|long long int)\s+(\w+)\s*\[\s*(\w+|\d+)\s*\]\s*(=\s*\{(.+?)\})?\s*;', line)
             if array_match:
                 type_name, var_name, size, _, init_values = array_match.groups()
@@ -49,12 +56,15 @@ class CParser:
                     values = [v.strip() for v in init_values.split(',') if v.strip()]
                     parsed_values = []
                     for v in values:
+                        # 16진수, 정수, 실수 등 형태에 맞게 리스트에 담기
                         if v.startswith('0x'):
                             parsed_values.append(int(v, 16))
                         elif v.isdigit() or re.match(r'-?\d*\.?\d+', v):
                             parsed_values.append(float(v) if '.' in v else int(v))
                         else:
                             parsed_values.append(v)
+
+                    # C언어 규칙: 초기화 값이 크기보다 적고 콤마가 있으면 나머지를 0으로 채움       
                     if init_values.strip().endswith(',') and isinstance(size, int):
                         while len(parsed_values) < size:
                             parsed_values.append(0)
@@ -65,13 +75,17 @@ class CParser:
         return global_vars
 
     def parse_function(self, text):
+        # 함수 하나를 입력받아 그 내부의 변수 선언과 실행문(Body)을 분리
         func_match = re.match(r'(void|int)\s+(\w+)\s*\(.*?\)\s*(?:\s*/\*.*?\*/)?\s*\{', text.strip(), re.DOTALL)
         if not func_match:
             print(f"함수 매칭 실패: {text[:50]}...")
             return None
         func_name = func_match.group(2)
+        #함수 이름 추출
         body_match = re.search(r'\{(.+?)\}', text, re.DOTALL)
+        #함수 중괄호 내부 추출
         body_content = body_match.group(1).strip() if body_match else ""
+        #본문 내용 분리
         
         lines = body_content.split('\n')
         init_lines = []
@@ -88,8 +102,10 @@ class CParser:
                 in_ifdef = False
                 continue
             elif in_ifdef:
-                continue  # #ifdef와 #endif 사이의 내용은 건너뜀
+                continue  
+            # #ifdef와 #endif 사이의 내용은 건너뜀
             
+            #선언 및 초기화 분리
             if re.match(r'(int|float|double|long long int)\s+\w+\s*=.*', line):
                 init_lines.append(line)
             elif re.match(r'(int|float|double|long long int)\s+\w+\s*;', line):
@@ -100,6 +116,7 @@ class CParser:
             elif line:
                 body_lines.append(line)
         
+        #본문에서 변수 할당문 처리
         i = 0
         processed_body = []
         while i < len(body_lines):
@@ -111,12 +128,14 @@ class CParser:
             processed_body.append(body_lines[i])
             i += 1
         
+        #선언된 변수들을 초기화 라인에 추가
         for var_name, info in declared_vars.items():
             if info["value"] is None:
                 init_lines.append(f"{info['type']} {var_name};")
             else:
                 init_lines.append(f"{info['type']} {var_name} = {info['value']};")
         
+        #최종 결과 반환
         return {
             "function_name": func_name,
             "initializations": init_lines,
@@ -124,10 +143,14 @@ class CParser:
         }
 
     def parse_initializations(self, init_lines):
+        # 'int a = 5;' 형태의 문자열 리스트(초기화)를 파이썬 딕셔너리로 변환
         init_dict = {}
+
+        #각 라인을 분석하여 변수명과 값을 추출
         for line in init_lines:
             match = re.match(r'(int|float|double|long long int)\s+(\w+)\s*=\s*(0x[0-9a-fA-F]+|\d*\.?\d+)', line)
             if match:
+                #초기화된 변수 처리
                 type_name, var_name, value = match.groups()
                 if type_name == 'int':
                     if value.startswith('0x'):
@@ -144,6 +167,7 @@ class CParser:
                     else:
                         init_dict[var_name] = int(float(value))
             else:
+                # 선언만 된 변수 처리
                 decl_match = re.match(r'(int|float|double|long long int)\s+(\w+)\s*;', line)
                 if decl_match:
                     type_name, var_name = decl_match.groups()
@@ -151,18 +175,22 @@ class CParser:
         return init_dict
 
     def parse_for_loop(self, body_lines):
+        # 'for' 루프를 찾아서 초기화, 조건, 증감 및 본문을 추출
         for_loops = []
-        i = 0
+        i = 0 
+        
+        #본문 라인들을 순회하며 'for' 문 찾기
         while i < len(body_lines):
             item = body_lines[i]
             if isinstance(item, str) and item.strip().startswith('for'):
                 for_line = item.strip()
-                body_start = i + 1
+                body_start = i + 1 
                 for_content = re.search(r'for\s*\((.+?)\)\s*\{', for_line).group(1)
-                init, cond, incr = [x.strip() for x in for_content.split(';')]
+                init, cond, incr = [x.strip() for x in for_content.split(';')] #초기화, 조건, 증감 추출
                 
+                #본문 내용 추출
                 body_list = []
-                brace_count = 1
+                brace_count = 1 # 중괄호 개수 세기
                 i = body_start
                 while i < len(body_lines) and brace_count > 0:
                     line = body_lines[i]
@@ -186,14 +214,16 @@ class CParser:
         return for_loops
 
     def parse_if(self, body_lines):
+        # 'if' 문을 찾아서 조건 및 본문을 추출
         if_stmts = []
         i = 0
         while i < len(body_lines):
             item = body_lines[i]
+            #'if' 문 찾기
             if isinstance(item, str) and item.strip().startswith('if'):
                 if_line = item.strip()
                 body_start = i + 1
-                cond = re.search(r'if\s*\((.+?)\)\s*\{', if_line).group(1)
+                cond = re.search(r'if\s*\((.+?)\)\s*\{', if_line).group(1) #조건 추출
                 
                 body_list = []
                 brace_count = 1
@@ -206,7 +236,7 @@ class CParser:
                         if '}' in line:
                             brace_count -= 1
                         if brace_count > 0 and line:
-                            body_list.append(line)
+                            body_list.append(line) #본문 내용 추가
                     i += 1
                 
                 if_stmts.append({
@@ -218,6 +248,7 @@ class CParser:
         return if_stmts
 
     def extract_main_calls(self):
+        # main 함수 내에서 호출된 함수 이름들을 추출
         main_pattern = r'int\s+main\s*\(.+?\)\s*\{(.+?)\}'
         main_match = re.search(main_pattern, self.c_text, re.DOTALL)
         if not main_match:
@@ -231,6 +262,7 @@ class CParser:
         return set(calls)
 
     def parse_multiple_functions(self):
+        # main 함수에서 호출된 함수들만 파싱하여 결과 반환
         global_vars = self.parse_global_variables()
         main_calls = self.extract_main_calls()
         function_pattern = r'void\s+(\w+)\s*\(.*?\)\s*(?:\s*/\*.*?\*/)?\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}'
@@ -249,12 +281,13 @@ class CParser:
         #print(f"main에서 호출된 함수: {main_calls}")
         #print(f"찾아낸 모든 void 함수: {[func[0] for func in functions]}")
         
+        #파싱
         results = []
         processed_funcs = set()
         for func_name, func_body in functions:
             if func_name in main_calls and func_name not in processed_funcs:
                 print(f"{func_name} 파싱 중...")
-                func_match = re.search(rf'void\s+{func_name}\s*\(.*?\)\s*(?:\s*/\*.*?\*/)?\s*{{([^}}]+(?:{{[^}}]*\}}[^}}]*)*)}}', self.c_text, re.DOTALL)
+                func_match = re.search(rf'void\s+{func_name}\s*\(.*?\)\s*(?:\s*/\*.*?\*/)?\s*{{([^}}]+(?:{{[^}}]*\}}[^}]*)*)}}', self.c_text, re.DOTALL)
                 if not func_match:
                     print(f"경고: {func_name}의 전체 텍스트를 찾을 수 없습니다.")
                     continue
@@ -291,6 +324,7 @@ class CParser:
         return {"global_variable": global_vars, "functions": results}
 
     def save_to_json(self, output_file="./parsed_2.json"):
+        # 파싱 결과를 JSON 파일로 저장
         results = self.parse_multiple_functions()
         try:
             with open(output_file, 'w', encoding='UTF8') as json_file:
