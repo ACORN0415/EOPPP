@@ -12,6 +12,7 @@ class GimpleParser:
         self.gimple_file = self._generate_gimple()
 
     def _read_file(self, file_path):
+        # 파일 읽기
         try:
             with open(file_path, 'rt', encoding='UTF8') as file:
                 return file.read()
@@ -21,6 +22,7 @@ class GimpleParser:
             raise Exception(f"파일 읽기 오류: {str(e)}")
 
     def _read_json_file(self):
+        # JSON 파일 읽기
         try:
             with open(self.json_file_path, 'r', encoding='UTF8') as file:
                 return json.load(file)
@@ -30,6 +32,7 @@ class GimpleParser:
             raise Exception(f"JSON 파일 읽기 오류: {str(e)}")
 
     def _generate_gimple(self):
+        # GIMPLE 파일 생성 또는 기존 파일 사용
         gimple_file = f"{self.c_file_path}.gimple"
         base_name = os.path.splitext(os.path.basename(self.c_file_path))[0]
 
@@ -72,6 +75,7 @@ class GimpleParser:
             raise Exception(f"GIMPLE 파일 처리 오류: {str(e)}")
 
     def parse_and_match_gimple(self):
+        # GIMPLE 파일 읽기 및 JSON 데이터와 매칭
         try:
             with open(self.gimple_file, 'rt', encoding='UTF8') as file:
                 gimple_text = file.read()
@@ -83,6 +87,7 @@ class GimpleParser:
 
         #print("Indexed lines (first 10):", indexed_lines[:10])
 
+        # 기존 JSON 데이터에서 전역 변수 및 함수 정보 추출
         json_data = self.json_data
         #print("json_data successfully extracted:", json_data)
         if isinstance(json_data, dict) and "global_variable" in json_data:
@@ -96,6 +101,7 @@ class GimpleParser:
         else:
             raise Exception("parsed_.json의 형식이 예상과 다릅니다.")
 
+        # 효율적인 검색을 위해 JSON의 조건문 정보를 딕셔너리로 재정리
         json_for_conditions = {}
         json_if_conditions = {}
         for func in json_functions:
@@ -116,8 +122,10 @@ class GimpleParser:
         i = 0
         while i < len(indexed_lines):
             line = indexed_lines[i]
+            # 1. 함수 시작 매칭 (예: main())
             func_match = re.match(r'(\w+)\s*\(\)', line)
-
+            
+            # 2. 전역 변수 선언 및 초기화 매칭
             if not current_func and not func_match:
                 decl_match = re.match(r'(int|long long int|float|double)\s+(\w+);', line)
                 if decl_match:
@@ -127,7 +135,8 @@ class GimpleParser:
                         global_variables["initializations"].setdefault(var_name, None)
                     i += 1
                     continue
-
+                
+                
                 init_match = re.match(r'(\w+)\s*=\s*([-]?\d+);', line)
                 if init_match:
                     var_name, value = init_match.groups()
@@ -137,6 +146,7 @@ class GimpleParser:
                     i += 1
                     continue
 
+                # 전역 변수 선언/초기화 외의 라인은 건너뜀
             if func_match:
                 if current_func:
                     matched_data.append(current_func)
@@ -158,17 +168,18 @@ class GimpleParser:
                 i += 1
                 continue
 
+                # 함수 내부 라인 매칭
             if current_func:
                 current_func["all_lines"].append((func_line_idx, line))
                 func_line_idx += 1
-
+                # 초기화 매칭
                 init_match = re.match(r'(\w+)\s*=\s*([-]?\d+);', line)
                 if init_match and not ('goto' in line or 'if' in line):
                     var_name, value = init_match.groups()
                     json_init = json_func["initializations"].get(var_name)
                     if json_init is not None:
                         current_func["initializations"][var_name] = value
-
+                # 조건문 매칭
                 if_match = re.match(r'if \((.*?)\) goto <D\.(\d+)>;\s*else goto <D\.(\d+)>;', line)
                 if if_match:
                     condition = if_match.group(1)
@@ -185,6 +196,7 @@ class GimpleParser:
                         false_idx = None
 
                     # 조건 변환
+                    # <= 연산자를 < 연산자로 변환하여 JSON과 일치시키기 위한 처리
                     less_eq_match = re.match(r'(\w+)\s*(<=|<|>|=)\s*(\w+|\d+)', condition)
                     if less_eq_match:
                         var, op, bound = less_eq_match.groups()
@@ -225,6 +237,7 @@ class GimpleParser:
                             current_func["for_loops"].append(for_loop_data)
                             #print(f"Matched for loop in {current_func['function_name']}: condition={condition}, increment={final_increment}")
                         else:
+
                             # 루프 내부의 if 문 처리
                             json_if_increment = json_if_conditions.get((current_func["function_name"], json_cond), "unknown")
                             variable_match = re.search(r'\b(\w+)\b', condition)
@@ -241,8 +254,10 @@ class GimpleParser:
                                         body[-1] = "break;"
                                 body_start += 1
                             final_increment = json_if_increment
+                            # 조건문의 증감식 변환
                             if final_increment == f"{variable}++":
                                 final_increment = f"{variable} = {variable} + 1"
+                        
                             elif re.match(r'(\w+)=(\w+)([+\-*/])(\w+|\d+)', final_increment):
                                 var, left, op, right = re.match(r'(\w+)=(\w+)([+\-*/])(\w+|\d+)', final_increment).groups()
                                 final_increment = f"{var} = {left} {op} {right}"

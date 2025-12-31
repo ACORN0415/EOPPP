@@ -31,6 +31,7 @@ class MIFGenerator:
 
     @staticmethod
     def to_hex32(val):
+        # 32비트 헥사 문자열로 변환
         try:
             intval = int(val)
         except Exception:
@@ -39,6 +40,7 @@ class MIFGenerator:
 
     @staticmethod
     def parse_assignment(line: str):
+        # 대입문 파싱 a = b + c;' 형태의 대입문에서 왼쪽(LHS)과 오른쪽(RHS)을 분리
         line = line.strip()
         if not line.endswith(";"):
             line += ";"
@@ -47,19 +49,23 @@ class MIFGenerator:
 
     @staticmethod
     def parse_condition_parts(cond: str):
+        # 조건문 파싱 'a < b' 형태의 조건문에서 왼쪽과 오른쪽을 분리
         m = re.match(r"(\w+)\s*[<>=!]+\s*(.+)", cond)
         return m.groups() if m else (None, None)
 
     @staticmethod
     def is_temporary_var(var_name):
+        # 임시 변수인지 확인 (D.숫자 형태)
         return re.match(r"^D\.\d+$", var_name) is not None
 
     @staticmethod
     def is_h_constant(var_name):
+        # h 상수인지 확인 (h숫자 형태)
         return re.match(r"^h\d+$", var_name) is not None
 
     @staticmethod
     def constants_in_body(for_loops, if_stmts):
+        # 본문 내 상수 추출
         pat = re.compile(r"\w+\s*=\s*\w+\s*\+\s*(\d+)")
         consts = set()
         if_list = if_stmts if isinstance(if_stmts, list) else []
@@ -73,6 +79,7 @@ class MIFGenerator:
 
     @staticmethod
     def rhs_vars_in_conditions(conds):
+        # 조건문에서 RHS(오른쪽) 변수 추출
         rhs = set()
         for c in conds:
             m = re.match(r"\w+\s*[<>=!]+\s*(\w+)", c)
@@ -82,6 +89,7 @@ class MIFGenerator:
 
     @staticmethod
     def build_var_expr_map(func):
+        # mif c코드 부분 식 변형 
         var_map = {}
         for blk in func.get("for_loops", []):
             for line in blk.get("body", []):
@@ -100,15 +108,18 @@ class MIFGenerator:
 
     @staticmethod
     def one_level_substitute(var, var_map):
+        # 한 단계 변수 치환
         return var_map.get(var, var)
 
     @staticmethod
     def parenthesize_if_expr(expr):
+        # 식에 덧셈/뺄셈이 포함되면 괄호로 감싸기
         expr = expr.strip()
         return f"({expr})" if ("+" in expr or "-" in expr) else expr
 
     @staticmethod
     def sum_vars_val(expr, current_vals, rhs_neg):
+        # 식 내 변수 값 합산
         parts = [p.strip() for p in expr.split("+")]
         total = 0
         for part in parts:
@@ -121,6 +132,7 @@ class MIFGenerator:
 
     @staticmethod
     def evaluate_rhs_val(rhs, current_vals, rhs_neg):
+        # RHS 식의 값을 평가
         rhs = rhs.strip()
         if rhs.lstrip("-").isdigit():
             return int(rhs)
@@ -141,6 +153,7 @@ class MIFGenerator:
 
     @staticmethod
     def convert_tmp_var_name(var_name: str, mode=None):
+        # 임시 변수 이름 변환 D.숫자 -> t숫자 또는 _숫자
         if var_name.startswith("D."):
             num = var_name.split(".")[1]
             if mode == "t":
@@ -153,10 +166,12 @@ class MIFGenerator:
 
     @staticmethod
     def convert_rhs_tmp_vars(rhs: str):
+        # RHS 식 내 임시 변수 변환
         return re.sub(r"D\.(\d+)", lambda m: MIFGenerator.convert_tmp_var_name(m.group(0)), rhs)
 
     @staticmethod
     def construct_reg_sum(mp, gpc, expr):
+        # 식을 레지스터 조합으로 변환
         parts = [p.strip() for p in expr.split("+")]
         regs = []
         for p in parts:
@@ -169,11 +184,13 @@ class MIFGenerator:
 
     @staticmethod
     def make_cmd_for_declare(var, val_str, regname):
+        # 선언 명령어 생성
         hex_val = MIFGenerator.to_hex32(int(val_str))
         return f"LXY(01f, {hex_val})"
 
     @staticmethod
     def make_cmd_for_assign(var_l, rhs, mp, gpc):
+        # 대입 명령어 생성 추가 필요
         parts = [p.strip() for p in rhs.split("+") if p.strip()]
         reg_l = mp.get_var(gpc, var_l)
         if not reg_l:
@@ -191,9 +208,9 @@ class MIFGenerator:
     # --------------------------------------------------------------------- #
     class RegMap:
         def __init__(self):
-            self.table = {}
-            self.v2r = {}
-            self.c2r = {}
+            self.table = {} # {gpc: {reg_name: (idx, var, desc, val, cmd, reg_combo, cond_ternary)}}
+            self.v2r = {} # {(gpc, var): reg_name}
+            self.c2r = {} # {(gpc, const): reg_name}
 
         def add(self, gpc, idx, reg_name, var, desc, val, cmd, reg_combo="", cond_ternary=""):
             self.table.setdefault(gpc, {})[reg_name] = (
