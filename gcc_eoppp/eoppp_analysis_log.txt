@@ -1,0 +1,627 @@
+
+[Strategy] 'main' detected. Entry-point mode activated.
+[Strategy] Target reachable functions: ['random_zeros', 'checkclkfft', 'floor_log2', 'data_ordering', 'sin', 'checkclkfir', 'reverse_bits', 'checkclkfibo', 'random_reals', 'cos', 'fft_init', 'fft_transform', 'main']
+
+============================================================
+  [MainEntry Mode] Analyzing: checkclkfibo
+============================================================
+
+[EOPPP Checker] 분석 중: checkclkfibo
+✅ checkclkfibo: 변환 가능 판정
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: checkclkfir
+============================================================
+
+[EOPPP Checker] 분석 중: checkclkfir
+✅ checkclkfir: 변환 가능 판정
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: random_reals
+============================================================
+
+[EOPPP Checker] 분석 중: random_reals
+❌ random_reals: 변환 불가 (22개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: random_zeros
+============================================================
+
+[EOPPP Checker] 분석 중: random_zeros
+❌ random_zeros: 변환 불가 (26개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: data_ordering
+============================================================
+
+[EOPPP Checker] 분석 중: data_ordering
+❌ data_ordering: 변환 불가 (40개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: floor_log2
+============================================================
+
+[EOPPP Checker] 분석 중: floor_log2
+❌ floor_log2: 변환 불가 (40개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: reverse_bits
+============================================================
+
+[EOPPP Checker] 분석 중: reverse_bits
+❌ reverse_bits: 변환 불가 (40개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: fft_init
+============================================================
+
+[EOPPP Checker] 분석 중: fft_init
+❌ fft_init: 변환 불가 (57개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: sin (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: fft_transform
+============================================================
+
+[EOPPP Checker] 분석 중: fft_transform
+❌ fft_transform: 변환 불가 (100개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: sin (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: checkclkfft
+============================================================
+
+[EOPPP Checker] 분석 중: checkclkfft
+❌ checkclkfft: 변환 불가 (100개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: sin (인라이닝 불가)
+============================================================
+
+
+============================================================
+  [MainEntry Mode] Analyzing: main
+============================================================
+
+[EOPPP Checker] 분석 중: main
+❌ main: 변환 불가 (100개의 제약 위반)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 연산 노드: <class 'gcc.RealCst'> (Z-code 매핑 불가)
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 지원하지 않는 자료형 연산: double
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 무작위 인덱스 감지: 메모리 로드 값을 배열 인덱스로 사용 (A[B[i]])
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: cos (인라이닝 불가)
+   - 정의되지 않은 함수 호출: sin (인라이닝 불가)
+============================================================
+

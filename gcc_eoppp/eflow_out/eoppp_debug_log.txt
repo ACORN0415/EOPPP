@@ -1,0 +1,486 @@
+=== EOPPP Generator Debug Log ===
+
+[START] Analyzing Function: checkclkfibo
+
+--- [1] Register Mapping Result ---
+  Key: 'i' -> {'reg': 'r0', 'idx': 0, 'val': 0, 'name': 'i', 'type': 'var'}
+  Key: 'iT' -> {'reg': 'r1', 'idx': 1, 'val': -50, 'name': 'iT', 'type': 'var'}
+  Key: 'cur' -> {'reg': 'r2', 'idx': 2, 'val': 0, 'name': 'cur', 'type': 'var'}
+  Key: 'curT' -> {'reg': 'r3', 'idx': 3, 'val': -100, 'name': 'curT', 'type': 'var'}
+  Key: 'p0' -> {'reg': 'r4', 'idx': 4, 'val': -1, 'name': 'p0', 'type': 'var'}
+  Key: 'p1' -> {'reg': 'r5', 'idx': 5, 'val': 0, 'name': 'p1', 'type': 'var'}
+  Key: 'cond_cur_>_curT' -> {'reg': 'r6', 'idx': 6, 'val': 4, 'name': '4 (outLoop)', 'type': 'cond'}
+  Key: 'cond_i_<_iT' -> {'reg': 'r7', 'idx': 7, 'val': 4, 'name': '4 (outLoop)', 'type': 'cond'}
+
+--- [3] Generating OP Block (GPC 1) ---
+  > Entering Basic Block 0
+  > Entering Basic Block 1
+  > Entering Basic Block 2
+    [Stmt] i_4 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_4, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] iT_5 = 50; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: iT_5, Clean: 'iT'
+      -> SUCCESS: Found in RegMap (r1). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] cur_6 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: cur_6, Clean: 'cur'
+      -> SUCCESS: Found in RegMap (r2). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] curT_7 = 100; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: curT_7, Clean: 'curT'
+      -> SUCCESS: Found in RegMap (r3). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] p0_8 = 1; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: p0_8, Clean: 'p0'
+      -> SUCCESS: Found in RegMap (r4). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] p1_9 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: p1_9, Clean: 'p1'
+      -> SUCCESS: Found in RegMap (r5). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] i_10 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_10, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+  > Entering Basic Block 3
+    [Stmt] cur_11 = p0_2 + p1_3; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: cur_11, Clean: 'cur'
+      -> SUCCESS: Found in RegMap (r2). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] p1_12 = p0_2; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: p1_12, Clean: 'p1'
+      -> SUCCESS: Found in RegMap (r5). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] p0_13 = cur_11; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: p0_13, Clean: 'p0'
+      -> SUCCESS: Found in RegMap (r4). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] if (cur_11 > curT_7) (Type: <class 'gcc.GimpleCond'>)
+      -> Cond Key: cond_cur_>_curT
+      -> SUCCESS: Condition updated at r6
+  > Entering Basic Block 4
+    [Stmt] i_14 = i_1 + 1; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_14, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+  > Entering Basic Block 5
+    [Stmt] if (i_1 < iT_5) (Type: <class 'gcc.GimpleCond'>)
+      -> Cond Key: cond_i_<_iT
+      -> SUCCESS: Condition updated at r7
+  > Entering Basic Block 6
+    [Stmt] return; (Type: <class 'gcc.GimpleReturn'>)
+
+[START] Analyzing Function: checkclkfft
+
+--- [1] Register Mapping Result ---
+
+--- [3] Generating OP Block (GPC 1) ---
+  > Entering Basic Block 0
+  > Entering Basic Block 1
+  > Entering Basic Block 2
+    [Stmt] fft_transform (); (Type: <class 'gcc.GimpleCall'>)
+    [Stmt] return; (Type: <class 'gcc.GimpleReturn'>)
+
+[START] Analyzing Function: checkclkfir
+
+--- [1] Register Mapping Result ---
+  Key: 'i' -> {'reg': 'r0', 'idx': 0, 'val': 0, 'name': 'i', 'type': 'var'}
+  Key: 'xv0' -> {'reg': 'r1', 'idx': 1, 'val': 0, 'name': 'xv0', 'type': 'var'}
+  Key: 'xv1' -> {'reg': 'r2', 'idx': 2, 'val': 0, 'name': 'xv1', 'type': 'var'}
+  Key: 'xv2' -> {'reg': 'r3', 'idx': 3, 'val': 0, 'name': 'xv2', 'type': 'var'}
+  Key: 'xv3' -> {'reg': 'r4', 'idx': 4, 'val': 0, 'name': 'xv3', 'type': 'var'}
+  Key: 'xv4' -> {'reg': 'r5', 'idx': 5, 'val': 0, 'name': 'xv4', 'type': 'var'}
+  Key: 'xv5' -> {'reg': 'r6', 'idx': 6, 'val': 0, 'name': 'xv5', 'type': 'var'}
+  Key: 'xv6' -> {'reg': 'r7', 'idx': 7, 'val': 0, 'name': 'xv6', 'type': 'var'}
+  Key: 'xv7' -> {'reg': 'r8', 'idx': 8, 'val': 0, 'name': 'xv7', 'type': 'var'}
+  Key: 'xv8' -> {'reg': 'r9', 'idx': 9, 'val': 0, 'name': 'xv8', 'type': 'var'}
+  Key: 'xv9' -> {'reg': 'r10', 'idx': 10, 'val': 0, 'name': 'xv9', 'type': 'var'}
+  Key: 'xv10' -> {'reg': 'r11', 'idx': 11, 'val': 0, 'name': 'xv10', 'type': 'var'}
+  Key: 'xv11' -> {'reg': 'r12', 'idx': 12, 'val': 0, 'name': 'xv11', 'type': 'var'}
+  Key: 'xv12' -> {'reg': 'r13', 'idx': 13, 'val': 0, 'name': 'xv12', 'type': 'var'}
+  Key: 'h0' -> {'reg': 'r14', 'idx': 14, 'val': -65536, 'name': 'h0', 'type': 'var'}
+  Key: 'h1' -> {'reg': 'r15', 'idx': 15, 'val': -65536, 'name': 'h1', 'type': 'var'}
+  Key: 'h2' -> {'reg': 'r16', 'idx': 16, 'val': -131072, 'name': 'h2', 'type': 'var'}
+  Key: 'h3' -> {'reg': 'r17', 'idx': 17, 'val': -131072, 'name': 'h3', 'type': 'var'}
+  Key: 'h4' -> {'reg': 'r18', 'idx': 18, 'val': -196608, 'name': 'h4', 'type': 'var'}
+  Key: 'h5' -> {'reg': 'r19', 'idx': 19, 'val': -196608, 'name': 'h5', 'type': 'var'}
+  Key: 'h6' -> {'reg': 'r20', 'idx': 20, 'val': -262144, 'name': 'h6', 'type': 'var'}
+  Key: 'h7' -> {'reg': 'r21', 'idx': 21, 'val': -196608, 'name': 'h7', 'type': 'var'}
+  Key: 'h8' -> {'reg': 'r22', 'idx': 22, 'val': -196608, 'name': 'h8', 'type': 'var'}
+  Key: 'h9' -> {'reg': 'r23', 'idx': 23, 'val': -131072, 'name': 'h9', 'type': 'var'}
+  Key: 'h10' -> {'reg': 'r24', 'idx': 24, 'val': -131072, 'name': 'h10', 'type': 'var'}
+  Key: 'h11' -> {'reg': 'r25', 'idx': 25, 'val': -65536, 'name': 'h11', 'type': 'var'}
+  Key: 'h12' -> {'reg': 'r26', 'idx': 26, 'val': -65536, 'name': 'h12', 'type': 'var'}
+  Key: '' -> {'reg': 'r27', 'idx': 27, 'val': 0, 'name': '', 'type': 'var'}
+  Key: 'yo[i_43]' -> {'reg': 'r28', 'idx': 28, 'val': 0, 'name': 'yo[i_43]', 'type': 'var'}
+  Key: 'cond_i_<=_14' -> {'reg': 'r29', 'idx': 29, 'val': 4, 'name': '4 (outLoop)', 'type': 'cond'}
+  Key: 'cst_14' -> {'reg': 'r30', 'idx': 30, 'val': -14, 'name': '14', 'type': 'const'}
+
+--- [3] Generating OP Block (GPC 1) ---
+  > Entering Basic Block 0
+  > Entering Basic Block 1
+  > Entering Basic Block 2
+    [Stmt] i_59 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_59, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv0_60 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv0_60, Clean: 'xv0'
+      -> SUCCESS: Found in RegMap (r1). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv1_61 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv1_61, Clean: 'xv1'
+      -> SUCCESS: Found in RegMap (r2). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv2_62 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv2_62, Clean: 'xv2'
+      -> SUCCESS: Found in RegMap (r3). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv3_63 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv3_63, Clean: 'xv3'
+      -> SUCCESS: Found in RegMap (r4). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv4_64 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv4_64, Clean: 'xv4'
+      -> SUCCESS: Found in RegMap (r5). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv5_65 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv5_65, Clean: 'xv5'
+      -> SUCCESS: Found in RegMap (r6). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv6_66 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv6_66, Clean: 'xv6'
+      -> SUCCESS: Found in RegMap (r7). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv7_67 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv7_67, Clean: 'xv7'
+      -> SUCCESS: Found in RegMap (r8). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv8_68 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv8_68, Clean: 'xv8'
+      -> SUCCESS: Found in RegMap (r9). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv9_69 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv9_69, Clean: 'xv9'
+      -> SUCCESS: Found in RegMap (r10). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv10_70 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv10_70, Clean: 'xv10'
+      -> SUCCESS: Found in RegMap (r11). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv11_71 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv11_71, Clean: 'xv11'
+      -> SUCCESS: Found in RegMap (r12). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] xv12_72 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv12_72, Clean: 'xv12'
+      -> SUCCESS: Found in RegMap (r13). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h0_73 = 65536; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h0_73, Clean: 'h0'
+      -> SUCCESS: Found in RegMap (r14). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h1_74 = -65536; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h1_74, Clean: 'h1'
+      -> SUCCESS: Found in RegMap (r15). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h2_75 = 131072; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h2_75, Clean: 'h2'
+      -> SUCCESS: Found in RegMap (r16). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h3_76 = -131072; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h3_76, Clean: 'h3'
+      -> SUCCESS: Found in RegMap (r17). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h4_77 = 196608; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h4_77, Clean: 'h4'
+      -> SUCCESS: Found in RegMap (r18). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h5_78 = -196608; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h5_78, Clean: 'h5'
+      -> SUCCESS: Found in RegMap (r19). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h6_79 = 262144; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h6_79, Clean: 'h6'
+      -> SUCCESS: Found in RegMap (r20). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h7_80 = -196608; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h7_80, Clean: 'h7'
+      -> SUCCESS: Found in RegMap (r21). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h8_81 = 196608; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h8_81, Clean: 'h8'
+      -> SUCCESS: Found in RegMap (r22). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h9_82 = -131072; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h9_82, Clean: 'h9'
+      -> SUCCESS: Found in RegMap (r23). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h10_83 = 131072; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h10_83, Clean: 'h10'
+      -> SUCCESS: Found in RegMap (r24). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h11_84 = -65536; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h11_84, Clean: 'h11'
+      -> SUCCESS: Found in RegMap (r25). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] h12_85 = 65536; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: h12_85, Clean: 'h12'
+      -> SUCCESS: Found in RegMap (r26). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+    [Stmt] i_86 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_86, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+  > Entering Basic Block 3
+    [Stmt] xv12_91 = xv11_56; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv12_91, Clean: 'xv12'
+      -> SUCCESS: Found in RegMap (r13). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv11_92 = xv10_55; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv11_92, Clean: 'xv11'
+      -> SUCCESS: Found in RegMap (r12). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv10_93 = xv9_54; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv10_93, Clean: 'xv10'
+      -> SUCCESS: Found in RegMap (r11). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv9_94 = xv8_53; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv9_94, Clean: 'xv9'
+      -> SUCCESS: Found in RegMap (r10). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv8_95 = xv7_52; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv8_95, Clean: 'xv8'
+      -> SUCCESS: Found in RegMap (r9). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv7_96 = xv6_51; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv7_96, Clean: 'xv7'
+      -> SUCCESS: Found in RegMap (r8). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv6_97 = xv5_50; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv6_97, Clean: 'xv6'
+      -> SUCCESS: Found in RegMap (r7). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv5_98 = xv4_49; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv5_98, Clean: 'xv5'
+      -> SUCCESS: Found in RegMap (r6). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv4_99 = xv3_48; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv4_99, Clean: 'xv4'
+      -> SUCCESS: Found in RegMap (r5). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv3_100 = xv2_47; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv3_100, Clean: 'xv3'
+      -> SUCCESS: Found in RegMap (r4). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv2_101 = xv1_46; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv2_101, Clean: 'xv2'
+      -> SUCCESS: Found in RegMap (r3). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] xv1_102 = xv0_45; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv1_102, Clean: 'xv1'
+      -> SUCCESS: Found in RegMap (r2). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _1 = xn[i_43]; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _1, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.ArrayRef'>
+    [Stmt] xv0_103 = (long long int) _1; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: xv0_103, Clean: 'xv0'
+      -> SUCCESS: Found in RegMap (r1). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _2 = (long long int) h0_73; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _2, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _3 = xv0_103 * _2; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _3, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _4 = (long long int) h1_74; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _4, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _5 = xv1_102 * _4; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _5, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _6 = _3 + _5; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _6, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _7 = (long long int) h2_75; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _7, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _8 = xv2_101 * _7; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _8, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _9 = _6 + _8; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _9, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _10 = (long long int) h3_76; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _10, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _11 = xv3_100 * _10; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _11, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _12 = _9 + _11; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _12, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _13 = (long long int) h4_77; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _13, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _14 = xv4_99 * _13; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _14, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _15 = _12 + _14; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _15, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _16 = (long long int) h5_78; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _16, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _17 = xv5_98 * _16; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _17, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _18 = _15 + _17; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _18, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _19 = (long long int) h6_79; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _19, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _20 = xv6_97 * _19; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _20, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _21 = _18 + _20; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _21, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _22 = (long long int) h7_80; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _22, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _23 = xv7_96 * _22; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _23, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _24 = _21 + _23; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _24, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _25 = (long long int) h8_81; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _25, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _26 = xv8_95 * _25; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _26, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _27 = _24 + _26; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _27, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _28 = (long long int) h9_82; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _28, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _29 = xv9_94 * _28; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _29, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _30 = _27 + _29; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _30, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _31 = (long long int) h10_83; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _31, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _32 = xv10_93 * _31; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _32, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _33 = _30 + _32; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _33, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _34 = (long long int) h11_84; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _34, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _35 = xv11_92 * _34; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _35, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _36 = _33 + _35; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _36, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _37 = (long long int) h12_85; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _37, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _38 = xv12_91 * _37; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _38, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _39 = _36 + _38; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _39, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] _40 = _39 >> 31; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _40, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] yo[i_43] = _40; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: yo[i_43], Clean: 'yo[i_43]'
+      -> SUCCESS: Found in RegMap (r28). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+    [Stmt] i_105 = i_43 + 1; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_105, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+  > Entering Basic Block 4
+    [Stmt] if (i_43 <= 14) (Type: <class 'gcc.GimpleCond'>)
+      -> Cond Key: cond_i_<=_14
+      -> SUCCESS: Condition updated at r29
+  > Entering Basic Block 5
+    [Stmt] i_88 = 0; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_88, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.IntegerCst'>
+  > Entering Basic Block 6
+    [Stmt] _41 = yo[i_44]; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _41, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.ArrayRef'>
+    [Stmt] _42 = xn[i_44]; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: _42, Clean: ''
+      -> SUCCESS: Found in RegMap (r27). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.ArrayRef'>
+    [Stmt] printf ("xn[%d]=%d,  yo[%d]= %lld \n", i_44, _42, i_44, _41); (Type: <class 'gcc.GimpleCall'>)
+    [Stmt] i_90 = i_44 + 1; (Type: <class 'gcc.GimpleAssign'>)
+      -> LHS Raw: i_90, Clean: 'i'
+      -> SUCCESS: Found in RegMap (r0). Updating...
+      -> SKIP: Not a binary operation (no operand1/2). RHS Type: <class 'gcc.SsaName'>
+  > Entering Basic Block 7
+    [Stmt] if (i_44 <= 14) (Type: <class 'gcc.GimpleCond'>)
+      -> Cond Key: cond_i_<=_14
+      -> SUCCESS: Condition updated at r29
+  > Entering Basic Block 8
+    [Stmt] return; (Type: <class 'gcc.GimpleReturn'>)
