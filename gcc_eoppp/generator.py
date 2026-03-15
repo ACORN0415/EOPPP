@@ -174,17 +174,18 @@ class EFlowGenerator:
 
         # ── GPC 메타데이터 저장 ──
         func_name = str(getattr(fun, "decl", "unknown"))
-        is_mac = self.features.get("is_mac", False)
-        label = "MAC" if is_mac else func_name
+        is_fir = self.features.get("is_fir_pipeline", False)
+        label = "MAC" if is_fir else func_name
         self.gpc_meta[init_gpc] = {
-            "type": "init", "name": label, "is_mac": is_mac
+            "type": "init", "name": label, "is_fir_pipeline": is_fir
         }
         self.gpc_meta[op_gpc] = {
-            "type": "op", "name": label, "is_mac": is_mac
+            "type": "op", "name": label, "is_fir_pipeline": is_fir
         }
 
         # ── Step 3: 통합 레지스터 맵 생성 ──                            ★ 신규
         reg_map = self._build_register_map(fun)
+        self._last_reg_map = reg_map
 
         # ── Step 4: Init 블록 생성 (짝수 GPC) ──
         init_state = self._generate_init_block(reg_map, init_gpc)
@@ -211,11 +212,6 @@ class EFlowGenerator:
         self._write_mif_file(
             path_y, self.buffer_y, self.buffer_cmt,
             "Y-Bank (Data)", None
-        )
-
-        print(
-            f"\n[Success] Generated: "
-            f"{os.path.basename(path_z)} & {os.path.basename(path_y)}"
         )
 
     # =========================================================================
@@ -536,7 +532,8 @@ class EFlowGenerator:
     # =========================================================================
     def _analyze_ir(self, fun):
         features = {
-            "is_mac": False,
+            "is_mac": False,            # 일반 MAC: 곱셈+누적 패턴 존재
+            "is_fir_pipeline": False,    # FIR 전용: 시프트체인+계수곱셈+분할누적 → 3코어 그룹+pSt
             "coeff_vars": {},        # 구조적 계수: {이름: 상수값}
             "output_arrays": set(),  # ArrayRef LHS 배열 base 이름
             "input_arrays": set(),   # ArrayRef RHS 배열 base 이름
@@ -719,77 +716,23 @@ class EFlowGenerator:
                           and len(true_consts) >= 5
                           and (has_any_mult or len(input_arrays) > 0))
 
-        is_mac = is_mac_strict or is_mac_relaxed
+        # ── 플래그 분리 ──
+        # is_mac: 일반 MAC — 곱셈이 존재하는 패턴 (넓은 범위)
+        # is_fir_pipeline: FIR 전용 — 시프트체인+계수곱셈+분할누적
+        #   → 3-core 그룹 배치, pSt 파이프라인 스테이지 적용
+        is_mac = has_any_mult
+        is_fir_pipeline = is_mac_strict or is_mac_relaxed
 
         # ── 폴백: coeff_vars 보충 ──
         # 곱셈 감지가 불완전한 경우 true_consts 전체를 계수로 사용
-        if is_mac and len(coeff_vars) < len(true_consts):
+        if is_fir_pipeline and len(coeff_vars) < len(true_consts):
             for tc_k, tc_v in true_consts.items():
                 if tc_k not in coeff_vars:
                     coeff_vars[tc_k] = tc_v
 
-        # ── [DEBUG v4] 진단 출력 ──
-        import sys
-        print("=" * 60, file=sys.stderr)
-        print(f"[DEBUG _analyze_ir]", file=sys.stderr)
-        print(f"  const_assigns ({len(const_assigns)}):", file=sys.stderr)
-        for k, v in sorted(const_assigns.items()):
-            re_mark = " [RE]" if k in reassigned_vars else ""
-            tc_mark = " [TRUE_CONST]" if k in true_consts else ""
-            print(f"    {k} = {v}{re_mark}{tc_mark}", file=sys.stderr)
-        print(f"  reassigned_vars ({len(reassigned_vars)}): "
-              f"{sorted(reassigned_vars)}", file=sys.stderr)
-        print(f"  true_consts ({len(true_consts)}): "
-              f"{sorted(true_consts.keys())}", file=sys.stderr)
-        print(f"  output_arrays: {output_arrays}", file=sys.stderr)
-        print(f"  input_arrays:  {input_arrays}", file=sys.stderr)
-        print(f"  coeff_vars ({len(coeff_vars)}):", file=sys.stderr)
-        for k, v in sorted(coeff_vars.items()):
-            print(f"    {k} = {v}", file=sys.stderr)
-        print(f"  mult_results:  {mult_results}", file=sys.stderr)
-        print(f"  coeff_mult_cnt: {coeff_mult_cnt}", file=sys.stderr)
-        print(f"  has_any_mult:   {has_any_mult}", file=sys.stderr)
-        # ── 곱셈 statement 상세 ──
-        print(f"  [MULT DETAIL]:", file=sys.stderr)
-        mult_found_any = False
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if not isinstance(stmt, gcc.GimpleAssign):
-                    continue
-                s2 = self._get_op_symbol(stmt.exprcode)
-                if s2 == "*" and len(stmt.rhs) == 2:
-                    mult_found_any = True
-                    l2 = self._get_clean_name(stmt.lhs)
-                    a2 = self._get_clean_name(stmt.rhs[0])
-                    b2 = self._get_clean_name(stmt.rhs[1])
-                    at = type(stmt.rhs[0]).__name__
-                    bt = type(stmt.rhs[1]).__name__
-                    a_tc = a2 in true_consts
-                    b_tc = b2 in true_consts
-                    print(f"    {l2} = {a2}({at},tc={a_tc}) "
-                          f"* {b2}({bt},tc={b_tc})", file=sys.stderr)
-        if not mult_found_any:
-            print(f"    (no MULT_EXPR found in GIMPLE)", file=sys.stderr)
-        # ── 모든 이항 연산 덤프 (곱셈 누락 원인 추적) ──
-        print(f"  [ALL BINARY OPS]:", file=sys.stderr)
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if not isinstance(stmt, gcc.GimpleAssign):
-                    continue
-                if len(stmt.rhs) == 2:
-                    raw_ec = str(getattr(stmt, "exprcode", "?"))
-                    s2 = self._get_op_symbol(stmt.exprcode)
-                    l2 = self._get_clean_name(stmt.lhs)
-                    a2 = self._get_clean_name(stmt.rhs[0])
-                    b2 = self._get_clean_name(stmt.rhs[1])
-                    print(f"    {l2} = {a2} {s2} {b2}  "
-                          f"[ec={raw_ec}]", file=sys.stderr)
-        print(f"  → is_mac_strict  = {is_mac_strict}", file=sys.stderr)
-        print(f"  → is_mac_relaxed = {is_mac_relaxed}", file=sys.stderr)
-        print(f"  → is_mac = {is_mac}", file=sys.stderr)
-        print("=" * 60, file=sys.stderr)
 
         features["is_mac"] = is_mac
+        features["is_fir_pipeline"] = is_fir_pipeline
         features["coeff_vars"] = coeff_vars
         features["output_arrays"] = output_arrays
         features["input_arrays"] = input_arrays
@@ -798,10 +741,6 @@ class EFlowGenerator:
         features["cond_count"] = cond_count
         features["skip_cond_indices"] = skip_cond_indices
 
-        if skip_cond_indices:
-            print(f"  → skip_cond_indices (no arithmetic): "
-                  f"{sorted(skip_cond_indices)} / {cond_count} total",
-                  file=sys.stderr)
 
         return features
 
@@ -927,11 +866,10 @@ class EFlowGenerator:
     #   - Section B4: cond_res 초기값 고정 4 (outLoop)
     # =========================================================================
     def _build_register_map(self, fun):
-        import sys
         reg_map = {}
 
-        if self.features.get("is_mac"):
-            # ── MAC(혼합연산) 전용 레이아웃 생성 ──
+        if self.features.get("is_fir_pipeline"):
+            # ── FIR 파이프라인 전용 레이아웃 생성 ──
             # 3-core 그룹 [shift][mult][store] + 분할누적기 + 입력배열
             self._build_mac_layout(fun, reg_map)
 
@@ -951,9 +889,6 @@ class EFlowGenerator:
                 ignore_names=coeff_names
             )
 
-        print(f"[DEBUG _build_register_map] "
-              f"reg_map keys ({len(reg_map)}): "
-              f"{sorted(reg_map.keys())}", file=sys.stderr)
         return reg_map
 
     # =========================================================================
@@ -975,7 +910,6 @@ class EFlowGenerator:
     #   - 최종 출력은 모든 누적기가 ±16 범위 내
     # =========================================================================
     def _build_mac_layout(self, fun, reg_map):
-        import sys
         coeff_vars = self.features.get("coeff_vars", {})
         mult_results = self.features.get("mult_results", set())
         output_arrays = self.features.get("output_arrays", set())
@@ -1282,31 +1216,6 @@ class EFlowGenerator:
             'out_base': out_base,
             'in_base': in_base,
         }
-
-        # ── 디버그 출력 ──
-        print(f"[DEBUG _build_mac_layout] N={N}, "
-              f"splits={splits}, total_cores={core}",
-              file=sys.stderr)
-        print(f"  Layout:", file=sys.stderr)
-        for g in groups:
-            t = g['tap']
-            print(f"    r{g['shift_core']}: {t['shift_var']}={t['shift_src']} "
-                  f"[shift]", file=sys.stderr)
-            print(f"    r{g['mult_core']}: {t['mult_name']}="
-                  f"{t['shift_var']}*{t['coeff']} [SMT]", file=sys.stderr)
-            print(f"    r{g['store_core']}: {t['store_name']}="
-                  f"{t['mult_name']} [store]", file=sys.stderr)
-        for acc in accumulators:
-            tap_ids = [t['idx'] for t in acc['taps']]
-            print(f"    r{acc['core']}: {acc['name']} = sum("
-                  f"taps {tap_ids}) [ACC]", file=sys.stderr)
-        if len(splits) > 1:
-            acc_cores = [a['core'] for a in accumulators]
-            print(f"    r{final_core}: {out_base}[i] = sum("
-                  f"acc {acc_cores}) [FINAL]", file=sys.stderr)
-        print(f"    r{input_core}: {input_key} [A-bank read]",
-              file=sys.stderr)
-
     # =========================================================================
     # [17] _collect_intcst_from_node: 노드에서 정수 상수 재귀 수집          [O]
     # =========================================================================
@@ -1365,6 +1274,26 @@ class EFlowGenerator:
             """ssa_숫자 패턴 판별
             정책 Section B1: ssa_#는 레지스터/코어 할당 대상에서 제외."""
             return re.match(r"^ssa_\d+$", str(name)) is not None
+
+        # ── 루프 카운터 변수 사전 수집 (구조적 판별) ──
+        # 자기참조 증분 패턴: var = var + const → 루프 카운터
+        # 예: m = m + 1, j = j + 1 → 루프 카운터 (이름 무관)
+        loop_counter_vars = set()
+        for bb in fun.cfg.basic_blocks:
+            for stmt in bb.gimple:
+                if not isinstance(stmt, gcc.GimpleAssign):
+                    continue
+                if len(stmt.rhs) != 2:
+                    continue
+                sym = self._get_op_symbol(stmt.exprcode)
+                if sym not in ("+", "-"):
+                    continue
+                lhs_name = self._get_clean_name(stmt.lhs)
+                op1_name = self._get_clean_name(stmt.rhs[0])
+                op2_name = self._get_clean_name(stmt.rhs[1])
+                # lhs가 rhs 중 하나와 동일 → 자기참조 증분
+                if lhs_name == op1_name or lhs_name == op2_name:
+                    loop_counter_vars.add(lhs_name)
 
         # ── GIMPLE 순회: 변수/상수 수집 ──
         for bb in fun.cfg.basic_blocks:
@@ -1433,9 +1362,9 @@ class EFlowGenerator:
                     if allow_constants and isinstance(stmt.rhs, gcc.IntegerCst):
                         v = int(stmt.rhs.constant)
                         lhs_cond = self._get_clean_name(stmt.lhs)
-                        if lhs_cond == "i":
-                            # ★ 루프 변수 조건: 정규화 후 -(v+1)만 사용
-                            #   GCC: i<=31 → 반전: >31 → 정규화: >=32
+                        if lhs_cond in loop_counter_vars:
+                            # ★ 루프 카운터 조건: 정규화 후 -(v+1)만 사용
+                            #   GCC: m<=31 → 반전: >31 → 정규화: >=32
                             #   Init에 필요: -32 = -(31+1) 하나만
                             add_constants.add(-(v + 1))
                         else:
@@ -1583,8 +1512,12 @@ class EFlowGenerator:
                 cmd = self._format_mnemonic("LXY", z_hex, val)
                 res = str(val)
                 active = True
-                # 할당된 코어: MAC pSt가 있으면 사용, 없으면 "0"
-                pst = info.get("pst", "0")
+                # FIR 파이프라인 함수: pSt가 있으면 사용, 없으면 "0"
+                # Generic 함수: pSt 없음 (빈칸)
+                if self.features.get("is_fir_pipeline"):
+                    pst = info.get("pst", "0")
+                else:
+                    pst = ""
 
             self._add_line(
                 addr, z, y, f".{reg_name}", c_code, rc, cmd, res,
@@ -1652,7 +1585,7 @@ class EFlowGenerator:
         # 정책 Section D: MAC 활성 조건이 충족될 때만 실행
         # GIMPLE IR을 동적 순회하여 MAC 연산 추출 (정책 v4)
         mac_managed = set()
-        if self.features.get("is_mac"):
+        if self.features.get("is_fir_pipeline"):
             mac_managed = self._pass_mac_pipeline(fun, st, reg_map)
 
         # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1681,7 +1614,7 @@ class EFlowGenerator:
                 base + i, st[i]["z"], st[i]["y"], st[i]["core"],
                 st[i].get("c", ""), st[i].get("rc", ""),
                 st[i].get("cmd", ""), st[i].get("res", ""),
-                op_gpc, pst=st[i].get("pst", "0" if st[i].get("is_active") else ""),
+                op_gpc, pst=st[i].get("pst", "0" if (self.features.get("is_fir_pipeline") and st[i].get("is_active")) else ""),
                 extra_lines=extra
             )
 
@@ -1735,7 +1668,6 @@ class EFlowGenerator:
     #   [input_array]  (A-bank read)
     # =========================================================================
     def _pass_mac_pipeline(self, fun, st, reg_map):
-        import sys
         managed = set()
 
         layout = getattr(self, "_mac_layout", None)
@@ -1750,11 +1682,6 @@ class EFlowGenerator:
         splits = layout['splits']
         out_base = layout.get('out_base', 'out')
         coeff_vars = self.features.get("coeff_vars", {})
-
-        print(f"[DEBUG _pass_mac_pipeline] ENTERED (v5 layout)",
-              file=sys.stderr)
-        print(f"  groups={len(groups)}, accumulators={len(accumulators)}, "
-              f"splits={splits}", file=sys.stderr)
 
         # ── 1) 각 3-core 그룹 MIF 생성 ──
         for g in groups:
@@ -1911,10 +1838,6 @@ class EFlowGenerator:
         })
         managed.add(input_core)
 
-        # ── 디버그 ──
-        print(f"[DEBUG _pass_mac_pipeline] EXIT "
-              f"managed ({len(managed)}): {sorted(managed)}",
-              file=sys.stderr)
 
         return managed
 
@@ -2115,8 +2038,20 @@ class EFlowGenerator:
                 rhs_nm = self._get_clean_name(stmt.rhs)
                 op_raw = self._get_op_symbol(stmt.exprcode)
 
-                # 루프 변수 조건 반전 (정책 B3)
-                is_loop = (lhs_nm == "i")
+                # 루프 조건 반전 판별 (구조적, 이름 무관)
+                # ── for 루프 조건 vs if-break 조건 구분 ──
+                # for문의 카운터 변수: 자기참조 증분 패턴이 존재
+                #   예: m = m + 1  → assign_expand["m"] = ("m", "1", "+")
+                #        lhs "m"이 rhs에도 등장 → 루프 카운터
+                # if문의 조건 변수: 자기참조 없음
+                #   예: cur = p0 + p1 → assign_expand["cur"] = ("p0", "p1", "+")
+                #        lhs "cur"이 rhs에 없음 → 일반 조건
+                is_loop = False
+                if lhs_nm in assign_expand:
+                    exp_op1, exp_op2, _ = assign_expand[lhs_nm]
+                    # lhs가 rhs 피연산자 중 하나와 동일 → 자기참조 증분
+                    if lhs_nm == exp_op1 or lhs_nm == exp_op2:
+                        is_loop = True
                 rhs_adjust = 0
                 if is_loop:
                     op_use = INVERT.get(op_raw, op_raw)
@@ -2383,7 +2318,7 @@ class EFlowGenerator:
                 " {HI, LP_YXA, C_TYPE} except '_' "
                 " represents control-bits")
             lines += self._gpc_header_yinfo()
-            if meta.get("is_mac"):
+            if meta.get("is_fir_pipeline"):
                 lines.append("--")
                 lines += self._gpc_header_pst_columns()
 
@@ -2402,7 +2337,7 @@ class EFlowGenerator:
                 " {HI, LP_YXA, C_TYPE} except '_' "
                 " represents control-bits")
             lines += self._gpc_header_yinfo()
-            if meta.get("is_mac"):
+            if meta.get("is_fir_pipeline"):
                 lines.append("--")
                 lines += self._gpc_header_pst_columns()
 
@@ -2428,12 +2363,12 @@ class EFlowGenerator:
         return [
             "-- <---- .mif  -->"
             "<--------------------------------------------"
-            " .eFlow  ---------------------------------------------"
-            "--------------->",
+            " .eFlow  ----------------------------------------"
+            "--------->",
             f"--     {'binFile':<19}{'Mnemonic':<19}"
             f"{'pSt(pipeline stage)':<21}{'regSet':<26}"
             f"{'cmd':<24}{'val':<8}gpc",
             "-- <-----------------------------------------------"
-            "---------------------------------------------------"
-            "------------------------------>",
+            "-------------------------------------------"
+            "------------>",
         ]
