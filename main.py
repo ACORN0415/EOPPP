@@ -97,9 +97,11 @@ class LogWriter:
 
         # Features
         is_mac = features.get("is_mac", False)
-        is_fir = features.get("is_fir_pipeline", False)
+        has_mac = features.get("has_mac", False)
+        has_shift = features.get("has_shift", False)
         self._write(self.generator_path, f"  is_mac: {is_mac}")
-        self._write(self.generator_path, f"  is_fir_pipeline: {is_fir}")
+        self._write(self.generator_path, f"  has_mac: {has_mac}")
+        self._write(self.generator_path, f"  has_shift: {has_shift}")
 
         coeff_vars = features.get("coeff_vars", {})
         if coeff_vars:
@@ -157,6 +159,16 @@ class EOPPPExtension(gcc.GimplePass):
             self.generator.write_all()
 
     def _process_main_body(self, fun):
+        """main() 함수의 호출 순서대로 대상 함수를 처리한다.
+
+        main()의 basic block을 순회하면서 GimpleCall을 발견한 순서대로
+        각 함수를 _process_target_function()에 전달한다.
+        이 순서가 MIF 파일에서의 GPC 배치 순서가 된다.
+
+        예: main()에서 checkclkfibo() → checkclkfir() 순으로 호출하면
+            GPC 0,1 = checkclkfibo (Init, Op)
+            GPC 2,3 = checkclkfir  (Init, Op)
+        """
         ignored_funcs = [
             'printf', '__printf_chk', 'clock', 'time', 'fprintf'
         ]
@@ -204,12 +216,15 @@ class EOPPPExtension(gcc.GimplePass):
             return
 
         # ── Generator 실행 ──
-        init_gpc = self.gpc_counter
-        op_gpc = self.gpc_counter + 1
-        used = self.generator.generate(fun, init_gpc, op_gpc)
+        # generate()에 base_gpc만 전달, 내부에서 Init/Op GPC를 할당
+        # 향후 GPC 3개 이상으로 확장 시에도 main.py 수정 불필요
+        base_gpc = self.gpc_counter
+        used = self.generator.generate(fun, base_gpc)
         self.gpc_counter += used
 
         # ── Log 3: Generator 결과 ──
+        init_gpc = base_gpc
+        op_gpc = base_gpc + 1
         reg_map = getattr(self.generator, '_last_reg_map', {})
         self.log.log_generator(
             name, self.generator.features, reg_map, init_gpc, op_gpc

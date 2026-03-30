@@ -1,0 +1,2 @@
+/home/EOPPP/gcc_eoppp/eoppp_zcode.py:177: UserWarning: XX_LEFT_XD를 합산 모드(0x00)에 사용. 보통 SMT/UMT에서만 사용.
+  warnings.warn(

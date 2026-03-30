@@ -11,17 +11,3 @@ Function: checkclkfft
 Function: checkclkfir
   Result: PASS
 
-======================================================================
-Function: checkfibo_other
-  Result: FAIL (2 violation(s))
-    - 지원하지 않는 연산 노드: <class 'gcc.Constructor'> (Z-code 매핑 불가)
-    - 데이터 경합 위험: 전역 변수 'fib'에 다중 쓰기 감지.
-
-======================================================================
-Function: checkfibo_2
-  Result: PASS
-
-======================================================================
-Function: checkfir
-  Result: PASS
-
