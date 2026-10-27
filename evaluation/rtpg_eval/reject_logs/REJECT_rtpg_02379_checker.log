@@ -1,0 +1,10 @@
+======================================================================
+Function: test_func
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 8)
+    - Unsupported type: pointer to int
+    - Unsupported type: enum
+    - Write conflict: global variable 'v5'
+    - Write conflict: global variable 'v5'
+

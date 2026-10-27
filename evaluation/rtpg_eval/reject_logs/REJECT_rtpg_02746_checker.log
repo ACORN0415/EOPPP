@@ -1,0 +1,11 @@
+======================================================================
+Function: test_func
+  Result: FAIL (7 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 7)
+    - Unsupported type: pointer to int
+    - Recursion detected: test_func -> __helper -> __helper
+    - Write conflict: global variable 'v7'
+    - Write conflict: global variable 'v7'
+    - Write conflict: global variable 'v7'
+

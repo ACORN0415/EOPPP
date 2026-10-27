@@ -1,0 +1,24 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (12 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to union U0 *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to union U0
+    - Call depth exceeded (max 2): func_1 -> func_2 -> safe_mul_func_int8_t_s_s
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_45'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

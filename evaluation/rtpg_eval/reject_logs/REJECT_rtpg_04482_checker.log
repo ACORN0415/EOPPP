@@ -1,0 +1,11 @@
+======================================================================
+Function: test_func
+  Result: FAIL (7 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Write conflict: global variable 'v4'
+    - Write conflict: global variable 'v4'
+

@@ -1,0 +1,169 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (157 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1 *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_rshift_func_int8_t_s_u
+    - Write conflict: global variable 'l_111'
+    - Write conflict: global variable 'l_150'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_166'
+    - Write conflict: global variable 'g_16'
+    - Write conflict: global variable 'g_16'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_166'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'g_85'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'g_99'
+    - Write conflict: global variable 'l_98'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_166'
+    - Write conflict: global variable 'l_98'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_166'
+    - Write conflict: global variable 'g_16'
+    - Write conflict: global variable 'g_123'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'g_56'
+    - Write conflict: global variable 'l_126'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'g_132'
+    - Write conflict: global variable 'l_126'
+    - Write conflict: global variable 'l_129'
+    - Write conflict: global variable 'g_56'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_137'
+    - Write conflict: global variable 'l_137'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'l_95'
+    - Write conflict: global variable 'g_56'
+    - Write conflict: global variable 'g_153'
+    - Write conflict: global variable 'l_147'
+    - Write conflict: global variable 'l_147'
+    - Write conflict: global variable 'g_56'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_166'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_111'
+    - Write conflict: global variable 'l_150'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

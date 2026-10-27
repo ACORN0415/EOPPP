@@ -1,0 +1,12 @@
+======================================================================
+Function: test_func
+  Result: FAIL (8 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 2)
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Unsupported type: pointer to int
+    - Write conflict: global variable 'v1'
+    - Write conflict: global variable 'v1'
+

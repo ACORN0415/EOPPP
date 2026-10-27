@@ -1,0 +1,35 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (23 violation(s))
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_rshift_func_uint8_t_u_s
+    - Write conflict: global variable 'l_22'
+    - Write conflict: global variable 'g_21'
+    - Write conflict: global variable 'l_31'
+    - Write conflict: global variable 'g_21'
+    - Write conflict: global variable 'l_22'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

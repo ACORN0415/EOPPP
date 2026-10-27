@@ -1,0 +1,8 @@
+======================================================================
+Function: test_func
+  Result: FAIL (4 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Write conflict: global variable '__u'
+

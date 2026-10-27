@@ -1,0 +1,80 @@
+// RTPG_900: vars=52 stmts=5
+int xn[32];
+int yo[32];
+struct Data { int a; int b; };
+enum State { SLOW, GREEN, OFF };
+void test_func(void) {
+    int prev78 = 47;
+    int dat75 = 36;
+    int b95 = 17974;
+    int c39 = 3;
+    int b9 = -43;
+    int cur21 = 48428;
+    int sum1 = 67;
+    int dat42 = -14;
+    int lo59 = 51;
+    int z67 = 17;
+    int z25 = 4;
+    int x64 = 32;
+    int sum37 = 10332;
+    int val85 = -37;
+    int tmp92 = 0;
+    int res94 = 9;
+    int a90 = -15;
+    int c29 = -26;
+    int z10 = 3;
+    int y37 = 12534;
+    int c1 = 62;
+    int v99 = 56378;
+    int res67 = 34633;
+    int v21 = 49;
+    int prev79 = 25;
+    int a91 = 30150;
+    int cnt14 = 4;
+    int tmp39 = 23;
+    int c11 = 55;
+    int sum80 = 6;
+    int cnt34 = 5;
+    int res0 = 50;
+    int c40 = -19;
+    int res22 = 87;
+    int z46 = -49;
+    int prev5 = -26;
+    int v78 = 34474;
+    int z48 = 8;
+    int res47 = 38;
+    int a46 = 0;
+    int prev99 = 87;
+    int dat54 = 40;
+    int z4 = 47837;
+    int v36 = 19407;
+    int hi77 = 2;
+    int val97 = 11763;
+    int acc11 = 86;
+    int cur33 = 19566;
+    int b93 = 60227;
+    int a74 = 37723;
+    int out1 = 18158;
+    int cur50 = 9;
+    struct Data s; s.a = 32; s.b = 45;
+    enum State st = SLOW;
+    int h0 = -38;
+    int sv0 = 0;
+    int h1 = 8;
+    int sv1 = 0;
+    int h2 = 63759;
+    int sv2 = 0;
+    int i;
+    for (i = 0; i < 32; i++) {
+        z46 = xn[i];
+        a74 = z10 ^ c11;
+        out1 = out1 + 2;
+        acc11 = y37 - cur33;
+        z10 = c29 - prev99;
+        z10 = v21;
+        s.a = s.a + s.b;
+        yo[i] = dat42;
+    }
+}
+int main() { test_func(); return 0; }
+

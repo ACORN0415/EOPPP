@@ -1,0 +1,102 @@
+// RTPG_94: vars=84 stmts=6
+struct Point { int a; int b; };
+void test_func(void) {
+    int v0 = 91;
+    int v1 = 76;
+    int v2 = 62;
+    int v3 = 55;
+    int v4 = 90;
+    int v5 = 97;
+    int v6 = 17;
+    int v7 = 50;
+    int v8 = 27;
+    int v9 = 84;
+    int v10 = 57;
+    int v11 = 39;
+    int v12 = 68;
+    int v13 = 89;
+    int v14 = 86;
+    int v15 = 38;
+    int v16 = 42;
+    int v17 = 29;
+    int v18 = 72;
+    int v19 = 65;
+    int v20 = 52;
+    int v21 = 18;
+    int v22 = 98;
+    int v23 = 69;
+    int v24 = 87;
+    int v25 = 75;
+    int v26 = 40;
+    int v27 = 0;
+    int v28 = 78;
+    int v29 = 6;
+    int v30 = 91;
+    int v31 = 96;
+    int v32 = 45;
+    int v33 = 75;
+    int v34 = 15;
+    int v35 = 99;
+    int v36 = 9;
+    int v37 = 78;
+    int v38 = 8;
+    int v39 = 67;
+    int v40 = 52;
+    int v41 = 93;
+    int v42 = 20;
+    int v43 = 93;
+    int v44 = 24;
+    int v45 = 31;
+    int v46 = 76;
+    int v47 = 99;
+    int v48 = 97;
+    int v49 = 22;
+    int v50 = 23;
+    int v51 = 3;
+    int v52 = 83;
+    int v53 = 63;
+    int v54 = 93;
+    int v55 = 15;
+    int v56 = 42;
+    int v57 = 11;
+    int v58 = 12;
+    int v59 = 51;
+    int v60 = 73;
+    int v61 = 89;
+    int v62 = 87;
+    int v63 = 49;
+    int v64 = 52;
+    int v65 = 48;
+    int v66 = 89;
+    int v67 = 60;
+    int v68 = 17;
+    int v69 = 43;
+    int v70 = 23;
+    int v71 = 12;
+    int v72 = 39;
+    int v73 = 45;
+    int v74 = 22;
+    int v75 = 90;
+    int v76 = 55;
+    int v77 = 32;
+    int v78 = 63;
+    int v79 = 11;
+    int v80 = 23;
+    int v81 = 33;
+    int v82 = 51;
+    int v83 = 25;
+    struct Point s; s.a = 83; s.b = 7;
+    int i;
+    for (i = 0; i < 61; i++) {
+        switch (v14) {
+            case 0: v0 = 8; break;
+            case 1: v2 = 2; break;
+            case 2: v6 = 4; break;
+            case 3: v2 = 31; break;
+            default: break;
+        }
+        v14 = v14 + 1;
+    }
+}
+int main() { test_func(); return 0; }
+

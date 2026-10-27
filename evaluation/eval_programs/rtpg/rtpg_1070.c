@@ -1,0 +1,115 @@
+// RTPG_1070: vars=93 stmts=5
+enum State { ON, GREEN, RED };
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 96;
+    int v1 = 96;
+    int v2 = 64;
+    int v3 = 71;
+    int v4 = 19;
+    int v5 = 67;
+    int v6 = 95;
+    int v7 = 95;
+    int v8 = 23;
+    int v9 = 37;
+    int v10 = 54;
+    int v11 = 14;
+    int v12 = 99;
+    int v13 = 58;
+    int v14 = 30;
+    int v15 = 34;
+    int v16 = 76;
+    int v17 = 0;
+    int v18 = 89;
+    int v19 = 74;
+    int v20 = 33;
+    int v21 = 83;
+    int v22 = 83;
+    int v23 = 98;
+    int v24 = 5;
+    int v25 = 74;
+    int v26 = 43;
+    int v27 = 37;
+    int v28 = 12;
+    int v29 = 57;
+    int v30 = 5;
+    int v31 = 19;
+    int v32 = 74;
+    int v33 = 75;
+    int v34 = 59;
+    int v35 = 27;
+    int v36 = 97;
+    int v37 = 50;
+    int v38 = 75;
+    int v39 = 17;
+    int v40 = 93;
+    int v41 = 49;
+    int v42 = 61;
+    int v43 = 85;
+    int v44 = 97;
+    int v45 = 39;
+    int v46 = 69;
+    int v47 = 76;
+    int v48 = 26;
+    int v49 = 99;
+    int v50 = 62;
+    int v51 = 64;
+    int v52 = 14;
+    int v53 = 14;
+    int v54 = 16;
+    int v55 = 80;
+    int v56 = 21;
+    int v57 = 8;
+    int v58 = 71;
+    int v59 = 40;
+    int v60 = 98;
+    int v61 = 0;
+    int v62 = 94;
+    int v63 = 91;
+    int v64 = 26;
+    int v65 = 45;
+    int v66 = 80;
+    int v67 = 0;
+    int v68 = 36;
+    int v69 = 45;
+    int v70 = 22;
+    int v71 = 67;
+    int v72 = 82;
+    int v73 = 46;
+    int v74 = 27;
+    int v75 = 45;
+    int v76 = 70;
+    int v77 = 18;
+    int v78 = 6;
+    int v79 = 77;
+    int v80 = 89;
+    int v81 = 56;
+    int v82 = 45;
+    int v83 = 8;
+    int v84 = 67;
+    int v85 = 48;
+    int v86 = 35;
+    int v87 = 15;
+    int v88 = 78;
+    int v89 = 1;
+    int v90 = 19;
+    int v91 = 11;
+    int v92 = 2;
+    enum State st = ON;
+    int *ptr = &v3;
+    int *darr = (int *)malloc(32 * sizeof(int));
+    int i;
+    for (i = 0; i < 7; i++) {
+        int j;
+        for (j = 0; j < 16; j++) {
+        v11 = v6 - 6;
+        v2 = v2 - v7;
+        v12 = v12 - 4;
+        v5 = v4 - v1;
+        v13 = v13 + 3;
+        }
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

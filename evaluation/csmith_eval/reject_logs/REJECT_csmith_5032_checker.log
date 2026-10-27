@@ -1,0 +1,31 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (19 violation(s))
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Write conflict: global variable 'l_4'
+    - Write conflict: global variable 'l_8'
+    - Write conflict: global variable 'g_14'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'l_4'
+    - Write conflict: global variable 'l_8'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,56 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (44 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3
+    - Call depth exceeded (max 2): func_1 -> func_19 -> safe_lshift_func_int16_t_s_u
+    - Write conflict: global variable 'l_71'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'l_9'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'l_18'
+    - Write conflict: global variable 'g_67'
+    - Write conflict: global variable 'l_18'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_71'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

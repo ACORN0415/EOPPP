@@ -1,0 +1,2 @@
+[PreChecker] Unsupported control flow: goto detected in source
+[PreChecker] Variable count exceeded: 130 declarations (max 127)

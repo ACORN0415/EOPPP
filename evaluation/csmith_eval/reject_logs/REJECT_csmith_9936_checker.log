@@ -1,0 +1,20 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (8 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_rshift_func_int16_t_s_s
+    - Write conflict: global variable 'None'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

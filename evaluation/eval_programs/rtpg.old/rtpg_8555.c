@@ -1,0 +1,107 @@
+// RTPG_8555: vars=91 stmts=5
+void test_func(void) {
+    int v0 = 55;
+    int v1 = 31;
+    int v2 = 95;
+    int v3 = 95;
+    int v4 = 15;
+    int v5 = 95;
+    int v6 = 17;
+    int v7 = 88;
+    int v8 = 27;
+    int v9 = 74;
+    int v10 = 4;
+    int v11 = 2;
+    int v12 = 24;
+    int v13 = 7;
+    int v14 = 48;
+    int v15 = 41;
+    int v16 = 53;
+    int v17 = 20;
+    int v18 = 66;
+    int v19 = 17;
+    int v20 = 40;
+    int v21 = 83;
+    int v22 = 84;
+    int v23 = 47;
+    int v24 = 51;
+    int v25 = 91;
+    int v26 = 36;
+    int v27 = 98;
+    int v28 = 1;
+    int v29 = 15;
+    int v30 = 61;
+    int v31 = 70;
+    int v32 = 87;
+    int v33 = 15;
+    int v34 = 1;
+    int v35 = 90;
+    int v36 = 27;
+    int v37 = 70;
+    int v38 = 33;
+    int v39 = 89;
+    int v40 = 58;
+    int v41 = 33;
+    int v42 = 62;
+    int v43 = 39;
+    int v44 = 3;
+    int v45 = 4;
+    int v46 = 76;
+    int v47 = 14;
+    int v48 = 28;
+    int v49 = 36;
+    int v50 = 37;
+    int v51 = 20;
+    int v52 = 35;
+    int v53 = 74;
+    int v54 = 67;
+    int v55 = 25;
+    int v56 = 39;
+    int v57 = 76;
+    int v58 = 10;
+    int v59 = 15;
+    int v60 = 88;
+    int v61 = 51;
+    int v62 = 61;
+    int v63 = 31;
+    int v64 = 8;
+    int v65 = 81;
+    int v66 = 65;
+    int v67 = 69;
+    int v68 = 18;
+    int v69 = 8;
+    int v70 = 88;
+    int v71 = 46;
+    int v72 = 43;
+    int v73 = 24;
+    int v74 = 53;
+    int v75 = 37;
+    int v76 = 7;
+    int v77 = 90;
+    int v78 = 15;
+    int v79 = 82;
+    int v80 = 31;
+    int v81 = 63;
+    int v82 = 31;
+    int v83 = 88;
+    int v84 = 28;
+    int v85 = 0;
+    int v86 = 38;
+    int v87 = 74;
+    int v88 = 87;
+    int v89 = 10;
+    int v90 = 73;
+    int i;
+    for (i = 0; i < 8; i++) {
+        int j;
+        for (j = 0; j < 8; j++) {
+        v7 = v10 - -29;
+        v14 = v5 - v1;
+        v14 = v4 + v10;
+        v1 = v14 - v4;
+        v4 = v4 + 5;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

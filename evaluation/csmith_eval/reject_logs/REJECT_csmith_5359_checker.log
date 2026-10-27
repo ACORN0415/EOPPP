@@ -1,0 +1,60 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (48 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Call depth exceeded (max 2): func_1 -> func_28 -> safe_unary_minus_func_uint8_t_u
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'g_39'
+    - Write conflict: global variable 'g_90'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_17'
+    - Write conflict: global variable 'g_90'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_17'
+    - Write conflict: global variable 'l_24'
+    - Write conflict: global variable 'l_33'
+    - Write conflict: global variable 'l_233'
+    - Write conflict: global variable 'l_330'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,105 @@
+// RTPG_1438: vars=89 stmts=8
+void test_func(void) {
+    int v0 = 91;
+    int v1 = 71;
+    int v2 = 1;
+    int v3 = 95;
+    int v4 = 13;
+    int v5 = 88;
+    int v6 = 3;
+    int v7 = 84;
+    int v8 = 8;
+    int v9 = 76;
+    int v10 = 15;
+    int v11 = 64;
+    int v12 = 56;
+    int v13 = 61;
+    int v14 = 1;
+    int v15 = 68;
+    int v16 = 79;
+    int v17 = 58;
+    int v18 = 54;
+    int v19 = 86;
+    int v20 = 45;
+    int v21 = 59;
+    int v22 = 81;
+    int v23 = 8;
+    int v24 = 25;
+    int v25 = 27;
+    int v26 = 3;
+    int v27 = 95;
+    int v28 = 96;
+    int v29 = 19;
+    int v30 = 60;
+    int v31 = 25;
+    int v32 = 46;
+    int v33 = 2;
+    int v34 = 85;
+    int v35 = 98;
+    int v36 = 32;
+    int v37 = 70;
+    int v38 = 49;
+    int v39 = 72;
+    int v40 = 90;
+    int v41 = 74;
+    int v42 = 98;
+    int v43 = 96;
+    int v44 = 96;
+    int v45 = 10;
+    int v46 = 80;
+    int v47 = 87;
+    int v48 = 85;
+    int v49 = 89;
+    int v50 = 38;
+    int v51 = 23;
+    int v52 = 86;
+    int v53 = 68;
+    int v54 = 42;
+    int v55 = 71;
+    int v56 = 5;
+    int v57 = 68;
+    int v58 = 9;
+    int v59 = 84;
+    int v60 = 39;
+    int v61 = 34;
+    int v62 = 64;
+    int v63 = 58;
+    int v64 = 6;
+    int v65 = 30;
+    int v66 = 99;
+    int v67 = 25;
+    int v68 = 65;
+    int v69 = 27;
+    int v70 = 91;
+    int v71 = 82;
+    int v72 = 49;
+    int v73 = 1;
+    int v74 = 85;
+    int v75 = 85;
+    int v76 = 66;
+    int v77 = 34;
+    int v78 = 37;
+    int v79 = 10;
+    int v80 = 6;
+    int v81 = 23;
+    int v82 = 97;
+    int v83 = 75;
+    int v84 = 59;
+    int v85 = 64;
+    int v86 = 8;
+    int v87 = 34;
+    int v88 = 74;
+    int i;
+    for (i = 0; i < 64; i++) {
+        switch (v7) {
+            case 0: v14 = 35; break;
+            case 1: v3 = 56; break;
+            case 2: v5 = 91; break;
+            case 3: v7 = 4; break;
+            default: break;
+        }
+        v7 = v7 + 1;
+    }
+}
+int main() { test_func(); return 0; }
+

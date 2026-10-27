@@ -1,0 +1,18 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'None'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

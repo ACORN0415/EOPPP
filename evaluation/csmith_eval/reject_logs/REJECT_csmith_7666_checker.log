@@ -1,0 +1,53 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (41 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_21 -> safe_div_func_uint32_t_u_u
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'g_17'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_50'
+    - Write conflict: global variable 'g_50'
+    - Write conflict: global variable 'l_23'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

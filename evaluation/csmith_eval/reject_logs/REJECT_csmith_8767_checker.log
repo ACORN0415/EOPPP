@@ -1,0 +1,24 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (12 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: struct/union
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_unary_minus_func_uint16_t_u
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'l_4'
+    - Write conflict: global variable 'l_9'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

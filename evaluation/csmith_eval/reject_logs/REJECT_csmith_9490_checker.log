@@ -1,0 +1,81 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (69 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_9 -> safe_rshift_func_int16_t_s_u
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_108'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'l_102'
+    - Write conflict: global variable 'l_106'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'g_65'
+    - Write conflict: global variable 'l_117'
+    - Write conflict: global variable 'g_39'
+    - Write conflict: global variable 'l_104'
+    - Write conflict: global variable 'g_39'
+    - Write conflict: global variable 'l_105'
+    - Write conflict: global variable 'l_117'
+    - Write conflict: global variable 'g_65'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_102'
+    - Write conflict: global variable 'l_106'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'g_119'
+    - Write conflict: global variable 'g_18'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_108'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,11 @@
+======================================================================
+Function: test_func
+  Result: FAIL (7 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Unsupported type: struct/union
+    - Recursion detected: test_func -> __helper -> __helper
+    - Write conflict: global variable '__s'
+

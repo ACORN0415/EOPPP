@@ -1,0 +1,100 @@
+// RTPG_7467: vars=77 stmts=5
+struct Point { int a; int b; };
+void test_func(void) {
+    int v0 = 4;
+    int v1 = 36;
+    int v2 = 8;
+    int v3 = 7;
+    int v4 = 80;
+    int v5 = 5;
+    int v6 = 100;
+    int v7 = 68;
+    int v8 = 98;
+    int v9 = 26;
+    int v10 = 66;
+    int v11 = 75;
+    int v12 = 26;
+    int v13 = 13;
+    int v14 = 49;
+    int v15 = 51;
+    int v16 = 94;
+    int v17 = 75;
+    int v18 = 64;
+    int v19 = 30;
+    int v20 = 40;
+    int v21 = 44;
+    int v22 = 48;
+    int v23 = 38;
+    int v24 = 41;
+    int v25 = 21;
+    int v26 = 17;
+    int v27 = 37;
+    int v28 = 32;
+    int v29 = 56;
+    int v30 = 49;
+    int v31 = 94;
+    int v32 = 64;
+    int v33 = 21;
+    int v34 = 3;
+    int v35 = 58;
+    int v36 = 12;
+    int v37 = 11;
+    int v38 = 27;
+    int v39 = 87;
+    int v40 = 41;
+    int v41 = 13;
+    int v42 = 25;
+    int v43 = 72;
+    int v44 = 95;
+    int v45 = 27;
+    int v46 = 75;
+    int v47 = 25;
+    int v48 = 6;
+    int v49 = 33;
+    int v50 = 26;
+    int v51 = 26;
+    int v52 = 19;
+    int v53 = 28;
+    int v54 = 100;
+    int v55 = 57;
+    int v56 = 85;
+    int v57 = 65;
+    int v58 = 66;
+    int v59 = 40;
+    int v60 = 93;
+    int v61 = 94;
+    int v62 = 46;
+    int v63 = 70;
+    int v64 = 31;
+    int v65 = 24;
+    int v66 = 72;
+    int v67 = 18;
+    int v68 = 45;
+    int v69 = 63;
+    int v70 = 27;
+    int v71 = 32;
+    int v72 = 68;
+    int v73 = 25;
+    int v74 = 99;
+    int v75 = 33;
+    int v76 = 67;
+    struct Point s; s.a = 39144; s.b = 25;
+    int h0 = 5;
+    int sv0 = 0;
+    int h1 = 13;
+    int sv1 = 0;
+    int i;
+    for (i = 0; i < 61; i++) {
+        v11 = v4 - v5;
+        v4 = v5 * 18;
+        v11 = v12 * -7;
+        v12 = v12 + 5;
+        v11 = v5 * 29;
+        s.a = s.a + s.b;
+        if (v8 >= -48) {
+        v8 = v7 - v1;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

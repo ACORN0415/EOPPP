@@ -1,0 +1,170 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (158 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to union U2 * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: struct/union
+    - Call depth exceeded (max 2): func_1 -> func_2 -> safe_add_func_uint16_t_u_u
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_126'
+    - Write conflict: global variable 'g_51'
+    - Write conflict: global variable 'g_25'
+    - Write conflict: global variable 'l_86'
+    - Write conflict: global variable 'l_50'
+    - Write conflict: global variable 'l_110'
+    - Write conflict: global variable 'l_127'
+    - Write conflict: global variable 'g_18'
+    - Write conflict: global variable 'l_123'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'g_136'
+    - Write conflict: global variable 'l_133'
+    - Write conflict: global variable 'g_18'
+    - Write conflict: global variable 'l_143'
+    - Write conflict: global variable 'l_143'
+    - Write conflict: global variable 'l_144'
+    - Write conflict: global variable 'l_140'
+    - Write conflict: global variable 'g_18'
+    - Write conflict: global variable 'l_110'
+    - Write conflict: global variable 'l_127'
+    - Write conflict: global variable 'l_129'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_126'
+    - Write conflict: global variable 'l_156'
+    - Write conflict: global variable 'l_158'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

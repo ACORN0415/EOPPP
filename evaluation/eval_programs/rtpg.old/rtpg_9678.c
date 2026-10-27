@@ -1,0 +1,87 @@
+// RTPG_9678: vars=58 stmts=10
+struct Node { int a; int b; };
+void test_func(void) {
+    int val92 = -36;
+    int lo94 = 31;
+    int v55 = 26637;
+    int res54 = 60541;
+    int res24 = -44;
+    int a28 = -33;
+    int v72 = 9180;
+    int x40 = 23351;
+    int z52 = 25;
+    int lo29 = 0;
+    int hi59 = 10;
+    int c97 = 41595;
+    int res8 = 44;
+    int z72 = 1;
+    int sum17 = 2356;
+    int z67 = 56;
+    int sum40 = 61605;
+    int cnt69 = 8;
+    int z16 = 99;
+    int b31 = 11;
+    int lo33 = 39647;
+    int z35 = 9;
+    int y11 = 42;
+    int c81 = 28438;
+    int res73 = 94;
+    int out19 = 8;
+    int sum74 = 38649;
+    int tmp67 = 9;
+    int z8 = 31106;
+    int lo10 = 5;
+    int out80 = 37160;
+    int y56 = 6;
+    int c72 = -1;
+    int tmp45 = 51;
+    int val89 = 10;
+    int tmp34 = 18;
+    int cur22 = 4;
+    int sum26 = 4;
+    int b91 = 49421;
+    int c82 = -10;
+    int cur67 = 0;
+    int y61 = 82;
+    int y33 = 5;
+    int a87 = 7;
+    int cnt2 = 47;
+    int cnt47 = 5;
+    int b78 = 56845;
+    int tmp69 = 43;
+    int res31 = 30269;
+    int dat5 = 74;
+    int cnt87 = 46000;
+    int x71 = 7;
+    int acc44 = 40557;
+    int lo38 = 2394;
+    int b55 = -34;
+    int a62 = 8659;
+    int out27 = 16774;
+    int hi15 = 36998;
+    struct Node s; s.a = 55; s.b = 8;
+    int h0 = 5;
+    int sv0 = 0;
+    int h1 = 20;
+    int sv1 = 0;
+    int h2 = 55183;
+    int sv2 = 0;
+    int h3 = 4;
+    int sv3 = 0;
+    int i;
+    for (i = 0; i < 42; i++) {
+        z52 = tmp69 + y33;
+        z72 = c97 ^ lo33;
+        lo10 = lo10 & b55;
+        z16 = z52 * 6;
+        tmp45 = c97 * 22;
+        sum26 = z8 - tmp34;
+        y56 = out80 - 73;
+        out19 = x71 + -36;
+        tmp34 = cnt2 & out19;
+        tmp34 = cur22 - out80;
+        s.a = s.a + s.b;
+    }
+}
+int main() { test_func(); return 0; }
+

@@ -1,0 +1,8 @@
+======================================================================
+Function: test_func
+  Result: FAIL (4 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Recursion detected: test_func -> __helper -> __helper
+    - Write conflict: global variable '__u'
+

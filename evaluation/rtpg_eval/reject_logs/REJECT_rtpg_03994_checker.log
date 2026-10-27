@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int
+    - Write conflict: global variable 'v0'
+    - Write conflict: global variable 'v0'
+

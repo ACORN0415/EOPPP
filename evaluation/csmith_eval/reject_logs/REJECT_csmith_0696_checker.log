@@ -1,0 +1,69 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (57 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_div_func_int16_t_s_s
+    - Write conflict: global variable 'l_157'
+    - Write conflict: global variable 'l_157'
+    - Write conflict: global variable 'g_84'
+    - Write conflict: global variable 'g_161'
+    - Write conflict: global variable 'g_168'
+    - Write conflict: global variable 'l_160'
+    - Write conflict: global variable 'l_160'
+    - Write conflict: global variable 'g_175'
+    - Write conflict: global variable 'l_171'
+    - Write conflict: global variable 'l_171'
+    - Write conflict: global variable 'g_84'
+    - Write conflict: global variable 'l_174'
+    - Write conflict: global variable 'l_157'
+    - Write conflict: global variable 'l_187'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

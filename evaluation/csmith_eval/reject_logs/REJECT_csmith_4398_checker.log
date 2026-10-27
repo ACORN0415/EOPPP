@@ -1,0 +1,18 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: struct/union
+    - Unsupported type: struct/union
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_lshift_func_int16_t_s_u
+    - Write conflict: global variable 'l_109'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

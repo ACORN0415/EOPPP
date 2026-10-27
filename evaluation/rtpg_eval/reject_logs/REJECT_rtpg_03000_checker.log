@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported operation: <class 'gcc.TruncModExpr'> (no Z-code mapping)
+    - Unsupported type: enum
+

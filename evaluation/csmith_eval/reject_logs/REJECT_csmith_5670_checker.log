@@ -1,0 +1,199 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (187 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to struct S0 * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to uint16_t * const *
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to struct S0
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_mod_func_int64_t_s_s
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_32'
+    - Write conflict: global variable 'l_109'
+    - Write conflict: global variable 'l_118'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_26'
+    - Write conflict: global variable 'l_31'
+    - Write conflict: global variable 'l_38'
+    - Write conflict: global variable 'l_39'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_27'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_61'
+    - Write conflict: global variable 'l_66'
+    - Write conflict: global variable 'l_61'
+    - Write conflict: global variable 'l_66'
+    - Write conflict: global variable 'l_60'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_26'
+    - Write conflict: global variable 'l_31'
+    - Write conflict: global variable 'l_38'
+    - Write conflict: global variable 'l_39'
+    - Write conflict: global variable 'l_40'
+    - Write conflict: global variable 'l_42'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_82'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_82'
+    - Write conflict: global variable 'l_97'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_60'
+    - Write conflict: global variable 'l_102'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_26'
+    - Write conflict: global variable 'l_31'
+    - Write conflict: global variable 'l_38'
+    - Write conflict: global variable 'l_39'
+    - Write conflict: global variable 'l_40'
+    - Write conflict: global variable 'l_42'
+    - Write conflict: global variable 'l_125'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'g_83'
+    - Write conflict: global variable 'g_83'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_125'
+    - Write conflict: global variable 'l_124'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_29'
+    - Write conflict: global variable 'l_32'
+    - Write conflict: global variable 'l_109'
+    - Write conflict: global variable 'l_118'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

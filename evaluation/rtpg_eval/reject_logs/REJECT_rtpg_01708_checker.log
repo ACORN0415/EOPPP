@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported type: enum
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+

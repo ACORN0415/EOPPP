@@ -1,0 +1,29 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (17 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const struct S2
+    - Unsupported type: pointer to const struct S2
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_unary_minus_func_uint32_t_u
+    - Write conflict: global variable 'l_41'
+    - Write conflict: global variable 'g_36'
+    - Write conflict: global variable 'g_38'
+    - Write conflict: global variable 'l_41'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

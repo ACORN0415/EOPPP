@@ -1,0 +1,19 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (7 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U4
+    - Unsupported type: pointer to const union U4
+    - Unsupported type: pointer to union U4
+    - Call depth exceeded (max 2): func_1 -> func_2 -> safe_lshift_func_uint16_t_u_s
+    - Write conflict: global variable 'g_93'
+    - Write conflict: global variable 'l_9'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

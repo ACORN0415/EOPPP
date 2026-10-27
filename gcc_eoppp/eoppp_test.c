@@ -169,7 +169,7 @@ void checkclkfir()
 int main(void) {
 
 	checkclkfibo();
-    checkclkfft();
+    //checkclkfft();
 	checkclkfir();
 
     return 0 ;

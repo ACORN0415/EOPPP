@@ -1,0 +1,131 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (119 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to const int32_t * * const *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * * const
+    - Unsupported type: pointer to const int32_t * * const *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to const int32_t * * const
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * * const
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U2
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'g_21'
+    - Write conflict: global variable 'g_30'
+    - Write conflict: global variable 'l_35'
+    - Write conflict: global variable 'l_47'
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_45'
+    - Write conflict: global variable 'l_47'
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_45'
+    - Write conflict: global variable 'g_60'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'l_57'
+    - Write conflict: global variable 'l_35'
+    - Write conflict: global variable 'l_35'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_27'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

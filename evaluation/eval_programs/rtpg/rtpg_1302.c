@@ -1,0 +1,81 @@
+// RTPG_1302: vars=56 stmts=8
+struct Data { int a; int b; };
+void test_func(void) {
+    int c26 = 6;
+    int lo46 = 3;
+    int a2 = 44;
+    int acc4 = 45258;
+    int sum85 = 41;
+    int cnt5 = 19;
+    int b64 = -11;
+    int acc74 = 27;
+    int hi25 = 18;
+    int tmp91 = 60584;
+    int out60 = 56208;
+    int x23 = 43774;
+    int lo78 = 7;
+    int res79 = 19885;
+    int val51 = 50974;
+    int x40 = 6;
+    int c8 = -6;
+    int hi70 = -15;
+    int tmp34 = 30230;
+    int x69 = 65;
+    int res75 = 50;
+    int a4 = 7;
+    int hi55 = 6;
+    int lo91 = 36;
+    int prev36 = 7;
+    int res84 = 36311;
+    int dat28 = 44814;
+    int res94 = 10266;
+    int cur91 = 15878;
+    int sum7 = 43721;
+    int cur32 = 87;
+    int x74 = 14280;
+    int tmp9 = 2;
+    int res31 = 20524;
+    int cnt86 = -23;
+    int hi67 = 28586;
+    int b0 = 3;
+    int z0 = 5;
+    int z13 = 35;
+    int acc90 = 79;
+    int c40 = 91;
+    int prev22 = 22;
+    int b17 = 661;
+    int res61 = 97;
+    int res47 = 64434;
+    int lo39 = 93;
+    int tmp60 = 53450;
+    int val59 = -2;
+    int prev39 = 54896;
+    int hi47 = 35;
+    int hi63 = 33;
+    int v69 = 22599;
+    int y39 = 25;
+    int res10 = 8777;
+    int cnt7 = 9;
+    int sum47 = 11;
+    struct Data s; s.a = 47; s.b = 78;
+    int h0 = 24338;
+    int sv0 = 0;
+    int h1 = 75;
+    int sv1 = 0;
+    int h2 = 7;
+    int sv2 = 0;
+    int i;
+    for (i = 0; i < 39; i++) {
+        dat28 = prev39 - 17;
+        hi55 = cnt86 - tmp60;
+        c26 = c26 - 1;
+        sum85 = lo46;
+        sum47 = a4 + acc90;
+        res75 = lo91 - -18;
+        c8 = z13;
+        c40 = acc4 - prev39;
+        s.a = s.a + s.b;
+    }
+}
+int main() { test_func(); return 0; }
+

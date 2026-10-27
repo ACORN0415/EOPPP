@@ -1,0 +1,48 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (36 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to const union U0
+    - Unsupported type: pointer to const union U0
+    - Unsupported type: pointer to const union U0
+    - Unsupported type: pointer to const union U0
+    - Unsupported type: pointer to union U0 * * * const
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to const union U0
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_299'
+    - Write conflict: global variable 'l_316'
+    - Write conflict: global variable 'l_317'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_3'
+    - Write conflict: global variable 'l_5'
+    - Write conflict: global variable 'l_315'
+    - Write conflict: global variable 'l_347'
+    - Write conflict: global variable 'l_356'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

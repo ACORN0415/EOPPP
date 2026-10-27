@@ -1,0 +1,18 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Write conflict: global variable 'l_2'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

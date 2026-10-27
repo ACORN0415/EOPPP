@@ -37,12 +37,20 @@ class EFlowGenerator:
         func_name = str(getattr(fun, "decl", "unknown"))
         has_mac = self.features.get("has_mac", False)
         has_shift = self.features.get("has_shift", False)
-        label = "MAC" if has_mac else func_name
+        label = func_name
         self.gpc_meta[init_gpc] = {"type": "init", "name": label, "has_mac": has_mac, "has_shift": has_shift}
         self.gpc_meta[op_gpc] = {"type": "op", "name": label, "has_mac": has_mac, "has_shift": has_shift}
+        self._outloop_gpc = op_gpc + 1
         reg_map = self._build_register_map(fun)
         self._last_reg_map = reg_map
         core_ops = self._decide_core_operations(fun, reg_map)
+
+        # ── Fix 1: 연산 없는 활성 코어 → self-routing (값 보존) ──
+        for i in range(126):
+            op = core_ops[i]
+            if op["is_active"] and not op["sources"]:
+                op["sources"] = [i]
+
         core_codes = self._encode_zy_codes(core_ops)
         self._assemble_and_emit_gpcs(core_codes, init_gpc, op_gpc)
         return gpc_count
@@ -97,6 +105,7 @@ class EFlowGenerator:
         mac_managed = set()
         if self.features.get("has_mac"):
             mac_managed = self._pass_mac_pipeline(fun, core_ops, reg_map)
+        self._mac_managed = mac_managed
         self._pass_generic_assign(fun, core_ops, reg_map, skip_indices=mac_managed)
         self._pass_cond(fun, core_ops, reg_map)
         return core_ops
@@ -489,11 +498,9 @@ class EFlowGenerator:
             if tc_k not in add_used_consts and tc_k not in coeff_vars:
                 coeff_vars[tc_k] = tc_v
 
-        is_mac_strict = (len(output_arrays) > 0 and len(coeff_vars) >= 5 and coeff_mult_cnt >= 5)
-        is_mac_relaxed = (not is_mac_strict and len(output_arrays) > 0
-                          and len(true_consts) >= 5 and (has_any_mult or len(input_arrays) > 0))
-        has_mac_pattern = is_mac_strict or is_mac_relaxed
-        is_mac = has_any_mult
+        # 곱셈이 있고 상수 계수가 감지되면 MAC 처리 활성화
+        # (기존: coeff_vars >= 5 AND output_arrays > 0 임계값 판정 제거)
+        has_mac_pattern = has_any_mult and len(coeff_vars) > 0
 
         shift_count = 0
         for bb in fun.cfg.basic_blocks:
@@ -514,7 +521,7 @@ class EFlowGenerator:
                 if tc_k not in coeff_vars and tc_k in mult_operand_names:
                     coeff_vars[tc_k] = tc_v
 
-        features["is_mac"] = is_mac
+        features["is_mac"] = has_any_mult
         features["has_mac"] = has_mac_pattern
         features["has_shift"] = has_shift
         features["coeff_vars"] = coeff_vars
@@ -858,7 +865,7 @@ class EFlowGenerator:
             if key in reg_map: continue
             idx = alloc_idx()
             if idx is None: break
-            reg_map[key] = {"reg": f"r{idx}", "idx": idx, "val": 4, "name": "4 (outLoop)", "type": "cond"}
+            reg_map[key] = {"reg": f"r{idx}", "idx": idx, "val": self._outloop_gpc, "name": f"{self._outloop_gpc} (outLoop)", "type": "cond"}
 
     # =========================================================================
     # _pass_mac_pipeline: MAC 코어 연산 결정                                [v9]
@@ -974,13 +981,30 @@ class EFlowGenerator:
         return managed
 
     # =========================================================================
-    # _pass_generic_assign: 일반 대입/연산 결정                              [v9]
-    # ★ v9: op_bits/ctrl_bits 추가
+    # _pass_generic_assign: 일반 대입/연산 결정                              [v9 + shift + flag-reset]
+    # ★ v9 + 패치 v2:
+    #   - MAC이 아닌 단순 shift 처리 추가 (LSH/SRSH 비합산 모드)
+    #   - 같은 코어가 두 번 대입되는 경우(v = v - x; v = v + v;) 플래그 누적 버그 수정
+    #     각 분기에서 sum_neg / xx_left_xd / xd_mem 등을 명시적으로 리셋
     # =========================================================================
     def _pass_generic_assign(self, fun, core_ops, reg_map, skip_indices=None):
         if skip_indices is None: skip_indices = set()
         if not getattr(fun, "cfg", None): return
-
+ 
+        expr_map = {}
+        for bb in fun.cfg.basic_blocks:
+            for stmt in bb.gimple:
+                if not isinstance(stmt, gcc.GimpleAssign): continue
+                lhs = self._get_clean_name(stmt.lhs)
+                if not lhs or lhs not in reg_map: continue
+                if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst): continue
+                if len(stmt.rhs) == 2:
+                    e_op1 = self._get_clean_name(stmt.rhs[0])
+                    e_op2 = self._get_clean_name(stmt.rhs[1])
+                    e_sym = self._get_op_symbol(stmt.exprcode)
+                    if e_op1 and e_op2:
+                        expr_map[lhs] = {"op1": e_op1, "op2": e_op2, "sym": e_sym}
+ 
         for bb in fun.cfg.basic_blocks:
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
@@ -989,8 +1013,9 @@ class EFlowGenerator:
                 dst = reg_map[lhs]["idx"]
                 if dst in skip_indices: continue
                 if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst): continue
-
+ 
                 op1, op2, sym = None, None, ""
+                _expanded_from = None
                 if len(stmt.rhs) == 2:
                     op1 = self._get_clean_name(stmt.rhs[0])
                     op2 = self._get_clean_name(stmt.rhs[1])
@@ -1000,67 +1025,104 @@ class EFlowGenerator:
                     if isinstance(rhs0, (gcc.SsaName, gcc.VarDecl, gcc.ParmDecl,
                                          gcc.IntegerCst, gcc.ArrayRef)):
                         op1 = self._get_clean_name(rhs0)
+                        if op1 and op2 is None and op1 in expr_map:
+                            _expanded_from = op1
+                            expanded = expr_map[op1]
+                            op1 = expanded["op1"]
+                            op2 = expanded["op2"]
+                            sym = expanded["sym"]
                     elif hasattr(rhs0, "operand1"):
                         op1 = self._get_clean_name(rhs0.operand1)
                         op2 = (self._get_clean_name(rhs0.operand2)
                                if getattr(rhs0, "operand2", None) is not None else None)
                         sym = self._get_op_symbol(getattr(rhs0, "exprcode", stmt.exprcode))
                 if not op1: continue
-
+ 
                 r1 = self._find_reg(op1, reg_map)
                 r2 = self._find_reg(op2, reg_map) if op2 else None
                 i1 = self._reg_idx(r1) if r1 else None
                 i2 = self._reg_idx(r2) if r2 else None
                 srcs = [x for x in (i1, i2) if x is not None]
-
+ 
+                # ── 공통: 매 stmt 마다 모든 플래그를 명시적으로 결정 ──
+                # 이전 stmt에서 같은 dst를 갱신했어도 플래그가 누적되지 않도록
+                base_flags = {
+                    "sum_neg":      False,
+                    "xx_left_xd":   False,
+                    "y_left_xd":    False,
+                    "xd_mem":       False,
+                    "mesh_right":   False,
+                    "write_en":     False,
+                    "branch_hold":  False,
+                    "a_bank_rd":    False,
+                    "a_bank_wr":    False,
+                    "a_addr_mode":  0,
+                    "coeff_val":    None,
+                }
+ 
                 if sym == "*":
+                    # ── 비합산 모드: 곱셈 ──
                     y_word = 0
                     if op2 is not None:
                         try: y_word = int(str(op2), 0)
                         except Exception:
                             if op2 in reg_map: y_word = int(reg_map[op2].get("val", 0))
-                    core_ops[dst].update({
-                        "op_bits": ZOp.SMT, "ctrl_bits": 0,      # ★ v9
-                        "opcode": "08", "coeff_val": y_word,
-                        "op_comment": f"{lhs}={op1}*{op2}",
+                    update = dict(base_flags)
+                    update.update({
+                        "op_bits": ZOp.SMT,
+                        "ctrl_bits": 0,
+                        "opcode": "08",
+                        "coeff_val": y_word,
+                        "sources": [],  # 비합산: sources 안 씀
+                        "op_comment": f"{lhs}={_expanded_from}={op1}*{op2}" if _expanded_from else f"{lhs}={op1}*{op2}",
                         "op_rc": f"{r1}*{(r2 if r2 else op2)}",
                     })
-                # ── 비합산 비트 연산 (미활성: 향후 활성화 예정) ──
-                # elif sym in (">>", "<<", "&", "^", "|", "~"):
-                #     # 비합산 비트 연산 — Y = 두번째 피연산자
-                #     expr = getattr(stmt, "exprcode", None)
-                #     mapped_op = GIMPLE_TO_OP.get(expr, ZOp.BAND)
-                #     y_word = 0
-                #     if mapped_op == ZOp.BNOT:
-                #         y_word = 0
-                #     elif op2 is not None:
-                #         try: y_word = int(str(op2), 0)
-                #         except Exception:
-                #             if op2 in reg_map: y_word = int(reg_map[op2].get("val", 0))
-                #     core_ops[dst].update({
-                #         "op_bits": mapped_op, "ctrl_bits": 0,
-                #         "opcode": f"{mapped_op:02x}",
-                #         "coeff_val": y_word,
-                #         "op_comment": f"{lhs}={op1}{sym}{op2}" if op2 else f"{lhs}=~{op1}",
-                #         "op_rc": f"{(r1 if r1 else op1)}{sym}{(r2 if r2 else (op2 or ''))}" if op2 else f"~{(r1 if r1 else op1)}",
-                #     })
+                    core_ops[dst].update(update)
+ 
+                elif sym in ("<<", ">>"):
+                    # ── 비합산 모드: 단순 shift (MAC이 아닌 일반 컨텍스트) ──
+                    y_word = 0
+                    if op2 is not None:
+                        try:
+                            y_word = int(str(op2), 0)
+                        except Exception:
+                            if op2 in reg_map:
+                                y_word = int(reg_map[op2].get("val", 0))
+                    mapped_op = ZOp.LSH if sym == "<<" else ZOp.SRSH
+                    update = dict(base_flags)
+                    update.update({
+                        "op_bits": mapped_op,
+                        "ctrl_bits": 0,
+                        "opcode": f"{mapped_op:02x}",
+                        "coeff_val": y_word,
+                        "sources": [i1] if i1 is not None else [dst],
+                        "op_comment": f"{lhs}={_expanded_from}={op1}{sym}{op2}" if _expanded_from else f"{lhs}={op1}{sym}{op2}",
+                        "op_rc": f"{(r1 if r1 else op1)}{sym}{op2}",
+                    })
+                    core_ops[dst].update(update)
+ 
                 else:
+                    # ── 합산 모드: +, -, 기타 ──
                     if not srcs: srcs = [dst]
-                    # ★ v9: 합산 모드 (ADD, SUB) — 문자열 기반 매핑
                     mapped_op = GIMPLE_TO_OP.get(sym, ZOp.ADD)
                     mapped_ctrl = 0
                     if sym == "-":
                         mapped_ctrl = ZCtrl.SUM_NEG
-                    core_ops[dst].update({
-                        "op_bits": mapped_op,                     # ★ v9
-                        "ctrl_bits": mapped_ctrl,                 # ★ v9
+                    _expr_str = f"{op1}" + (f"{sym}{op2}" if op2 else "")
+                    _comment = f"{lhs}={_expanded_from}={_expr_str}" if _expanded_from else f"{lhs}={_expr_str}"
+                    update = dict(base_flags)
+                    update.update({
+                        "op_bits": mapped_op,
+                        "ctrl_bits": mapped_ctrl,
                         "opcode": f"{mapped_op:02x}",
                         "sources": srcs,
                         "sum_neg": bool(mapped_ctrl & ZCtrl.SUM_NEG),
-                        "op_comment": f"{lhs}={op1}" + (f"{sym}{op2}" if op2 else ""),
+                        "op_comment": _comment,
                         "op_rc": f"{(r1 if r1 else op1)}" + (f"{sym}{(r2 if r2 else op2)}" if op2 else ""),
                     })
-
+                    core_ops[dst].update(update)
+ 
+ 
     # =========================================================================
     # _pass_cond: 조건문 분기 명령                                          [v9]
     # ★ v9 핵심 변경: COND_MAP 하드코딩 → COND_OP_MAP + decide_ctrl_bits()

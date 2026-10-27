@@ -1,0 +1,143 @@
+/*
+ * This is a RANDOMLY GENERATED PROGRAM.
+ *
+ * Generator: csmith 2.3.0
+ * Git version: 30dccd7
+ * Options:   --seed 323399616 --no-checksum --no-argc --no-volatiles --max-funcs 2 --max-block-depth 3 --max-expr-complexity 4
+ * Seed:      323399616
+ */
+
+#include "csmith.h"
+
+volatile uint64_t csmith_sink_ = 0;
+
+static long __undefined;
+
+/* --- Struct/Union Declarations --- */
+union U2 {
+   int32_t  f0;
+   uint16_t  f1;
+   signed f2 : 6;
+   int16_t  f3;
+};
+
+/* --- GLOBAL VARIABLES --- */
+static int32_t g_3 = 0xE4D9EDBDL;
+static int32_t g_5 = 0x611BC383L;
+static int8_t g_6 = 0x01L;
+static int16_t g_7 = 0xE071L;
+static int8_t g_8 = 0x28L;
+static uint32_t g_9 = 0xBF58AAE0L;
+
+
+/* --- FORWARD DECLARATIONS --- */
+static union U2  func_1(void);
+
+
+/* --- FUNCTIONS --- */
+/* ------------------------------------------ */
+/* 
+ * reads : g_9 g_3
+ * writes: g_9 g_3
+ */
+static union U2  func_1(void)
+{ /* block id: 0 */
+    int32_t *l_2 = &g_3;
+    int32_t *l_4[6][4] = {{&g_3,&g_3,&g_3,&g_3},{&g_3,&g_3,(void*)0,&g_3},{&g_3,&g_3,&g_3,&g_3},{&g_3,&g_3,&g_3,&g_3},{&g_3,&g_3,(void*)0,&g_3},{&g_3,&g_3,&g_3,&g_3}};
+    union U2 l_15[4] = {{7L},{7L},{7L},{7L}};
+    int i, j;
+    ++g_9;
+    for (g_3 = 23; (g_3 > 5); g_3--)
+    { /* block id: 4 */
+        uint64_t l_14[7][5] = {{1UL,1UL,0xFF26AF9031EA0627LL,1UL,1UL},{0xAA9634D71B36C938LL,0xD0BD2F23D37F4A1DLL,0xAA9634D71B36C938LL,18446744073709551615UL,6UL},{1UL,18446744073709551610UL,18446744073709551610UL,1UL,18446744073709551610UL},{6UL,0xD0BD2F23D37F4A1DLL,0xDD3ED23C5AD058BBLL,18446744073709551615UL,0xAA9634D71B36C938LL},{0xFF26AF9031EA0627LL,18446744073709551610UL,0xFF26AF9031EA0627LL,0xFF26AF9031EA0627LL,18446744073709551610UL},{0xAA9634D71B36C938LL,0x96497440271DBCABLL,0xDD3ED23C5AD058BBLL,18446744073709551615UL,0xDD3ED23C5AD058BBLL},{18446744073709551610UL,18446744073709551610UL,1UL,18446744073709551610UL,18446744073709551610UL}};
+        int i, j;
+        l_14[2][4] &= 1L;
+    }
+    return l_15[1];
+}
+
+
+
+
+/* ---------------------------------------- */
+int main (void)
+{
+    int print_hash_value = 0;
+    platform_main_begin();
+    func_1();
+    csmith_sink_ = g_3;
+    csmith_sink_ = g_5;
+    csmith_sink_ = g_6;
+    csmith_sink_ = g_7;
+    csmith_sink_ = g_8;
+    csmith_sink_ = g_9;
+    platform_main_end(0,0);
+    return 0;
+}
+
+/************************ statistics *************************
+XXX max struct depth: 0
+breakdown:
+   depth: 0, occurrence: 7
+XXX total union variables: 1
+
+XXX non-zero bitfields defined in structs: 1
+XXX zero bitfields defined in structs: 0
+XXX const bitfields defined in structs: 0
+XXX volatile bitfields defined in structs: 0
+XXX structs with bitfields in the program: 1
+breakdown:
+   indirect level: 0, occurrence: 1
+XXX full-bitfields structs in the program: 0
+breakdown:
+XXX times a bitfields struct's address is taken: 0
+XXX times a bitfields struct on LHS: 0
+XXX times a bitfields struct on RHS: 1
+XXX times a single bitfield on LHS: 0
+XXX times a single bitfield on RHS: 0
+
+XXX max expression depth: 2
+breakdown:
+   depth: 1, occurrence: 5
+   depth: 2, occurrence: 1
+
+XXX total number of pointers: 2
+
+XXX times a variable address is taken: 3
+XXX times a pointer is dereferenced on RHS: 0
+breakdown:
+XXX times a pointer is dereferenced on LHS: 0
+breakdown:
+XXX times a pointer is compared with null: 0
+XXX times a pointer is compared with address of another variable: 0
+XXX times a pointer is compared with another pointer: 0
+XXX times a pointer is qualified to be dereferenced: 35
+XXX number of pointers point to pointers: 0
+XXX number of pointers point to scalars: 2
+XXX number of pointers point to structs: 0
+XXX percent of pointers has null in alias set: 50
+XXX average alias set size: 1.5
+
+XXX times a non-volatile is read: 2
+XXX times a non-volatile is write: 3
+XXX times a volatile is read: 0
+XXX    times read thru a pointer: 0
+XXX times a volatile is write: 0
+XXX    times written thru a pointer: 0
+XXX times a volatile is available for access: 0
+XXX percentage of non-volatile access: 100
+
+XXX forward jumps: 0
+XXX backward jumps: 0
+
+XXX stmts: 4
+XXX max block depth: 1
+breakdown:
+   depth: 0, occurrence: 3
+   depth: 1, occurrence: 1
+
+XXX percentage a fresh-made variable is used: 63.6
+XXX percentage an existing variable is used: 36.4
+FYI: the random generator makes assumptions about the integer size. See platform.info for more details.
+********************* end of statistics **********************/
+

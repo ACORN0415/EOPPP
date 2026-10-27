@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported control flow: switch-case (BB 8)
+    - Recursion detected: test_func -> __helper -> __helper
+

@@ -1,0 +1,47 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (35 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int16_t
+    - Unsupported type: pointer to const int16_t *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int16_t * *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int16_t
+    - Unsupported type: pointer to const int16_t *
+    - Write conflict: global variable 'l_211'
+    - Write conflict: global variable 'l_312'
+    - Write conflict: global variable 'l_311'
+    - Write conflict: global variable 'l_211'
+    - Write conflict: global variable 'l_210'
+    - Write conflict: global variable 'l_312'
+    - Write conflict: global variable 'l_311'
+    - Write conflict: global variable 'l_310'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

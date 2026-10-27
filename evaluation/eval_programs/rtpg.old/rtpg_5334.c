@@ -1,0 +1,107 @@
+// RTPG_5334: vars=85 stmts=11
+void test_func(void) {
+    int v0 = 9;
+    int v1 = 73;
+    int v2 = 22;
+    int v3 = 32;
+    int v4 = 78;
+    int v5 = 4;
+    int v6 = 76;
+    int v7 = 0;
+    int v8 = 76;
+    int v9 = 70;
+    int v10 = 24;
+    int v11 = 78;
+    int v12 = 50;
+    int v13 = 67;
+    int v14 = 67;
+    int v15 = 90;
+    int v16 = 53;
+    int v17 = 49;
+    int v18 = 65;
+    int v19 = 34;
+    int v20 = 2;
+    int v21 = 63;
+    int v22 = 35;
+    int v23 = 13;
+    int v24 = 76;
+    int v25 = 33;
+    int v26 = 12;
+    int v27 = 79;
+    int v28 = 41;
+    int v29 = 18;
+    int v30 = 0;
+    int v31 = 63;
+    int v32 = 32;
+    int v33 = 37;
+    int v34 = 95;
+    int v35 = 24;
+    int v36 = 95;
+    int v37 = 65;
+    int v38 = 59;
+    int v39 = 83;
+    int v40 = 72;
+    int v41 = 1;
+    int v42 = 63;
+    int v43 = 26;
+    int v44 = 41;
+    int v45 = 75;
+    int v46 = 50;
+    int v47 = 95;
+    int v48 = 49;
+    int v49 = 1;
+    int v50 = 47;
+    int v51 = 10;
+    int v52 = 6;
+    int v53 = 90;
+    int v54 = 59;
+    int v55 = 39;
+    int v56 = 41;
+    int v57 = 2;
+    int v58 = 78;
+    int v59 = 68;
+    int v60 = 84;
+    int v61 = 15;
+    int v62 = 67;
+    int v63 = 40;
+    int v64 = 77;
+    int v65 = 34;
+    int v66 = 21;
+    int v67 = 71;
+    int v68 = 91;
+    int v69 = 12;
+    int v70 = 97;
+    int v71 = 51;
+    int v72 = 9;
+    int v73 = 40;
+    int v74 = 42;
+    int v75 = 12;
+    int v76 = 27;
+    int v77 = 33;
+    int v78 = 100;
+    int v79 = 10;
+    int v80 = 93;
+    int v81 = 37;
+    int v82 = 92;
+    int v83 = 30;
+    int v84 = 10;
+    int i;
+    for (i = 0; i < 31; i++) {
+        int j;
+        for (j = 0; j < 11; j++) {
+        v0 = v7 + v9;
+        v1 = v0 + v14;
+        v9 = v3;
+        v13 = v14 - 13;
+        v11 = v11 - 3;
+        v6 = v5;
+        v2 = v2 + 4;
+        v2 = v2 - 2;
+        v0 = v7 - v14;
+        v5 = v4 - 88;
+        v14 = v4;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

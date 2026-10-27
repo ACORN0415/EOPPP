@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 4)
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+

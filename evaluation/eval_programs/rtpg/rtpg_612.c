@@ -1,0 +1,101 @@
+// RTPG_612: vars=77 stmts=6
+int idx_arr[16];
+struct Node { int a; int b; };
+void test_func(void) {
+    int v0 = 17;
+    int v1 = 7;
+    int v2 = 17;
+    int v3 = 73;
+    int v4 = 32;
+    int v5 = 45;
+    int v6 = 43;
+    int v7 = 87;
+    int v8 = 36;
+    int v9 = 55;
+    int v10 = 73;
+    int v11 = 95;
+    int v12 = 60;
+    int v13 = 22;
+    int v14 = 55;
+    int v15 = 11;
+    int v16 = 33;
+    int v17 = 18;
+    int v18 = 34;
+    int v19 = 39;
+    int v20 = 66;
+    int v21 = 27;
+    int v22 = 79;
+    int v23 = 32;
+    int v24 = 12;
+    int v25 = 94;
+    int v26 = 57;
+    int v27 = 46;
+    int v28 = 63;
+    int v29 = 20;
+    int v30 = 27;
+    int v31 = 6;
+    int v32 = 71;
+    int v33 = 78;
+    int v34 = 50;
+    int v35 = 8;
+    int v36 = 87;
+    int v37 = 17;
+    int v38 = 82;
+    int v39 = 52;
+    int v40 = 75;
+    int v41 = 36;
+    int v42 = 35;
+    int v43 = 49;
+    int v44 = 44;
+    int v45 = 98;
+    int v46 = 46;
+    int v47 = 11;
+    int v48 = 59;
+    int v49 = 95;
+    int v50 = 27;
+    int v51 = 60;
+    int v52 = 17;
+    int v53 = 31;
+    int v54 = 36;
+    int v55 = 17;
+    int v56 = 86;
+    int v57 = 29;
+    int v58 = 64;
+    int v59 = 18;
+    int v60 = 25;
+    int v61 = 69;
+    int v62 = 78;
+    int v63 = 19;
+    int v64 = 42;
+    int v65 = 52;
+    int v66 = 43;
+    int v67 = 70;
+    int v68 = 32;
+    int v69 = 55;
+    int v70 = 48;
+    int v71 = 91;
+    int v72 = 25;
+    int v73 = 61;
+    int v74 = 90;
+    int v75 = 52;
+    int v76 = 89;
+    struct Node s; s.a = 20; s.b = 82;
+    int *ptr = &v3;
+    int i;
+    for (i = 0; i < 17; i++) {
+        v7 = xn[idx_arr[i]];
+        v14 = v11 - 15;
+        v8 = v14 - v9;
+        v10 = v10 - 4;
+        v6 = v10 - v2;
+        v3 = v3 - 2;
+        v4 = v4 - 2;
+        *ptr = *ptr + 3;
+        s.a = s.a + s.b;
+        if (v10 == -13) {
+        v2 = v13 - v13;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

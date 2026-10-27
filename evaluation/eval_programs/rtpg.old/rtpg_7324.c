@@ -1,0 +1,86 @@
+// RTPG_7324: vars=60 stmts=5
+struct Node { int a; int b; };
+enum State { OFF, GREEN, RED };
+void test_func(void) {
+    int x26 = 30;
+    int out26 = 98;
+    int dat35 = 4;
+    int out69 = -45;
+    int b9 = 4;
+    int prev65 = 10;
+    int dat78 = 10;
+    int tmp78 = 8;
+    int prev17 = -21;
+    int lo29 = 29;
+    int b44 = 0;
+    int sum86 = 21143;
+    int tmp7 = -49;
+    int b12 = 72;
+    int tmp71 = 67;
+    int a58 = 0;
+    int res82 = 41;
+    int acc38 = 65010;
+    int cnt38 = 34874;
+    int tmp58 = -39;
+    int lo37 = 4;
+    int a92 = 38;
+    int tmp80 = 1;
+    int sum3 = 56;
+    int sum19 = 24;
+    int x30 = 24;
+    int val69 = 6;
+    int y87 = 4;
+    int sum39 = 0;
+    int out80 = 40836;
+    int lo95 = 16;
+    int x79 = 42186;
+    int lo62 = 24;
+    int x15 = 39569;
+    int out20 = 6;
+    int hi93 = 25219;
+    int v9 = 0;
+    int cur51 = -45;
+    int x66 = 69;
+    int b66 = 45;
+    int res11 = 31657;
+    int x64 = 31981;
+    int cnt58 = 40555;
+    int a83 = 47;
+    int val80 = 79;
+    int dat88 = -11;
+    int out62 = 5;
+    int dat58 = 15267;
+    int x57 = 75;
+    int prev91 = 0;
+    int c40 = 24;
+    int hi44 = -35;
+    int prev23 = 2;
+    int res41 = 34;
+    int z80 = 8;
+    int acc44 = 58253;
+    int dat14 = 5;
+    int y10 = 6;
+    int acc41 = 11;
+    int y49 = 18175;
+    struct Node s; s.a = 37; s.b = 34;
+    enum State st = OFF;
+    int *ptr = &b9;
+    int h0 = 3;
+    int sv0 = 0;
+    int h1 = 2;
+    int sv1 = 0;
+    int h2 = 28;
+    int sv2 = 0;
+    int i;
+    for (i = 0; i < 43; i++) {
+        lo37 = cur51 + x26;
+        out62 = res41;
+        dat14 = sum3 * 6;
+        sum19 = tmp7 + x64;
+        x66 = b44 * 22866;
+        *ptr = *ptr + 2;
+        s.a = s.a + s.b;
+    }
+}
+int main() { test_func(); return 0; }
+

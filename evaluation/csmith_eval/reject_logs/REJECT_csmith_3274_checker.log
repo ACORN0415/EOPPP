@@ -1,0 +1,105 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (93 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Call depth exceeded (max 2): func_1 -> func_35 -> safe_mul_func_int16_t_s_s
+    - Write conflict: global variable 'l_190'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'g_13'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'l_12'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_27'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'l_24'
+    - Write conflict: global variable 'l_29'
+    - Write conflict: global variable 'l_24'
+    - Write conflict: global variable 'l_29'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_189'
+    - Write conflict: global variable 'l_28'
+    - Write conflict: global variable 'l_188'
+    - Write conflict: global variable 'l_190'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

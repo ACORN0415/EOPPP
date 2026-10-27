@@ -1,0 +1,85 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (73 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int16_t * *
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to uint8_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to uint8_t
+    - Write conflict: global variable 'l_298'
+    - Write conflict: global variable 'l_291'
+    - Write conflict: global variable 'l_298'
+    - Write conflict: global variable 'l_290'
+    - Write conflict: global variable 'l_291'
+    - Write conflict: global variable 'l_300'
+    - Write conflict: global variable 'l_310'
+    - Write conflict: global variable 'l_311'
+    - Write conflict: global variable 'g_302'
+    - Write conflict: global variable 'g_238'
+    - Write conflict: global variable 'g_89'
+    - Write conflict: global variable 'g_60'
+    - Write conflict: global variable 'l_317'
+    - Write conflict: global variable 'l_300'
+    - Write conflict: global variable 'l_301'
+    - Write conflict: global variable 'l_310'
+    - Write conflict: global variable 'l_311'
+    - Write conflict: global variable 'l_310'
+    - Write conflict: global variable 'l_317'
+    - Write conflict: global variable 'l_300'
+    - Write conflict: global variable 'l_301'
+    - Write conflict: global variable 'l_310'
+    - Write conflict: global variable 'l_311'
+    - Write conflict: global variable 'l_297'
+    - Write conflict: global variable 'l_298'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

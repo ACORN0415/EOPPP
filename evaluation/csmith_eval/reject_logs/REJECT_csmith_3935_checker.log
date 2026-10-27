@@ -1,0 +1,69 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (57 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_43 -> safe_div_func_int32_t_s_s
+    - Write conflict: global variable 'l_25'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'g_22'
+    - Write conflict: global variable 'g_26'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_25'
+    - Write conflict: global variable 'g_38'
+    - Write conflict: global variable 'l_34'
+    - Write conflict: global variable 'l_25'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_36'
+    - Write conflict: global variable 'g_26'
+    - Write conflict: global variable 'l_65'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'l_25'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

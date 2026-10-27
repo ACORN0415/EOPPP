@@ -1,0 +1,51 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (39 violation(s))
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t * const *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint64_t * * const
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint64_t * const *
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t *
+    - Call depth exceeded (max 2): func_1 -> func_8 -> safe_sub_func_int8_t_s_s
+    - Write conflict: global variable 'l_15'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_88'
+    - Write conflict: global variable 'g_74'
+    - Write conflict: global variable 'g_52'
+    - Write conflict: global variable 'g_74'
+    - Write conflict: global variable 'g_52'
+    - Write conflict: global variable 'g_74'
+    - Write conflict: global variable 'l_15'
+    - Write conflict: global variable 'l_20'
+    - Write conflict: global variable 'l_88'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

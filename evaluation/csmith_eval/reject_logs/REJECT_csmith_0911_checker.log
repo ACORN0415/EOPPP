@@ -1,0 +1,57 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (45 violation(s))
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t * const
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t * const
+    - Unsupported type: pointer to int8_t * const
+    - Unsupported type: pointer to int8_t * const
+    - Write conflict: global variable 'l_109'
+    - Write conflict: global variable 'l_108'
+    - Write conflict: global variable 'g_111'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_107'
+    - Write conflict: global variable 'l_109'
+    - Write conflict: global variable 'l_108'
+    - Write conflict: global variable 'l_110'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

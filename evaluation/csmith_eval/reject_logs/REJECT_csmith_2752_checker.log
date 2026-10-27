@@ -1,0 +1,437 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (425 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int8_t * * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t * * *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int8_t * *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_mul_func_int8_t_s_s
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_175'
+    - Write conflict: global variable 'g_13'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'g_178'
+    - Write conflict: global variable 'g_92'
+    - Write conflict: global variable 'g_92'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'g_13'
+    - Write conflict: global variable 'g_159'
+    - Write conflict: global variable 'g_121'
+    - Write conflict: global variable 'g_121'
+    - Write conflict: global variable 'g_76'
+    - Write conflict: global variable 'l_200'
+    - Write conflict: global variable 'l_199'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'l_202'
+    - Write conflict: global variable 'g_143'
+    - Write conflict: global variable 'g_203'
+    - Write conflict: global variable 'l_200'
+    - Write conflict: global variable 'l_199'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'l_202'
+    - Write conflict: global variable 'l_201'
+    - Write conflict: global variable 'l_200'
+    - Write conflict: global variable 'l_199'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'l_202'
+    - Write conflict: global variable 'l_201'
+    - Write conflict: global variable 'g_76'
+    - Write conflict: global variable 'g_138'
+    - Write conflict: global variable 'l_175'
+    - Write conflict: global variable 'l_185'
+    - Write conflict: global variable 'g_159'
+    - Write conflict: global variable 'l_175'
+    - Write conflict: global variable 'l_185'
+    - Write conflict: global variable 'l_211'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'g_178'
+    - Write conflict: global variable 'g_143'
+    - Write conflict: global variable 'l_223'
+    - Write conflict: global variable 'l_224'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'l_211'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_183'
+    - Write conflict: global variable 'l_227'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

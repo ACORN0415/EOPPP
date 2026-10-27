@@ -1,0 +1,117 @@
+// RTPG_8718: vars=92 stmts=4
+int xn[64];
+int yo[64];
+int idx_arr[64];
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 51;
+    int v1 = 3;
+    int v2 = 37;
+    int v3 = 21;
+    int v4 = 73;
+    int v5 = 93;
+    int v6 = 68;
+    int v7 = 9;
+    int v8 = 93;
+    int v9 = 18;
+    int v10 = 4;
+    int v11 = 26;
+    int v12 = 80;
+    int v13 = 96;
+    int v14 = 75;
+    int v15 = 87;
+    int v16 = 4;
+    int v17 = 83;
+    int v18 = 39;
+    int v19 = 22;
+    int v20 = 14;
+    int v21 = 16;
+    int v22 = 68;
+    int v23 = 59;
+    int v24 = 4;
+    int v25 = 7;
+    int v26 = 81;
+    int v27 = 43;
+    int v28 = 14;
+    int v29 = 29;
+    int v30 = 54;
+    int v31 = 90;
+    int v32 = 55;
+    int v33 = 83;
+    int v34 = 7;
+    int v35 = 65;
+    int v36 = 80;
+    int v37 = 8;
+    int v38 = 29;
+    int v39 = 18;
+    int v40 = 30;
+    int v41 = 71;
+    int v42 = 16;
+    int v43 = 45;
+    int v44 = 80;
+    int v45 = 32;
+    int v46 = 26;
+    int v47 = 66;
+    int v48 = 84;
+    int v49 = 96;
+    int v50 = 23;
+    int v51 = 88;
+    int v52 = 70;
+    int v53 = 20;
+    int v54 = 34;
+    int v55 = 29;
+    int v56 = 20;
+    int v57 = 85;
+    int v58 = 76;
+    int v59 = 23;
+    int v60 = 56;
+    int v61 = 44;
+    int v62 = 63;
+    int v63 = 43;
+    int v64 = 99;
+    int v65 = 66;
+    int v66 = 20;
+    int v67 = 35;
+    int v68 = 42;
+    int v69 = 7;
+    int v70 = 14;
+    int v71 = 14;
+    int v72 = 30;
+    int v73 = 38;
+    int v74 = 100;
+    int v75 = 95;
+    int v76 = 66;
+    int v77 = 45;
+    int v78 = 31;
+    int v79 = 85;
+    int v80 = 38;
+    int v81 = 83;
+    int v82 = 92;
+    int v83 = 49;
+    int v84 = 39;
+    int v85 = 3;
+    int v86 = 19;
+    int v87 = 94;
+    int v88 = 67;
+    int v89 = 32;
+    int v90 = 50;
+    int v91 = 66;
+    int *darr = (int *)malloc(64 * sizeof(int));
+    int i;
+    for (i = 0; i < 64; i++) {
+        v6 = xn[i];
+        v12 = xn[idx_arr[i]];
+        v6 = v6 + 5;
+        v7 = v7 + 4;
+        v3 = v11 - -14;
+        v3 = v12;
+        darr[i] = v11;
+        if (v2 > 82) {
+        v6 = v12 + v2;
+        }
+        yo[i] = v14;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

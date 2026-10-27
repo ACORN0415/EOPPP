@@ -1,0 +1,107 @@
+// RTPG_7038: vars=84 stmts=8
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int v0 = 66;
+    int v1 = 7;
+    int v2 = 82;
+    int v3 = 14;
+    int v4 = 57;
+    int v5 = 50;
+    int v6 = 62;
+    int v7 = 9;
+    int v8 = 60;
+    int v9 = 27;
+    int v10 = 60;
+    int v11 = 0;
+    int v12 = 90;
+    int v13 = 23;
+    int v14 = 57;
+    int v15 = 27;
+    int v16 = 66;
+    int v17 = 69;
+    int v18 = 34;
+    int v19 = 31;
+    int v20 = 78;
+    int v21 = 68;
+    int v22 = 0;
+    int v23 = 77;
+    int v24 = 61;
+    int v25 = 66;
+    int v26 = 100;
+    int v27 = 60;
+    int v28 = 3;
+    int v29 = 16;
+    int v30 = 98;
+    int v31 = 61;
+    int v32 = 66;
+    int v33 = 9;
+    int v34 = 74;
+    int v35 = 83;
+    int v36 = 33;
+    int v37 = 98;
+    int v38 = 99;
+    int v39 = 25;
+    int v40 = 47;
+    int v41 = 37;
+    int v42 = 64;
+    int v43 = 71;
+    int v44 = 40;
+    int v45 = 25;
+    int v46 = 70;
+    int v47 = 78;
+    int v48 = 43;
+    int v49 = 64;
+    int v50 = 62;
+    int v51 = 51;
+    int v52 = 17;
+    int v53 = 42;
+    int v54 = 68;
+    int v55 = 94;
+    int v56 = 33;
+    int v57 = 30;
+    int v58 = 30;
+    int v59 = 64;
+    int v60 = 74;
+    int v61 = 46;
+    int v62 = 85;
+    int v63 = 53;
+    int v64 = 92;
+    int v65 = 89;
+    int v66 = 10;
+    int v67 = 75;
+    int v68 = 42;
+    int v69 = 55;
+    int v70 = 20;
+    int v71 = 37;
+    int v72 = 72;
+    int v73 = 29;
+    int v74 = 94;
+    int v75 = 60;
+    int v76 = 37;
+    int v77 = 48;
+    int v78 = 28;
+    int v79 = 48;
+    int v80 = 22;
+    int v81 = 67;
+    int v82 = 44;
+    int v83 = 45;
+    int i;
+    for (i = 0; i < 64; i++) {
+        v6 = xn[i];
+        v8 = v8 + 5;
+        v11 = v14 - v1;
+        v7 = v2;
+        v13 = v13 + 1;
+        v14 = v14;
+        v14 = v14 - 2;
+        v12 = v5 - v5;
+        v5 = v5 + 1;
+        if (v10 <= 88) {
+        v2 = v6 - 31291;
+        }
+        yo[i] = v9;
+    }
+}
+int main() { test_func(); return 0; }
+

@@ -1,0 +1,10 @@
+======================================================================
+Function: test_func
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: <class 'gcc.TruncModExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: struct/union
+    - Write conflict: global variable '__u'
+    - Write conflict: global variable '__s'
+

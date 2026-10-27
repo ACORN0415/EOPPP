@@ -1,0 +1,124 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (112 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t * *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to int16_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to uint64_t
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_mul_func_uint8_t_u_u
+    - Write conflict: global variable 'l_116'
+    - Write conflict: global variable 'l_135'
+    - Write conflict: global variable 'l_145'
+    - Write conflict: global variable 'g_31'
+    - Write conflict: global variable 'l_120'
+    - Write conflict: global variable 'l_119'
+    - Write conflict: global variable 'g_35'
+    - Write conflict: global variable 'l_133'
+    - Write conflict: global variable 'g_35'
+    - Write conflict: global variable 'l_120'
+    - Write conflict: global variable 'g_31'
+    - Write conflict: global variable 'l_127'
+    - Write conflict: global variable 'l_141'
+    - Write conflict: global variable 'l_140'
+    - Write conflict: global variable 'l_143'
+    - Write conflict: global variable 'g_151'
+    - Write conflict: global variable 'l_149'
+    - Write conflict: global variable 'l_116'
+    - Write conflict: global variable 'l_135'
+    - Write conflict: global variable 'l_145'
+    - Write conflict: global variable 'l_160'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

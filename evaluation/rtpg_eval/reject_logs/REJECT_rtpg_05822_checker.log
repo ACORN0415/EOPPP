@@ -1,0 +1,10 @@
+======================================================================
+Function: test_func
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 5)
+    - Unsupported type: pointer to int
+    - Write conflict: global variable 'v7'
+    - Write conflict: global variable 'v7'
+

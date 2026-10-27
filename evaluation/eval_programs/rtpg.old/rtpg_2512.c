@@ -1,0 +1,107 @@
+// RTPG_2512: vars=87 stmts=5
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int v0 = 48;
+    int v1 = 53;
+    int v2 = 6;
+    int v3 = 1;
+    int v4 = 99;
+    int v5 = 28;
+    int v6 = 76;
+    int v7 = 24;
+    int v8 = 92;
+    int v9 = 27;
+    int v10 = 19;
+    int v11 = 44;
+    int v12 = 69;
+    int v13 = 35;
+    int v14 = 90;
+    int v15 = 14;
+    int v16 = 19;
+    int v17 = 48;
+    int v18 = 8;
+    int v19 = 68;
+    int v20 = 13;
+    int v21 = 10;
+    int v22 = 71;
+    int v23 = 76;
+    int v24 = 78;
+    int v25 = 82;
+    int v26 = 80;
+    int v27 = 19;
+    int v28 = 5;
+    int v29 = 96;
+    int v30 = 58;
+    int v31 = 9;
+    int v32 = 52;
+    int v33 = 26;
+    int v34 = 82;
+    int v35 = 65;
+    int v36 = 16;
+    int v37 = 4;
+    int v38 = 81;
+    int v39 = 13;
+    int v40 = 95;
+    int v41 = 87;
+    int v42 = 95;
+    int v43 = 41;
+    int v44 = 33;
+    int v45 = 2;
+    int v46 = 73;
+    int v47 = 43;
+    int v48 = 37;
+    int v49 = 0;
+    int v50 = 85;
+    int v51 = 84;
+    int v52 = 86;
+    int v53 = 60;
+    int v54 = 85;
+    int v55 = 14;
+    int v56 = 54;
+    int v57 = 82;
+    int v58 = 54;
+    int v59 = 40;
+    int v60 = 15;
+    int v61 = 76;
+    int v62 = 33;
+    int v63 = 72;
+    int v64 = 17;
+    int v65 = 83;
+    int v66 = 3;
+    int v67 = 77;
+    int v68 = 92;
+    int v69 = 33;
+    int v70 = 86;
+    int v71 = 37;
+    int v72 = 59;
+    int v73 = 83;
+    int v74 = 6;
+    int v75 = 45;
+    int v76 = 20;
+    int v77 = 57;
+    int v78 = 31;
+    int v79 = 99;
+    int v80 = 46;
+    int v81 = 60;
+    int v82 = 38;
+    int v83 = 62;
+    int v84 = 39;
+    int v85 = 10;
+    int v86 = 41;
+    int i;
+    for (i = 0; i < 64; i++) {
+        v1 = xn[i];
+        v10 = v6 | v2;
+        v14 = v2 & v9;
+        v9 = v10;
+        v4 = v2 | v9;
+        v5 = v4;
+        if (v2 == 28) {
+        v6 = v6 - 3;
+        }
+        yo[i] = v10;
+    }
+}
+int main() { test_func(); return 0; }
+

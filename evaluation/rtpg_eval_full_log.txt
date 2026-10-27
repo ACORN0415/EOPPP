@@ -1,0 +1,55 @@
+============================================================
+ RTPG: Generating 10000 feature-tagged programs...
+============================================================
+  Generated 1000/10000 programs
+  Generated 2000/10000 programs
+  Generated 3000/10000 programs
+  Generated 4000/10000 programs
+  Generated 5000/10000 programs
+  Generated 6000/10000 programs
+  Generated 7000/10000 programs
+  Generated 8000/10000 programs
+  Generated 9000/10000 programs
+  Generated 10000/10000 programs
+Done: 10000 programs in rtpg_eval/programs/
+Manifest: rtpg_eval/programs/manifest.csv
+
+============================================================
+ RTPG: Running checker on 10000 programs...
+============================================================
+  ... 1000/10000 processed
+  ... 2000/10000 processed
+  ... 3000/10000 processed
+  ... 4000/10000 processed
+  ... 5000/10000 processed
+  ... 6000/10000 processed
+  ... 7000/10000 processed
+  ... 8000/10000 processed
+  ... 9000/10000 processed
+  ... 10000/10000 processed
+
+============================================================
+ RTPG EVALUATION RESULTS (10000 programs)
+============================================================
+  PASS:       3053
+  REJECTED:   6947
+  CRASH:      0  (GCC compile errors, checker not reached)
+  ----------
+  Correct:    10000 / 10000
+  Wrong:      0  (false acceptance/rejection)
+
+  ── Rejection Distribution ──
+  Pre-checker:
+    pre:goto                       1146
+    pre:varcount                   0
+    pre:other                      0
+  Checker modules:
+    checker:TypeChecker            3918
+    checker:OpcodeChecker          891
+    checker:MemoryChecker          319
+    checker:ControlChecker         494
+    checker:StructureChecker       179
+
+  Results:  rtpg_eval/rtpg_results.csv
+============================================================
+  Summary:  rtpg_eval/summary.txt

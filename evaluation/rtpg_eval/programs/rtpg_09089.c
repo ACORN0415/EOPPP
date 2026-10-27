@@ -1,0 +1,17 @@
+int __arr_9089[10];
+int test_func(void) {
+    int v0 = 82;
+    int v1 = 56;
+    int v2 = 80;
+    int v3 = 19;
+    int v4 = 59;
+    int v5 = 67;
+    int i;
+    v4 = 14;
+    for (i = 0; i < 16; i++) {
+        v3 = v3 + v1;
+    }
+    for (i = 0; i < 10; i++) { __arr_9089[i] = v1 + i; }
+    return v0;
+}
+int main(void) { return test_func(); }

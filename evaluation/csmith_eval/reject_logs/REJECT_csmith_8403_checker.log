@@ -1,0 +1,84 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (72 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Write conflict: global variable 'l_33'
+    - Write conflict: global variable 'l_297'
+    - Write conflict: global variable 'l_296'
+    - Write conflict: global variable 'l_295'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_33'
+    - Write conflict: global variable 'l_156'
+    - Write conflict: global variable 'l_221'
+    - Write conflict: global variable 'l_297'
+    - Write conflict: global variable 'l_296'
+    - Write conflict: global variable 'l_295'
+    - Write conflict: global variable 'l_294'
+    - Write conflict: global variable 'l_304'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

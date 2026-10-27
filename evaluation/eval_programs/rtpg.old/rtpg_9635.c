@@ -1,0 +1,81 @@
+// RTPG_9635: vars=60 stmts=11
+int idx_arr[32];
+void test_func(void) {
+    int val62 = 48;
+    int lo78 = 20256;
+    int tmp14 = 21;
+    int val98 = -16;
+    int dat78 = 39296;
+    int cnt63 = 27;
+    int dat82 = 8;
+    int hi17 = 67;
+    int res72 = 28;
+    int x97 = 18447;
+    int out22 = 37;
+    int x40 = 37;
+    int val20 = -21;
+    int res8 = 85;
+    int out74 = 43;
+    int lo83 = 10;
+    int a47 = -23;
+    int b57 = 6;
+    int v39 = 62;
+    int out58 = 11;
+    int prev19 = 27;
+    int val5 = 24557;
+    int z16 = 2;
+    int prev77 = 60;
+    int acc86 = 78;
+    int out2 = 2;
+    int x87 = -44;
+    int acc15 = -15;
+    int acc57 = 66;
+    int acc68 = 34976;
+    int c18 = 1796;
+    int lo54 = 51042;
+    int res69 = 37;
+    int res46 = -33;
+    int lo10 = 44663;
+    int val88 = 61;
+    int tmp3 = 60148;
+    int a9 = 2;
+    int out21 = -46;
+    int c17 = 1;
+    int prev67 = 31;
+    int c95 = 28;
+    int lo97 = 54;
+    int cur91 = -39;
+    int lo0 = 52714;
+    int res53 = 32;
+    int y32 = 52;
+    int x7 = 34205;
+    int a5 = 12;
+    int acc13 = 8;
+    int prev9 = 35;
+    int dat81 = 50777;
+    int dat19 = 29843;
+    int prev33 = 16;
+    int b62 = 27;
+    int y64 = 84;
+    int cur63 = 28;
+    int out4 = 87;
+    int val27 = 4;
+    int b79 = 5;
+    int i;
+    for (i = 0; i < 23; i++) {
+        x97 = xn[idx_arr[i]];
+        val88 = c95 & v39;
+        val98 = hi17 | dat78;
+        tmp3 = lo0 - acc13;
+        out74 = res8 + y32;
+        out21 = x7 - prev19;
+        b57 = lo0 / val27;
+        dat82 = out74 + 2;
+        res53 = val27 | acc15;
+        v39 = acc86 % val27;
+        hi17 = out2 - val5;
+        val27 = val27 - 5;
+    }
+}
+int main() { test_func(); return 0; }
+

@@ -1,0 +1,107 @@
+// RTPG_702: vars=88 stmts=8
+void test_func(void) {
+    int v0 = 46;
+    int v1 = 99;
+    int v2 = 28;
+    int v3 = 3;
+    int v4 = 74;
+    int v5 = 47;
+    int v6 = 18;
+    int v7 = 80;
+    int v8 = 60;
+    int v9 = 53;
+    int v10 = 13;
+    int v11 = 87;
+    int v12 = 30;
+    int v13 = 70;
+    int v14 = 0;
+    int v15 = 7;
+    int v16 = 90;
+    int v17 = 47;
+    int v18 = 52;
+    int v19 = 30;
+    int v20 = 33;
+    int v21 = 57;
+    int v22 = 35;
+    int v23 = 88;
+    int v24 = 100;
+    int v25 = 89;
+    int v26 = 30;
+    int v27 = 68;
+    int v28 = 19;
+    int v29 = 71;
+    int v30 = 92;
+    int v31 = 64;
+    int v32 = 17;
+    int v33 = 42;
+    int v34 = 72;
+    int v35 = 77;
+    int v36 = 60;
+    int v37 = 68;
+    int v38 = 46;
+    int v39 = 38;
+    int v40 = 45;
+    int v41 = 44;
+    int v42 = 40;
+    int v43 = 2;
+    int v44 = 39;
+    int v45 = 13;
+    int v46 = 98;
+    int v47 = 40;
+    int v48 = 70;
+    int v49 = 97;
+    int v50 = 62;
+    int v51 = 82;
+    int v52 = 76;
+    int v53 = 3;
+    int v54 = 100;
+    int v55 = 35;
+    int v56 = 64;
+    int v57 = 6;
+    int v58 = 48;
+    int v59 = 5;
+    int v60 = 99;
+    int v61 = 51;
+    int v62 = 59;
+    int v63 = 84;
+    int v64 = 76;
+    int v65 = 93;
+    int v66 = 22;
+    int v67 = 35;
+    int v68 = 90;
+    int v69 = 33;
+    int v70 = 77;
+    int v71 = 88;
+    int v72 = 29;
+    int v73 = 78;
+    int v74 = 16;
+    int v75 = 24;
+    int v76 = 11;
+    int v77 = 71;
+    int v78 = 17;
+    int v79 = 0;
+    int v80 = 42;
+    int v81 = 76;
+    int v82 = 6;
+    int v83 = 38;
+    int v84 = 50;
+    int v85 = 69;
+    int v86 = 93;
+    int v87 = 37;
+    int i;
+    for (i = 0; i < 11; i++) {
+        v12 = v12 - 1;
+        v14 = v13 - 63576;
+        v6 = v6 - 2;
+        v3 = v14 & v13;
+        v1 = v4 & v0;
+        v7 = v4 - v2;
+        v3 = v3 + 5;
+        v10 = v10 + 3;
+        if (v3 > 54) {
+        v2 = v9 - 7091;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

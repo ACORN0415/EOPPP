@@ -1,0 +1,13 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (1 violation(s))
+    - Unsupported control flow: nested loop (only single-level loops supported)
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

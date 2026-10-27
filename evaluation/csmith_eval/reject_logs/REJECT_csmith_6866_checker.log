@@ -1,0 +1,17 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Write conflict: global variable 'l_34'
+    - Write conflict: global variable 'g_11'
+    - Write conflict: global variable 'l_34'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

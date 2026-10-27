@@ -1,0 +1,9 @@
+EOPPP Checker Evaluation Summary
+=================================
+RTPG: 10000 programs (3563 pass / 6437 reject)
+Boundary: 39 programs (39 / 39 correct)
+
+References:
+  [1] Egger et al., "Verification of Coarse-Grained Reconfigurable Arrays
+      through Random Test Programs," LCTES 2018.
+  [2] Myers et al., "The Art of Software Testing," 3rd Ed., Wiley, 2011.

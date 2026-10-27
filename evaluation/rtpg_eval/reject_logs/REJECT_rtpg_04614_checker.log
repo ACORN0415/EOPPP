@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 4)
+    - Unsupported type: struct/union
+    - Recursion detected: test_func -> __helper -> __helper
+    - Write conflict: global variable '__s'
+

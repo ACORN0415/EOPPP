@@ -1,0 +1,150 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (138 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to int32_t
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+    - Write conflict: global variable 'l_245'
+    - Write conflict: global variable 'l_269'
+    - Write conflict: global variable 'g_64'
+    - Write conflict: global variable 'l_167'
+    - Write conflict: global variable 'l_167'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'g_22'
+    - Write conflict: global variable 'l_178'
+    - Write conflict: global variable 'l_181'
+    - Write conflict: global variable 'l_225'
+    - Write conflict: global variable 'g_211'
+    - Write conflict: global variable 'g_27'
+    - Write conflict: global variable 'l_209'
+    - Write conflict: global variable 'l_208'
+    - Write conflict: global variable 'l_225'
+    - Write conflict: global variable 'g_233'
+    - Write conflict: global variable 'g_183'
+    - Write conflict: global variable 'g_183'
+    - Write conflict: global variable 'l_178'
+    - Write conflict: global variable 'l_181'
+    - Write conflict: global variable 'l_182'
+    - Write conflict: global variable 'l_163'
+    - Write conflict: global variable 'l_245'
+    - Write conflict: global variable 'l_269'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

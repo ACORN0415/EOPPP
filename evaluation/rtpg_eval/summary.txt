@@ -1,0 +1,8 @@
+EOPPP RTPG Evaluation Summary (v2)
+====================================
+Programs:    10000
+PASS:        3053
+REJECTED:    6947
+CRASH:       0  (GCC compile error, checker not reached)
+Correct:     10000 / 10000
+Wrong:       0

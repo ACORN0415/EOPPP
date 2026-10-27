@@ -1,0 +1,86 @@
+// RTPG_4312: vars=70 stmts=5
+struct Node { int a; int b; };
+void test_func(void) {
+    int v0 = 88;
+    int v1 = 44;
+    int v2 = 68;
+    int v3 = 6;
+    int v4 = 98;
+    int v5 = 55;
+    int v6 = 99;
+    int v7 = 58;
+    int v8 = 94;
+    int v9 = 3;
+    int v10 = 1;
+    int v11 = 86;
+    int v12 = 89;
+    int v13 = 35;
+    int v14 = 95;
+    int v15 = 11;
+    int v16 = 5;
+    int v17 = 1;
+    int v18 = 1;
+    int v19 = 84;
+    int v20 = 85;
+    int v21 = 68;
+    int v22 = 23;
+    int v23 = 38;
+    int v24 = 50;
+    int v25 = 28;
+    int v26 = 38;
+    int v27 = 20;
+    int v28 = 21;
+    int v29 = 72;
+    int v30 = 11;
+    int v31 = 87;
+    int v32 = 29;
+    int v33 = 11;
+    int v34 = 10;
+    int v35 = 73;
+    int v36 = 36;
+    int v37 = 7;
+    int v38 = 58;
+    int v39 = 98;
+    int v40 = 88;
+    int v41 = 55;
+    int v42 = 23;
+    int v43 = 30;
+    int v44 = 53;
+    int v45 = 49;
+    int v46 = 23;
+    int v47 = 5;
+    int v48 = 7;
+    int v49 = 50;
+    int v50 = 79;
+    int v51 = 43;
+    int v52 = 22;
+    int v53 = 24;
+    int v54 = 89;
+    int v55 = 86;
+    int v56 = 71;
+    int v57 = 49;
+    int v58 = 72;
+    int v59 = 53;
+    int v60 = 15;
+    int v61 = 32;
+    int v62 = 90;
+    int v63 = 93;
+    int v64 = 43;
+    int v65 = 81;
+    int v66 = 41;
+    int v67 = 16;
+    int v68 = 50;
+    int v69 = 94;
+    struct Node s; s.a = 3; s.b = 8;
+    int i;
+    for (i = 0; i < 88; i++) {
+        v3 = v6 + v9;
+        v3 = v14 + v6;
+        v7 = v9;
+        v6 = v12 - 8;
+        v9 = v7;
+        s.a = s.a + s.b;
+    }
+}
+int main() { test_func(); return 0; }
+

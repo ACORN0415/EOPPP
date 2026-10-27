@@ -1,0 +1,40 @@
+filename,expected,constraint,description
+C1_varcount_50.c,pass,C1,VariableChecker: 50 vars (within limit)
+C1_varcount_100.c,pass,C1,VariableChecker: 100 vars (within limit)
+C1_varcount_125.c,pass,C1,VariableChecker: 125 vars (within limit)
+C1_varcount_126.c,pass,C1,VariableChecker: 126 vars (within limit)
+C1_varcount_127.c,reject,C1,VariableChecker: 127 vars (exceeds limit)
+C1_varcount_128.c,reject,C1,VariableChecker: 128 vars (exceeds limit)
+C1_varcount_135.c,reject,C1,VariableChecker: 135 vars (exceeds limit)
+C1_varcount_150.c,reject,C1,VariableChecker: 150 vars (exceeds limit)
+C3_op_plus.c,pass,C3,OpcodeChecker: supported op '+'
+C3_op_minus.c,pass,C3,OpcodeChecker: supported op '-'
+C3_op_mult.c,pass,C3,OpcodeChecker: supported op '*'
+C3_op_div.c,reject,C3,OpcodeChecker: unsupported op '/'
+C3_op_mod.c,reject,C3,OpcodeChecker: unsupported op '%'
+C3_op_xor.c,reject,C3,OpcodeChecker: unsupported op '^'
+C3_op_bitand.c,reject,C3,OpcodeChecker: unsupported op '&'
+C3_op_bitor.c,reject,C3,OpcodeChecker: unsupported op '|'
+C3_cmp_lt.c,pass,C3,OpcodeChecker: comparison '<'
+C3_cmp_gt.c,pass,C3,OpcodeChecker: comparison '>'
+C3_cmp_le.c,pass,C3,OpcodeChecker: comparison '<='
+C3_cmp_ge.c,pass,C3,OpcodeChecker: comparison '>='
+C3_cmp_eq.c,pass,C3,OpcodeChecker: comparison '=='
+C3_cmp_ne.c,pass,C3,OpcodeChecker: comparison '!='
+C3_type_int.c,pass,C3,TypeChecker: int (supported)
+C3_type_float.c,reject,C3,TypeChecker: float (unsupported)
+C3_type_double.c,reject,C3,TypeChecker: double (unsupported)
+C3_type_struct.c,reject,C3,TypeChecker: struct (unsupported)
+C3_type_union.c,reject,C3,TypeChecker: union (unsupported)
+C3_type_enum.c,reject,C3,TypeChecker: enum (unsupported)
+C3_type_pointer.c,reject,C3,TypeChecker: pointer (unsupported)
+C3_mem_simple_array.c,pass,C3,MemoryChecker: simple 1D array
+C3_mem_double_idx.c,reject,C3,MemoryChecker: double indexing
+C3_mem_ptr_deref.c,reject,C3,MemoryChecker: pointer dereference
+C4_ctrl_single_for.c,pass,C4,ControlChecker: single for loop
+C4_ctrl_for_if.c,pass,C4,ControlChecker: for + if (not nested)
+C4_ctrl_nested.c,reject,C4,ControlChecker: nested loop
+C4_ctrl_switch.c,reject,C4,ControlChecker: switch-case
+C4_ctrl_goto.c,reject,C4,ControlChecker: goto
+C4_struct_no_call.c,pass,C4,StructureChecker: no recursion
+C4_struct_recursion.c,reject,C4,StructureChecker: direct recursion

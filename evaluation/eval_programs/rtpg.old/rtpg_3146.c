@@ -1,0 +1,83 @@
+// RTPG_3146: vars=61 stmts=10
+int idx_arr[64];
+enum State { RED, FAST, GREEN };
+void test_func(void) {
+    int v0 = 70;
+    int v1 = 35;
+    int v2 = 61;
+    int v3 = 45;
+    int v4 = 100;
+    int v5 = 86;
+    int v6 = 65;
+    int v7 = 26;
+    int v8 = 94;
+    int v9 = 10;
+    int v10 = 8;
+    int v11 = 17;
+    int v12 = 2;
+    int v13 = 79;
+    int v14 = 23;
+    int v15 = 90;
+    int v16 = 36;
+    int v17 = 5;
+    int v18 = 61;
+    int v19 = 10;
+    int v20 = 76;
+    int v21 = 77;
+    int v22 = 26;
+    int v23 = 46;
+    int v24 = 84;
+    int v25 = 42;
+    int v26 = 92;
+    int v27 = 1;
+    int v28 = 68;
+    int v29 = 0;
+    int v30 = 53;
+    int v31 = 1;
+    int v32 = 90;
+    int v33 = 53;
+    int v34 = 62;
+    int v35 = 55;
+    int v36 = 51;
+    int v37 = 69;
+    int v38 = 56;
+    int v39 = 16;
+    int v40 = 95;
+    int v41 = 91;
+    int v42 = 11;
+    int v43 = 30;
+    int v44 = 19;
+    int v45 = 89;
+    int v46 = 88;
+    int v47 = 28;
+    int v48 = 19;
+    int v49 = 52;
+    int v50 = 59;
+    int v51 = 7;
+    int v52 = 77;
+    int v53 = 72;
+    int v54 = 0;
+    int v55 = 8;
+    int v56 = 48;
+    int v57 = 64;
+    int v58 = 98;
+    int v59 = 69;
+    int v60 = 6;
+    enum State st = RED;
+    int i;
+    for (i = 0; i < 63; i++) {
+        v11 = xn[idx_arr[i]];
+        v2 = v0 + v11;
+        v7 = v8 - 38261;
+        v6 = v14 + v0;
+        v10 = v7;
+        v14 = v13 - v7;
+        v14 = v14 - 1;
+        v9 = v1 - v10;
+        v5 = v13 - 19;
+        v14 = v12 + v14;
+        v14 = v14 - 4;
+    }
+}
+int main() { test_func(); return 0; }
+

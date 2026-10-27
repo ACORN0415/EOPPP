@@ -1,0 +1,13 @@
+======================================================================
+Function: test_func
+  Result: FAIL (9 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported type: enum
+    - Unsupported type: pointer to int
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Unsupported memory operation: malloc() (dynamic allocation not supported)
+    - Unsupported memory operation: free() (dynamic allocation not supported)
+    - Undefined function call: malloc (cannot inline)
+    - Undefined function call: free (cannot inline)
+

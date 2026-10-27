@@ -1,0 +1,88 @@
+// RTPG_7912: vars=73 stmts=5
+enum State { BLUE, SLOW, FAST };
+void test_func(void) {
+    int v0 = 38;
+    int v1 = 58;
+    int v2 = 67;
+    int v3 = 78;
+    int v4 = 75;
+    int v5 = 31;
+    int v6 = 94;
+    int v7 = 31;
+    int v8 = 23;
+    int v9 = 71;
+    int v10 = 39;
+    int v11 = 1;
+    int v12 = 97;
+    int v13 = 90;
+    int v14 = 17;
+    int v15 = 77;
+    int v16 = 79;
+    int v17 = 51;
+    int v18 = 15;
+    int v19 = 54;
+    int v20 = 68;
+    int v21 = 15;
+    int v22 = 63;
+    int v23 = 27;
+    int v24 = 95;
+    int v25 = 51;
+    int v26 = 1;
+    int v27 = 10;
+    int v28 = 5;
+    int v29 = 41;
+    int v30 = 8;
+    int v31 = 5;
+    int v32 = 63;
+    int v33 = 64;
+    int v34 = 20;
+    int v35 = 9;
+    int v36 = 82;
+    int v37 = 87;
+    int v38 = 59;
+    int v39 = 31;
+    int v40 = 41;
+    int v41 = 44;
+    int v42 = 32;
+    int v43 = 7;
+    int v44 = 97;
+    int v45 = 22;
+    int v46 = 67;
+    int v47 = 44;
+    int v48 = 65;
+    int v49 = 93;
+    int v50 = 89;
+    int v51 = 22;
+    int v52 = 67;
+    int v53 = 63;
+    int v54 = 70;
+    int v55 = 51;
+    int v56 = 88;
+    int v57 = 54;
+    int v58 = 89;
+    int v59 = 1;
+    int v60 = 34;
+    int v61 = 9;
+    int v62 = 83;
+    int v63 = 33;
+    int v64 = 10;
+    int v65 = 83;
+    int v66 = 52;
+    int v67 = 65;
+    int v68 = 21;
+    int v69 = 94;
+    int v70 = 85;
+    int v71 = 80;
+    int v72 = 21;
+    enum State st = BLUE;
+    int i;
+    for (i = 0; i < 48; i++) {
+        v3 = v11 - -40;
+        v13 = v4 - v14;
+        v3 = v8 + v3;
+        v6 = v6 + 1;
+        v2 = v13 + v14;
+    }
+}
+int main() { test_func(); return 0; }
+

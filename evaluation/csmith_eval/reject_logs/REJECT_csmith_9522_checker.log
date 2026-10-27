@@ -1,0 +1,63 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (51 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S2
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'l_207'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_210'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'l_16'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'g_84'
+    - Write conflict: global variable 'g_20'
+    - Write conflict: global variable 'l_195'
+    - Write conflict: global variable 'l_195'
+    - Write conflict: global variable 'g_20'
+    - Write conflict: global variable 'l_192'
+    - Write conflict: global variable 'l_208'
+    - Write conflict: global variable 'g_84'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_194'
+    - Write conflict: global variable 'l_210'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_194'
+    - Write conflict: global variable 'l_210'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_207'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

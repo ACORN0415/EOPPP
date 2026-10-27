@@ -1,0 +1,43 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (31 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U2 *
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U3 *
+    - Unsupported type: pointer to union U1
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_136'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_136'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_217'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

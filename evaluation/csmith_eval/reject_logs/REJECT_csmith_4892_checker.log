@@ -1,0 +1,15 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (3 violation(s))
+    - Unsupported type: pointer to const struct S2
+    - Unsupported type: pointer to const struct S2
+    - Unsupported type: struct/union
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

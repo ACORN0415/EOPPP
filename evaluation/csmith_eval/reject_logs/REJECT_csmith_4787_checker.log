@@ -1,0 +1,125 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (113 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to uint8_t
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_div_func_int8_t_s_s
+    - Write conflict: global variable 'l_70'
+    - Write conflict: global variable 'l_96'
+    - Write conflict: global variable 'l_137'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_69'
+    - Write conflict: global variable 'l_71'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'l_70'
+    - Write conflict: global variable 'l_85'
+    - Write conflict: global variable 'g_35'
+    - Write conflict: global variable 'l_135'
+    - Write conflict: global variable 'l_176'
+    - Write conflict: global variable 'g_35'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_70'
+    - Write conflict: global variable 'l_96'
+    - Write conflict: global variable 'l_97'
+    - Write conflict: global variable 'l_137'
+    - Write conflict: global variable 'l_198'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

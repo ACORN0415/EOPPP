@@ -1,0 +1,22 @@
+// RTPG_4590: vars=3 stmts=5
+void test_func(void) {
+    int dat53 = 41029;
+    int out79 = 3;
+    int res58 = 30;
+    int i;
+    for (i = 0; i < 59; i++) {
+        dat53 = dat53 + 1;
+        res58 = res58;
+        out79 = res58 + 11;
+        dat53 = dat53 + 1;
+        out79 = dat53 + -47;
+        if (dat53 > 20) goto done;
+        if (out79 > 67) {
+        res58 = dat53 + res58;
+        }
+    }
+done:
+    dat53 = 0;
+}
+int main() { test_func(); return 0; }
+

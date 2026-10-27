@@ -1,0 +1,8 @@
+EOPPP Checker Csmith Fuzzing Summary (Module-Level)
+=====================================================
+Generator: Csmith 2.3.0 [Yang et al., PLDI 2011]
+Total:     10000
+PASS:      495
+REJECTED:  9505
+CRASH:     0
+GEN_ERROR: 0

@@ -1,0 +1,10 @@
+======================================================================
+Function: test_func
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+    - Unsupported type: enum
+    - Write conflict: global variable '__u'
+

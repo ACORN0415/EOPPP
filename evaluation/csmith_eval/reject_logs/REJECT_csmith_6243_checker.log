@@ -1,0 +1,15 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (3 violation(s))
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_unary_minus_func_uint16_t_u
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

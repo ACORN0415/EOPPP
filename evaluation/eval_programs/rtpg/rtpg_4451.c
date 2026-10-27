@@ -1,0 +1,80 @@
+// RTPG_4451: vars=56 stmts=12
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int c26 = -23;
+    int dat85 = 56;
+    int sum22 = 0;
+    int c69 = 65;
+    int dat94 = 71;
+    int z74 = -21;
+    int val51 = 37;
+    int acc82 = -5;
+    int tmp88 = 58428;
+    int cur0 = 18;
+    int acc79 = 13;
+    int val24 = 17299;
+    int res9 = -33;
+    int sum48 = 9;
+    int v41 = 13;
+    int sum49 = 3;
+    int cur93 = 9;
+    int dat13 = 16;
+    int cnt84 = 5088;
+    int a72 = 61;
+    int a27 = 53;
+    int out3 = 36601;
+    int dat45 = 32;
+    int cur13 = -1;
+    int acc73 = 10;
+    int b58 = 89;
+    int res1 = 43886;
+    int out26 = 47;
+    int cnt65 = 27;
+    int sum71 = 2;
+    int lo68 = 4;
+    int prev75 = 38270;
+    int z50 = 1;
+    int lo65 = 38;
+    int prev90 = 36;
+    int cnt16 = 2;
+    int val60 = 10253;
+    int res74 = 59;
+    int x79 = 59;
+    int sum83 = 55834;
+    int z83 = 13905;
+    int hi22 = 34;
+    int c78 = 9082;
+    int val39 = 47;
+    int v52 = -42;
+    int v69 = 22728;
+    int prev15 = 4;
+    int res56 = -47;
+    int val58 = 8;
+    int out75 = 3;
+    int dat66 = 2;
+    int cur24 = 9;
+    int cnt97 = -38;
+    int v79 = -48;
+    int hi35 = 92;
+    int val43 = 10;
+    int i;
+    for (i = 0; i < 64; i++) {
+        val51 = xn[i];
+        z50 = val58 + 5;
+        cur24 = acc73 + res1;
+        c26 = z83 + x79;
+        dat66 = sum49 + lo68;
+        a27 = cur93 - z74;
+        v41 = res9 + 9;
+        out3 = c69;
+        val43 = cur13 + tmp88;
+        v69 = val39 - cnt65;
+        b58 = b58 + 2;
+        v79 = out75 - val43;
+        cnt65 = b58 - 8;
+        yo[i] = prev75;
+    }
+}
+int main() { test_func(); return 0; }
+

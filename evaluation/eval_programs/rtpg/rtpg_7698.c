@@ -1,0 +1,19 @@
+// RTPG_7698: vars=3 stmts=3
+void test_func(void) {
+    int acc89 = 31;
+    int acc29 = 5;
+    int v8 = -29;
+    int i;
+    for (i = 0; i < 66; i++) {
+        switch (acc29) {
+            case 0: v8 = -15; break;
+            case 1: v8 = 0; break;
+            case 2: acc29 = 2; break;
+            case 3: acc29 = 9476; break;
+            default: break;
+        }
+        acc29 = acc29 + 1;
+    }
+}
+int main() { test_func(); return 0; }
+

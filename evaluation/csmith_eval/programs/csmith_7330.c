@@ -1,0 +1,296 @@
+/*
+ * This is a RANDOMLY GENERATED PROGRAM.
+ *
+ * Generator: csmith 2.3.0
+ * Git version: 30dccd7
+ * Options:   --seed 1223116883 --no-checksum --no-argc --no-volatiles --max-funcs 2 --max-block-depth 3 --max-expr-complexity 4
+ * Seed:      1223116883
+ */
+
+#include "csmith.h"
+
+volatile uint64_t csmith_sink_ = 0;
+
+static long __undefined;
+
+/* --- Struct/Union Declarations --- */
+struct S1 {
+   const int64_t  f0;
+   unsigned f1 : 21;
+   signed f2 : 28;
+};
+
+#pragma pack(push)
+#pragma pack(1)
+struct S2 {
+   unsigned f0 : 14;
+   const unsigned f1 : 17;
+   struct S1  f2;
+   unsigned f3 : 31;
+   const signed f4 : 31;
+   signed f5 : 19;
+   const signed f6 : 20;
+   unsigned f7 : 30;
+};
+#pragma pack(pop)
+
+#pragma pack(push)
+#pragma pack(1)
+struct S5 {
+   int32_t  f0;
+   int32_t  f1;
+   int32_t  f2;
+   uint32_t  f3;
+};
+#pragma pack(pop)
+
+/* --- GLOBAL VARIABLES --- */
+static int16_t g_12 = (-10L);
+static uint16_t g_19 = 0xF68EL;
+static int32_t g_21 = 0xDE9E5A93L;
+static struct S5 g_27 = {0x2865C7AEL,0x13965C3EL,-7L,6UL};
+static int32_t **g_32 = (void*)0;
+static int8_t g_52 = (-9L);
+static int64_t g_56[10][4][6] = {{{0x05B1DA0A612E5C0ELL,1L,8L,5L,0x3B6501F83EA192C0LL,0x93F67575CCD8886ALL},{0xFA950DAE4CDD94FBLL,0x53637239A57CDCCDLL,5L,0x619850909C1F5AF6LL,0L,9L},{(-1L),0x081F7599071708EFLL,0x05B1DA0A612E5C0ELL,0x1E59718C347C6FEBLL,(-7L),0x0AC8DFE2393D1FB2LL},{(-7L),0x04F40C7B2332137CLL,0x0D14EE7D4DB2FC5BLL,0xF08D7938C6D90293LL,0L,0x1E59718C347C6FEBLL}},{{0x80160125FC94FAEALL,(-2L),0x619850909C1F5AF6LL,0xA745DD4C412B3B2BLL,0x07BE03BB9ED89F81LL,0xFDF31BD2F762FA08LL},{0x619850909C1F5AF6LL,1L,1L,(-1L),0x04F40C7B2332137CLL,1L},{0x672261EF39752E2FLL,0x775FD7C9B70E134CLL,0xA745DD4C412B3B2BLL,0L,0xFA950DAE4CDD94FBLL,0xFA950DAE4CDD94FBLL},{0x817529D5842A7B79LL,0x05B1DA0A612E5C0ELL,0x05B1DA0A612E5C0ELL,0x817529D5842A7B79LL,0x80160125FC94FAEALL,(-1L)}},{{1L,0xFA950DAE4CDD94FBLL,0xA745DD4C412B3B2BLL,0x447B9B5BAACCC2DFLL,0x1E59718C347C6FEBLL,0x9AEF82AFFBDAD738LL},{1L,0x93F67575CCD8886ALL,0x32C7511D3A895345LL,1L,0x1E59718C347C6FEBLL,0L},{(-1L),0xFA950DAE4CDD94FBLL,0x3B6501F83EA192C0LL,0x0BCB4418FC0EF5ABLL,0x80160125FC94FAEALL,0x0D14EE7D4DB2FC5BLL},{9L,0x817529D5842A7B79LL,0x4F5A8E4F4471DAA6LL,0x0AC8DFE2393D1FB2LL,0L,9L}},{{(-1L),0x447B9B5BAACCC2DFLL,0x5A5499AB60E97F2CLL,(-10L),0xFDF31BD2F762FA08LL,(-1L)},{1L,1L,0L,0x0D14EE7D4DB2FC5BLL,0x32C7511D3A895345LL,0x9AEF82AFFBDAD738LL},{0L,0L,0x0D14EE7D4DB2FC5BLL,(-7L),0x5A5499AB60E97F2CLL,0x53637239A57CDCCDLL},{0L,0xFDF31BD2F762FA08LL,(-9L),0x4F5A8E4F4471DAA6LL,0xFA950DAE4CDD94FBLL,0x817529D5842A7B79LL}},{{9L,0x0D14EE7D4DB2FC5BLL,1L,0L,0x07BE03BB9ED89F81LL,0x05B1DA0A612E5C0ELL},{0x9AEF82AFFBDAD738LL,0xB6089915209B59D2LL,0x1E59718C347C6FEBLL,5L,0x672261EF39752E2FLL,5L},{(-10L),1L,(-10L),0x447B9B5BAACCC2DFLL,0x0D14EE7D4DB2FC5BLL,0L},{0x619850909C1F5AF6LL,0x53637239A57CDCCDLL,6L,0x04F40C7B2332137CLL,0x817529D5842A7B79LL,0L}},{{(-7L),0x3DF663D83FAE531CLL,(-9L),0x04F40C7B2332137CLL,0x80160125FC94FAEALL,0x447B9B5BAACCC2DFLL},{0x619850909C1F5AF6LL,0x0AC8DFE2393D1FB2LL,(-1L),0x447B9B5BAACCC2DFLL,1L,0xF08D7938C6D90293LL},{(-10L),6L,0x32C7511D3A895345LL,5L,1L,(-1L)},{0x9AEF82AFFBDAD738LL,0xFA950DAE4CDD94FBLL,8L,0L,6L,0xA745DD4C412B3B2BLL}},{{9L,0L,0x0AC8DFE2393D1FB2LL,0x4F5A8E4F4471DAA6LL,0x817529D5842A7B79LL,9L},{0L,(-2L),0x3B6501F83EA192C0LL,(-7L),0xFDF31BD2F762FA08LL,0xB6089915209B59D2LL},{0L,(-1L),0x68C18A0E89C3F475LL,0x0D14EE7D4DB2FC5BLL,0x8F454C83E8FD49B2LL,0xF08D7938C6D90293LL},{1L,0xB6089915209B59D2LL,0x0D14EE7D4DB2FC5BLL,(-10L),0x3B8E8A177C5EBFF8LL,(-1L)}},{{(-1L),0xFDF31BD2F762FA08LL,1L,0x0AC8DFE2393D1FB2LL,0x0AC8DFE2393D1FB2LL,1L},{9L,9L,6L,0x0BCB4418FC0EF5ABLL,0x5A5499AB60E97F2CLL,0x05B1DA0A612E5C0ELL},{(-1L),0L,(-7L),1L,0x672261EF39752E2FLL,6L},{1L,(-1L),(-7L),0x447B9B5BAACCC2DFLL,9L,0x05B1DA0A612E5C0ELL}},{{1L,0x447B9B5BAACCC2DFLL,6L,5L,0x3DF663D83FAE531CLL,1L},{5L,0x3DF663D83FAE531CLL,1L,(-7L),6L,(-1L)},{0x619850909C1F5AF6LL,0x05B1DA0A612E5C0ELL,0x0D14EE7D4DB2FC5BLL,1L,0x1E59718C347C6FEBLL,0xF08D7938C6D90293LL},{0x1E59718C347C6FEBLL,0x80160125FC94FAEALL,0x68C18A0E89C3F475LL,1L,1L,0xB6089915209B59D2LL}},{{0xF08D7938C6D90293LL,0x0AC8DFE2393D1FB2LL,0x3B6501F83EA192C0LL,0L,0x93F67575CCD8886ALL,9L},{0xA745DD4C412B3B2BLL,0x817529D5842A7B79LL,0x0AC8DFE2393D1FB2LL,0L,0x3DF663D83FAE531CLL,0xA745DD4C412B3B2BLL},{(-1L),(-2L),8L,0x1E59718C347C6FEBLL,0x0D14EE7D4DB2FC5BLL,(-1L)},{0L,0xF08D7938C6D90293LL,0x32C7511D3A895345LL,0x80160125FC94FAEALL,1L,0L}}};
+static uint32_t g_62 = 0x174B1CADL;
+static uint8_t g_65 = 6UL;
+static uint32_t g_74 = 0xB2593376L;
+static int64_t g_85 = 1L;
+static int16_t g_86[10] = {0L,0L,0L,0L,0L,0L,0L,0L,0L,0L};
+static int16_t g_87 = 0x77BCL;
+static uint32_t g_89 = 0x48C8BDA7L;
+
+
+/* --- FORWARD DECLARATIONS --- */
+static uint16_t  func_1(void);
+static struct S5  func_2(int32_t  p_3, uint64_t  p_4, const int8_t  p_5);
+
+
+/* --- FUNCTIONS --- */
+/* ------------------------------------------ */
+/* 
+ * reads : g_12 g_19 g_21 g_32 g_27.f0 g_27.f3 g_27.f2 g_52 g_56 g_62 g_27.f1 g_65 g_74 g_89
+ * writes: g_21 g_27 g_12 g_52 g_62 g_65 g_74 g_19 g_89
+ */
+static uint16_t  func_1(void)
+{ /* block id: 0 */
+    int32_t *l_20[9] = {&g_21,&g_21,&g_21,&g_21,&g_21,&g_21,&g_21,&g_21,&g_21};
+    uint16_t l_22 = 65535UL;
+    uint16_t l_23[2];
+    uint16_t *l_33 = &l_23[1];
+    int i;
+    for (i = 0; i < 2; i++)
+        l_23[i] = 1UL;
+    g_27 = func_2((safe_lshift_func_int8_t_s_u((safe_rshift_func_uint8_t_u_u(((safe_mod_func_int8_t_s_s(g_12, (safe_lshift_func_uint8_t_u_u(((safe_lshift_func_int16_t_s_s((safe_sub_func_uint8_t_u_u((((l_22 = g_19) || 0xC795C380L) && l_23[1]), 0xF6L)), 1)) ^ 0x9E17716E31137833LL), g_21)))) , g_12), 3)), g_12)), g_21, g_19);
+    if (((safe_lshift_func_uint16_t_u_u(((*l_33) = (safe_add_func_uint32_t_u_u(0xB573FAD3L, (g_32 != &l_20[7])))), g_19)) > g_19))
+    { /* block id: 8 */
+        const uint32_t l_41 = 18446744073709551613UL;
+        int32_t *l_42 = &g_27.f0;
+        uint32_t *l_61[9] = {&g_62,(void*)0,&g_62,(void*)0,&g_62,(void*)0,&g_62,(void*)0,&g_62};
+        uint32_t l_63 = 0x8305E1E2L;
+        int32_t l_64[4][8] = {{1L,0x2B20D12CL,1L,(-1L),(-1L),1L,0x2B20D12CL,1L},{0x6F45FEBAL,(-1L),0x6B514DE5L,(-1L),0x6F45FEBAL,0x6F45FEBAL,(-1L),0x6B514DE5L},{0x6F45FEBAL,0x6F45FEBAL,(-1L),0x6B514DE5L,(-1L),0x6F45FEBAL,0x6F45FEBAL,(-1L)},{1L,(-1L),(-1L),1L,0x2B20D12CL,1L,(-1L),(-1L)}};
+        int i, j;
+        for (g_12 = 2; (g_12 != 4); ++g_12)
+        { /* block id: 11 */
+            int16_t l_36[6];
+            int32_t l_37 = 0x62DF2AD2L;
+            int i;
+            for (i = 0; i < 6; i++)
+                l_36[i] = (-9L);
+            l_37 = l_36[5];
+            if ((safe_div_func_uint32_t_u_u(((+(((0x42L < l_41) , l_42) != l_20[8])) | 0x2F4987F47BCE98AALL), (*l_42))))
+            { /* block id: 13 */
+                int8_t *l_51 = &g_52;
+                uint8_t l_53 = 1UL;
+                g_27.f2 |= (safe_rshift_func_int8_t_s_u((safe_mul_func_uint16_t_u_u((*l_42), (((((safe_lshift_func_uint8_t_u_u(g_27.f3, ((safe_add_func_int8_t_s_s(((*l_51) = g_12), l_36[1])) < 0x936FAD9A83C40526LL))) && l_53) , l_37) == 0x08L) >= g_21))), 1));
+                (*l_42) &= l_36[5];
+            }
+            else
+            { /* block id: 17 */
+                int32_t **l_54 = &l_20[8];
+                int64_t *l_55[6][6][4] = {{{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[8][3][0]},{&g_56[9][2][2],&g_56[9][2][2],(void*)0,&g_56[9][2][2]},{&g_56[4][2][3],&g_56[9][2][2],&g_56[9][2][2],&g_56[4][2][3]},{&g_56[5][0][3],&g_56[9][2][2],&g_56[9][2][2],(void*)0},{&g_56[9][2][2],&g_56[8][0][1],&g_56[5][1][4],(void*)0},{&g_56[9][2][2],&g_56[9][2][2],(void*)0,(void*)0}},{{(void*)0,&g_56[8][0][1],&g_56[0][3][3],(void*)0},{(void*)0,&g_56[9][2][2],&g_56[0][0][2],&g_56[4][2][3]},{&g_56[3][2][1],&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2]},{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[8][3][0]},{&g_56[9][2][2],&g_56[9][2][2],&g_56[4][3][4],&g_56[9][2][2]},{&g_56[9][2][2],(void*)0,&g_56[8][3][0],&g_56[5][0][4]}},{{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[3][3][4]},{&g_56[6][0][4],&g_56[7][3][5],&g_56[7][2][1],&g_56[3][2][1]},{&g_56[3][2][1],&g_56[9][2][2],&g_56[9][2][2],&g_56[6][0][4]},{&g_56[3][3][4],(void*)0,&g_56[0][3][3],&g_56[9][2][2]},{&g_56[5][0][4],&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2]},{&g_56[9][2][2],&g_56[8][3][0],&g_56[9][2][2],&g_56[9][2][2]}},{{&g_56[8][3][0],(void*)0,&g_56[9][2][2],&g_56[9][2][2]},{&g_56[9][2][2],&g_56[3][2][1],&g_56[8][2][3],&g_56[3][2][1]},{&g_56[4][2][3],&g_56[9][2][2],&g_56[9][2][2],(void*)0},{(void*)0,&g_56[9][2][2],&g_56[9][2][2],(void*)0},{(void*)0,&g_56[5][3][5],&g_56[7][3][4],&g_56[9][2][2]},{(void*)0,&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2]}},{{(void*)0,&g_56[9][2][2],&g_56[9][2][2],&g_56[5][0][3]},{&g_56[4][2][3],(void*)0,&g_56[8][2][3],&g_56[4][2][3]},{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2]},{&g_56[8][3][0],&g_56[8][0][1],&g_56[9][2][2],&g_56[9][2][2]},{&g_56[9][2][2],&g_56[1][1][2],&g_56[9][2][2],(void*)0},{&g_56[5][0][4],&g_56[9][2][2],&g_56[0][3][3],&g_56[9][2][2]}},{{&g_56[3][3][4],&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][4]},{&g_56[3][2][1],(void*)0,&g_56[7][2][1],&g_56[0][3][3]},{&g_56[9][2][2],(void*)0,&g_56[9][2][2],(void*)0},{&g_56[8][2][3],&g_56[9][2][2],(void*)0,(void*)0},{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[1][1][3]},{&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2],&g_56[9][2][2]}}};
+                int i, j, k;
+                (*l_54) = &g_21;
+                g_21 |= (g_52 , ((l_37 ^= ((void*)0 == l_54)) | g_56[7][0][3]));
+            }
+            g_21 &= (&g_56[9][2][2] != &g_56[7][3][3]);
+        }
+        l_64[3][1] ^= ((safe_div_func_uint16_t_u_u((safe_add_func_uint32_t_u_u((g_62 &= g_27.f0), g_27.f1)), 0xA35FL)) , l_63);
+        --g_65;
+    }
+    else
+    { /* block id: 27 */
+        uint8_t l_68 = 0xF4L;
+        int32_t l_69 = 0L;
+        int32_t l_84 = 1L;
+        int32_t l_88 = 0x31BD26FDL;
+        l_69 = ((g_56[4][1][5] == (0UL != g_52)) == l_68);
+        for (l_22 = 0; (l_22 <= 8); l_22 += 1)
+        { /* block id: 31 */
+            g_27.f2 ^= (g_27.f0 > ((safe_rshift_func_int16_t_s_u(g_65, 3)) >= ((safe_rshift_func_int16_t_s_u(l_69, 8)) <= 0xD5L)));
+        }
+        g_74++;
+        for (g_65 = 0; (g_65 <= 3); g_65 += 1)
+        { /* block id: 37 */
+            struct S2 l_81 = {80,147,{1L,1128,15255},22011,-13711,-100,-173,10920};
+            int8_t *l_82[1];
+            int32_t l_83 = 1L;
+            int i;
+            for (i = 0; i < 1; i++)
+                l_82[i] = &g_52;
+            l_83 |= (safe_mul_func_int16_t_s_s(((l_69 = (safe_sub_func_uint32_t_u_u((l_81 , ((g_19 &= l_69) < g_27.f3)), l_68))) > g_62), 0x3FC8L));
+            if (g_19)
+                break;
+            ++g_89;
+            for (l_83 = 3; (l_83 >= 0); l_83 -= 1)
+            { /* block id: 45 */
+                l_81.f5 ^= 1L;
+            }
+        }
+    }
+    return g_65;
+}
+
+
+/* ------------------------------------------ */
+/* 
+ * reads : g_21
+ * writes: g_21
+ */
+static struct S5  func_2(int32_t  p_3, uint64_t  p_4, const int8_t  p_5)
+{ /* block id: 2 */
+    int32_t *l_24 = (void*)0;
+    int32_t **l_25 = &l_24;
+    struct S5 l_26[9][4][7] = {{{{0x4E6A7687L,0x44B05ACFL,0xE1B1CD7FL,1UL},{0L,-1L,0x8798744AL,3UL},{-1L,-1L,0x9A16D6AEL,1UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{1L,0x11538544L,1L,0x7B8FE932L},{0x9B40CD91L,0L,-1L,0x1CA78AC0L},{0xED6F0B37L,0xE231492EL,0xFA5C3DAFL,0UL}},{{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{0x479D400EL,0xDA3A84B1L,0x90EDD544L,0xB8AB05D5L},{0xF80B7F2DL,0xF905AFB0L,1L,0x419813DAL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{-2L,-1L,0x4469BDECL,2UL},{0L,-8L,0x76EBEA24L,3UL},{0L,1L,0L,5UL}},{{0L,0xF2B86D1BL,0xAACF2229L,0xC57988D8L},{-7L,0x0E051DE0L,0xEF4738C5L,0x93A3FB78L},{0x9B40CD91L,0L,-1L,0x1CA78AC0L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{1L,-8L,1L,0xF8A8D9B7L},{0L,1L,0xD1987919L,0xB5C08239L},{7L,0x441043A4L,-9L,0x6F707683L}},{{1L,0x0A54AE8BL,0xD06DB255L,9UL},{0x5387F91FL,3L,0xA1B73F45L,0xB547262EL},{9L,0L,0L,0xB073D286L},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{9L,0L,0L,0xB073D286L},{0x5387F91FL,3L,0xA1B73F45L,0xB547262EL}}},{{{0x315D791AL,0x2690506AL,1L,0x8CA617A0L},{0xED6F0B37L,0xE231492EL,0xFA5C3DAFL,0UL},{0x9120D2D4L,0xDACD6EFCL,0x15474206L,0x0452890DL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-2L,0x815AB6DAL,0x0A41DF58L,0x76CA199CL},{0L,0L,0x4AD85202L,0UL},{0L,0L,0xECDE474CL,0x7A5C6A8BL}},{{7L,0x4CD5CA7DL,0xACB2E3AAL,0x48860579L},{0L,0x6017AB3EL,1L,0x48ED3424L},{0xFA536CA9L,1L,0xA8275BAEL,0UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0L,0x70B2B337L,-4L,0x895C1B54L},{0xCC1E89F1L,0xA8A213CCL,0x3D62D75DL,0xB2AF2F4CL},{0xB33B2D97L,-9L,0L,1UL}},{{0L,3L,0xDB3B8CD6L,1UL},{0x957FE1BCL,0xE4F41421L,0xA80D1701L,8UL},{0xBBF4C003L,0x18A56EC0L,0x3B9F6D4BL,0UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{0x73DEB0DBL,-1L,8L,0x3347D044L},{0x9120D2D4L,0xDACD6EFCL,0x15474206L,0x0452890DL},{-7L,0x0E051DE0L,0xEF4738C5L,0x93A3FB78L}},{{0L,0L,1L,0UL},{0xB33B2D97L,-9L,0L,1UL},{0L,-8L,0x76EBEA24L,3UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0x9C50E9BCL,-6L,-6L,0x52006156L},{0xF4BB6045L,0xDFDFF98CL,0x906F4486L,18446744073709551613UL},{0x51464E94L,0x4028B022L,-6L,18446744073709551615UL}}},{{{-9L,0x2E912FB0L,-1L,0xE8587384L},{7L,0x441043A4L,-9L,0x6F707683L},{0L,0L,0x4AD85202L,0UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{6L,0L,0x4A91A3D0L,8UL},{-1L,-1L,0x9A16D6AEL,1UL},{0x957FE1BCL,0xE4F41421L,0xA80D1701L,8UL}},{{-1L,0L,0x18003DBEL,18446744073709551615UL},{0L,0x12D56B38L,0x239552BCL,18446744073709551611UL},{0xF4BB6045L,0xDFDFF98CL,0x906F4486L,18446744073709551613UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{5L,0x83702682L,0xE03F7815L,18446744073709551606UL},{0xFA536CA9L,1L,0xA8275BAEL,0UL},{0x479D400EL,0xDA3A84B1L,0x90EDD544L,0xB8AB05D5L}},{{0xC68AB631L,1L,-1L,0UL},{-6L,1L,0xA32A0C02L,0xAD61797EL},{0xE360852BL,4L,1L,0x4D126829L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{0xE360852BL,4L,1L,0x4D126829L},{-6L,1L,0xA32A0C02L,0xAD61797EL}},{{-6L,3L,1L,0x526C9E8DL},{0x51464E94L,0x4028B022L,-6L,18446744073709551615UL},{0x78971D2FL,0L,0x64004C0DL,0xAF106164L},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0xC405962DL,0x8881B111L,0x6B667A95L,18446744073709551610UL},{0xF80B7F2DL,0xF905AFB0L,1L,0x419813DAL},{0L,0x6017AB3EL,1L,0x48ED3424L}}},{{{1L,0L,1L,0x2393DFE8L},{0L,0L,0xECDE474CL,0x7A5C6A8BL},{0L,1L,0xD1987919L,0xB5C08239L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{2L,-8L,-8L,0xC5226059L},{0xBBF4C003L,0x18A56EC0L,0x3B9F6D4BL,0UL},{0L,-1L,0x8798744AL,3UL}},{{0x58142351L,0x18F27B0CL,0x0C6D799DL,0x2CC188F9L},{0L,1L,0L,5UL},{0xCC1E89F1L,0xA8A213CCL,0x3D62D75DL,0xB2AF2F4CL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0x23095C3CL,0L,0x5BB0C7F2L,0xAC411777L},{0x78971D2FL,0L,0x64004C0DL,0xAF106164L},{0L,0x12D56B38L,0x239552BCL,18446744073709551611UL}},{{0x4E6A7687L,0x44B05ACFL,0xE1B1CD7FL,1UL},{0L,-1L,0x8798744AL,3UL},{-1L,-1L,0x9A16D6AEL,1UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{1L,0x11538544L,1L,0x7B8FE932L},{0x9B40CD91L,0L,-1L,0x1CA78AC0L},{0xED6F0B37L,0xE231492EL,0xFA5C3DAFL,0UL}},{{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{0x479D400EL,0xDA3A84B1L,0x90EDD544L,0xB8AB05D5L},{0xF80B7F2DL,0xF905AFB0L,1L,0x419813DAL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{-2L,-1L,0x4469BDECL,2UL},{0L,-8L,0x76EBEA24L,3UL},{0L,1L,0L,5UL}}},{{{0L,0xF2B86D1BL,0xAACF2229L,0xC57988D8L},{-7L,0x0E051DE0L,0xEF4738C5L,0x93A3FB78L},{0x9B40CD91L,0L,-1L,0x1CA78AC0L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{1L,-8L,1L,0xF8A8D9B7L},{0L,1L,0xD1987919L,0xB5C08239L},{7L,0x441043A4L,-9L,0x6F707683L}},{{1L,0x0A54AE8BL,0xD06DB255L,9UL},{0x5387F91FL,3L,0xA1B73F45L,0xB547262EL},{9L,0L,0L,0xB073D286L},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{9L,0L,0L,0xB073D286L},{0x5387F91FL,3L,0xA1B73F45L,0xB547262EL}},{{0x315D791AL,0x2690506AL,1L,0x8CA617A0L},{0xED6F0B37L,0xE231492EL,0xFA5C3DAFL,0UL},{0x9120D2D4L,0xDACD6EFCL,0x15474206L,0x0452890DL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-2L,0x815AB6DAL,0x0A41DF58L,0x76CA199CL},{0L,0L,0x4AD85202L,0UL},{0L,0L,0xECDE474CL,0x7A5C6A8BL}},{{7L,0x4CD5CA7DL,0xACB2E3AAL,0x48860579L},{0L,0x6017AB3EL,1L,0x48ED3424L},{0xFA536CA9L,1L,0xA8275BAEL,0UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0L,0x70B2B337L,-4L,0x895C1B54L},{0xCC1E89F1L,0xA8A213CCL,0x3D62D75DL,0xB2AF2F4CL},{0xB33B2D97L,-9L,0L,1UL}}},{{{0L,3L,0xDB3B8CD6L,1UL},{0x957FE1BCL,0xE4F41421L,0xA80D1701L,8UL},{0xBBF4C003L,0x18A56EC0L,0x3B9F6D4BL,0UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{0x73DEB0DBL,-1L,8L,0x3347D044L},{0x9120D2D4L,0xDACD6EFCL,0x15474206L,0x0452890DL},{-7L,0x0E051DE0L,0xEF4738C5L,0x93A3FB78L}},{{0L,0L,1L,0UL},{0xB33B2D97L,-9L,0L,1UL},{0L,-8L,0x76EBEA24L,3UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0x9C50E9BCL,-6L,-6L,0x52006156L},{0xF4BB6045L,0xDFDFF98CL,0x906F4486L,18446744073709551613UL},{0x51464E94L,0x4028B022L,-6L,18446744073709551615UL}},{{-9L,0x2E912FB0L,-1L,0xE8587384L},{7L,0x441043A4L,-9L,0x6F707683L},{0L,0L,0x4AD85202L,0UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{6L,0L,0x4A91A3D0L,8UL},{-1L,-1L,0x9A16D6AEL,1UL},{0x957FE1BCL,0xE4F41421L,0xA80D1701L,8UL}},{{-1L,0L,0x18003DBEL,18446744073709551615UL},{0L,0x12D56B38L,0x239552BCL,18446744073709551611UL},{0xF4BB6045L,0xDFDFF98CL,0x906F4486L,18446744073709551613UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{5L,0x83702682L,0xE03F7815L,18446744073709551606UL},{0xFA536CA9L,1L,0xA8275BAEL,0UL},{0x479D400EL,0xDA3A84B1L,0x90EDD544L,0xB8AB05D5L}}},{{{0xC68AB631L,1L,-1L,0UL},{-6L,1L,0xA32A0C02L,0xAD61797EL},{0xE360852BL,4L,1L,0x4D126829L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{0xE360852BL,4L,1L,0x4D126829L},{0xE35D5D90L,6L,3L,0xB8A442F2L}},{{-1L,2L,-8L,18446744073709551613UL},{0x26B4E493L,0xC557317AL,0x73E46763L,0x1FBB9A9CL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{1L,0x0A54AE8BL,0xD06DB255L,9UL},{0x23095C3CL,0L,0x5BB0C7F2L,0xAC411777L},{9L,0x6C9D3DA5L,0x20033C81L,2UL}},{{0x8641BEBDL,5L,0L,1UL},{0x86D85517L,0L,0x38AF2192L,1UL},{1L,-8L,1L,0xF8A8D9B7L},{-9L,0x2E912FB0L,-1L,0xE8587384L},{1L,0L,1L,0x2393DFE8L},{6L,0L,0x4A91A3D0L,8UL},{0x5854D8CAL,-7L,6L,0x00ED8B3FL}},{{0x28AD0AF0L,0x66AB1420L,0x8501CA49L,0x058F739CL},{0x60554FBDL,0L,1L,0xF73882F6L},{-2L,-1L,0x4469BDECL,2UL},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{0L,0L,1L,0UL},{0xE49D2A59L,0x03C9D266L,1L,8UL},{-2L,0x4E37A2E3L,9L,0xDEAB2DD2L}}},{{{1L,0x3D1EDBCCL,-1L,0x30FB9C0DL},{0x5854D8CAL,-7L,6L,0x00ED8B3FL},{1L,0x11538544L,1L,0x7B8FE932L},{-9L,0x2E912FB0L,-1L,0xE8587384L},{0L,0xF2B86D1BL,0xAACF2229L,0xC57988D8L},{2L,-8L,-8L,0xC5226059L},{8L,0x7A12B0ECL,0L,0xC8A68674L}},{{0L,0x834A4F5EL,0xA8B94E11L,0x5E692D5BL},{-1L,0x27E8BC29L,5L,0x28E06257L},{0x23095C3CL,0L,0x5BB0C7F2L,0xAC411777L},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{-6L,3L,1L,0x526C9E8DL},{0x9C50E9BCL,-6L,-6L,0x52006156L},{0x60554FBDL,0L,1L,0xF73882F6L}},{{0xBFDF8410L,0L,-6L,0x2ED69965L},{-2L,0x30CAE9FAL,0x2E7B8546L,18446744073709551609UL},{2L,-8L,-8L,0xC5226059L},{-9L,0x2E912FB0L,-1L,0xE8587384L},{0L,3L,0xDB3B8CD6L,1UL},{1L,-8L,1L,0xF8A8D9B7L},{5L,0x1B38C87CL,0L,18446744073709551615UL}},{{1L,0L,0x3E1FE01AL,0x02C19944L},{0L,0L,-8L,18446744073709551615UL},{0xC405962DL,0x8881B111L,0x6B667A95L,18446744073709551610UL},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{0xC405962DL,0x8881B111L,0x6B667A95L,18446744073709551610UL},{0L,0L,-8L,18446744073709551615UL}}},{{{0xE7668186L,0xD21BD337L,-1L,0xAF6E0732L},{8L,0x7A12B0ECL,0L,0xC8A68674L},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-9L,0x2E912FB0L,-1L,0xE8587384L},{0xC68AB631L,1L,-1L,0UL},{0x73DEB0DBL,-1L,8L,0x3347D044L},{0x86D85517L,0L,0x38AF2192L,1UL}},{{0xA3E70895L,0x10A6DD69L,-1L,0x9066996FL},{9L,0x6C9D3DA5L,0x20033C81L,2UL},{5L,0x83702682L,0xE03F7815L,18446744073709551606UL},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{7L,0x4CD5CA7DL,0xACB2E3AAL,0x48860579L},{-2L,-1L,0x4469BDECL,2UL},{0x6E4C1C17L,-1L,-1L,0xEEA3ADEBL}},{{0x9E6926EBL,0x8262CBF2L,1L,18446744073709551615UL},{-3L,-5L,0x7631C048L,0xCC540EDCL},{6L,0L,0x4A91A3D0L,8UL},{-9L,0x2E912FB0L,-1L,0xE8587384L},{0x4E6A7687L,0x44B05ACFL,0xE1B1CD7FL,1UL},{-3L,0x2C2B6DE2L,0xBE021301L,18446744073709551612UL},{-2L,0x30CAE9FAL,0x2E7B8546L,18446744073709551609UL}},{{0L,-1L,0xA321833FL,0xF3BFE2B3L},{0x6E4C1C17L,-1L,-1L,0xEEA3ADEBL},{0x9C50E9BCL,-6L,-6L,0x52006156L},{0x772F823EL,0x36B2304EL,0x3EB405AAL,18446744073709551608UL},{-1L,0L,0x18003DBEL,18446744073709551615UL},{0L,0x70B2B337L,-4L,0x895C1B54L},{0x26B4E493L,0xC557317AL,0x73E46763L,0x1FBB9A9CL}}}};
+    int i, j, k;
+    g_21 &= (&g_21 != ((*l_25) = l_24));
+    return l_26[5][2][1];
+}
+
+
+
+
+/* ---------------------------------------- */
+int main (void)
+{
+    int i, j, k;
+    int print_hash_value = 0;
+    platform_main_begin();
+    func_1();
+    csmith_sink_ = g_12;
+    csmith_sink_ = g_19;
+    csmith_sink_ = g_21;
+    csmith_sink_ = g_27.f0;
+    csmith_sink_ = g_27.f1;
+    csmith_sink_ = g_27.f2;
+    csmith_sink_ = g_27.f3;
+    csmith_sink_ = g_52;
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            for (k = 0; k < 6; k++)
+            {
+                csmith_sink_ = g_56[i][j][k];
+            }
+        }
+    }
+    csmith_sink_ = g_62;
+    csmith_sink_ = g_65;
+    csmith_sink_ = g_74;
+    csmith_sink_ = g_85;
+    for (i = 0; i < 10; i++)
+    {
+        csmith_sink_ = g_86[i];
+    }
+    csmith_sink_ = g_87;
+    csmith_sink_ = g_89;
+    platform_main_end(0,0);
+    return 0;
+}
+
+/************************ statistics *************************
+XXX max struct depth: 2
+breakdown:
+   depth: 0, occurrence: 24
+   depth: 1, occurrence: 2
+   depth: 2, occurrence: 1
+XXX total union variables: 0
+
+XXX non-zero bitfields defined in structs: 7
+XXX zero bitfields defined in structs: 0
+XXX const bitfields defined in structs: 3
+XXX volatile bitfields defined in structs: 0
+XXX structs with bitfields in the program: 1
+breakdown:
+   indirect level: 0, occurrence: 1
+XXX full-bitfields structs in the program: 0
+breakdown:
+XXX times a bitfields struct's address is taken: 0
+XXX times a bitfields struct on LHS: 0
+XXX times a bitfields struct on RHS: 1
+XXX times a single bitfield on LHS: 1
+XXX times a single bitfield on RHS: 0
+
+XXX max expression depth: 15
+breakdown:
+   depth: 1, occurrence: 26
+   depth: 2, occurrence: 5
+   depth: 3, occurrence: 1
+   depth: 4, occurrence: 1
+   depth: 5, occurrence: 2
+   depth: 6, occurrence: 3
+   depth: 8, occurrence: 1
+   depth: 11, occurrence: 1
+   depth: 15, occurrence: 1
+
+XXX total number of pointers: 11
+
+XXX times a variable address is taken: 72
+XXX times a pointer is dereferenced on RHS: 2
+breakdown:
+   depth: 1, occurrence: 2
+XXX times a pointer is dereferenced on LHS: 5
+breakdown:
+   depth: 1, occurrence: 5
+XXX times a pointer is compared with null: 1
+XXX times a pointer is compared with address of another variable: 1
+XXX times a pointer is compared with another pointer: 1
+XXX times a pointer is qualified to be dereferenced: 48
+
+XXX max dereference level: 2
+breakdown:
+   level: 0, occurrence: 0
+   level: 1, occurrence: 12
+   level: 2, occurrence: 1
+XXX number of pointers point to pointers: 3
+XXX number of pointers point to scalars: 8
+XXX number of pointers point to structs: 0
+XXX percent of pointers has null in alias set: 45.5
+XXX average alias set size: 1.27
+
+XXX times a non-volatile is read: 51
+XXX times a non-volatile is write: 33
+XXX times a volatile is read: 0
+XXX    times read thru a pointer: 0
+XXX times a volatile is write: 0
+XXX    times written thru a pointer: 0
+XXX times a volatile is available for access: 0
+XXX percentage of non-volatile access: 100
+
+XXX forward jumps: 0
+XXX backward jumps: 0
+
+XXX stmts: 25
+XXX max block depth: 3
+breakdown:
+   depth: 0, occurrence: 5
+   depth: 1, occurrence: 7
+   depth: 2, occurrence: 8
+   depth: 3, occurrence: 5
+
+XXX percentage a fresh-made variable is used: 25.2
+XXX percentage an existing variable is used: 74.8
+FYI: the random generator makes assumptions about the integer size. See platform.info for more details.
+********************* end of statistics **********************/
+

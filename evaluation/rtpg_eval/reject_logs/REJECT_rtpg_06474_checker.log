@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+

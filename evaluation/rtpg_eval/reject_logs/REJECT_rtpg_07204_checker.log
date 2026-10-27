@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+

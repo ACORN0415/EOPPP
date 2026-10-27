@@ -1,0 +1,38 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (26 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_5'
+    - Write conflict: global variable 'l_39'
+    - Write conflict: global variable 'g_7'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_5'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_17'
+    - Write conflict: global variable 'l_39'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

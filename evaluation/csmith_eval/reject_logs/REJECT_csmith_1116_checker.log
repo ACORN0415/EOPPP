@@ -1,0 +1,14 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (2 violation(s))
+    - Unsupported type: pointer to const union U4
+    - Unsupported type: pointer to const union U4
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

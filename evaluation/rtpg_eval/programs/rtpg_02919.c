@@ -1,0 +1,21 @@
+int __helper(int n) {
+    if (n <= 1) return n;
+    return __helper(n - 1) + __helper(n - 2);
+}
+int __arr_2919[10];
+int test_func(void) {
+    int v0 = 41;
+    int v1 = 90;
+    int v2 = 38;
+    int v3 = 76;
+    int v4 = 97;
+    int i;
+    for (i = 0; i < 10; i++) { __arr_2919[i] = v2 + i; }
+    { int __j;
+      for (i = 0; i < 5; i++) {
+          for (__j = 0; __j < 5; __j++) { v1 = v1 + 1; }
+      } }
+    v3 = __helper(v3);
+    return v0;
+}
+int main(void) { return test_func(); }

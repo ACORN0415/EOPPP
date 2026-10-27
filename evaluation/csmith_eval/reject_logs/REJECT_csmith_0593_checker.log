@@ -1,0 +1,200 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (188 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: BitFieldRef (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0 * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint64_t *
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: struct/union
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to struct S3 * * *
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3 * *
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_65'
+    - Write conflict: global variable 'l_90'
+    - Write conflict: global variable 'g_24'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'l_62'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_27'
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_65'
+    - Write conflict: global variable 'l_91'
+    - Write conflict: global variable 'l_90'
+    - Write conflict: global variable 'g_68'
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'l_77'
+    - Write conflict: global variable 'l_77'
+    - Write conflict: global variable 'l_62'
+    - Write conflict: global variable 'l_62'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'g_85'
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'l_93'
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'g_29'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_27'
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_65'
+    - Write conflict: global variable 'l_91'
+    - Write conflict: global variable 'l_90'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_27'
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_65'
+    - Write conflict: global variable 'l_91'
+    - Write conflict: global variable 'l_90'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_37'
+    - Write conflict: global variable 'l_59'
+    - Write conflict: global variable 'l_63'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

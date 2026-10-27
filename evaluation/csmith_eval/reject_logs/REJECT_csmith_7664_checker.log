@@ -1,0 +1,32 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (20 violation(s))
+    - Unsupported operation: StringCst (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to uint32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const uint16_t * * * *
+    - Unsupported type: pointer to const uint16_t * * *
+    - Unsupported type: pointer to const uint16_t * *
+    - Unsupported type: pointer to const uint16_t *
+    - Unsupported type: pointer to const uint16_t
+    - Write conflict: global variable 'l_242'
+    - Write conflict: global variable 'l_242'
+    - Write conflict: global variable 'l_243'
+    - Write conflict: global variable 'l_261'
+    - Write conflict: global variable 'l_346'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

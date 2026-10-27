@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: <class 'gcc.TruncDivExpr'> (no Z-code mapping)
+    - Unsupported operation: RealCst (no Z-code mapping)
+    - Unsupported type: enum
+    - Unsupported type: float (float/double)
+    - Unsupported type: float (float/double)
+

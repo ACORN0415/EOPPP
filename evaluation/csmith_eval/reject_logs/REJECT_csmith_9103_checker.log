@@ -1,0 +1,93 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (81 violation(s))
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int8_t * const *
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int8_t * const
+    - Unsupported type: pointer to union U0 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int8_t * *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int8_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int8_t
+    - Call depth exceeded (max 2): func_1 -> func_11 -> safe_lshift_func_uint8_t_u_s
+    - Write conflict: global variable 'l_91'
+    - Write conflict: global variable 'l_99'
+    - Write conflict: global variable 'g_92'
+    - Write conflict: global variable 'g_94'
+    - Write conflict: global variable 'g_23'
+    - Write conflict: global variable 'g_98'
+    - Write conflict: global variable 'l_119'
+    - Write conflict: global variable 'g_24'
+    - Write conflict: global variable 'g_24'
+    - Write conflict: global variable 'g_120'
+    - Write conflict: global variable 'l_119'
+    - Write conflict: global variable 'g_144'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'g_23'
+    - Write conflict: global variable 'g_144'
+    - Write conflict: global variable 'l_151'
+    - Write conflict: global variable 'l_153'
+    - Write conflict: global variable 'g_144'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_91'
+    - Write conflict: global variable 'l_90'
+    - Write conflict: global variable 'l_93'
+    - Write conflict: global variable 'l_99'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

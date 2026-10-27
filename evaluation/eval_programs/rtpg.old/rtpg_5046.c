@@ -1,0 +1,90 @@
+// RTPG_5046: vars=73 stmts=4
+struct Data { int a; int b; };
+void test_func(void) {
+    int v0 = 35;
+    int v1 = 63;
+    int v2 = 93;
+    int v3 = 57;
+    int v4 = 27;
+    int v5 = 91;
+    int v6 = 80;
+    int v7 = 39;
+    int v8 = 95;
+    int v9 = 4;
+    int v10 = 19;
+    int v11 = 1;
+    int v12 = 48;
+    int v13 = 90;
+    int v14 = 100;
+    int v15 = 67;
+    int v16 = 80;
+    int v17 = 32;
+    int v18 = 46;
+    int v19 = 44;
+    int v20 = 12;
+    int v21 = 21;
+    int v22 = 84;
+    int v23 = 17;
+    int v24 = 62;
+    int v25 = 36;
+    int v26 = 1;
+    int v27 = 88;
+    int v28 = 42;
+    int v29 = 2;
+    int v30 = 67;
+    int v31 = 9;
+    int v32 = 12;
+    int v33 = 0;
+    int v34 = 75;
+    int v35 = 53;
+    int v36 = 50;
+    int v37 = 27;
+    int v38 = 81;
+    int v39 = 13;
+    int v40 = 41;
+    int v41 = 58;
+    int v42 = 55;
+    int v43 = 42;
+    int v44 = 64;
+    int v45 = 66;
+    int v46 = 66;
+    int v47 = 22;
+    int v48 = 56;
+    int v49 = 39;
+    int v50 = 65;
+    int v51 = 87;
+    int v52 = 89;
+    int v53 = 47;
+    int v54 = 56;
+    int v55 = 16;
+    int v56 = 69;
+    int v57 = 33;
+    int v58 = 46;
+    int v59 = 3;
+    int v60 = 91;
+    int v61 = 57;
+    int v62 = 91;
+    int v63 = 41;
+    int v64 = 41;
+    int v65 = 8;
+    int v66 = 12;
+    int v67 = 98;
+    int v68 = 72;
+    int v69 = 75;
+    int v70 = 9;
+    int v71 = 69;
+    int v72 = 28;
+    struct Data s; s.a = 16; s.b = 35720;
+    int i;
+    for (i = 0; i < 54; i++) {
+        v3 = v14 - -20;
+        v14 = v5;
+        v10 = v10 + 1;
+        v2 = v1 - 61;
+        s.a = s.a + s.b;
+    }
+done:
+    v3 = 0;
+}
+int main() { test_func(); return 0; }
+

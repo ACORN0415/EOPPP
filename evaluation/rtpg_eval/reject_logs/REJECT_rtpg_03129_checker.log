@@ -1,0 +1,13 @@
+======================================================================
+Function: test_func
+  Result: FAIL (9 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 8)
+    - Unsupported type: pointer to int
+    - Unsupported type: struct/union
+    - Unsupported memory operation: malloc() (dynamic allocation not supported)
+    - Unsupported memory operation: free() (dynamic allocation not supported)
+    - Undefined function call: malloc (cannot inline)
+    - Undefined function call: free (cannot inline)
+    - Write conflict: global variable '__s'
+

@@ -1,0 +1,14 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (2 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Write conflict: global variable 'g_3'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

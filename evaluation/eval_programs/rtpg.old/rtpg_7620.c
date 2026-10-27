@@ -1,0 +1,112 @@
+// RTPG_7620: vars=88 stmts=5
+int xn[32];
+int yo[32];
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 33;
+    int v1 = 6;
+    int v2 = 52;
+    int v3 = 35;
+    int v4 = 89;
+    int v5 = 88;
+    int v6 = 54;
+    int v7 = 60;
+    int v8 = 7;
+    int v9 = 88;
+    int v10 = 29;
+    int v11 = 10;
+    int v12 = 89;
+    int v13 = 34;
+    int v14 = 13;
+    int v15 = 49;
+    int v16 = 49;
+    int v17 = 57;
+    int v18 = 37;
+    int v19 = 36;
+    int v20 = 7;
+    int v21 = 35;
+    int v22 = 18;
+    int v23 = 76;
+    int v24 = 25;
+    int v25 = 70;
+    int v26 = 30;
+    int v27 = 98;
+    int v28 = 90;
+    int v29 = 14;
+    int v30 = 2;
+    int v31 = 83;
+    int v32 = 11;
+    int v33 = 0;
+    int v34 = 51;
+    int v35 = 77;
+    int v36 = 52;
+    int v37 = 46;
+    int v38 = 24;
+    int v39 = 93;
+    int v40 = 57;
+    int v41 = 85;
+    int v42 = 57;
+    int v43 = 5;
+    int v44 = 21;
+    int v45 = 11;
+    int v46 = 74;
+    int v47 = 71;
+    int v48 = 97;
+    int v49 = 24;
+    int v50 = 45;
+    int v51 = 92;
+    int v52 = 6;
+    int v53 = 99;
+    int v54 = 94;
+    int v55 = 46;
+    int v56 = 37;
+    int v57 = 99;
+    int v58 = 28;
+    int v59 = 90;
+    int v60 = 20;
+    int v61 = 55;
+    int v62 = 89;
+    int v63 = 94;
+    int v64 = 93;
+    int v65 = 69;
+    int v66 = 57;
+    int v67 = 41;
+    int v68 = 25;
+    int v69 = 11;
+    int v70 = 25;
+    int v71 = 94;
+    int v72 = 78;
+    int v73 = 32;
+    int v74 = 20;
+    int v75 = 39;
+    int v76 = 14;
+    int v77 = 56;
+    int v78 = 8;
+    int v79 = 91;
+    int v80 = 70;
+    int v81 = 4;
+    int v82 = 4;
+    int v83 = 48;
+    int v84 = 9;
+    int v85 = 66;
+    int v86 = 94;
+    int v87 = 24;
+    int *darr = (int *)malloc(64 * sizeof(int));
+    int i;
+    for (i = 0; i < 32; i++) {
+        v14 = xn[i];
+        v7 = v11 + v13;
+        v13 = v13;
+        v9 = v4;
+        v5 = v5 + 1;
+        v12 = v7;
+        darr[i] = v11;
+        if (v8 > 63) {
+        v13 = v13 + v11;
+        }
+        yo[i] = v5;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

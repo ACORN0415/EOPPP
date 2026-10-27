@@ -1,0 +1,107 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (95 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to union U1 * const *
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to union U1 * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_22 -> safe_div_func_int32_t_s_s
+    - Write conflict: global variable 'l_186'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_207'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'g_15'
+    - Write conflict: global variable 'g_194'
+    - Write conflict: global variable 'g_120'
+    - Write conflict: global variable 'g_203'
+    - Write conflict: global variable 'g_120'
+    - Write conflict: global variable 'g_206'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_175'
+    - Write conflict: global variable 'g_206'
+    - Write conflict: global variable 'l_207'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_33'
+    - Write conflict: global variable 'g_239'
+    - Write conflict: global variable 'l_235'
+    - Write conflict: global variable 'g_33'
+    - Write conflict: global variable 'l_186'
+    - Write conflict: global variable 'l_215'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

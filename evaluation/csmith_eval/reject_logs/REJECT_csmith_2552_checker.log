@@ -1,0 +1,110 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (98 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const *
+    - Unsupported type: pointer to int32_t * const * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint8_t * * *
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t
+    - Unsupported type: pointer to const int8_t *
+    - Unsupported type: pointer to int32_t * const *
+    - Write conflict: global variable 'l_120'
+    - Write conflict: global variable 'l_151'
+    - Write conflict: global variable 'l_242'
+    - Write conflict: global variable 'l_254'
+    - Write conflict: global variable 'l_425'
+    - Write conflict: global variable 'l_120'
+    - Write conflict: global variable 'l_151'
+    - Write conflict: global variable 'l_241'
+    - Write conflict: global variable 'l_242'
+    - Write conflict: global variable 'l_254'
+    - Write conflict: global variable 'l_425'
+    - Write conflict: global variable 'l_559'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

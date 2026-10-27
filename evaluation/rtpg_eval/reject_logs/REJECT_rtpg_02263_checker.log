@@ -1,0 +1,12 @@
+======================================================================
+Function: test_func
+  Result: FAIL (8 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int
+    - Unsupported type: pointer to int
+    - Unsupported memory operation: malloc() (dynamic allocation not supported)
+    - Unsupported memory operation: free() (dynamic allocation not supported)
+    - Recursion detected: test_func -> __helper -> __helper
+    - Write conflict: global variable 'v3'
+    - Write conflict: global variable 'v3'
+

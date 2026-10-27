@@ -1,0 +1,116 @@
+// RTPG_8215: vars=83 stmts=12
+int xn[32];
+int yo[32];
+struct Data { int a; int b; };
+void test_func(void) {
+    int v0 = 84;
+    int v1 = 10;
+    int v2 = 35;
+    int v3 = 44;
+    int v4 = 72;
+    int v5 = 97;
+    int v6 = 8;
+    int v7 = 74;
+    int v8 = 63;
+    int v9 = 23;
+    int v10 = 88;
+    int v11 = 79;
+    int v12 = 31;
+    int v13 = 43;
+    int v14 = 27;
+    int v15 = 51;
+    int v16 = 77;
+    int v17 = 5;
+    int v18 = 44;
+    int v19 = 96;
+    int v20 = 13;
+    int v21 = 24;
+    int v22 = 54;
+    int v23 = 97;
+    int v24 = 58;
+    int v25 = 92;
+    int v26 = 47;
+    int v27 = 50;
+    int v28 = 83;
+    int v29 = 96;
+    int v30 = 92;
+    int v31 = 72;
+    int v32 = 67;
+    int v33 = 59;
+    int v34 = 60;
+    int v35 = 38;
+    int v36 = 91;
+    int v37 = 79;
+    int v38 = 89;
+    int v39 = 57;
+    int v40 = 83;
+    int v41 = 28;
+    int v42 = 28;
+    int v43 = 98;
+    int v44 = 46;
+    int v45 = 26;
+    int v46 = 87;
+    int v47 = 2;
+    int v48 = 8;
+    int v49 = 59;
+    int v50 = 58;
+    int v51 = 85;
+    int v52 = 22;
+    int v53 = 41;
+    int v54 = 94;
+    int v55 = 31;
+    int v56 = 82;
+    int v57 = 12;
+    int v58 = 45;
+    int v59 = 88;
+    int v60 = 66;
+    int v61 = 21;
+    int v62 = 71;
+    int v63 = 48;
+    int v64 = 99;
+    int v65 = 19;
+    int v66 = 76;
+    int v67 = 26;
+    int v68 = 57;
+    int v69 = 58;
+    int v70 = 30;
+    int v71 = 12;
+    int v72 = 36;
+    int v73 = 72;
+    int v74 = 53;
+    int v75 = 94;
+    int v76 = 56;
+    int v77 = 70;
+    int v78 = 71;
+    int v79 = 41;
+    int v80 = 47;
+    int v81 = 99;
+    int v82 = 86;
+    struct Data s; s.a = 6; s.b = 46;
+    int i;
+    for (i = 0; i < 32; i++) {
+        v6 = xn[i];
+        v3 = v8 - v6;
+        v1 = v1 + 2;
+        v10 = v5 + v7;
+        v5 = v1 - -37;
+        v11 = v14;
+        v3 = v13;
+        v14 = v5;
+        v13 = v12 + v8;
+        v9 = v0 - v14;
+        v1 = v1 + 5;
+        v3 = v12 - v12;
+        v10 = v10 + 4;
+        s.a = s.a + s.b;
+        if (v9 > 9) goto done;
+        if (v0 != 30) {
+        v10 = v11 + v9;
+        }
+        yo[i] = v4;
+    }
+done:
+    v0 = 0;
+}
+int main() { test_func(); return 0; }
+

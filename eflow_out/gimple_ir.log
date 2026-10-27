@@ -24,29 +24,22 @@ Function: checkclkfibo  (GIMPLE SSA)
     if (cur_11 > curT_7)
 
   BB 4:
-    i_14 = i_1 + 1;
+    (empty)
 
   BB 5:
-    # i_1 = PHI <i_10(2), i_14(4)>
-    # p0_2 = PHI <p0_8(2), p0_13(4)>
-    # p1_3 = PHI <p1_9(2), p1_12(4)>
-    if (i_1 < iT_5)
+    i_14 = i_1 + 1;
 
   BB 6:
-    return;
+    # i_1 = PHI <i_10(2), i_14(5)>
+    # p0_2 = PHI <p0_8(2), p0_13(5)>
+    # p1_3 = PHI <p1_9(2), p1_12(5)>
+    if (i_1 < iT_5)
 
-======================================================================
-Function: checkclkfft  (GIMPLE SSA)
-======================================================================
-
-  BB 0:
+  BB 7:
     (empty)
 
-  BB 1:
-    (empty)
-
-  BB 2:
-    fft_transform ();
+  BB 8:
+    <L5>:
     return;
 
 ======================================================================
@@ -227,5 +220,9 @@ Function: checkclkfir  (GIMPLE SSA)
     if (i_65 <= 14)
 
   BB 8:
+    (empty)
+
+  BB 9:
+    <L6>:
     return;
 

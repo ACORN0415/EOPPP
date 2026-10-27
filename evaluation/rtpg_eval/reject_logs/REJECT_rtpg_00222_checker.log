@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+

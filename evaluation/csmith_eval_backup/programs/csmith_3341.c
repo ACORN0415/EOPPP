@@ -1,0 +1,227 @@
+/*
+ * This is a RANDOMLY GENERATED PROGRAM.
+ *
+ * Generator: csmith 2.3.0
+ * Git version: 30dccd7
+ * Options:   --seed 365019111 --no-checksum --no-argc --no-volatiles --max-funcs 2 --max-block-depth 3 --max-expr-complexity 4
+ * Seed:      365019111
+ */
+
+#include "csmith.h"
+
+volatile uint64_t csmith_sink_ = 0;
+
+static long __undefined;
+
+/* --- Struct/Union Declarations --- */
+struct S0 {
+   unsigned f0 : 18;
+   int16_t  f1;
+   int32_t  f2;
+   int64_t  f3;
+   uint16_t  f4;
+   int32_t  f5;
+   int8_t  f6;
+};
+
+#pragma pack(push)
+#pragma pack(1)
+struct S1 {
+   const unsigned f0 : 19;
+   unsigned f1 : 22;
+   const signed f2 : 4;
+   const signed f3 : 1;
+   signed f4 : 23;
+   unsigned f5 : 21;
+   const unsigned f6 : 27;
+   unsigned f7 : 8;
+   unsigned f8 : 6;
+};
+#pragma pack(pop)
+
+/* --- GLOBAL VARIABLES --- */
+static int32_t g_8[4][1] = {{6L},{0xB0E1B1B5L},{6L},{0xB0E1B1B5L}};
+static int32_t *g_7 = &g_8[1][0];
+static int32_t g_13 = 0x1A93826AL;
+static int32_t g_31 = 9L;
+static struct S1 g_33 = {328,1792,0,-0,530,820,7872,11,2};
+
+
+/* --- FORWARD DECLARATIONS --- */
+static int16_t  func_1(void);
+static int32_t * func_2(int32_t * p_3, const int64_t  p_4, uint32_t  p_5, int32_t * p_6);
+
+
+/* --- FUNCTIONS --- */
+/* ------------------------------------------ */
+/* 
+ * reads : g_7 g_8 g_13 g_31
+ * writes: g_13 g_31
+ */
+static int16_t  func_1(void)
+{ /* block id: 0 */
+    const int32_t l_9 = 0xE033C225L;
+    int32_t *l_10 = &g_8[1][0];
+    int32_t **l_37 = &l_10;
+    (*l_37) = func_2(g_7, l_9, ((void*)0 != l_10), l_10);
+    return g_13;
+}
+
+
+/* ------------------------------------------ */
+/* 
+ * reads : g_7 g_8 g_13 g_31
+ * writes: g_13 g_31
+ */
+static int32_t * func_2(int32_t * p_3, const int64_t  p_4, uint32_t  p_5, int32_t * p_6)
+{ /* block id: 1 */
+    struct S1 *l_32[2][6] = {{&g_33,&g_33,&g_33,&g_33,&g_33,&g_33},{&g_33,&g_33,&g_33,&g_33,&g_33,&g_33}};
+    int32_t l_36 = 0x7FF0BA59L;
+    int i, j;
+    for (p_5 = 0; (p_5 > 51); p_5 = safe_add_func_uint32_t_u_u(p_5, 1))
+    { /* block id: 4 */
+        uint32_t l_16 = 0xDBF0CF86L;
+        if ((*g_7))
+        { /* block id: 5 */
+            for (g_13 = 0; (g_13 == (-1)); --g_13)
+            { /* block id: 8 */
+                l_16++;
+            }
+        }
+        else
+        { /* block id: 11 */
+            struct S0 l_29[6][9][4] = {{{{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L}},{{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{352,0xC330L,1L,8L,65533UL,0x572090F9L,0L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}}},{{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}}},{{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}}},{{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}}},{{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}}},{{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L}},{{409,8L,0L,-1L,9UL,3L,0x20L},{409,8L,0L,-1L,9UL,3L,0x20L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}},{{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{409,8L,0L,-1L,9UL,3L,0x20L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{307,0x915EL,0x087C3CB8L,0x840EF1F3E16851CCLL,0xD681L,0xF8C547FCL,-3L},{500,0x4D91L,-9L,0x8737A30B91300D3BLL,0x1AD5L,1L,0xD3L}},{{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL}},{{443,0x783EL,0x6DE45221L,-10L,0x7CF5L,-10L,-1L},{444,6L,0xCB5CB1BEL,0L,65535UL,0xDFF90521L,0x6DL},{409,8L,0L,-1L,9UL,3L,0x20L},{9,-1L,-1L,1L,0x3780L,0x7777BAB6L,0xA1L}}}};
+            int i, j, k;
+            for (g_13 = 0; (g_13 >= 0); g_13 -= 1)
+            { /* block id: 14 */
+                uint32_t l_19[1][4] = {{4294967292UL,4294967292UL,4294967292UL,4294967292UL}};
+                int i, j;
+                --l_19[0][1];
+            }
+            for (g_13 = (-12); (g_13 >= (-15)); g_13--)
+            { /* block id: 19 */
+                int64_t l_28 = 8L;
+                int32_t *l_30 = &g_31;
+                struct S1 **l_34 = (void*)0;
+                struct S1 **l_35 = &l_32[0][4];
+                (*l_30) |= (((((safe_lshift_func_uint16_t_u_u(((((safe_mod_func_uint32_t_u_u(l_28, (l_29[5][8][0] , (*g_7)))) ^ (*g_7)) || 4294967295UL) | g_13), 10)) <= g_8[1][0]) != g_8[1][0]) & 0x82E93B6AL) || (-1L));
+                (*l_35) = l_32[1][4];
+                if (l_36)
+                    break;
+            }
+        }
+    }
+    return &g_8[1][0];
+}
+
+
+
+
+/* ---------------------------------------- */
+int main (void)
+{
+    int i, j;
+    int print_hash_value = 0;
+    platform_main_begin();
+    func_1();
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 1; j++)
+        {
+            csmith_sink_ = g_8[i][j];
+        }
+    }
+    csmith_sink_ = g_13;
+    csmith_sink_ = g_31;
+    csmith_sink_ = g_33.f0;
+    csmith_sink_ = g_33.f1;
+    csmith_sink_ = g_33.f2;
+    csmith_sink_ = g_33.f3;
+    csmith_sink_ = g_33.f4;
+    csmith_sink_ = g_33.f5;
+    csmith_sink_ = g_33.f6;
+    csmith_sink_ = g_33.f7;
+    csmith_sink_ = g_33.f8;
+    platform_main_end(0,0);
+    return 0;
+}
+
+/************************ statistics *************************
+XXX max struct depth: 1
+breakdown:
+   depth: 0, occurrence: 8
+   depth: 1, occurrence: 1
+XXX total union variables: 0
+
+XXX non-zero bitfields defined in structs: 10
+XXX zero bitfields defined in structs: 0
+XXX const bitfields defined in structs: 4
+XXX volatile bitfields defined in structs: 0
+XXX structs with bitfields in the program: 2
+breakdown:
+   indirect level: 0, occurrence: 1
+   indirect level: 1, occurrence: 1
+XXX full-bitfields structs in the program: 0
+breakdown:
+XXX times a bitfields struct's address is taken: 5
+XXX times a bitfields struct on LHS: 0
+XXX times a bitfields struct on RHS: 1
+XXX times a single bitfield on LHS: 0
+XXX times a single bitfield on RHS: 0
+
+XXX max expression depth: 11
+breakdown:
+   depth: 1, occurrence: 12
+   depth: 2, occurrence: 4
+   depth: 6, occurrence: 1
+   depth: 11, occurrence: 1
+
+XXX total number of pointers: 10
+
+XXX times a variable address is taken: 11
+XXX times a pointer is dereferenced on RHS: 3
+breakdown:
+   depth: 1, occurrence: 3
+XXX times a pointer is dereferenced on LHS: 3
+breakdown:
+   depth: 1, occurrence: 3
+XXX times a pointer is compared with null: 1
+XXX times a pointer is compared with address of another variable: 0
+XXX times a pointer is compared with another pointer: 0
+XXX times a pointer is qualified to be dereferenced: 9
+
+XXX max dereference level: 1
+breakdown:
+   level: 0, occurrence: 0
+   level: 1, occurrence: 13
+XXX number of pointers point to pointers: 3
+XXX number of pointers point to scalars: 6
+XXX number of pointers point to structs: 1
+XXX percent of pointers has null in alias set: 10
+XXX average alias set size: 1
+
+XXX times a non-volatile is read: 22
+XXX times a non-volatile is write: 12
+XXX times a volatile is read: 0
+XXX    times read thru a pointer: 0
+XXX times a volatile is write: 0
+XXX    times written thru a pointer: 0
+XXX times a volatile is available for access: 0
+XXX percentage of non-volatile access: 100
+
+XXX forward jumps: 0
+XXX backward jumps: 0
+
+XXX stmts: 13
+XXX max block depth: 3
+breakdown:
+   depth: 0, occurrence: 4
+   depth: 1, occurrence: 1
+   depth: 2, occurrence: 3
+   depth: 3, occurrence: 5
+
+XXX percentage a fresh-made variable is used: 50
+XXX percentage an existing variable is used: 50
+FYI: the random generator makes assumptions about the integer size. See platform.info for more details.
+********************* end of statistics **********************/
+

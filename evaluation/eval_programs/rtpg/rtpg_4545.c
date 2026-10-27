@@ -1,0 +1,106 @@
+// RTPG_4545: vars=86 stmts=2
+int xn[32];
+int yo[32];
+struct Node { int a; int b; };
+void test_func(void) {
+    int v0 = 92;
+    int v1 = 87;
+    int v2 = 20;
+    int v3 = 63;
+    int v4 = 66;
+    int v5 = 91;
+    int v6 = 23;
+    int v7 = 100;
+    int v8 = 63;
+    int v9 = 59;
+    int v10 = 67;
+    int v11 = 85;
+    int v12 = 7;
+    int v13 = 54;
+    int v14 = 14;
+    int v15 = 67;
+    int v16 = 67;
+    int v17 = 22;
+    int v18 = 49;
+    int v19 = 53;
+    int v20 = 0;
+    int v21 = 96;
+    int v22 = 69;
+    int v23 = 91;
+    int v24 = 34;
+    int v25 = 88;
+    int v26 = 35;
+    int v27 = 67;
+    int v28 = 84;
+    int v29 = 21;
+    int v30 = 61;
+    int v31 = 89;
+    int v32 = 23;
+    int v33 = 29;
+    int v34 = 44;
+    int v35 = 65;
+    int v36 = 53;
+    int v37 = 72;
+    int v38 = 3;
+    int v39 = 0;
+    int v40 = 44;
+    int v41 = 0;
+    int v42 = 30;
+    int v43 = 29;
+    int v44 = 81;
+    int v45 = 31;
+    int v46 = 35;
+    int v47 = 74;
+    int v48 = 39;
+    int v49 = 69;
+    int v50 = 20;
+    int v51 = 10;
+    int v52 = 80;
+    int v53 = 20;
+    int v54 = 83;
+    int v55 = 43;
+    int v56 = 60;
+    int v57 = 6;
+    int v58 = 86;
+    int v59 = 30;
+    int v60 = 7;
+    int v61 = 28;
+    int v62 = 53;
+    int v63 = 15;
+    int v64 = 34;
+    int v65 = 24;
+    int v66 = 47;
+    int v67 = 97;
+    int v68 = 64;
+    int v69 = 17;
+    int v70 = 31;
+    int v71 = 4;
+    int v72 = 53;
+    int v73 = 23;
+    int v74 = 79;
+    int v75 = 43;
+    int v76 = 69;
+    int v77 = 30;
+    int v78 = 91;
+    int v79 = 0;
+    int v80 = 40;
+    int v81 = 93;
+    int v82 = 99;
+    int v83 = 59;
+    int v84 = 81;
+    int v85 = 71;
+    struct Node s; s.a = 28; s.b = 18985;
+    int i;
+    for (i = 0; i < 32; i++) {
+        v13 = xn[i];
+        v2 = v2 + 5;
+        v6 = v10 + v8;
+        s.a = s.a + s.b;
+        if (v10 <= 37) {
+        v1 = v1 - 1;
+        }
+        yo[i] = v0;
+    }
+}
+int main() { test_func(); return 0; }
+

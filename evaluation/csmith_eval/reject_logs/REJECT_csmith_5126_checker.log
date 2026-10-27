@@ -1,0 +1,18 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (6 violation(s))
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to uint16_t
+    - Call depth exceeded (max 2): func_1 -> func_2 -> safe_div_func_int8_t_s_s
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,82 @@
+// RTPG_8764: vars=54 stmts=12
+void test_func(void) {
+    int res3 = 54556;
+    int res79 = -9;
+    int z90 = -17;
+    int z50 = 5;
+    int x62 = 60889;
+    int cnt9 = -15;
+    int dat67 = 99;
+    int b26 = 9;
+    int sum30 = 41;
+    int prev62 = -5;
+    int z54 = 30699;
+    int tmp77 = 86;
+    int sum98 = -30;
+    int v22 = 82;
+    int out93 = 30;
+    int v31 = -37;
+    int c57 = 33;
+    int a35 = 5;
+    int prev28 = 11051;
+    int acc61 = -20;
+    int c20 = 38;
+    int acc47 = 71;
+    int sum93 = -37;
+    int out81 = 8;
+    int a31 = 5;
+    int out72 = 27498;
+    int val69 = 0;
+    int cnt88 = 10;
+    int x6 = 6356;
+    int cur66 = 65;
+    int a94 = 54796;
+    int b15 = 16;
+    int b21 = 31;
+    int y9 = 11660;
+    int x42 = 39;
+    int c77 = 58565;
+    int tmp11 = 10;
+    int c74 = 33;
+    int x53 = -45;
+    int b58 = 25;
+    int dat0 = 96;
+    int tmp73 = 10;
+    int a38 = 46741;
+    int acc1 = 9;
+    int tmp92 = 40119;
+    int c45 = 65164;
+    int sum73 = 16645;
+    int a3 = 5;
+    int dat26 = 4;
+    int lo35 = -31;
+    int hi94 = 1;
+    int hi15 = 6;
+    int c48 = 43036;
+    int sum49 = 82;
+    int h0 = -17;
+    int sv0 = 0;
+    int h1 = 74;
+    int sv1 = 0;
+    int h2 = 8592;
+    int sv2 = 0;
+    int h3 = 5;
+    int sv3 = 0;
+    int i;
+    for (i = 0; i < 87; i++) {
+        hi15 = hi15 + 2;
+        hi94 = a3 - sum49;
+        sum93 = c20;
+        tmp92 = dat67 * 16;
+        dat67 = b21 * 49;
+        c48 = prev28 - 4;
+        out93 = b21 * 2820;
+        tmp11 = a31 - 3;
+        res3 = dat67 + x53;
+        y9 = sum98 + a3;
+        c20 = out81 + out81;
+        c57 = a35;
+    }
+}
+int main() { test_func(); return 0; }
+

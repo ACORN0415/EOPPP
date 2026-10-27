@@ -1,0 +1,37 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (25 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_mul_func_int8_t_s_s
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_202'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_68'
+    - Write conflict: global variable 'l_202'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_14'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

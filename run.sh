@@ -28,7 +28,7 @@ rm -f ./eflow_out/total_program_z.mif ./eflow_out/total_program_y.mif
 # GCC 실행 (stderr는 에러 로그로)
 gcc -fplugin=./gcc-python-plugin/python.so \
     -fplugin-arg-python-script=./main.py \
-    -O1 \
+    -O0 \
     "${SRC_PATH}" -c -o /dev/null 2>./eflow_out/error.log
 
 # 결과 확인

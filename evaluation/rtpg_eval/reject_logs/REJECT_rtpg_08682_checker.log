@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported control flow: switch-case (BB 5)
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+

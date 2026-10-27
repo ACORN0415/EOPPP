@@ -1,0 +1,7 @@
+======================================================================
+Function: test_func
+  Result: FAIL (3 violation(s))
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: enum
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+

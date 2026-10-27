@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Write conflict: global variable '__u'
+

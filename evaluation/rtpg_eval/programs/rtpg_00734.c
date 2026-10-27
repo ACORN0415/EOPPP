@@ -1,0 +1,19 @@
+int __helper(int n) {
+    if (n <= 1) return n;
+    return __helper(n - 1) + __helper(n - 2);
+}
+int __arr_734[10];
+int test_func(void) {
+    int v0 = 54;
+    int v1 = 54;
+    int v2 = 57;
+    int v3 = 63;
+    int i;
+    v3 = v3 - v1;
+    for (i = 0; i < 10; i++) { __arr_734[i] = v3 + i; }
+    v0 = __helper(v0);
+    float __f = 1.5f;
+    __f = __f + 1.0f;
+    return v0;
+}
+int main(void) { return test_func(); }

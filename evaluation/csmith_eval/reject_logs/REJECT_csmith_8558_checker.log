@@ -1,0 +1,17 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (5 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported type: pointer to struct S2
+    - Unsupported type: struct/union
+    - Write conflict: global variable 'g_12'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

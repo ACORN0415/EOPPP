@@ -1,0 +1,108 @@
+// RTPG_2392: vars=86 stmts=9
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int v0 = 99;
+    int v1 = 73;
+    int v2 = 82;
+    int v3 = 76;
+    int v4 = 36;
+    int v5 = 28;
+    int v6 = 25;
+    int v7 = 37;
+    int v8 = 19;
+    int v9 = 7;
+    int v10 = 4;
+    int v11 = 3;
+    int v12 = 95;
+    int v13 = 85;
+    int v14 = 88;
+    int v15 = 34;
+    int v16 = 7;
+    int v17 = 15;
+    int v18 = 77;
+    int v19 = 90;
+    int v20 = 71;
+    int v21 = 26;
+    int v22 = 25;
+    int v23 = 38;
+    int v24 = 31;
+    int v25 = 20;
+    int v26 = 26;
+    int v27 = 92;
+    int v28 = 57;
+    int v29 = 46;
+    int v30 = 8;
+    int v31 = 47;
+    int v32 = 50;
+    int v33 = 40;
+    int v34 = 8;
+    int v35 = 44;
+    int v36 = 2;
+    int v37 = 78;
+    int v38 = 31;
+    int v39 = 50;
+    int v40 = 30;
+    int v41 = 66;
+    int v42 = 2;
+    int v43 = 55;
+    int v44 = 44;
+    int v45 = 88;
+    int v46 = 59;
+    int v47 = 43;
+    int v48 = 74;
+    int v49 = 71;
+    int v50 = 84;
+    int v51 = 51;
+    int v52 = 60;
+    int v53 = 99;
+    int v54 = 3;
+    int v55 = 28;
+    int v56 = 21;
+    int v57 = 80;
+    int v58 = 66;
+    int v59 = 62;
+    int v60 = 38;
+    int v61 = 2;
+    int v62 = 40;
+    int v63 = 2;
+    int v64 = 25;
+    int v65 = 63;
+    int v66 = 24;
+    int v67 = 93;
+    int v68 = 18;
+    int v69 = 98;
+    int v70 = 59;
+    int v71 = 31;
+    int v72 = 59;
+    int v73 = 23;
+    int v74 = 19;
+    int v75 = 25;
+    int v76 = 41;
+    int v77 = 30;
+    int v78 = 58;
+    int v79 = 85;
+    int v80 = 60;
+    int v81 = 68;
+    int v82 = 96;
+    int v83 = 21;
+    int v84 = 7;
+    int v85 = 66;
+    int i;
+    for (i = 0; i < 53; i++) {
+        int j;
+        for (j = 0; j < 14; j++) {
+        v11 = v7 - -14;
+        v2 = v2 - 5;
+        v7 = v9 + v11;
+        v4 = v3 + v7;
+        v3 = v8 - 1;
+        v4 = v6 - 58582;
+        v11 = v5 + 78;
+        v9 = v10 + 100;
+        v9 = v3 - v9;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

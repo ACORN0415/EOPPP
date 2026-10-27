@@ -1,0 +1,16 @@
+int __helper(int n) {
+    if (n <= 1) return n;
+    return __helper(n - 1) + __helper(n - 2);
+}
+int test_func(void) {
+    int v0 = 2;
+    int v1 = 0;
+    int v2 = 69;
+    int v3 = 15;
+    int v4 = 33;
+    int i;
+    if (v2 > v0) { v2 = v0; }
+    v1 = __helper(v1);
+    return v0;
+}
+int main(void) { return test_func(); }

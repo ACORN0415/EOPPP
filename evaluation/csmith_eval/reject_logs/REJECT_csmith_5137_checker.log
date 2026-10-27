@@ -1,0 +1,32 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (20 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U0
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Write conflict: global variable 'l_205'
+    - Write conflict: global variable 'l_245'
+    - Write conflict: global variable 'l_183'
+    - Write conflict: global variable 'l_191'
+    - Write conflict: global variable 'l_205'
+    - Write conflict: global variable 'l_204'
+    - Write conflict: global variable 'l_245'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

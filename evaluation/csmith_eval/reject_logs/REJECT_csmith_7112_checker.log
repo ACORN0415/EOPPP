@@ -1,0 +1,18 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (6 violation(s))
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3 *
+    - Unsupported type: pointer to struct S3
+    - Unsupported type: pointer to struct S3
+    - Write conflict: global variable 'None'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,7 @@
+======================================================================
+Function: test_func
+  Result: FAIL (3 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 2)
+    - Write conflict: global variable '__u'
+

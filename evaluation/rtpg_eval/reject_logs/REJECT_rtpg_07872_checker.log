@@ -1,0 +1,8 @@
+======================================================================
+Function: test_func
+  Result: FAIL (4 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 4)
+    - Unsupported type: enum
+    - Write conflict: global variable '__u'
+

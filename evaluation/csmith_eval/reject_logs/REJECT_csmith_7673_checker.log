@@ -1,0 +1,35 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (23 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1 *
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: struct/union
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to struct S1
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_mul_func_uint16_t_u_u
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_63'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_10'
+    - Write conflict: global variable 'l_11'
+    - Write conflict: global variable 'l_63'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,34 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (22 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'g_20'
+    - Write conflict: global variable 'g_24'
+    - Write conflict: global variable 'g_22'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_4'
+    - Write conflict: global variable 'g_4'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_6'
+    - Write conflict: global variable 'l_2'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,107 @@
+// RTPG_2834: vars=86 stmts=6
+int xn[32];
+int yo[32];
+void test_func(void) {
+    int v0 = 4;
+    int v1 = 25;
+    int v2 = 69;
+    int v3 = 55;
+    int v4 = 63;
+    int v5 = 57;
+    int v6 = 26;
+    int v7 = 89;
+    int v8 = 41;
+    int v9 = 64;
+    int v10 = 0;
+    int v11 = 20;
+    int v12 = 91;
+    int v13 = 35;
+    int v14 = 11;
+    int v15 = 56;
+    int v16 = 68;
+    int v17 = 53;
+    int v18 = 10;
+    int v19 = 15;
+    int v20 = 28;
+    int v21 = 62;
+    int v22 = 73;
+    int v23 = 69;
+    int v24 = 37;
+    int v25 = 37;
+    int v26 = 77;
+    int v27 = 70;
+    int v28 = 65;
+    int v29 = 80;
+    int v30 = 9;
+    int v31 = 33;
+    int v32 = 63;
+    int v33 = 70;
+    int v34 = 100;
+    int v35 = 91;
+    int v36 = 32;
+    int v37 = 75;
+    int v38 = 70;
+    int v39 = 2;
+    int v40 = 33;
+    int v41 = 11;
+    int v42 = 55;
+    int v43 = 5;
+    int v44 = 39;
+    int v45 = 87;
+    int v46 = 70;
+    int v47 = 24;
+    int v48 = 87;
+    int v49 = 3;
+    int v50 = 73;
+    int v51 = 90;
+    int v52 = 86;
+    int v53 = 8;
+    int v54 = 16;
+    int v55 = 65;
+    int v56 = 34;
+    int v57 = 82;
+    int v58 = 28;
+    int v59 = 98;
+    int v60 = 54;
+    int v61 = 83;
+    int v62 = 48;
+    int v63 = 87;
+    int v64 = 39;
+    int v65 = 98;
+    int v66 = 59;
+    int v67 = 94;
+    int v68 = 6;
+    int v69 = 28;
+    int v70 = 100;
+    int v71 = 41;
+    int v72 = 27;
+    int v73 = 68;
+    int v74 = 59;
+    int v75 = 83;
+    int v76 = 34;
+    int v77 = 41;
+    int v78 = 73;
+    int v79 = 23;
+    int v80 = 43;
+    int v81 = 40;
+    int v82 = 24;
+    int v83 = 71;
+    int v84 = 67;
+    int v85 = 7;
+    int i;
+    for (i = 0; i < 32; i++) {
+        v10 = xn[i];
+        v12 = v7 + 56278;
+        v8 = v8 + 2;
+        v1 = v4 - v9;
+        v14 = v14 - 4;
+        v13 = v13 - 3;
+        v10 = v13 + v11;
+        if (v1 < 50) {
+        v1 = v6;
+        }
+        yo[i] = v10;
+    }
+}
+int main() { test_func(); return 0; }
+

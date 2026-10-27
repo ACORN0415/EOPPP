@@ -1,0 +1,199 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (187 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t * * const *
+    - Unsupported type: pointer to int32_t * * const * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * const * * *
+    - Unsupported type: pointer to int32_t * const * * *
+    - Unsupported type: pointer to int32_t * const * * *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int32_t * const * *
+    - Unsupported type: pointer to int32_t * const * *
+    - Unsupported type: pointer to int32_t * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t * * * * const
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * *
+    - Unsupported type: pointer to int32_t * * const *
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * const *
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t * * const
+    - Unsupported type: pointer to int32_t * * const *
+    - Call depth exceeded (max 2): func_1 -> func_9 -> safe_rshift_func_int8_t_s_s
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_36'
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'l_66'
+    - Write conflict: global variable 'g_17'
+    - Write conflict: global variable 'l_41'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'l_63'
+    - Write conflict: global variable 'g_53'
+    - Write conflict: global variable 'g_74'
+    - Write conflict: global variable 'l_41'
+    - Write conflict: global variable 'g_92'
+    - Write conflict: global variable 'l_41'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'l_63'
+    - Write conflict: global variable 'l_62'
+    - Write conflict: global variable 'l_41'
+    - Write conflict: global variable 'l_58'
+    - Write conflict: global variable 'l_63'
+    - Write conflict: global variable 'l_62'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_4'
+    - Write conflict: global variable 'l_36'
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'l_66'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

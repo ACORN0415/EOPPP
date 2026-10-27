@@ -1,0 +1,26 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (14 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t * * * const
+    - Write conflict: global variable 'l_104'
+    - Write conflict: global variable 'l_115'
+    - Write conflict: global variable 'l_104'
+    - Write conflict: global variable 'l_115'
+    - Write conflict: global variable 'l_152'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

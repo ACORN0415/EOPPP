@@ -1,0 +1,113 @@
+// RTPG_4976: vars=86 stmts=4
+int xn[64];
+int yo[64];
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 61;
+    int v1 = 29;
+    int v2 = 57;
+    int v3 = 24;
+    int v4 = 23;
+    int v5 = 1;
+    int v6 = 11;
+    int v7 = 55;
+    int v8 = 13;
+    int v9 = 29;
+    int v10 = 12;
+    int v11 = 58;
+    int v12 = 34;
+    int v13 = 96;
+    int v14 = 43;
+    int v15 = 34;
+    int v16 = 88;
+    int v17 = 92;
+    int v18 = 29;
+    int v19 = 98;
+    int v20 = 57;
+    int v21 = 27;
+    int v22 = 23;
+    int v23 = 77;
+    int v24 = 13;
+    int v25 = 19;
+    int v26 = 77;
+    int v27 = 19;
+    int v28 = 82;
+    int v29 = 70;
+    int v30 = 13;
+    int v31 = 68;
+    int v32 = 74;
+    int v33 = 65;
+    int v34 = 78;
+    int v35 = 17;
+    int v36 = 4;
+    int v37 = 93;
+    int v38 = 18;
+    int v39 = 31;
+    int v40 = 78;
+    int v41 = 46;
+    int v42 = 61;
+    int v43 = 61;
+    int v44 = 37;
+    int v45 = 46;
+    int v46 = 34;
+    int v47 = 15;
+    int v48 = 25;
+    int v49 = 94;
+    int v50 = 11;
+    int v51 = 74;
+    int v52 = 97;
+    int v53 = 80;
+    int v54 = 76;
+    int v55 = 37;
+    int v56 = 16;
+    int v57 = 97;
+    int v58 = 84;
+    int v59 = 5;
+    int v60 = 57;
+    int v61 = 88;
+    int v62 = 70;
+    int v63 = 71;
+    int v64 = 43;
+    int v65 = 93;
+    int v66 = 17;
+    int v67 = 45;
+    int v68 = 8;
+    int v69 = 87;
+    int v70 = 62;
+    int v71 = 2;
+    int v72 = 28;
+    int v73 = 17;
+    int v74 = 6;
+    int v75 = 64;
+    int v76 = 28;
+    int v77 = 63;
+    int v78 = 80;
+    int v79 = 28;
+    int v80 = 43;
+    int v81 = 66;
+    int v82 = 34;
+    int v83 = 29;
+    int v84 = 42;
+    int v85 = 65;
+    int *darr = (int *)malloc(32 * sizeof(int));
+    int h0 = -35;
+    int sv0 = 0;
+    int h1 = 4;
+    int sv1 = 0;
+    int i;
+    for (i = 0; i < 64; i++) {
+        v14 = xn[i];
+        v9 = v10 | v13;
+        v2 = v13 * 68;
+        v3 = v9 & v12;
+        v0 = v14 | v4;
+        darr[i] = v13;
+        if (v1 >= 27) {
+        v0 = v0 - 5;
+        }
+        yo[i] = v5;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

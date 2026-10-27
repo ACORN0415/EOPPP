@@ -1,0 +1,24 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (12 violation(s))
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U3
+    - Unsupported type: pointer to union U3 *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to union U3
+    - Unsupported type: pointer to union U3
+    - Unsupported type: struct/union
+    - Unsupported type: pointer to union U3
+    - Call depth exceeded (max 2): func_1 -> func_2 -> safe_rshift_func_uint8_t_u_u
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'l_23'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,96 @@
+// RTPG_5585: vars=60 stmts=12
+int xn[32];
+int yo[32];
+#include <stdlib.h>
+void test_func(void) {
+    int a65 = 4;
+    int c43 = 97;
+    int sum91 = 6;
+    int lo45 = 62192;
+    int cur55 = 25127;
+    int res14 = 22;
+    int dat98 = -7;
+    int out49 = 24;
+    int val12 = 26390;
+    int acc18 = 1;
+    int out14 = 19;
+    int dat41 = 98;
+    int prev62 = 8;
+    int lo20 = -9;
+    int lo98 = 0;
+    int out74 = 1;
+    int res81 = 9;
+    int z15 = 15425;
+    int v89 = 26;
+    int lo59 = 32516;
+    int x44 = 29;
+    int y92 = 38;
+    int prev53 = 46;
+    int hi64 = 40;
+    int hi20 = 51335;
+    int b48 = -50;
+    int x78 = 1;
+    int x18 = 13;
+    int x63 = 5;
+    int res86 = -11;
+    int lo63 = 4;
+    int out86 = 42866;
+    int x94 = 61251;
+    int lo10 = -29;
+    int v99 = 25;
+    int y51 = 62981;
+    int hi62 = 38422;
+    int b42 = 93;
+    int out35 = 21;
+    int x79 = 61;
+    int val70 = 9;
+    int val97 = 1;
+    int v27 = 10;
+    int acc70 = 48;
+    int a64 = 34537;
+    int val93 = 58844;
+    int b91 = 61970;
+    int hi37 = 5;
+    int z49 = 10;
+    int cnt76 = 27;
+    int v25 = 10;
+    int val44 = 4;
+    int v43 = 9326;
+    int dat85 = 18;
+    int res36 = 9;
+    int acc88 = 17637;
+    int cur83 = -13;
+    int z14 = 9;
+    int val17 = 97;
+    int v59 = 8;
+    int *darr = (int *)malloc(32 * sizeof(int));
+    int h0 = 5;
+    int sv0 = 0;
+    int h1 = 37;
+    int sv1 = 0;
+    int h2 = 17;
+    int sv2 = 0;
+    int h3 = 66;
+    int sv3 = 0;
+    int i;
+    for (i = 0; i < 32; i++) {
+        v99 = xn[i];
+        x63 = x63 - 4;
+        res36 = x79 * 5;
+        val44 = dat98 * 4;
+        hi64 = sum91 - 1;
+        v89 = v89 - 4;
+        x79 = v27 + lo20;
+        v59 = out14 - b48;
+        hi62 = y51 - dat41;
+        out74 = hi62 - sum91;
+        res36 = v43 - prev62;
+        acc18 = x18 - x18;
+        x63 = cnt76 * 15043;
+        darr[i] = z15;
+        yo[i] = dat41;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

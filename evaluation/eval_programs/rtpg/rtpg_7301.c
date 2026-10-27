@@ -1,0 +1,96 @@
+// RTPG_7301: vars=70 stmts=8
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 87;
+    int v1 = 13;
+    int v2 = 28;
+    int v3 = 30;
+    int v4 = 47;
+    int v5 = 49;
+    int v6 = 60;
+    int v7 = 82;
+    int v8 = 93;
+    int v9 = 43;
+    int v10 = 19;
+    int v11 = 54;
+    int v12 = 37;
+    int v13 = 57;
+    int v14 = 20;
+    int v15 = 76;
+    int v16 = 59;
+    int v17 = 43;
+    int v18 = 1;
+    int v19 = 20;
+    int v20 = 2;
+    int v21 = 7;
+    int v22 = 38;
+    int v23 = 49;
+    int v24 = 99;
+    int v25 = 76;
+    int v26 = 92;
+    int v27 = 32;
+    int v28 = 72;
+    int v29 = 60;
+    int v30 = 72;
+    int v31 = 49;
+    int v32 = 77;
+    int v33 = 82;
+    int v34 = 91;
+    int v35 = 75;
+    int v36 = 14;
+    int v37 = 49;
+    int v38 = 54;
+    int v39 = 80;
+    int v40 = 23;
+    int v41 = 84;
+    int v42 = 57;
+    int v43 = 35;
+    int v44 = 66;
+    int v45 = 50;
+    int v46 = 5;
+    int v47 = 90;
+    int v48 = 93;
+    int v49 = 20;
+    int v50 = 2;
+    int v51 = 39;
+    int v52 = 30;
+    int v53 = 25;
+    int v54 = 98;
+    int v55 = 98;
+    int v56 = 41;
+    int v57 = 29;
+    int v58 = 53;
+    int v59 = 16;
+    int v60 = 57;
+    int v61 = 5;
+    int v62 = 77;
+    int v63 = 41;
+    int v64 = 62;
+    int v65 = 80;
+    int v66 = 92;
+    int v67 = 99;
+    int v68 = 63;
+    int v69 = 37;
+    int *darr = (int *)malloc(32 * sizeof(int));
+    int h0 = 9;
+    int sv0 = 0;
+    int h1 = 47;
+    int sv1 = 0;
+    int h2 = 31;
+    int sv2 = 0;
+    int i;
+    for (i = 0; i < 51; i++) {
+        v8 = v8 - 4;
+        v9 = v14 * 21;
+        v12 = v8 * 4;
+        v9 = v5 / v10;
+        v3 = v11 - v3;
+        v0 = v14 - v14;
+        v14 = v2 & v4;
+        v4 = v9 * 2855;
+        darr[i] = v0;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

@@ -1,0 +1,108 @@
+// RTPG_3260: vars=89 stmts=2
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int v0 = 9;
+    int v1 = 12;
+    int v2 = 3;
+    int v3 = 26;
+    int v4 = 62;
+    int v5 = 55;
+    int v6 = 84;
+    int v7 = 5;
+    int v8 = 29;
+    int v9 = 84;
+    int v10 = 12;
+    int v11 = 70;
+    int v12 = 62;
+    int v13 = 74;
+    int v14 = 61;
+    int v15 = 76;
+    int v16 = 31;
+    int v17 = 99;
+    int v18 = 18;
+    int v19 = 20;
+    int v20 = 94;
+    int v21 = 87;
+    int v22 = 25;
+    int v23 = 28;
+    int v24 = 35;
+    int v25 = 76;
+    int v26 = 70;
+    int v27 = 46;
+    int v28 = 61;
+    int v29 = 25;
+    int v30 = 46;
+    int v31 = 18;
+    int v32 = 0;
+    int v33 = 41;
+    int v34 = 3;
+    int v35 = 73;
+    int v36 = 29;
+    int v37 = 85;
+    int v38 = 2;
+    int v39 = 51;
+    int v40 = 42;
+    int v41 = 27;
+    int v42 = 16;
+    int v43 = 54;
+    int v44 = 82;
+    int v45 = 61;
+    int v46 = 7;
+    int v47 = 36;
+    int v48 = 36;
+    int v49 = 88;
+    int v50 = 60;
+    int v51 = 21;
+    int v52 = 44;
+    int v53 = 86;
+    int v54 = 77;
+    int v55 = 84;
+    int v56 = 35;
+    int v57 = 60;
+    int v58 = 44;
+    int v59 = 33;
+    int v60 = 43;
+    int v61 = 23;
+    int v62 = 75;
+    int v63 = 61;
+    int v64 = 37;
+    int v65 = 40;
+    int v66 = 61;
+    int v67 = 50;
+    int v68 = 86;
+    int v69 = 86;
+    int v70 = 89;
+    int v71 = 57;
+    int v72 = 64;
+    int v73 = 9;
+    int v74 = 8;
+    int v75 = 77;
+    int v76 = 5;
+    int v77 = 46;
+    int v78 = 49;
+    int v79 = 21;
+    int v80 = 66;
+    int v81 = 82;
+    int v82 = 54;
+    int v83 = 26;
+    int v84 = 75;
+    int v85 = 83;
+    int v86 = 83;
+    int v87 = 41;
+    int v88 = 56;
+    int *ptr = &v12;
+    int i;
+    for (i = 0; i < 64; i++) {
+        v10 = xn[i];
+        v11 = v14 + 69;
+        v9 = v13 + v14;
+        *ptr = *ptr + 4;
+        if (v3 < -38) {
+        v14 = v1 + v7;
+        }
+        yo[i] = v6;
+    }
+}
+int main() { test_func(); return 0; }
+

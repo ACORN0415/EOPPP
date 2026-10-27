@@ -1,0 +1,9 @@
+======================================================================
+Function: test_func
+  Result: FAIL (5 violation(s))
+    - Unsupported control flow: switch-case (BB 5)
+    - Unsupported type: pointer to int
+    - Unsupported memory operation: malloc() (dynamic allocation not supported)
+    - Unsupported memory operation: free() (dynamic allocation not supported)
+    - Recursion detected: test_func -> __helper -> __helper
+

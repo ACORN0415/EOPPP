@@ -1,0 +1,186 @@
+/*
+ * This is a RANDOMLY GENERATED PROGRAM.
+ *
+ * Generator: csmith 2.3.0
+ * Git version: 30dccd7
+ * Options:   --seed 1910326059 --no-checksum --no-argc --no-volatiles --max-funcs 2 --max-block-depth 3 --max-expr-complexity 4
+ * Seed:      1910326059
+ */
+
+#include "csmith.h"
+
+volatile uint64_t csmith_sink_ = 0;
+
+static long __undefined;
+
+/* --- Struct/Union Declarations --- */
+/* --- GLOBAL VARIABLES --- */
+static int32_t g_2 = 0xB9B55BB2L;
+static int32_t g_20 = 0x64C7B7F6L;
+static int64_t g_30[6][10][1] = {{{0xA97B9B40DC3605A4LL},{1L},{0x5C681E8B0048F203LL},{(-5L)},{0x5C681E8B0048F203LL},{1L},{0xA97B9B40DC3605A4LL},{(-1L)},{0x25521BE81B992811LL},{0xCF5D4612A8C3F75BLL}},{{0xCF5D4612A8C3F75BLL},{0x25521BE81B992811LL},{(-1L)},{0xA97B9B40DC3605A4LL},{1L},{0x5C681E8B0048F203LL},{(-5L)},{0x5C681E8B0048F203LL},{1L},{0xA97B9B40DC3605A4LL}},{{(-1L)},{0x25521BE81B992811LL},{0xCF5D4612A8C3F75BLL},{0xCF5D4612A8C3F75BLL},{0x25521BE81B992811LL},{(-1L)},{0xA97B9B40DC3605A4LL},{1L},{0x5C681E8B0048F203LL},{(-5L)}},{{0x5C681E8B0048F203LL},{1L},{0xA97B9B40DC3605A4LL},{(-1L)},{0x25521BE81B992811LL},{0xCF5D4612A8C3F75BLL},{0xCF5D4612A8C3F75BLL},{0x25521BE81B992811LL},{(-1L)},{0xA97B9B40DC3605A4LL}},{{1L},{0x5C681E8B0048F203LL},{(-5L)},{0x5C681E8B0048F203LL},{1L},{0xA97B9B40DC3605A4LL},{(-10L)},{(-1L)},{0x5C681E8B0048F203LL},{0x5C681E8B0048F203LL}},{{(-1L)},{(-10L)},{(-5L)},{0xCCFF84D070B1DE00LL},{0x907242BEB92859F9LL},{1L},{0x907242BEB92859F9LL},{0xCCFF84D070B1DE00LL},{(-5L)},{(-10L)}}};
+
+
+/* --- FORWARD DECLARATIONS --- */
+static uint32_t  func_1(void);
+static int32_t * const  func_5(int32_t * p_6, int32_t  p_7, int8_t  p_8, int32_t * const  p_9, int32_t * p_10);
+
+
+/* --- FUNCTIONS --- */
+/* ------------------------------------------ */
+/* 
+ * reads : g_2 g_20
+ * writes: g_2 g_20 g_30
+ */
+static uint32_t  func_1(void)
+{ /* block id: 0 */
+    uint32_t l_14 = 0x81A7ECC2L;
+    for (g_2 = 28; (g_2 != (-5)); --g_2)
+    { /* block id: 3 */
+        int32_t *l_11 = &g_2;
+        int32_t *l_19 = &g_20;
+        int32_t **l_35 = (void*)0;
+        int32_t **l_36 = &l_11;
+        (*l_36) = func_5(l_11, ((((safe_mod_func_int8_t_s_s(l_14, (safe_mod_func_int32_t_s_s(((*l_19) |= (safe_mod_func_int16_t_s_s(g_2, l_14))), 0x4DE6F885L)))) != g_2) | l_14) , 0L), g_2, &g_2, &g_2);
+    }
+    return g_2;
+}
+
+
+/* ------------------------------------------ */
+/* 
+ * reads : g_2 g_20
+ * writes: g_20 g_30
+ */
+static int32_t * const  func_5(int32_t * p_6, int32_t  p_7, int8_t  p_8, int32_t * const  p_9, int32_t * p_10)
+{ /* block id: 5 */
+    int32_t *l_21[10] = {&g_2,(void*)0,(void*)0,(void*)0,(void*)0,&g_2,(void*)0,(void*)0,(void*)0,(void*)0};
+    int i;
+lbl_31:
+    l_21[9] = (void*)0;
+    for (p_7 = 0; (p_7 != (-2)); p_7--)
+    { /* block id: 9 */
+        uint64_t l_24[4][8][8] = {{{1UL,0UL,0x34FFDEABFD090D79LL,0x90EB1F0CFADBACD6LL,0x65F5C9B8DB370CC3LL,4UL,18446744073709551615UL,1UL},{0xAF03FA9A1804524BLL,2UL,0x4D9846C248BDD0C5LL,18446744073709551615UL,0x783518F4C6F44469LL,4UL,0x65F5C9B8DB370CC3LL,0x484382FD97811D02LL},{0x0A0CD95FF79FACD4LL,0x4DFC4B74E48EC3DFLL,0x8268A7991AD473CBLL,18446744073709551614UL,1UL,1UL,0x98B94BE3D0E72EE7LL,18446744073709551615UL},{0xBD8D46C64E719BA7LL,0x8928FFEA059E6156LL,18446744073709551615UL,0xCCBB24ADC9FE9A5ALL,0x4DFC4B74E48EC3DFLL,0xFE6C8CEE692D353ALL,0UL,0x61F9DA978833E6FCLL},{0x1AAF19195C588CB5LL,0x5F9BA4AEFC518F82LL,0x98B94BE3D0E72EE7LL,18446744073709551609UL,0x0D229656D2926A09LL,0x39FCB6EA41824674LL,18446744073709551614UL,18446744073709551615UL},{18446744073709551615UL,1UL,0x267C8CEAAF2C41E7LL,1UL,0UL,0x2A41536C745D07A0LL,0UL,0x2865603B64E3176ALL},{0x57CEC448071C3330LL,2UL,0x1AAF19195C588CB5LL,1UL,4UL,0x57CEC448071C3330LL,18446744073709551615UL,0xE99E855C71DA89A0LL},{8UL,0x61F9DA978833E6FCLL,18446744073709551615UL,18446744073709551615UL,0x8928FFEA059E6156LL,18446744073709551615UL,4UL,0xB766AA6F69A7C888LL}},{{0xD550032DC71837DELL,0xBD8D46C64E719BA7LL,18446744073709551615UL,0x083361826471B2A1LL,18446744073709551615UL,0xBD8D46C64E719BA7LL,0xD550032DC71837DELL,1UL},{18446744073709551615UL,18446744073709551615UL,0x4DFC4B74E48EC3DFLL,0x1AAF19195C588CB5LL,0xF95848308FAA83FBLL,0xE99E855C71DA89A0LL,0x2A41536C745D07A0LL,0x5F9BA4AEFC518F82LL},{18446744073709551615UL,18446744073709551615UL,0x90EB1F0CFADBACD6LL,1UL,0xF95848308FAA83FBLL,0x70A1EE3199F2DC87LL,18446744073709551615UL,0x083361826471B2A1LL},{18446744073709551615UL,0x8EF3352FB29D945ALL,18446744073709551615UL,0x5F9BA4AEFC518F82LL,18446744073709551615UL,0UL,1UL,18446744073709551615UL},{0xD550032DC71837DELL,4UL,18446744073709551615UL,1UL,0x8928FFEA059E6156LL,2UL,0x783518F4C6F44469LL,18446744073709551615UL},{8UL,18446744073709551615UL,0x61F9DA978833E6FCLL,3UL,4UL,0xC58D4CCF97A265D2LL,1UL,0x783518F4C6F44469LL},{0x57CEC448071C3330LL,1UL,0x3387DD7D552B8909LL,0x39FCB6EA41824674LL,0UL,0xE99E855C71DA89A0LL,18446744073709551615UL,0x3387DD7D552B8909LL},{18446744073709551615UL,0x551AD04870E7C4BDLL,18446744073709551613UL,0x90EB1F0CFADBACD6LL,0x0D229656D2926A09LL,1UL,1UL,18446744073709551615UL}},{{0x1AAF19195C588CB5LL,1UL,0x484382FD97811D02LL,0x98B94BE3D0E72EE7LL,0x4DFC4B74E48EC3DFLL,0xF697C72F71451CEELL,1UL,0x6065D6F9C2329B61LL},{0xBD8D46C64E719BA7LL,0x61F9DA978833E6FCLL,0x34FFDEABFD090D79LL,0x70A1EE3199F2DC87LL,1UL,0UL,1UL,1UL},{0x0A0CD95FF79FACD4LL,18446744073709551606UL,0x70A1EE3199F2DC87LL,0xB766AA6F69A7C888LL,0x783518F4C6F44469LL,1UL,1UL,0x783518F4C6F44469LL},{0xAF03FA9A1804524BLL,0x4DFC4B74E48EC3DFLL,0x4DFC4B74E48EC3DFLL,0xAF03FA9A1804524BLL,0x65F5C9B8DB370CC3LL,0x39FCB6EA41824674LL,0x98B94BE3D0E72EE7LL,4UL},{1UL,0UL,0xB766AA6F69A7C888LL,0xCCBB24ADC9FE9A5ALL,1UL,0x61F9DA978833E6FCLL,18446744073709551615UL,18446744073709551615UL},{0x34FFDEABFD090D79LL,1UL,0x083361826471B2A1LL,0x39FCB6EA41824674LL,18446744073709551615UL,18446744073709551615UL,8UL,3UL},{0x98B94BE3D0E72EE7LL,0x484382FD97811D02LL,1UL,0x1AAF19195C588CB5LL,0x70A1EE3199F2DC87LL,0x61F9DA978833E6FCLL,0x39FCB6EA41824674LL,0x551AD04870E7C4BDLL},{0x5F9BA4AEFC518F82LL,0x4DFC4B74E48EC3DFLL,18446744073709551615UL,1UL,0UL,0x5F9BA4AEFC518F82LL,1UL,0x4D9846C248BDD0C5LL}},{{0x90EB1F0CFADBACD6LL,0UL,0xE24E562A08D8D3B6LL,3UL,1UL,0x267C8CEAAF2C41E7LL,18446744073709551609UL,0x6065D6F9C2329B61LL},{0xE24E562A08D8D3B6LL,1UL,0UL,18446744073709551615UL,0xD550032DC71837DELL,4UL,18446744073709551615UL,0UL},{0x8268A7991AD473CBLL,0xD550032DC71837DELL,18446744073709551615UL,18446744073709551615UL,0x1AAF19195C588CB5LL,0x90EB1F0CFADBACD6LL,0xFE6C8CEE692D353ALL,0xB766AA6F69A7C888LL},{18446744073709551614UL,0x57CEC448071C3330LL,2UL,0x1AAF19195C588CB5LL,1UL,4UL,0x57CEC448071C3330LL,18446744073709551615UL},{0x4DFC4B74E48EC3DFLL,18446744073709551614UL,4UL,0x551AD04870E7C4BDLL,0x6065D6F9C2329B61LL,4UL,0x783518F4C6F44469LL,0UL},{0x083361826471B2A1LL,18446744073709551609UL,0xF697C72F71451CEELL,18446744073709551615UL,1UL,18446744073709551615UL,0xF697C72F71451CEELL,18446744073709551609UL},{0x4D9846C248BDD0C5LL,0x0A0CD95FF79FACD4LL,18446744073709551615UL,0UL,18446744073709551613UL,18446744073709551615UL,0xD550032DC71837DELL,0xF95848308FAA83FBLL},{0x2865603B64E3176ALL,0UL,0x267C8CEAAF2C41E7LL,0x6065D6F9C2329B61LL,0x4D9846C248BDD0C5LL,0x90EB1F0CFADBACD6LL,0xD550032DC71837DELL,0x267C8CEAAF2C41E7LL}}};
+        int32_t l_27 = 0xD8C04388L;
+        int i, j, k;
+        ++l_24[0][3][7];
+        if ((l_27 = ((void*)0 != p_10)))
+        { /* block id: 12 */
+            g_30[3][6][0] = (l_27 = (g_20 = (safe_sub_func_int64_t_s_s((g_2 > (&l_27 == &g_2)), g_20))));
+            if (g_20)
+                goto lbl_31;
+        }
+        else
+        { /* block id: 17 */
+            for (l_27 = 24; (l_27 != (-30)); l_27 = safe_sub_func_int16_t_s_s(l_27, 1))
+            { /* block id: 20 */
+                int32_t **l_34 = &l_21[5];
+                (*l_34) = &g_2;
+                (*l_34) = &g_2;
+            }
+        }
+        return l_21[9];
+    }
+    return &g_2;
+}
+
+
+
+
+/* ---------------------------------------- */
+int main (void)
+{
+    int i, j, k;
+    int print_hash_value = 0;
+    platform_main_begin();
+    func_1();
+    csmith_sink_ = g_2;
+    csmith_sink_ = g_20;
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            for (k = 0; k < 1; k++)
+            {
+                csmith_sink_ = g_30[i][j][k];
+            }
+        }
+    }
+    platform_main_end(0,0);
+    return 0;
+}
+
+/************************ statistics *************************
+XXX max struct depth: 0
+breakdown:
+   depth: 0, occurrence: 6
+XXX total union variables: 0
+
+XXX non-zero bitfields defined in structs: 0
+XXX zero bitfields defined in structs: 0
+XXX const bitfields defined in structs: 0
+XXX volatile bitfields defined in structs: 0
+XXX structs with bitfields in the program: 0
+breakdown:
+XXX full-bitfields structs in the program: 0
+breakdown:
+XXX times a bitfields struct's address is taken: 0
+XXX times a bitfields struct on LHS: 0
+XXX times a bitfields struct on RHS: 0
+XXX times a single bitfield on LHS: 0
+XXX times a single bitfield on RHS: 0
+
+XXX max expression depth: 13
+breakdown:
+   depth: 1, occurrence: 14
+   depth: 2, occurrence: 3
+   depth: 3, occurrence: 1
+   depth: 6, occurrence: 1
+   depth: 13, occurrence: 1
+
+XXX total number of pointers: 10
+
+XXX times a variable address is taken: 14
+XXX times a pointer is dereferenced on RHS: 0
+breakdown:
+XXX times a pointer is dereferenced on LHS: 4
+breakdown:
+   depth: 1, occurrence: 4
+XXX times a pointer is compared with null: 1
+XXX times a pointer is compared with address of another variable: 0
+XXX times a pointer is compared with another pointer: 1
+XXX times a pointer is qualified to be dereferenced: 54
+
+XXX max dereference level: 1
+breakdown:
+   level: 0, occurrence: 0
+   level: 1, occurrence: 19
+XXX number of pointers point to pointers: 3
+XXX number of pointers point to scalars: 7
+XXX number of pointers point to structs: 0
+XXX percent of pointers has null in alias set: 40
+XXX average alias set size: 1.6
+
+XXX times a non-volatile is read: 15
+XXX times a non-volatile is write: 17
+XXX times a volatile is read: 0
+XXX    times read thru a pointer: 0
+XXX times a volatile is write: 0
+XXX    times written thru a pointer: 0
+XXX times a volatile is available for access: 0
+XXX percentage of non-volatile access: 100
+
+XXX forward jumps: 0
+XXX backward jumps: 1
+
+XXX stmts: 14
+XXX max block depth: 3
+breakdown:
+   depth: 0, occurrence: 5
+   depth: 1, occurrence: 4
+   depth: 2, occurrence: 3
+   depth: 3, occurrence: 2
+
+XXX percentage a fresh-made variable is used: 20.7
+XXX percentage an existing variable is used: 79.3
+********************* end of statistics **********************/
+

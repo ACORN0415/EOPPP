@@ -1,0 +1,80 @@
+// RTPG_1545: vars=58 stmts=5
+int xn[32];
+int yo[32];
+struct Data { int a; int b; };
+void test_func(void) {
+    int a72 = 15525;
+    int z83 = 5;
+    int acc62 = 32;
+    int res24 = -2;
+    int prev8 = -23;
+    int cur55 = 42443;
+    int dat65 = 6;
+    int val54 = 86;
+    int hi78 = 22208;
+    int val20 = 8;
+    int dat48 = 8;
+    int cur87 = 27;
+    int a95 = 6515;
+    int y96 = 8;
+    int hi76 = 38;
+    int val66 = 36000;
+    int acc38 = -40;
+    int lo81 = 25646;
+    int hi30 = 8;
+    int lo99 = -34;
+    int acc58 = 7;
+    int hi7 = 28;
+    int v98 = 34;
+    int b56 = 10935;
+    int tmp26 = 37;
+    int sum62 = 33;
+    int out79 = 16655;
+    int x35 = 2210;
+    int cnt93 = -18;
+    int dat18 = 77;
+    int c39 = 7630;
+    int z43 = 72;
+    int z13 = 8;
+    int y31 = 66;
+    int z84 = -18;
+    int sum71 = 11;
+    int acc70 = -47;
+    int hi51 = 68;
+    int val57 = 63396;
+    int x64 = 21;
+    int val39 = 30;
+    int cur67 = 43;
+    int cnt58 = 12;
+    int a61 = 9;
+    int a39 = 42;
+    int tmp87 = 86;
+    int a87 = -3;
+    int sum8 = 16;
+    int prev89 = 72;
+    int prev91 = 7;
+    int acc0 = 66;
+    int cnt56 = 5;
+    int cnt16 = 100;
+    int b77 = 47;
+    int dat73 = 47;
+    int cur60 = 1;
+    int dat29 = 24796;
+    int acc82 = 32872;
+    struct Data s; s.a = 28890; s.b = 28;
+    int *ptr = &hi30;
+    int i;
+    for (i = 0; i < 32; i++) {
+        acc82 = xn[i];
+        prev8 = acc58 + z13;
+        sum62 = dat29 - 46;
+        prev89 = cur60;
+        tmp87 = x35;
+        cur87 = hi76 + 32358;
+        *ptr = *ptr + 2;
+        s.a = s.a + s.b;
+        yo[i] = acc0;
+    }
+}
+int main() { test_func(); return 0; }
+

@@ -1,0 +1,81 @@
+// RTPG_9363: vars=59 stmts=6
+int xn[16];
+int yo[16];
+enum State { GREEN, RED, SLOW };
+void test_func(void) {
+    int dat80 = 38;
+    int dat26 = 17;
+    int out69 = 0;
+    int a13 = 9;
+    int v72 = 9;
+    int a2 = 60270;
+    int y55 = 55917;
+    int c97 = 55042;
+    int out11 = -37;
+    int x89 = 9;
+    int tmp95 = 15;
+    int z9 = 4;
+    int cur21 = -29;
+    int cnt38 = 7;
+    int prev95 = 8;
+    int prev78 = 3;
+    int c35 = 53867;
+    int val95 = 6;
+    int z60 = 63;
+    int hi5 = 0;
+    int z78 = 7;
+    int v71 = 39606;
+    int out28 = 100;
+    int dat4 = 2;
+    int v92 = 57357;
+    int res30 = -15;
+    int hi63 = 35979;
+    int dat38 = 3;
+    int cnt65 = 10;
+    int val89 = 73;
+    int a37 = 25;
+    int sum23 = 68;
+    int dat24 = 54;
+    int sum84 = 9;
+    int val57 = 43;
+    int c77 = 44;
+    int z76 = 10352;
+    int b71 = 1;
+    int sum54 = 58155;
+    int y95 = 67;
+    int res35 = 56760;
+    int dat66 = 26;
+    int prev98 = 30;
+    int cnt97 = 26655;
+    int dat58 = -18;
+    int val61 = 10;
+    int prev89 = 53;
+    int sum45 = 6;
+    int dat19 = 10;
+    int cur80 = 51308;
+    int dat10 = 17;
+    int res78 = 3622;
+    int sum69 = 4;
+    int cur63 = -11;
+    int z28 = 52811;
+    int res41 = 14;
+    int b37 = 35764;
+    int a33 = 9;
+    int z46 = -41;
+    enum State st = GREEN;
+    int *ptr = &sum84;
+    int i;
+    for (i = 0; i < 16; i++) {
+        a2 = xn[i];
+        c77 = c77 + 2;
+        a33 = z9 + dat19;
+        y55 = sum84;
+        y55 = y55 + 2;
+        sum23 = sum23 + 1;
+        dat19 = dat19 + 4;
+        *ptr = *ptr + 1;
+        yo[i] = sum54;
+    }
+}
+int main() { test_func(); return 0; }
+

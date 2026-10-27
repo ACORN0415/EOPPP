@@ -5,8 +5,8 @@ Function: checkclkfibo
   has_mac: False
   has_shift: True
   reg_map (9 entries):
-    r7    cond_res_0           type=cond   val=4
-    r8    cond_res_1           type=cond   val=4
+    r7    cond_res_0           type=cond   val=2
+    r8    cond_res_1           type=cond   val=2
     r6    cst_1                type=const  val=1
     r0    cur                  type=var    val=0
     r1    curT                 type=var    val=-100

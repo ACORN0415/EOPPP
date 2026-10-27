@@ -1,0 +1,15 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (3 violation(s))
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'g_3'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,76 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (64 violation(s))
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int64_t
+    - Unsupported type: pointer to const int64_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1 *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to const int64_t *
+    - Unsupported type: pointer to const int64_t *
+    - Unsupported type: pointer to const int64_t *
+    - Unsupported type: pointer to const int64_t *
+    - Unsupported type: pointer to const int64_t * *
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to struct S2
+    - Unsupported type: pointer to const int64_t
+    - Unsupported type: pointer to const int64_t *
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_mul_func_uint8_t_u_u
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_54'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'g_28'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_57'
+    - Write conflict: global variable 'g_58'
+    - Write conflict: global variable 'l_13'
+    - Write conflict: global variable 'l_46'
+    - Write conflict: global variable 'l_57'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'g_67'
+    - Write conflict: global variable 'l_55'
+    - Write conflict: global variable 'l_54'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

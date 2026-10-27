@@ -1,0 +1,108 @@
+// RTPG_5194: vars=92 stmts=6
+int xn[64];
+int yo[64];
+void test_func(void) {
+    int v0 = 70;
+    int v1 = 1;
+    int v2 = 22;
+    int v3 = 85;
+    int v4 = 79;
+    int v5 = 89;
+    int v6 = 94;
+    int v7 = 94;
+    int v8 = 60;
+    int v9 = 86;
+    int v10 = 19;
+    int v11 = 5;
+    int v12 = 79;
+    int v13 = 23;
+    int v14 = 34;
+    int v15 = 79;
+    int v16 = 13;
+    int v17 = 49;
+    int v18 = 34;
+    int v19 = 74;
+    int v20 = 21;
+    int v21 = 58;
+    int v22 = 64;
+    int v23 = 98;
+    int v24 = 10;
+    int v25 = 6;
+    int v26 = 45;
+    int v27 = 5;
+    int v28 = 50;
+    int v29 = 70;
+    int v30 = 58;
+    int v31 = 84;
+    int v32 = 28;
+    int v33 = 28;
+    int v34 = 31;
+    int v35 = 25;
+    int v36 = 37;
+    int v37 = 82;
+    int v38 = 82;
+    int v39 = 32;
+    int v40 = 75;
+    int v41 = 72;
+    int v42 = 89;
+    int v43 = 34;
+    int v44 = 38;
+    int v45 = 75;
+    int v46 = 11;
+    int v47 = 19;
+    int v48 = 93;
+    int v49 = 33;
+    int v50 = 77;
+    int v51 = 59;
+    int v52 = 48;
+    int v53 = 87;
+    int v54 = 79;
+    int v55 = 56;
+    int v56 = 79;
+    int v57 = 3;
+    int v58 = 40;
+    int v59 = 48;
+    int v60 = 10;
+    int v61 = 6;
+    int v62 = 84;
+    int v63 = 26;
+    int v64 = 32;
+    int v65 = 63;
+    int v66 = 2;
+    int v67 = 5;
+    int v68 = 54;
+    int v69 = 44;
+    int v70 = 46;
+    int v71 = 7;
+    int v72 = 66;
+    int v73 = 82;
+    int v74 = 52;
+    int v75 = 47;
+    int v76 = 77;
+    int v77 = 33;
+    int v78 = 25;
+    int v79 = 29;
+    int v80 = 82;
+    int v81 = 19;
+    int v82 = 37;
+    int v83 = 70;
+    int v84 = 10;
+    int v85 = 53;
+    int v86 = 53;
+    int v87 = 31;
+    int v88 = 39;
+    int v89 = 0;
+    int v90 = 86;
+    int v91 = 30;
+    int i;
+    for (i = 0; i < 62; i++) {
+        switch (v12) {
+            case 0: v9 = 34; break;
+            case 1: v2 = 61567; break;
+            default: break;
+        }
+        v12 = v12 + 1;
+    }
+}
+int main() { test_func(); return 0; }
+

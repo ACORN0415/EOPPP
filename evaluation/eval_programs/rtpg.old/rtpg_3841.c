@@ -1,0 +1,84 @@
+// RTPG_3841: vars=60 stmts=5
+struct Pair { int a; int b; };
+void test_func(void) {
+    int dat32 = 54;
+    int out85 = 27074;
+    int a67 = -11;
+    int a72 = 29688;
+    int cnt18 = 29059;
+    int dat34 = 2;
+    int dat51 = 43173;
+    int sum64 = 49;
+    int b74 = 20;
+    int hi58 = 9;
+    int sum35 = -29;
+    int hi78 = 7;
+    int res13 = 1;
+    int b27 = 8;
+    int lo90 = -14;
+    int prev66 = 16;
+    int cnt33 = 62803;
+    int b5 = 50;
+    int v85 = 84;
+    int val10 = 37;
+    int hi98 = 8;
+    int v35 = 5;
+    int acc47 = 4;
+    int y74 = 66;
+    int tmp47 = 66;
+    int z60 = 5;
+    int hi99 = 79;
+    int cur82 = 10;
+    int hi68 = 24;
+    int prev20 = 93;
+    int val81 = 7;
+    int val43 = 24242;
+    int y11 = 48173;
+    int tmp56 = -18;
+    int x75 = 8;
+    int cnt85 = 18;
+    int v1 = 19;
+    int res90 = 7;
+    int dat92 = 12;
+    int hi10 = -19;
+    int out44 = 56;
+    int z11 = 61;
+    int x42 = 57178;
+    int lo0 = 100;
+    int cnt67 = 0;
+    int hi38 = 34040;
+    int out94 = 18;
+    int cnt95 = -3;
+    int z49 = -4;
+    int x1 = -24;
+    int z18 = 4;
+    int cnt74 = 11;
+    int dat3 = 67;
+    int a57 = 2;
+    int v44 = -23;
+    int sum27 = 71;
+    int cur60 = -35;
+    int a84 = 6;
+    int b28 = 33276;
+    int cur4 = 21812;
+    struct Pair s; s.a = 36144; s.b = 63;
+    int h0 = 9209;
+    int sv0 = 0;
+    int h1 = 2;
+    int sv1 = 0;
+    int h2 = 17719;
+    int sv2 = 0;
+    int h3 = 62179;
+    int sv3 = 0;
+    int i;
+    for (i = 0; i < 13; i++) {
+        v35 = val81 - sum35;
+        out44 = tmp47 * 56002;
+        z49 = dat32 + val10;
+        lo0 = hi58;
+        b74 = b27 * 4;
+        s.a = s.a + s.b;
+    }
+}
+int main() { test_func(); return 0; }
+

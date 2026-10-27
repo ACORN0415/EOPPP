@@ -1,0 +1,103 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (91 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitIorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint64_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int64_t
+    - Unsupported type: pointer to int8_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int64_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int64_t
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'g_4'
+    - Write conflict: global variable 'l_18'
+    - Write conflict: global variable 'g_5'
+    - Write conflict: global variable 'g_12'
+    - Write conflict: global variable 'g_19'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_18'
+    - Write conflict: global variable 'g_4'
+    - Write conflict: global variable 'g_25'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'g_11'
+    - Write conflict: global variable 'g_10'
+    - Write conflict: global variable 'g_49'
+    - Write conflict: global variable 'l_57'
+    - Write conflict: global variable 'l_57'
+    - Write conflict: global variable 'g_49'
+    - Write conflict: global variable 'l_75'
+    - Write conflict: global variable 'g_49'
+    - Write conflict: global variable 'l_48'
+    - Write conflict: global variable 'l_61'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'l_6'
+    - Write conflict: global variable 'l_21'
+    - Write conflict: global variable 'l_23'
+    - Write conflict: global variable 'g_3'
+    - Write conflict: global variable 'l_2'
+    - Write conflict: global variable 'l_67'
+    - Write conflict: global variable 'l_66'
+    - Write conflict: global variable 'l_88'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

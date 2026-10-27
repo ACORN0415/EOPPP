@@ -1,0 +1,10 @@
+======================================================================
+Function: test_func
+  Result: FAIL (6 violation(s))
+    - Unsupported control flow: switch-case (BB 8)
+    - Unsupported type: pointer to int
+    - Unsupported memory operation: malloc() (dynamic allocation not supported)
+    - Unsupported memory operation: free() (dynamic allocation not supported)
+    - Undefined function call: malloc (cannot inline)
+    - Undefined function call: free (cannot inline)
+

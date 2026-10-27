@@ -1,0 +1,204 @@
+/*
+ * This is a RANDOMLY GENERATED PROGRAM.
+ *
+ * Generator: csmith 2.3.0
+ * Git version: 30dccd7
+ * Options:   --seed 299403984 --no-checksum --no-argc --no-volatiles --max-funcs 2 --max-block-depth 3 --max-expr-complexity 4
+ * Seed:      299403984
+ */
+
+#include "csmith.h"
+
+volatile uint64_t csmith_sink_ = 0;
+
+static long __undefined;
+
+/* --- Struct/Union Declarations --- */
+union U0 {
+   int8_t * f0;
+   uint64_t  f1;
+   int32_t  f2;
+};
+
+/* --- GLOBAL VARIABLES --- */
+static int16_t g_2[4][3] = {{0x38ECL,(-8L),0L},{0xC69AL,(-8L),0xC69AL},{0x82EAL,0x38ECL,0L},{0x82EAL,0x82EAL,0x38ECL}};
+static int32_t g_5 = 1L;
+static int32_t g_7 = 0xB8575526L;
+static int64_t g_8[2] = {0L,0L};
+static uint64_t g_9 = 6UL;
+static union U0 g_18 = {0};
+static int32_t g_27 = 1L;
+static int64_t g_28[6][1][5] = {{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}},{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}},{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}},{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}},{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}},{{0x94A2283564F69674LL,0x94A2283564F69674LL,(-7L),0L,(-7L)}}};
+static uint16_t g_29[4][4][4] = {{{65526UL,0UL,0xE68BL,0UL},{65535UL,6UL,0xE68BL,0x715BL},{0UL,0UL,0UL,0UL},{0UL,0xE68BL,65535UL,0UL}},{{65535UL,0UL,0x715BL,0x715BL},{6UL,6UL,0UL,0UL},{6UL,0xE68BL,0x715BL,6UL},{65535UL,0UL,65535UL,0x715BL}},{{0UL,0UL,0UL,6UL},{0UL,0xE68BL,0xE68BL,0UL},{65535UL,6UL,0xE68BL,0x715BL},{0UL,0UL,0UL,0UL}},{{0UL,0xE68BL,65535UL,0UL},{65535UL,0UL,0x715BL,0x715BL},{6UL,6UL,0UL,0UL},{6UL,0xE68BL,0x715BL,6UL}}};
+
+
+/* --- FORWARD DECLARATIONS --- */
+static int16_t  func_1(void);
+static int32_t  func_12(int32_t * const  p_13, const int8_t  p_14, int64_t  p_15, uint64_t  p_16, union U0  p_17);
+
+
+/* --- FUNCTIONS --- */
+/* ------------------------------------------ */
+/* 
+ * reads : g_9 g_7 g_18 g_29 g_18.f2 g_28
+ * writes: g_9 g_18.f2 g_29 g_5
+ */
+static int16_t  func_1(void)
+{ /* block id: 0 */
+    int32_t *l_3 = (void*)0;
+    int32_t *l_4 = &g_5;
+    int32_t *l_6[7][9][4] = {{{(void*)0,&g_5,&g_5,&g_5},{&g_5,(void*)0,&g_5,&g_5},{&g_5,&g_5,(void*)0,&g_5},{&g_5,&g_5,(void*)0,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{&g_5,&g_5,&g_5,&g_5},{&g_5,(void*)0,(void*)0,&g_5},{(void*)0,&g_5,(void*)0,&g_5}},{{&g_5,&g_5,&g_5,&g_5},{(void*)0,&g_5,&g_5,&g_5},{(void*)0,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,(void*)0,&g_5},{(void*)0,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,(void*)0,(void*)0,&g_5}},{{&g_5,&g_5,(void*)0,(void*)0},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{(void*)0,(void*)0,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{(void*)0,&g_5,&g_5,&g_5},{(void*)0,(void*)0,&g_5,&g_5}},{{&g_5,&g_5,&g_5,&g_5},{(void*)0,&g_5,&g_5,(void*)0},{&g_5,(void*)0,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{&g_5,&g_5,(void*)0,&g_5},{(void*)0,(void*)0,&g_5,&g_5}},{{(void*)0,(void*)0,(void*)0,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,(void*)0,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5},{&g_5,(void*)0,&g_5,&g_5},{&g_5,(void*)0,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{(void*)0,&g_5,&g_5,&g_5}},{{&g_5,&g_5,&g_5,(void*)0},{(void*)0,&g_5,&g_5,&g_5},{&g_5,&g_5,(void*)0,&g_5},{&g_5,&g_5,&g_5,&g_5},{(void*)0,(void*)0,(void*)0,&g_5},{&g_5,(void*)0,&g_5,&g_5},{&g_5,&g_5,&g_5,(void*)0},{&g_5,(void*)0,&g_5,&g_5},{&g_5,(void*)0,&g_5,&g_5}},{{&g_5,&g_5,(void*)0,&g_5},{(void*)0,&g_5,&g_5,&g_5},{&g_5,(void*)0,(void*)0,&g_5},{&g_5,(void*)0,&g_5,(void*)0},{(void*)0,&g_5,&g_5,&g_5},{&g_5,(void*)0,&g_5,(void*)0},{(void*)0,(void*)0,&g_5,(void*)0},{&g_5,&g_5,&g_5,&g_5},{&g_5,&g_5,&g_5,&g_5}}};
+    int i, j, k;
+    ++g_9;
+    (*l_4) = func_12(l_6[0][1][0], g_7, g_7, g_7, g_18);
+    return g_28[0][0][4];
+}
+
+
+/* ------------------------------------------ */
+/* 
+ * reads : g_9 g_29 g_18.f2
+ * writes: g_9 g_18.f2 g_29
+ */
+static int32_t  func_12(int32_t * const  p_13, const int8_t  p_14, int64_t  p_15, uint64_t  p_16, union U0  p_17)
+{ /* block id: 2 */
+    int8_t l_19 = 1L;
+    int32_t *l_21 = &g_18.f2;
+    int32_t *l_22 = (void*)0;
+    int32_t *l_23 = &g_18.f2;
+    int32_t *l_24 = &g_18.f2;
+    int32_t *l_25[1];
+    int64_t l_26[1][5][8] = {{{0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL},{0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL},{0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL},{0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL},{0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL,0x5F5AB95DFEA44E0CLL}}};
+    int i, j, k;
+    for (i = 0; i < 1; i++)
+        l_25[i] = (void*)0;
+    for (g_9 = 0; (g_9 <= 2); g_9 += 1)
+    { /* block id: 5 */
+        return l_19;
+    }
+    (*l_21) = (safe_unary_minus_func_int64_t_s(0L));
+    --g_29[3][2][1];
+    return (*l_21);
+}
+
+
+
+
+/* ---------------------------------------- */
+int main (void)
+{
+    int i, j, k;
+    int print_hash_value = 0;
+    platform_main_begin();
+    func_1();
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            csmith_sink_ = g_2[i][j];
+        }
+    }
+    csmith_sink_ = g_5;
+    csmith_sink_ = g_7;
+    for (i = 0; i < 2; i++)
+    {
+        csmith_sink_ = g_8[i];
+    }
+    csmith_sink_ = g_9;
+    csmith_sink_ = g_27;
+    for (i = 0; i < 6; i++)
+    {
+        for (j = 0; j < 1; j++)
+        {
+            for (k = 0; k < 5; k++)
+            {
+                csmith_sink_ = g_28[i][j][k];
+            }
+        }
+    }
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            for (k = 0; k < 4; k++)
+            {
+                csmith_sink_ = g_29[i][j][k];
+            }
+        }
+    }
+    platform_main_end(0,0);
+    return 0;
+}
+
+/************************ statistics *************************
+XXX max struct depth: 0
+breakdown:
+   depth: 0, occurrence: 10
+XXX total union variables: 1
+
+XXX non-zero bitfields defined in structs: 0
+XXX zero bitfields defined in structs: 0
+XXX const bitfields defined in structs: 0
+XXX volatile bitfields defined in structs: 0
+XXX structs with bitfields in the program: 0
+breakdown:
+XXX full-bitfields structs in the program: 0
+breakdown:
+XXX times a bitfields struct's address is taken: 0
+XXX times a bitfields struct on LHS: 0
+XXX times a bitfields struct on RHS: 0
+XXX times a single bitfield on LHS: 0
+XXX times a single bitfield on RHS: 0
+
+XXX max expression depth: 6
+breakdown:
+   depth: 1, occurrence: 10
+   depth: 2, occurrence: 1
+   depth: 6, occurrence: 1
+
+XXX total number of pointers: 11
+
+XXX times a variable address is taken: 43
+XXX times a pointer is dereferenced on RHS: 1
+breakdown:
+   depth: 1, occurrence: 1
+XXX times a pointer is dereferenced on LHS: 2
+breakdown:
+   depth: 1, occurrence: 2
+XXX times a pointer is compared with null: 0
+XXX times a pointer is compared with address of another variable: 0
+XXX times a pointer is compared with another pointer: 0
+XXX times a pointer is qualified to be dereferenced: 179
+
+XXX max dereference level: 1
+breakdown:
+   level: 0, occurrence: 0
+   level: 1, occurrence: 4
+XXX number of pointers point to pointers: 0
+XXX number of pointers point to scalars: 11
+XXX number of pointers point to structs: 0
+XXX percent of pointers has null in alias set: 63.6
+XXX average alias set size: 1.18
+
+XXX times a non-volatile is read: 10
+XXX times a non-volatile is write: 7
+XXX times a volatile is read: 0
+XXX    times read thru a pointer: 0
+XXX times a volatile is write: 0
+XXX    times written thru a pointer: 0
+XXX times a volatile is available for access: 0
+XXX percentage of non-volatile access: 100
+
+XXX forward jumps: 0
+XXX backward jumps: 0
+
+XXX stmts: 8
+XXX max block depth: 1
+breakdown:
+   depth: 0, occurrence: 7
+   depth: 1, occurrence: 1
+
+XXX percentage a fresh-made variable is used: 34.5
+XXX percentage an existing variable is used: 65.5
+********************* end of statistics **********************/
+

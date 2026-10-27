@@ -1,0 +1,123 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (111 violation(s))
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t * *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint16_t * const *
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t * const
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t * *
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t *
+    - Unsupported type: struct/union
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_rshift_func_int16_t_s_s
+    - Write conflict: global variable 'l_3'
+    - Write conflict: global variable 'l_182'
+    - Write conflict: global variable 'g_4'
+    - Write conflict: global variable 'l_163'
+    - Write conflict: global variable 'l_162'
+    - Write conflict: global variable 'l_163'
+    - Write conflict: global variable 'l_162'
+    - Write conflict: global variable 'l_163'
+    - Write conflict: global variable 'l_162'
+    - Write conflict: global variable 'l_8'
+    - Write conflict: global variable 'l_8'
+    - Write conflict: global variable 'g_80'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_178'
+    - Write conflict: global variable 'l_177'
+    - Write conflict: global variable 'l_178'
+    - Write conflict: global variable 'g_80'
+    - Write conflict: global variable 'l_182'
+    - Write conflict: global variable 'g_66'
+    - Write conflict: global variable 'l_191'
+    - Write conflict: global variable 'l_190'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'g_164'
+    - Write conflict: global variable 'l_196'
+    - Write conflict: global variable 'l_196'
+    - Write conflict: global variable 'l_191'
+    - Write conflict: global variable 'l_190'
+    - Write conflict: global variable 'l_198'
+    - Write conflict: global variable 'l_199'
+    - Write conflict: global variable 'l_3'
+    - Write conflict: global variable 'l_182'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,37 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (25 violation(s))
+    - Unsupported operation: <class 'gcc.GtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.NeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.LtExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t *
+    - Unsupported type: pointer to int16_t * *
+    - Unsupported type: pointer to struct S1
+    - Unsupported type: pointer to int16_t
+    - Unsupported type: pointer to int16_t *
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_266'
+    - Write conflict: global variable 'l_265'
+    - Write conflict: global variable 'g_9'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_266'
+    - Write conflict: global variable 'l_265'
+    - Write conflict: global variable 'l_269'
+    - Write conflict: global variable 'l_270'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

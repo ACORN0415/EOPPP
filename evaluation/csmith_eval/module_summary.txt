@@ -1,0 +1,22 @@
+============================================================
+ REJECTION DISTRIBUTION BY MODULE
+============================================================
+ PRE-CHECKER:
+   Variable count:    1
+   goto detection:    2126
+   Subtotal:          2127
+
+ GIMPLE CHECKER:
+   TypeChecker:       0
+   OpcodeChecker:     0
+   ConflictChecker:   0
+   ControlChecker:    0
+   StructureChecker:  0
+   VariableChecker:   0
+   MemoryChecker:     0
+   Other:             0
+   Subtotal:          0
+
+ TOTAL REJECTED:      2127
+ PASS:                0  (%)
+============================================================

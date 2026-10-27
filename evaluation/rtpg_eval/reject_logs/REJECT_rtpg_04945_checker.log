@@ -1,0 +1,6 @@
+======================================================================
+Function: test_func
+  Result: FAIL (2 violation(s))
+    - Unsupported operation: <class 'gcc.TruncModExpr'> (no Z-code mapping)
+    - Unsupported control flow: switch-case (BB 8)
+

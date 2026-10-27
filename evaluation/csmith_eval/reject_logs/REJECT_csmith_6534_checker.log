@@ -1,0 +1,23 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (11 violation(s))
+    - Unsupported operation: <class 'gcc.LeExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitXorExpr'> (no Z-code mapping)
+    - Unsupported operation: <class 'gcc.BitAndExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: struct/union
+    - Unsupported type: struct/union
+    - Unsupported memory access: indirect array indexing (A[B[i]])
+    - Call depth exceeded (max 2): func_1 -> func_9 -> safe_mul_func_uint8_t_u_u
+    - Write conflict: global variable 'l_4'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

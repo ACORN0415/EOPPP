@@ -1,0 +1,94 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (82 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t * * * *
+    - Unsupported type: pointer to const int32_t
+    - Unsupported type: pointer to const int32_t *
+    - Unsupported type: pointer to const int32_t * *
+    - Unsupported type: pointer to const int32_t * * *
+    - Unsupported type: pointer to int32_t
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_149'
+    - Write conflict: global variable 'l_148'
+    - Write conflict: global variable 'l_147'
+    - Write conflict: global variable 'l_146'
+    - Write conflict: global variable 'g_8'
+    - Write conflict: global variable 'l_7'
+    - Write conflict: global variable 'l_149'
+    - Write conflict: global variable 'l_148'
+    - Write conflict: global variable 'l_147'
+    - Write conflict: global variable 'l_146'
+    - Write conflict: global variable 'l_145'
+    - Write conflict: global variable 'g_2'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

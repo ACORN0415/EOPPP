@@ -1,0 +1,22 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (10 violation(s))
+    - Unsupported operation: <class 'gcc.EqExpr'> (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_mul_func_int8_t_s_s
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'g_20'
+    - Write conflict: global variable 'l_18'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'l_21'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

@@ -1,0 +1,106 @@
+// RTPG_8486: vars=79 stmts=5
+int xn[32];
+int yo[32];
+struct Node { int a; int b; };
+void test_func(void) {
+    int v0 = 45;
+    int v1 = 95;
+    int v2 = 62;
+    int v3 = 67;
+    int v4 = 35;
+    int v5 = 10;
+    int v6 = 52;
+    int v7 = 82;
+    int v8 = 69;
+    int v9 = 26;
+    int v10 = 51;
+    int v11 = 64;
+    int v12 = 11;
+    int v13 = 15;
+    int v14 = 9;
+    int v15 = 66;
+    int v16 = 55;
+    int v17 = 17;
+    int v18 = 26;
+    int v19 = 95;
+    int v20 = 99;
+    int v21 = 79;
+    int v22 = 7;
+    int v23 = 93;
+    int v24 = 28;
+    int v25 = 44;
+    int v26 = 62;
+    int v27 = 67;
+    int v28 = 16;
+    int v29 = 91;
+    int v30 = 32;
+    int v31 = 90;
+    int v32 = 95;
+    int v33 = 80;
+    int v34 = 88;
+    int v35 = 83;
+    int v36 = 66;
+    int v37 = 69;
+    int v38 = 94;
+    int v39 = 84;
+    int v40 = 7;
+    int v41 = 74;
+    int v42 = 72;
+    int v43 = 5;
+    int v44 = 51;
+    int v45 = 24;
+    int v46 = 100;
+    int v47 = 85;
+    int v48 = 52;
+    int v49 = 15;
+    int v50 = 45;
+    int v51 = 82;
+    int v52 = 3;
+    int v53 = 11;
+    int v54 = 77;
+    int v55 = 23;
+    int v56 = 11;
+    int v57 = 86;
+    int v58 = 5;
+    int v59 = 53;
+    int v60 = 10;
+    int v61 = 42;
+    int v62 = 13;
+    int v63 = 26;
+    int v64 = 50;
+    int v65 = 100;
+    int v66 = 56;
+    int v67 = 53;
+    int v68 = 17;
+    int v69 = 89;
+    int v70 = 3;
+    int v71 = 32;
+    int v72 = 32;
+    int v73 = 33;
+    int v74 = 65;
+    int v75 = 4;
+    int v76 = 46;
+    int v77 = 13;
+    int v78 = 95;
+    struct Node s; s.a = 47717; s.b = 24;
+    int h0 = 9;
+    int sv0 = 0;
+    int h1 = 44;
+    int sv1 = 0;
+    int i;
+    for (i = 0; i < 32; i++) {
+        v4 = xn[i];
+        v10 = v11 * 31387;
+        v9 = v7;
+        v4 = v4 + 3;
+        v4 = v6;
+        v5 = v13 + 4;
+        s.a = s.a + s.b;
+        if (v0 != -33) {
+        v5 = v9;
+        }
+        yo[i] = v13;
+    }
+}
+int main() { test_func(); return 0; }
+

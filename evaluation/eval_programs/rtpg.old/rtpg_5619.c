@@ -1,0 +1,82 @@
+// RTPG_5619: vars=57 stmts=9
+int xn[16];
+int yo[16];
+void test_func(void) {
+    double res65 = 49.75;
+    int acc25 = 8;
+    int val96 = 2;
+    float b49 = 92.06;
+    double prev86 = 37.73;
+    int b84 = 62;
+    int a52 = -43;
+    int tmp31 = 61;
+    int tmp91 = 59;
+    int lo11 = 4;
+    double sum20 = 65.69;
+    int a96 = 18165;
+    int cnt23 = 17;
+    int tmp95 = 33;
+    int v21 = 0;
+    double res67 = 40.75;
+    int c64 = 27448;
+    int acc6 = 7;
+    int tmp55 = 5;
+    int hi30 = 16;
+    int c31 = -8;
+    int val28 = 41;
+    int hi5 = 1;
+    int hi52 = -39;
+    float acc68 = 60.70;
+    double sum90 = 92.04;
+    int y13 = 10;
+    int b75 = 3;
+    int lo17 = 31976;
+    int lo76 = 51695;
+    int prev55 = 64151;
+    int acc51 = 13024;
+    int c68 = 45784;
+    int val91 = 2;
+    int out21 = 23069;
+    int a50 = -19;
+    int acc70 = -20;
+    int res11 = -47;
+    double lo47 = 5.88;
+    double dat28 = 81.52;
+    float x5 = 0.88;
+    int cur8 = 22229;
+    int v41 = -29;
+    int b0 = 99;
+    float acc33 = 59.05;
+    int z36 = 10;
+    int z7 = 6;
+    int hi55 = 35;
+    int out23 = 4;
+    int tmp92 = 6139;
+    int prev3 = 9;
+    int prev25 = 5305;
+    float z73 = 59.98;
+    float cur2 = 5.02;
+    float tmp2 = 7.89;
+    int a33 = 60724;
+    int out16 = 14;
+    int h0 = 7;
+    int sv0 = 0;
+    int h1 = -27;
+    int sv1 = 0;
+    int i;
+    for (i = 0; i < 16; i++) {
+        tmp92 = xn[i];
+        z7 = hi30 + y13;
+        res67 = lo47;
+        acc25 = z73;
+        tmp2 = b75 - cur8;
+        tmp55 = a33 * 94;
+        dat28 = acc51 - b75;
+        b0 = res65 - acc70;
+        c64 = acc6 - acc68;
+        prev55 = lo17 * 10991;
+        yo[i] = tmp95;
+    }
+}
+int main() { test_func(); return 0; }
+

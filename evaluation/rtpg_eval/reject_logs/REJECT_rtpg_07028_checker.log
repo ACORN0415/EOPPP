@@ -1,0 +1,5 @@
+======================================================================
+Function: test_func
+  Result: FAIL (1 violation(s))
+    - Unsupported control flow: switch-case (BB 3)
+

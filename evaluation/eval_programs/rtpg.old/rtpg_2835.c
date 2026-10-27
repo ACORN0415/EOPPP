@@ -1,0 +1,118 @@
+// RTPG_2835: vars=99 stmts=4
+#include <stdlib.h>
+void test_func(void) {
+    int v0 = 40;
+    int v1 = 26;
+    int v2 = 85;
+    int v3 = 29;
+    int v4 = 91;
+    int v5 = 18;
+    int v6 = 73;
+    int v7 = 35;
+    int v8 = 75;
+    int v9 = 38;
+    int v10 = 80;
+    int v11 = 57;
+    int v12 = 55;
+    int v13 = 86;
+    int v14 = 76;
+    int v15 = 77;
+    int v16 = 82;
+    int v17 = 93;
+    int v18 = 75;
+    int v19 = 91;
+    int v20 = 47;
+    int v21 = 37;
+    int v22 = 4;
+    int v23 = 75;
+    int v24 = 71;
+    int v25 = 68;
+    int v26 = 45;
+    int v27 = 42;
+    int v28 = 100;
+    int v29 = 86;
+    int v30 = 52;
+    int v31 = 77;
+    int v32 = 94;
+    int v33 = 48;
+    int v34 = 75;
+    int v35 = 71;
+    int v36 = 55;
+    int v37 = 62;
+    int v38 = 70;
+    int v39 = 41;
+    int v40 = 53;
+    int v41 = 89;
+    int v42 = 94;
+    int v43 = 81;
+    int v44 = 18;
+    int v45 = 51;
+    int v46 = 19;
+    int v47 = 55;
+    int v48 = 94;
+    int v49 = 80;
+    int v50 = 3;
+    int v51 = 22;
+    int v52 = 23;
+    int v53 = 21;
+    int v54 = 93;
+    int v55 = 86;
+    int v56 = 52;
+    int v57 = 11;
+    int v58 = 19;
+    int v59 = 72;
+    int v60 = 13;
+    int v61 = 6;
+    int v62 = 24;
+    int v63 = 41;
+    int v64 = 42;
+    int v65 = 69;
+    int v66 = 80;
+    int v67 = 7;
+    int v68 = 91;
+    int v69 = 5;
+    int v70 = 70;
+    int v71 = 6;
+    int v72 = 1;
+    int v73 = 71;
+    int v74 = 63;
+    int v75 = 63;
+    int v76 = 95;
+    int v77 = 24;
+    int v78 = 97;
+    int v79 = 89;
+    int v80 = 99;
+    int v81 = 88;
+    int v82 = 6;
+    int v83 = 74;
+    int v84 = 4;
+    int v85 = 70;
+    int v86 = 15;
+    int v87 = 88;
+    int v88 = 36;
+    int v89 = 12;
+    int v90 = 51;
+    int v91 = 29;
+    int v92 = 88;
+    int v93 = 38;
+    int v94 = 28;
+    int v95 = 83;
+    int v96 = 97;
+    int v97 = 62;
+    int v98 = 73;
+    int *darr = (int *)malloc(64 * sizeof(int));
+    int i;
+    for (i = 0; i < 24; i++) {
+        switch (v9) {
+            case 0: v12 = 46; break;
+            case 1: v1 = 92; break;
+            case 2: v6 = 24; break;
+            case 3: v2 = 53360; break;
+            default: break;
+        }
+        v9 = v9 + 1;
+    }
+    free(darr);
+}
+int main() { test_func(); return 0; }
+

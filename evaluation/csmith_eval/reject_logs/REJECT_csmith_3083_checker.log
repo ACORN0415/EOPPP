@@ -1,0 +1,16 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (4 violation(s))
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_4 -> safe_div_func_int32_t_s_s
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

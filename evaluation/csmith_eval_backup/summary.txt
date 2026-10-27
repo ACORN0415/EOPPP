@@ -1,0 +1,14 @@
+EOPPP Checker Csmith Fuzzing Summary
+=====================================
+Generator: Csmith 2.3.0 [Yang et al., PLDI 2011]
+Total:     10000
+PASS:      520  (checker approved + MIF generated)
+REJECTED:  9480  (correctly rejected by pre-checker or checker)
+CRASH:     0  (checker/plugin crash - unhandled input)
+GEN_ERROR: 0  (Csmith generation failure)
+
+Verify PASS programs:  csmith_eval/pass_logs/PASS_*.c
+Analyze CRASH cases:   csmith_eval/crash_logs/CRASH_*.c
+
+References:
+  [1] Yang et al., "Finding and Understanding Bugs in C Compilers," PLDI 2011.

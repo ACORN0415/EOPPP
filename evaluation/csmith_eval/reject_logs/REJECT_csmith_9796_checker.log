@@ -1,0 +1,37 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (25 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t *
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to union U1
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to int32_t
+    - Call depth exceeded (max 2): func_1 -> func_5 -> safe_rshift_func_int8_t_s_u
+    - Write conflict: global variable 'l_71'
+    - Write conflict: global variable 'g_2'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'g_13'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'g_66'
+    - Write conflict: global variable 'None'
+    - Write conflict: global variable 'l_61'
+    - Write conflict: global variable 'l_71'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

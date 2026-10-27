@@ -1,0 +1,56 @@
+======================================================================
+Function: platform_main_begin  (GIMPLE SSA)
+======================================================================
+
+  BB 0:
+    (empty)
+
+  BB 1:
+    (empty)
+
+  BB 2:
+    return;
+
+======================================================================
+Function: func_1  (GIMPLE SSA)
+======================================================================
+
+  BB 0:
+    (empty)
+
+  BB 1:
+    (empty)
+
+  BB 2:
+    l_2_4 = 0;
+    if (l_2_4 != 0)
+
+  BB 3:
+    g_3.83_1 = -1;
+    _6 = (int32_t) g_3.83_1;
+    // predicted unlikely by early return (on trees) predictor.
+
+  BB 4:
+    g_3.84_2 = -1;
+    _5 = (int32_t) g_3.84_2;
+    // predicted unlikely by early return (on trees) predictor.
+
+  BB 5:
+    # _3 = PHI <_6(3), _5(4)>
+    <L2>:
+    return _3;
+
+======================================================================
+Function: platform_main_end  (GIMPLE SSA)
+======================================================================
+
+  BB 0:
+    (empty)
+
+  BB 1:
+    (empty)
+
+  BB 2:
+    printf ("checksum = %X\n", crc_2(D));
+    return;
+

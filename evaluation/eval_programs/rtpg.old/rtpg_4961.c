@@ -1,0 +1,106 @@
+// RTPG_4961: vars=88 stmts=7
+void test_func(void) {
+    int v0 = 25;
+    int v1 = 43;
+    int v2 = 1;
+    int v3 = 65;
+    int v4 = 71;
+    int v5 = 76;
+    int v6 = 100;
+    int v7 = 67;
+    int v8 = 18;
+    int v9 = 52;
+    int v10 = 57;
+    int v11 = 95;
+    int v12 = 90;
+    int v13 = 7;
+    int v14 = 2;
+    int v15 = 22;
+    int v16 = 44;
+    int v17 = 96;
+    int v18 = 55;
+    int v19 = 43;
+    int v20 = 13;
+    int v21 = 40;
+    int v22 = 66;
+    int v23 = 35;
+    int v24 = 57;
+    int v25 = 68;
+    int v26 = 31;
+    int v27 = 73;
+    int v28 = 63;
+    int v29 = 4;
+    int v30 = 63;
+    int v31 = 76;
+    int v32 = 90;
+    int v33 = 12;
+    int v34 = 76;
+    int v35 = 22;
+    int v36 = 16;
+    int v37 = 99;
+    int v38 = 0;
+    int v39 = 93;
+    int v40 = 78;
+    int v41 = 74;
+    int v42 = 73;
+    int v43 = 56;
+    int v44 = 55;
+    int v45 = 39;
+    int v46 = 95;
+    int v47 = 18;
+    int v48 = 70;
+    int v49 = 4;
+    int v50 = 49;
+    int v51 = 77;
+    int v52 = 43;
+    int v53 = 86;
+    int v54 = 19;
+    int v55 = 65;
+    int v56 = 9;
+    int v57 = 59;
+    int v58 = 64;
+    int v59 = 48;
+    int v60 = 18;
+    int v61 = 60;
+    int v62 = 74;
+    int v63 = 42;
+    int v64 = 48;
+    int v65 = 83;
+    int v66 = 25;
+    int v67 = 72;
+    int v68 = 82;
+    int v69 = 49;
+    int v70 = 90;
+    int v71 = 87;
+    int v72 = 72;
+    int v73 = 25;
+    int v74 = 47;
+    int v75 = 68;
+    int v76 = 15;
+    int v77 = 47;
+    int v78 = 62;
+    int v79 = 49;
+    int v80 = 29;
+    int v81 = 40;
+    int v82 = 86;
+    int v83 = 22;
+    int v84 = 89;
+    int v85 = 35;
+    int v86 = 60;
+    int v87 = 37;
+    int i;
+    for (i = 0; i < 66; i++) {
+        v2 = v9 - v5;
+        v14 = v11 - 0;
+        v6 = v6 - v11;
+        v1 = v5;
+        v12 = v9 - v11;
+        v5 = v5 - 3;
+        v9 = v12 - 63309;
+        if (v3 > 41) {
+        v8 = v12 - 44111;
+        }
+    }
+}
+int main() { test_func(); return 0; }
+

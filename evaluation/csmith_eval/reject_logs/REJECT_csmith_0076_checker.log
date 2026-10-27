@@ -1,0 +1,20 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (8 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported type: pointer to struct S0
+    - Unsupported type: pointer to struct S0 *
+    - Unsupported type: pointer to struct S0
+    - Write conflict: global variable 'l_45'
+    - Write conflict: global variable 'l_45'
+    - Write conflict: global variable 'l_123'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+

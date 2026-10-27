@@ -1,0 +1,60 @@
+======================================================================
+Function: platform_main_begin
+  Result: PASS
+
+======================================================================
+Function: func_1
+  Result: FAIL (48 violation(s))
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported operation: Constructor (no Z-code mapping)
+    - Unsupported control flow: nested loop (only single-level loops supported)
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to uint16_t
+    - Unsupported type: pointer to int32_t
+    - Unsupported type: pointer to const uint8_t
+    - Unsupported type: pointer to const uint8_t *
+    - Unsupported type: pointer to uint32_t
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t * * * *
+    - Unsupported type: pointer to uint8_t
+    - Unsupported type: pointer to const uint8_t * * const
+    - Unsupported type: pointer to const uint8_t
+    - Unsupported type: pointer to const uint8_t *
+    - Write conflict: global variable 'l_22'
+    - Write conflict: global variable 'l_98'
+    - Write conflict: global variable 'l_97'
+    - Write conflict: global variable 'l_14'
+    - Write conflict: global variable 'l_19'
+    - Write conflict: global variable 'l_22'
+    - Write conflict: global variable 'l_98'
+    - Write conflict: global variable 'l_97'
+    - Write conflict: global variable 'l_96'
+    - Write conflict: global variable 'l_136'
+    - Write conflict: global variable 'l_274'
+
+======================================================================
+Function: platform_main_end
+  Result: PASS
+
