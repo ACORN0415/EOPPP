@@ -17,6 +17,12 @@ if current_dir not in sys.path:
 from checker import EOPPPChecker
 from generator import EFlowGenerator, GenerationError
 
+# EOPPP_V2: 2.0 일반 경로 사용 방식 (branch 2.0, docs/EOPPP_v2_execution_model.md)
+#   auto  (기본) 모든 함수가 1.0을 통과하면 1.0 출력, 아니면 프로그램 전체를 2.0으로
+#   off   1.0만
+#   force 2.0만
+V2_MODE = os.environ.get("EOPPP_V2", "auto")
+
 
 # =========================================================================
 # 로그 파일 유틸리티
@@ -168,24 +174,77 @@ class EOPPPExtension(gcc.GimplePass):
         if not getattr(main_fun, 'cfg', None):
             return
 
-        # 원래 방식: BB 루프 안에서 즉시 처리
-        all_passed = True
+        # main() 이 부르는 함수들 (호출 순서)
+        targets = []
         for bb in main_fun.cfg.basic_blocks:
             if not bb.gimple:
                 continue
             for stmt in bb.gimple:
                 if isinstance(stmt, gcc.GimpleCall) and stmt.fndecl:
                     fname = stmt.fndecl.name
-                    if (fname not in IGNORED_FUNCS
-                            and fname not in self.processed_functions):
-                        target_fun = getattr(stmt.fndecl, 'function', None)
-                        if target_fun:
-                            passed = self._process_target_function(target_fun)
-                            if not passed:
-                                all_passed = False
+                    target_fun = getattr(stmt.fndecl, 'function', None)
+                    if (fname not in IGNORED_FUNCS and target_fun
+                            and fname not in [t.decl.name for t in targets]):
+                        targets.append(target_fun)
+
+        all_passed = V2_MODE != "force"
+        if V2_MODE != "force":
+            for target_fun in targets:
+                if not self._process_target_function(target_fun):
+                    all_passed = False
 
         if all_passed:
             self.generator.write_all()
+        elif V2_MODE != "off":
+            self._process_v2(targets)
+
+    # -----------------------------------------------------------------
+    # 2.0 일반 경로: GIMPLE → IR → 인라이닝 → 스트림 검사 → 백엔드 (all-or-nothing)
+    # -----------------------------------------------------------------
+    def _process_v2(self, targets):
+        import json
+        from v2.backend import V2Error
+        from v2.lower import lower_with_callees
+        from v2.inline import inline_all
+        from v2.streams import check_streams, reuse_loads
+        from v2.program import compile_program
+
+        v2_log = os.path.join(log_dir, "v2.log")
+        lines, functions, ok = [], [], True
+        for fun in targets:
+            name = fun.decl.name
+            t0 = time.perf_counter()
+            try:
+                ir, library = lower_with_callees(fun, IGNORED_FUNCS)
+                ir = reuse_loads(inline_all(ir, library))
+                check_streams(ir)
+                functions.append(ir)
+                lines.append(f"[v2] {name}: lowered ({len(ir['blocks'])} blocks, "
+                             f"{1000.0 * (time.perf_counter() - t0):.1f} ms)")
+            except V2Error as e:
+                ok = False
+                lines.append(f"[v2] {name}: FAIL {e}")
+                self.log.log_checker(name, False, [f"v2: {e}"])
+        if ok:
+            try:
+                t0 = time.perf_counter()
+                sym = compile_program(functions, log_dir)
+                ms = 1000.0 * (time.perf_counter() - t0)
+                for f in sym["functions"]:
+                    lines.append(f"[v2] {f['name']}: GPC {f['gpc_start']}-{f['gpc_end']} "
+                                 f"({f['rows']} rows), {f['cores_used']} cores, "
+                                 f"unverified ops {f['unverified_ops']}")
+                lines.append(f"[v2] program: {sym['n_rows']} GPC rows, halt at GPC "
+                             f"{sym['halt_gpc']}, backend {ms:.1f} ms")
+            except V2Error as e:
+                ok = False
+                lines.append(f"[v2] backend FAIL {e}")
+                self.log.log_checker("(v2 backend)", False, [f"v2: {e}"])
+        with open(v2_log, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+            f.write("\n# IR (after inlining)\n")
+            for ir in functions:
+                f.write(json.dumps(ir) + "\n")
 
     def _process_target_function(self, fun):
         name = fun.decl.name

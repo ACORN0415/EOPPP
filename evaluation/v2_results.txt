@@ -1,0 +1,33 @@
+# v2_difftest / v2_ir_fuzz results (2026-10-27, assumptions M1-M8)
+
+## RTPG 10,000 (python3 v2_difftest.py --rtpg rtpg_eval/programs --quiet)
+summary: {'rejected': 6528, 'match': 3472}
+rejection reasons (top):
+     710  type 'float' is not supported in the 2.0 general path (32-b
+     701  store to a global scalar / memory is not supported: '__u.x 
+     693  store to a global scalar / memory is not supported: '__s.a 
+     675  type '__Color' is not supported in the 2.0 general path (32
+     301  recursive call test_func -> __helper -> __helper cannot be inlined (no
+     257  '__idx_didx[0]' must be inside exactly one loop (depth 0) [S2]
+      99  call to a function without a body: '__pm_12 = malloc (40);'
+      77  call to a function without a body: '__pm_14 = malloc (40);'
+      76  call to a function without a body: '__pm_11 = malloc (40);'
+      75  call to a function without a body: '__pm_13 = malloc (40);'
+      69  call to a function without a body: '__pm_15 = malloc (40);'
+      56  call to a function without a body: '__pm_10 = malloc (40);'
+
+## default C files
+[match] eoppp_v2_test.c funcs=4 rows=81 cycles=1860 max_cores=38 unverified=['EQZ', 'NEQZ', 'SRSH']
+[match] eoppp_v2_kernels.c funcs=3 rows=31 cycles=752 max_cores=18 unverified=[]
+summary: {'match': 2}
+
+## boundary 39
+summary: {'match': 17, 'rejected': 22}
+
+## IR fuzz
+seed 1:
+programs 300: match 182, mismatch 0, rejected 118
+rows/function median 60 max 125; cycles median 64 max 552
+seed 7:
+programs 300: match 188, mismatch 0, rejected 112
+rows/function median 62 max 139; cycles median 65 max 575

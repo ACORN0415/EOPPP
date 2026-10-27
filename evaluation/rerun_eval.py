@@ -129,7 +129,8 @@ def run_one(job):
         except FileNotFoundError:
             pass
 
-    env = dict(os.environ, EOPPP_OUT_DIR=out_dir, PYTHONIOENCODING="utf-8")
+    # v1.0 평가: 2.0 대체 경로는 끈다 (branch 2.0 의 main.py 기본값은 auto)
+    env = dict(os.environ, EOPPP_OUT_DIR=out_dir, PYTHONIOENCODING="utf-8", EOPPP_V2="off")
     t0 = time.time()
     r = subprocess.run(
         ["gcc", f"-fplugin={PLUGIN_SO}", f"-fplugin-arg-python-script={PLUGIN_SCRIPT}",
