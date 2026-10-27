@@ -208,7 +208,7 @@ Function: checkclkfir
   output_arrays: ['yo']
   input_arrays: ['xn']
   reg_map (68 entries):
-    r0   xv19                 type=var   val=0  pSt=1
+    r0   xv19                 type=var   val=0
     r1   ssa_45               type=var   val=0  pSt=2
     r2   _store_19            type=var   val=0  pSt=3
     ...
@@ -314,16 +314,16 @@ for bb in fun.cfg.basic_blocks:
 
 #### Step 3: `_build_register_map()` — GIMPLE 변수 → EOPPP 코어 매핑
 
-GIMPLE SSA 변수를 128개 물리 코어에 할당한다. FIR일 때는 3-코어 그룹 레이아웃을 먼저 배치한다:
+GIMPLE SSA 변수를 128개 물리 코어에 할당한다. FIR일 때는 [var][mult][store] 그룹 레이아웃을 먼저 배치한다. var_core는 데이터 변수로 pSt가 없으며, MAC 파이프라인(pSt=2,3)은 mult와 store만 해당한다:
 
 ```
 FIR의 경우 (is_fir_pipeline=True):
 
   _build_mac_layout():
-    r0:  xv19        shift   pSt=1   val=0
+    r0:  xv19        var     val=0
     r1:  ssa_45      mult    pSt=2   val=0      ← 곱셈 결과 SSA 변수
     r2:  _store_19   store   pSt=3   val=0
-    r3:  xv18        shift   pSt=1   val=0
+    r3:  xv18        var     val=0
     ...
     r63: xn[i]       input   pSt=1   val=0
 
@@ -378,7 +378,7 @@ r1: Z=000 (ADD), Y=00010000
 
 ```
 GIMPLE: xv19_ver = xv18_ver
-  → r0:  Z=000(ADD),  Y=00080000(src=r3)     pSt=1  shift
+  → r0:  Z=000(ADD),  Y=00080000(src=r3)     pSt=1  shift (var_core, 동적 부여)
 
 GIMPLE: _tmp = xv19 * h19
   → r1:  Z=208(SMT),  Y=FFFC0000(coeff)      pSt=2  multiply
@@ -470,18 +470,18 @@ MAC(곱셈+누적)과 FIR(시프트체인+계수곱셈+분할누적)은 서로 �
 | 플래그 | 판정 기준 | 의미 |
 |---|---|---|
 | `is_mac` | 곱셈 연산이 하나라도 존재 | 넓은 범위의 MAC 감지 |
-| `is_fir_pipeline` | output_arrays + coeff_vars ≥ 5 + coeff_mult ≥ 5 | FIR 전용: 3코어 그룹 + pSt 적용 |
+| `is_fir_pipeline` | output_arrays + coeff_vars ≥ 5 + coeff_mult ≥ 5 | FIR 전용: [var][mult][store] 그룹 + pSt 적용 |
 
 각 함수 유형별 플래그 값:
 
 | 함수 | `is_mac` | `is_fir_pipeline` | 결과 |
 |---|---|---|---|
 | `checkclkfibo` (피보나치) | False | False | pSt 없음, generic 경로 |
-| `checkclkfir` (20-tap FIR) | True | True | pSt 있음, 3코어 그룹 배치 |
+| `checkclkfir` (20-tap FIR) | True | True | pSt 있음, [var][mult][store] 그룹 배치 |
 | 가상: `dot_product` (a=b*c+d*e) | True | False | 곱셈 있지만 FIR 아님, pSt 없음 |
 
 `is_fir_pipeline`이 True일 때만 다음이 활성화된다:
-- `_build_mac_layout()` — 3코어 그룹 배치
+- `_build_mac_layout()` — [var][mult][store] 그룹 배치
 - `_pass_mac_pipeline()` — Pass 2 FIR 파이프라인 MIF 생성
 - pSt(pipeline stage) 칼럼 표시 (Init/Op 모두)
 - GPC 헤더에 pSt 칼럼 헤더 추가
@@ -498,21 +498,23 @@ xv19 ← xv18 ← ... ← xv1 ← xv0 ← xn[i]
 
 > **중요**: `_get_base_var_name()` (원본 선언명)을 사용해야 한다. `_get_clean_name()` (SSA semantic)을 사용하면 `xv0`이 `xn[i]`로 이름 변경되어 자기참조 체인 `xn[i] → xn[i]`이 생성된다.
 
-### 3. 3-Core 그룹 레이아웃
+### 3. MAC 코어 그룹 레이아웃
 
-각 MAC 탭은 역순으로 3코어 그룹에 배치된다:
+각 MAC 탭은 역순으로 [var][mult][store] 그룹에 배치된다. var_core는 데이터 변수로서 shift 연산 수행 시 pSt=1이 동적으로 부여된다. MAC 파이프라인의 핵심은 mult(pSt=2)와 store(pSt=3)이며, shift는 데이터 흐름으로 분리되어 있다:
 
 ```
-[shift(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 19
-[shift(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 18
+[var(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 19 (var: xv19=xv18, shift이므로 pSt=1)
+[var(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 18
 ...
-[accumulator(pSt=3)]                          ← yo0 (6탭 합산)
-[shift(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 13
+[accumulator(pSt=3)]                        ← yo0 (6탭 합산)
+[var(pSt=1)] [mult(pSt=2)] [store(pSt=3)]  ← tap 13
 ...
-[accumulator(pSt=3)]                          ← yo1 (14탭 합산)
-[final(pSt=4)]                                ← yo[i] = yo0 + yo1
-[input(pSt=1)]                                ← xn[i] (A-bank read)
+[accumulator(pSt=3)]                        ← yo1 (14탭 합산)
+[final(pSt=4)]                              ← yo[i] = yo0 + yo1
+[input(pSt=1)]                              ← xn[i] (A-bank read)
 ```
+
+**핵심 분리**: var_core의 pSt는 reg_map(Init)에서는 설정되지 않고, Op의 `_pass_mac_pipeline()`에서 shift 연산 여부에 따라 동적으로 결정된다. shift가 있으면 pSt=1, 없으면 pSt 없음. 이를 통해 shift 없는 MAC 패턴(dot product 등)에서도 `[var][mult][store]` 구조를 그대로 사용할 수 있다.
 
 **제약**: 누적기의 소스 코어는 ADD모드 Y-mask의 ±16 범위 내에 있어야 한다. 20탭 FIR은 [6, 14] 분할로 이를 충족한다.
 
@@ -590,13 +592,14 @@ cur = p0+p1 → lhs "cur"이 rhs에 없음 → 일반 변수   → 조건 반전
 
 | pSt | 연산 | Z-코드 | 설명 |
 |-----|------|--------|------|
-| 0 | (해당 없음) | - | MAC이 아닌 할당 코어 (i, cst, cond 등) |
-| 1 | Shift | ADD(000) | 데이터 레지스터 전달 / 입력 읽기 |
+| (빈칸) | - | - | 비할당 빈 코어, Generic 함수 전체 |
+| 0 | (해당 없음) | - | FIR 함수의 non-MAC 코어 (i, cst, cond 등) |
+| 1 | Shift/Input | ADD(000) | 데이터 시프트 전달 / A-bank 입력 읽기 |
 | 2 | Multiply | SMT(208) | 부호 곱셈 (Y = 계수) |
 | 3 | Store/Acc | ADD(200)/ADD(000) | 결과 복사 / 다중 소스 합산 |
 | 4 | Final | ADD(7000) | A-bank 기록 (최종 출력) |
 
-> 비할당 빈 코어는 pSt 칼럼이 빈칸이다.
+> var_core의 pSt는 reg_map(Init)에서는 설정되지 않고, Op 패스에서 shift 연산 수행 시 pSt=1이 동적으로 부여된다. shift 없는 MAC 패턴에서는 var_core에 pSt가 없다.
 
 ---
 
@@ -659,7 +662,7 @@ int main(void) {
 | 누적기 | 2 (yo0, yo1) | 2 | ✓ |
 | 분할 구성 | [6, 14] | [6, 14] | ✓ |
 | 전체 MAC 코어 | 64 | 64 | ✓ |
-| pSt 할당 | 1/2/3/3/4/1 | 1/2/3/3/4/1 | ✓ |
+| pSt 할당 | 1/2/3/3/4/1 | 1/2/3/3/4/1 | ✓ (var: shift시 동적 pSt=1) |
 | MIF 일치율 | - | 100% | ✓ |
 
 ---
@@ -680,7 +683,7 @@ int main(void) {
 | `_build_semantic_names(fun)` | SSA 버전 → 의미 이름 매핑 (ssa_# 최소화) |
 | `_analyze_ir(fun)` | IR 분석 → feature 플래그 (`is_mac`, `is_fir_pipeline`, coeff_vars 등) |
 | `_build_register_map(fun)` | 통합 레지스터 맵 생성 (`is_fir_pipeline`이면 MAC 레이아웃 + Generic) |
-| `_build_mac_layout(fun, reg_map)` | FIR 전용: 3-코어 그룹 + 분할 누적기 배치 (`is_fir_pipeline`일 때만 호출) |
+| `_build_mac_layout(fun, reg_map)` | FIR 전용: [var][mult][store] 그룹 + 분할 누적기 배치 (`is_fir_pipeline`일 때만 호출) |
 | `_augment_regs_from_gimple(...)` | 변수/상수/cond_res 코어 할당 |
 | `_is_noncompute_cond(bb, stmt)` | 비연산 조건문 판별 |
 
@@ -777,7 +780,7 @@ self.log = LogWriter(out_dir)
 | SSA 제외 | `ssa_#`는 코어 할당 대상에서 제외 |
 | 상수 할당 | 합산(ADD/Cond)에 실제 쓰이는 상수만 `cst_#` 할당 |
 | MAC 계수 | 코어 미할당, SMT Y-immediate로 전달 |
-| FIR 파이프라인 분리 | `is_mac`(곱셈 존재)와 `is_fir_pipeline`(FIR 레이아웃)을 분리. pSt/3코어 그룹은 FIR일 때만 |
+| FIR 파이프라인 분리 | `is_mac`(곱셈 존재)와 `is_fir_pipeline`(FIR 레이아웃)을 분리. pSt/[var][mult][store] 그룹은 FIR일 때만 |
 | cond_res 초기값 | 4 (outLoop) |
 | cond_res Op 값 | 소스 레지스터 Init 값을 대입 계산한 합산 결과 |
 | 조건 반전 | for 루프 카운터(자기참조 증분 있는 변수)의 조건을 "탈출 조건"으로 반전. 이름 무관 |
@@ -816,4 +819,3 @@ self.log = LogWriter(out_dir)
 4. EOPPP ASIC 전환 대응 (256코어 확장)
 5. 자동 분할 최적화 (탭 수에 따른 accumulator 분할)
 6. 루프 변환 지원 (행렬 연산 최적화)
-7. `is_mac` 기반 새 패턴 Pass 추가 (행렬 곱셈, butterfly FFT 등 — `is_fir_pipeline`과 독립적으로 동작)

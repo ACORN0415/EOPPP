@@ -114,23 +114,25 @@ is_fir_pipeline = is_mac_strict or is_mac_relaxed  # 좁은 범위: FIR 전용
 | 플래그 | 판정 기준 | 역할 |
 |---|---|---|
 | `is_mac` | 곱셈 연산이 하나라도 존재 | 곱셈 존재 여부만 표시 |
-| `is_fir_pipeline` | output_arrays>0 AND coeff_vars≥5 AND coeff_mult≥5 | 3-코어 그룹 + pSt 적용 여부 결정 |
+| `is_fir_pipeline` | output_arrays>0 AND coeff_vars≥5 AND coeff_mult≥5 | [var][mult][store] 그룹 + pSt 적용 여부 결정 |
 
 **제어 영향**:
 - `is_fir_pipeline`이 True일 때만: `_build_mac_layout()`, `_pass_mac_pipeline()`, pSt 칼럼 활성화
 - `is_mac`만 True (is_fir_pipeline=False): generic 경로 사용, pSt 없음
 
-### 3.2 3-코어 그룹 레이아웃
+### 3.2 [var][mult][store] 그룹 레이아웃
 
-각 FIR 탭은 3개 코어를 사용한다:
+각 MAC 탭은 3개 코어를 사용한다:
 
 ```
-[shift(pSt=1)] [mult(pSt=2)] [store(pSt=3)]
+[var] [mult(pSt=2)] [store(pSt=3)]
 ```
 
-- **shift**: 데이터 시프트 (이전 탭 데이터 전달). ADD 명령.
-- **mult**: 계수 곱셈. SMT 명령, Y=계수값.
-- **store**: 곱셈 결과 저장. ADD 명령 (누적기 입력용).
+- **var**: 데이터 변수 코어. shift 연산 수행 시 Op에서 pSt=1이 동적 부여됨. reg_map(Init)에서는 pSt 없음.
+- **mult**: 계수 곱셈. SMT 명령, Y=계수값. pSt=2.
+- **store**: 곱셈 결과 저장. ADD 명령 (누적기 입력용). pSt=3.
+
+> shift를 MAC 파이프라인에서 분리하여, shift 없는 MAC 패턴에서도 동일한 `[var][mult][store]` 구조를 사용할 수 있다.
 
 ### 3.3 분할 누적기
 
@@ -142,13 +144,14 @@ is_fir_pipeline = is_mac_strict or is_mac_relaxed  # 좁은 범위: FIR 전용
 
 | pSt | 연산 | Z-코드 | 적용 대상 |
 |-----|------|--------|----------|
-| (빈칸) | - | - | 비할당 빈 코어 |
-| (빈칸) | - | - | Generic 함수의 모든 코어 |
+| (빈칸) | - | - | 비할당 빈 코어, Generic 함수의 모든 코어 |
 | 0 | - | - | FIR 함수의 할당된 non-MAC 코어 (i, cst, cond 등) |
-| 1 | Shift/Input | ADD(000) | 데이터 레지스터 전달 / A-bank 입력 읽기 |
+| 1 | Shift/Input | ADD(000) | var_core의 shift 연산 (동적 부여) / A-bank 입력 읽기 |
 | 2 | Multiply | SMT(208) | 부호 곱셈 (Y = 계수) |
 | 3 | Store/Acc | ADD(200)/ADD(000) | 결과 복사 / 다중 소스 합산 |
 | 4 | Final | ADD(7000) | A-bank 기록 (최종 출력) |
+
+> **var_core pSt 동적 결정**: reg_map(Init)에서 var_core는 pSt가 없다. Op의 `_pass_mac_pipeline()`에서 shift 연산 여부를 확인하여 shift가 있으면 pSt=1을 동적으로 부여한다. shift 없는 MAC 패턴에서는 var_core에 pSt가 없다.
 
 ---
 
