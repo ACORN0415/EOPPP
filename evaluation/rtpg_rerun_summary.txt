@@ -1,0 +1,16 @@
+Suite: rtpg   programs: 10000   wall: 66.5s
+PASS 2590  REJECTED 7410  CRASH 0
+Correct 10000/10000   false acceptance 0   false rejection 0
+Rejection by module:
+  checker:TypeChecker            3918  (52.9%)
+  pre:goto                       1146  (15.5%)
+  checker:OpcodeChecker           891  (12.0%)
+  checker:ControlChecker          494  (6.7%)
+  checker:MemoryChecker           319  (4.3%)
+  generator:multi_loop            289  (3.9%)
+  checker:StructureChecker        179  (2.4%)
+  generator:post_loop_effect      174  (2.3%)
+Programs whose checker.log contains non-void return: 0
+Changes vs stored results (old -> new): PASS->REJECTED: 463
+gcc+plugin time per program: median 0.070s, max 0.233s
+pre-checker time per program: median 0.12 ms, max 34.32 ms

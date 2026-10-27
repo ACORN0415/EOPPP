@@ -6,9 +6,8 @@ void test_func(void) {
     int i;
     for (i = 0; i < 76; i++) {
         x39 = x39 - 58;
-        if (x39 >= -27) {
-        out85 = cur92 - x39;
-        }
+        out85 = out85 + 1;
+        if (x39 >= 1000) break;
     }
 }
 int main() { test_func(); return 0; }

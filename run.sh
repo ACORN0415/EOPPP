@@ -43,6 +43,7 @@ if [ -f "./eflow_out/total_program_z.mif" ]; then
     echo "  eflow_out/gimple_ir.log    - GIMPLE SSA IR dump (PHI nodes + SSA versions)"
     echo "  eflow_out/checker.log      - Checker 검증 결과 (PASS/FAIL)"
     echo "  eflow_out/generator.log    - Generator 처리 결과 (features, reg_map)"
+    echo "  eflow_out/metrics.log      - 정량 지표 (코어 사용률, mesh, 사이클, 시간)"
 else
     echo "[Error] MIF generation failed."
     echo ""

@@ -1,16 +1,23 @@
 EOPPP Compiler — Quantitative Metrics (v1.0)
-==============================================================================
+================================================================================================================
 
-function        GPC     MAC  cores/128  util%   meshEdges meshViol meshOK%  maxDist 
-------------------------------------------------------------------------------
-checkclkfibo    0/1     N    9          7.0     16        0        100.00   6       
-checkclkfir     2/3     Y    106        82.8    108       0        100.00   16      
-------------------------------------------------------------------------------
+function      GPC    MAC depth cores util%  mesh      maxD C LoC eFlow iters  cycles chk ms  gen ms  
+----------------------------------------------------------------------------------------------------------------
+checkclkfibo  0/1    N   -     9     7.0    16/16     6    36    18    50     51     0.2     2.5     
+checkclkfir   2/3    Y   4     106   82.8   108/108   16   98    212   32     33     2.2     9.8     
+----------------------------------------------------------------------------------------------------------------
 
 Functions compiled        : 2
 Avg core utilization      : 44.9% of 128
 Mesh ±16 placement success: 124/124 edges (100.00%)
-Total mesh violations     : 0 (sources dropped from ADD mask)
+Total mesh violations     : 0 (a violation rejects the function; no MIF is emitted)
 MAC layout [checkclkfir]   : reduction tree depth 4 (store -> 4 adder level(s) -> yo[i]), mesh-valid placement found
 
-Note: mesh window is (src-dst) ∈ [-16,+15] (Y-mask bit = 16+(src-dst)).
+Columns:
+  depth  : MAC reduction tree levels (store -> ... -> output)
+  cores  : active cores (of 126 allocatable)   mesh: in-window Y-mask edges
+  C LoC  : source lines of the function        eFlow: generated lines (init + op per active core)
+  iters  : static loop trip count (upper bound if the loop has a break)
+  cycles : op-slot cycles + 1 init cycle (WCET; MAC output latency not included)
+  chk/gen ms : checker / generator wall time inside the GCC plugin
+Note: mesh window is (src-dst) in [-16,+15] (Y-mask bit = 16+(src-dst)).

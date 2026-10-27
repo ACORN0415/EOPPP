@@ -106,91 +106,71 @@ class ControlChecker(BaseChecker):
                 self.report(
                     f"Unsupported control flow: goto (BB {bb.index})"
                 )
-            elif isinstance(last_stmt, gcc.GimpleReturn):
-                # 값을 반환하는 함수는 아직 코드 생성에서 반환값을 다루지 못한다.
-                # 체커가 통과시키면 "미지원 기능 수용(false acceptance)"이 되므로
-                # 비void 반환은 생성 불가로 간주하고 거부한다(§9 한계 봉합).
-                retval = getattr(last_stmt, 'retval', None)
-                if retval is not None:
-                    self.report(
-                        "Unsupported return: non-void return value "
-                        "(return-value code generation not implemented)"
-                    )
-
+        # 비void 반환은 여기서 거부하지 않는다. 반환값이 코어에 보존되는지는
+        # 생성 단계(EFlowGenerator._locate_return_value)에서 확인한다.
         self._check_nested_loops(fun)
 
     def _check_nested_loops(self, fun):
         """Natural Loop 분석으로 중첩 루프를 감지한다.
-
-        1) DFS로 back-edge를 찾는다
-        2) 각 back-edge에서 natural loop body를 구한다
-        3) 한 루프의 header가 다른 루프의 body 안에 있으면 중첩
-        """
-        if not fun.cfg:
-            return
-
-        bbs = list(fun.cfg.basic_blocks)
-        if not bbs:
-            return
-
-        # ── Step 1: DFS로 back-edge 수집 ──
-        visited = set()
-        in_stack = set()
-        back_edges = []  # (src_bb_index, header_bb_index)
-
-        def dfs(bb):
-            visited.add(bb.index)
-            in_stack.add(bb.index)
-            for edge in getattr(bb, 'succs', []):
-                dest = edge.dest
-                if dest.index in in_stack:
-                    # ancestor로 가는 edge = back-edge (루프)
-                    back_edges.append((bb.index, dest.index))
-                elif dest.index not in visited:
-                    dfs(dest)
-            in_stack.discard(bb.index)
-
-        try:
-            dfs(bbs[0])
-        except RecursionError:
-            return
-
-        if len(back_edges) <= 1:
-            return  # 루프 0~1개 → 중첩 불가
-
-        # ── Step 2: 각 back-edge의 natural loop body 계산 ──
-        bb_map = {bb.index: bb for bb in bbs}
-        loops = []  # (header_index, body_set)
-
-        for src_idx, hdr_idx in back_edges:
-            # Natural loop = header + {header를 거치지 않고 src에 도달 가능한 모든 노드}
-            body = {hdr_idx}
-            worklist = [src_idx]
-            while worklist:
-                n = worklist.pop()
-                if n in body:
-                    continue
-                body.add(n)
-                bb = bb_map.get(n)
-                if bb:
-                    for edge in getattr(bb, 'preds', []):
-                        pred_idx = edge.src.index
-                        if pred_idx not in body:
-                            worklist.append(pred_idx)
-            loops.append((hdr_idx, body))
-
-        # ── Step 3: 중첩 검사 ──
-        # 루프 A의 body 안에 루프 B의 header가 있으면 B는 A 안에 중첩됨
+        한 루프의 header가 다른 루프의 body 안에 있으면 중첩."""
+        loops = natural_loops(fun)
         for i, (hdr_i, body_i) in enumerate(loops):
             for j, (hdr_j, body_j) in enumerate(loops):
-                if i == j:
-                    continue
-                if hdr_j in body_i and hdr_j != hdr_i:
+                if i != j and hdr_j in body_i and hdr_j != hdr_i:
                     self.report(
                         "Unsupported control flow: nested loop "
                         "(only single-level loops supported)"
                     )
                     return
+
+
+def natural_loops(fun):
+    """함수의 natural loop 목록 [(header_bb_index, body_bb_index_set)].
+    1) DFS로 back-edge(조상으로 가는 edge)를 찾고
+    2) 각 back-edge의 natural loop body
+       = header + {header를 거치지 않고 back-edge 출발점에 도달 가능한 노드}를 구한다.
+    ControlChecker(중첩 검사)와 EFlowGenerator(루프 개수 검사)가 함께 쓴다."""
+    if not getattr(fun, 'cfg', None):
+        return []
+    bbs = list(fun.cfg.basic_blocks)
+    if not bbs:
+        return []
+
+    visited, in_stack, back_edges = set(), set(), []
+
+    def dfs(bb):
+        visited.add(bb.index)
+        in_stack.add(bb.index)
+        for edge in getattr(bb, 'succs', []):
+            dest = edge.dest
+            if dest.index in in_stack:
+                back_edges.append((bb.index, dest.index))
+            elif dest.index not in visited:
+                dfs(dest)
+        in_stack.discard(bb.index)
+
+    try:
+        dfs(bbs[0])
+    except RecursionError:
+        return []
+
+    bb_map = {bb.index: bb for bb in bbs}
+    loops = []
+    for src_idx, hdr_idx in back_edges:
+        body = {hdr_idx}
+        worklist = [src_idx]
+        while worklist:
+            n = worklist.pop()
+            if n in body:
+                continue
+            body.add(n)
+            bb = bb_map.get(n)
+            if bb:
+                for edge in getattr(bb, 'preds', []):
+                    if edge.src.index not in body:
+                        worklist.append(edge.src.index)
+        loops.append((hdr_idx, body))
+    return loops
 
 
 # [수정 3] TypeChecker: pointer, struct, union, enum 감지 추가
@@ -233,6 +213,20 @@ class TypeChecker(BaseChecker):
 
         # ArrayType은 A-bank를 통해 지원되므로 허용
         # IntegerType은 지원
+
+    def check_return(self, fun):
+        """함수 반환 타입 검사. 대입문 좌변만 보면 'return g_struct;' 같은
+        구조체/포인터/실수 반환을 놓친다 (Csmith에서 실제로 통과했던 사례)."""
+        ftype = getattr(getattr(fun, 'decl', None), 'type', None)
+        rtype = getattr(ftype, 'type', None)
+        if rtype is None or isinstance(rtype, gcc.VoidType):
+            return
+        bad = (gcc.RealType, gcc.PointerType, gcc.RecordType, gcc.EnumeralType)
+        union_t = getattr(gcc, 'UnionType', None)
+        if union_t is not None:
+            bad = bad + (union_t,)
+        if isinstance(rtype, bad):
+            self.report(f"Unsupported type: return type {rtype}")
 
 
 # [수정 5] MemoryChecker: malloc/calloc/realloc/free 감지 추가
@@ -402,8 +396,8 @@ class EOPPPChecker:
             'conflict': ConflictChecker(),
         }
 
-    def validate(self, fun):
-        """main.py에서 호출되는 통합 검증 메서드"""
+    def run(self, fun):
+        """전체 검사를 실행하고 위반 메시지 목록을 반환한다 (main.py가 사용)."""
         for c in self.checkers.values():
             c.errors = []
 
@@ -414,6 +408,7 @@ class EOPPPChecker:
         self.checkers['var'].check(fun)
         self.checkers['ctrl'].check(fun)
         self.checkers['conflict'].check(fun)
+        self.checkers['type'].check_return(fun)
 
         # 3. 문장 레벨 체크
         if fun.cfg:
@@ -425,11 +420,14 @@ class EOPPPChecker:
                     self.checkers['type'].check(stmt)
                     self.checkers['mem'].check(stmt)
 
-        # 결과 취합
         all_errors = []
         for checker in self.checkers.values():
             all_errors.extend(checker.errors)
+        return all_errors
 
+    def validate(self, fun):
+        """검사 후 위반 내용을 출력하고 통과 여부를 반환한다."""
+        all_errors = self.run(fun)
         if not all_errors:
             return True
         else:

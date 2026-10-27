@@ -7,9 +7,7 @@ void test_func(void) {
     int i;
     for (i = 0; i < 31; i++) {
         y16 = y16 + 5;
-        if (sum52 < -42) {
-        y16 = dat70;
-        }
+        if (y16 < -42) break;
     }
 }
 int main() { test_func(); return 0; }

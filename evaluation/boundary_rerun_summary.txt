@@ -1,0 +1,15 @@
+Suite: boundary   programs: 39   wall: 0.5s
+PASS 18  REJECTED 21  CRASH 0
+Correct 39/39   false acceptance 0   false rejection 0
+Rejection by module:
+  checker:OpcodeChecker             6  (28.6%)
+  checker:TypeChecker               6  (28.6%)
+  pre:varcount                      4  (19.0%)
+  checker:ControlChecker            2  (9.5%)
+  checker:MemoryChecker             1  (4.8%)
+  pre:goto                          1  (4.8%)
+  checker:StructureChecker          1  (4.8%)
+Programs whose checker.log contains non-void return: 0
+Changes vs stored results (old -> new): none
+gcc+plugin time per program: median 0.057s, max 0.091s
+pre-checker time per program: median 0.10 ms, max 1.15 ms

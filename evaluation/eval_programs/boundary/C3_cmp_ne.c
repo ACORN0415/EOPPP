@@ -7,9 +7,7 @@ void test_func(void) {
     int i;
     for (i = 0; i < 32; i++) {
         out65 = hi98 + tmp83;
-        if (hi98 != -21) {
-        tmp83 = tmp83;
-        }
+        if (out65 != 2) break;
     }
 }
 int main() { test_func(); return 0; }

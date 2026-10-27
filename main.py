@@ -1,11 +1,13 @@
 import os
 import sys
+import time
 import gcc
 
 # ── 경로 설정 ──
 current_dir = os.path.dirname(os.path.abspath(__file__))
 gcc_eoppp_dir = os.path.join(current_dir, "gcc_eoppp")
-log_dir = os.path.join(current_dir, "eflow_out")
+# EOPPP_OUT_DIR: 출력 폴더 지정 (평가 스크립트의 병렬 실행용). 기본값은 eflow_out
+log_dir = os.environ.get("EOPPP_OUT_DIR") or os.path.join(current_dir, "eflow_out")
 
 if gcc_eoppp_dir not in sys.path:
     sys.path.append(gcc_eoppp_dir)
@@ -13,7 +15,7 @@ if current_dir not in sys.path:
     sys.path.append(current_dir)
 
 from checker import EOPPPChecker
-from generator import EFlowGenerator
+from generator import EFlowGenerator, GenerationError
 
 
 # =========================================================================
@@ -85,6 +87,11 @@ class LogWriter:
         is_mac = features.get("is_mac", False)
         has_mac = features.get("has_mac", False)
         has_shift = features.get("has_shift", False)
+        ret = features.get("return_value")
+        if ret:
+            self._write(self.generator_path,
+                         f"  return value: held in {ret} at loop exit "
+                         f"(not transferred to caller; CALL/RETURN is v2.0)")
         self._write(self.generator_path, f"  is_mac: {is_mac}")
         self._write(self.generator_path, f"  has_mac: {has_mac}")
         self._write(self.generator_path, f"  has_shift: {has_shift}")
@@ -144,7 +151,7 @@ class EOPPPExtension(gcc.GimplePass):
     def __init__(self):
         super(EOPPPExtension, self).__init__(name='eoppp-main')
         self.checker = EOPPPChecker()
-        out_dir = os.path.join(current_dir, "eflow_out")
+        out_dir = log_dir
         self.generator = EFlowGenerator(output_dir=out_dir)
         self.log = LogWriter(out_dir)
         self.gpc_counter = 0
@@ -186,7 +193,9 @@ class EOPPPExtension(gcc.GimplePass):
 
         # checker
         self.log.dump_gimple(fun)
+        t0 = time.perf_counter()
         passed, errors = self._run_checker(fun)
+        checker_ms = 1000.0 * (time.perf_counter() - t0)
         self.log.log_checker(name, passed, errors)
 
         if not passed:
@@ -194,7 +203,20 @@ class EOPPPExtension(gcc.GimplePass):
 
         # generator
         base_gpc = self.gpc_counter
-        used = self.generator.generate(fun, base_gpc)
+        t0 = time.perf_counter()
+        try:
+            used = self.generator.generate(fun, base_gpc)
+            rep = self.generator.func_reports[-1]
+            rep["checker_ms"] = checker_ms
+            rep["gen_ms"] = 1000.0 * (time.perf_counter() - t0)
+            try:
+                rep["c_loc"] = fun.end.line - fun.start.line + 1
+            except Exception:
+                rep["c_loc"] = None
+        except GenerationError as e:
+            # 체커는 통과했지만 올바른 MIF를 만들 수 없음 → 함수 거부 (MIF 미생성)
+            self.log.log_checker(name, False, [f"Generation failed: {e}"])
+            return False
         self.gpc_counter += used
 
         reg_map = getattr(self.generator, '_last_reg_map', {})
@@ -208,29 +230,8 @@ class EOPPPExtension(gcc.GimplePass):
     # Checker 실행
     # -----------------------------------------------------------------
     def _run_checker(self, fun):
-        for c in self.checker.checkers.values():
-            c.errors = []
-
-        self.checker.checkers['struct'].check(fun)
-        self.checker.checkers['var'].check(fun)
-        self.checker.checkers['ctrl'].check(fun)
-        self.checker.checkers['conflict'].check(fun)
-
-        if fun.cfg:
-            for bb in fun.cfg.basic_blocks:
-                if not bb.gimple:
-                    continue
-                for stmt in bb.gimple:
-                    self.checker.checkers['op'].check(stmt)
-                    self.checker.checkers['type'].check(stmt)
-                    self.checker.checkers['mem'].check(stmt)
-
-        all_errors = []
-        for c in self.checker.checkers.values():
-            all_errors.extend(c.errors)
-
-        passed = len(all_errors) == 0
-        return passed, all_errors
+        all_errors = self.checker.run(fun)
+        return len(all_errors) == 0, all_errors
 
 
 # =========================================================================

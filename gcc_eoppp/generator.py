@@ -4,6 +4,7 @@ import re
 import copy
 
 # ★ v9: Z/Y 코드 자동 매핑 모듈
+from checker import natural_loops
 from eoppp_zcode import (
     ZOp, ZCtrl, decide_ctrl_bits,
     make_z16 as zcode_make_z16,
@@ -11,6 +12,11 @@ from eoppp_zcode import (
     make_y32,
     GIMPLE_TO_OP, COND_TO_OP,
 )
+
+
+class GenerationError(Exception):
+    """체커는 통과했지만 하드웨어에 올바르게 매핑할 수 없는 함수.
+    (코어 할당 초과, mesh 윈도우 위반) — 틀린 MIF를 내보내는 대신 거부한다."""
 
 
 class EFlowGenerator:
@@ -35,6 +41,7 @@ class EFlowGenerator:
         op_gpc   = base_gpc + 1
         gpc_count = 2
         self._build_semantic_names(fun)
+        self._analyze_regions(fun)
         self.features = self._analyze_ir(fun)
         func_name = str(getattr(fun, "decl", "unknown"))
         has_mac = self.features.get("has_mac", False)
@@ -45,7 +52,16 @@ class EFlowGenerator:
         self._outloop_gpc = op_gpc + 1
         reg_map = self._build_register_map(fun)
         self._last_reg_map = reg_map
+        has_mac = self.features.get("has_mac", False)
+        self.gpc_meta[init_gpc]["has_mac"] = has_mac
+        self.gpc_meta[op_gpc]["has_mac"] = has_mac
+        if not has_mac:
+            self._check_loop_dependencies(fun, reg_map)
+        self._streams = None if has_mac else self._plan_generic_streams(fun)
+        self.features["return_value"] = self._locate_return_value(fun, reg_map)
         core_ops = self._decide_core_operations(fun, reg_map)
+        if not self._loop_bbs:
+            self._add_exit_core(core_ops, reg_map)
 
         # ── Fix 1: 연산 없는 활성 코어 → self-routing (값 보존) ──
         for i in range(126):
@@ -55,6 +71,12 @@ class EFlowGenerator:
 
         # ── v1.0: mesh ±16 배치 사후 검증 (§5.2 배치 정당성 정량화) ──
         mesh = self._verify_mesh_placement(core_ops)
+        if mesh["violations"]:
+            # 윈도우 밖 소스는 Y-마스크에서 빠져 결과가 틀린다 → MIF를 만들지 않는다
+            d, src, dist = mesh["detail"][0]
+            raise GenerationError(
+                f"Mesh window violation: {mesh['violations']} source(s) outside [-16,+15] "
+                f"(e.g. r{d} <- r{src}, dist {dist:+d})")
         core_codes = self._encode_zy_codes(core_ops)
         self._assemble_and_emit_gpcs(core_codes, init_gpc, op_gpc)
 
@@ -72,6 +94,7 @@ class EFlowGenerator:
             "mesh_max_dist": mesh["max_dist"],
             "mesh_detail": mesh["detail"],
             "op_slots": gpc_count,
+            "trip_count": self._static_trip_count(fun),
             # MAC 함수만: 환원 트리 배치 탐색 결과 (True=해 발견, False=불가)와 깊이
             "mac_plan_ok": getattr(self, "_mac_plan_feasible", None) if has_mac else None,
             "mac_depth": getattr(self, "_mac_tree_depth", None) if has_mac else None,
@@ -79,6 +102,604 @@ class EFlowGenerator:
         self._mac_plan_feasible = None
         self._mac_tree_depth = None
         return gpc_count
+
+    # =========================================================================
+    # v1.0: 생성기가 번역할 수 없는 구조 거부
+    # =========================================================================
+    # =========================================================================
+    # v1.0: 실행 영역 분석
+    #   EOPPP 연산 슬롯은 매 사이클 반복되므로, C에서 한 번만 실행되는 루프 밖 문장을
+    #   그대로 매핑하면 매 사이클 반복되어 결과가 틀린다. 함수를 세 영역으로 나눈다.
+    #     루프 이전 : 컴파일 시점에 실행해 상수로 접는다 → 초기값(LXY)으로 흡수
+    #     루프 몸체 : 매핑 대상 (계산 루프는 최대 1개)
+    #     루프 이후 : 관찰 가능한 효과(메모리 쓰기, 반환 변수 수정)가 없을 때만 무시
+    # =========================================================================
+    _CMP_OPS = {"GtExpr": ">", "GeExpr": ">=", "LtExpr": "<", "LeExpr": "<=",
+                "EqExpr": "==", "NeExpr": "!="}
+    _ARITH_OPS = {"PlusExpr": "+", "MinusExpr": "-", "MultExpr": "*",
+                  "LshiftExpr": "<<", "RshiftExpr": ">>"}
+    _COPY_OPS = {"SsaName", "IntegerCst", "NopExpr", "ConvertExpr"}
+
+    def _mapped(self, bb):
+        return bb.index in self._loop_bbs
+
+    def _static_trip_count(self, fun):
+        """헤더 검사형 카운터 루프의 반복 수 (break가 있으면 상한 = WCET).
+        카운터 = 헤더 PHI, 갱신 = 자기 자신 + 상수. 판단할 수 없으면 None."""
+        if not self._loop_bbs:
+            return 0
+        for bb in fun.cfg.basic_blocks:
+            if bb.index != self._loop_header:
+                continue
+            for s in bb.gimple:
+                if not isinstance(s, gcc.GimpleCond) or not self._cond_next_value_mode(bb, s):
+                    continue
+                leaves = self._sum_leaves(self._latch_arg[s.lhs.version])
+                if not leaves:
+                    return None
+                consts = [int(x.constant) for x in leaves if isinstance(x, gcc.IntegerCst)]
+                others = [x for x in leaves if not isinstance(x, gcc.IntegerCst)]
+                if len(others) != 1 or getattr(others[0], "version", None) != s.lhs.version:
+                    return None
+                step = sum(consts)
+                init = self._folded_init.get(self._get_base_var_name(s.lhs) or "")
+                bound = int(s.rhs.constant) if isinstance(s.rhs, gcc.IntegerCst) else \
+                    self._folded_init.get(self._get_clean_name(s.rhs))
+                op = self._CMP_OPS.get(getattr(s.exprcode, "__name__", ""))
+                if init is None or bound is None or op is None or step == 0:
+                    return None
+                exit_true = any(e.true_value and e.dest.index not in self._loop_bbs for e in bb.succs)
+                test = {">": lambda a: a > bound, ">=": lambda a: a >= bound,
+                        "<": lambda a: a < bound, "<=": lambda a: a <= bound,
+                        "==": lambda a: a == bound, "!=": lambda a: a != bound}[op]
+                n, v = 0, init
+                while test(v) != exit_true and n < 10_000_000:
+                    n, v = n + 1, v + step
+                return n
+        return None
+
+    def _phi_bases(self):
+        """루프 헤더 PHI로 반복 사이를 이어지는 변수 이름들."""
+        return self._phi_base_set
+
+    def _analyze_regions(self, fun):
+        self._loop_bbs, self._folded_bbs, self._post_bbs = set(), set(), set()
+        self._folded_init = {}
+        comp = []
+        bbs = list(fun.cfg.basic_blocks)
+        for hdr, body in natural_loops(fun):
+            if any(isinstance(s, gcc.GimpleCond) and not self._is_noncompute_cond(bb, s)
+                   for bb in bbs if bb.index in body for s in bb.gimple):
+                comp.append((hdr, body))
+        if len(comp) > 1:
+            raise GenerationError(
+                f"{len(comp)} computational loops in one function (one loop per GPC slot)")
+        self._loop_header = comp[0][0] if comp else None
+        self._loop_bbs = set(comp[0][1]) if comp else set()
+
+        # 루프 이후 = 루프에서 (루프를 벗어나) 도달 가능한 블록
+        by_idx = {bb.index: bb for bb in bbs}
+        work = [e.dest.index for i in self._loop_bbs for e in by_idx[i].succs
+                if e.dest.index not in self._loop_bbs]
+        while work:
+            i = work.pop()
+            if i in self._post_bbs or i in self._loop_bbs:
+                continue
+            self._post_bbs.add(i)
+            work.extend(e.dest.index for e in by_idx[i].succs)
+        # 루프 이전 = 나머지 (실행되지 않는 분기 포함)
+        self._folded_bbs = {i for i in by_idx} - self._loop_bbs - self._post_bbs
+        self._loop_defs = {}
+        for bb in bbs:
+            if bb.index in self._loop_bbs:
+                for s in bb.gimple:
+                    if isinstance(s, gcc.GimpleAssign) and isinstance(s.lhs, gcc.SsaName):
+                        self._loop_defs[s.lhs.version] = s
+        # 한 반복에 여러 번 대입되는 변수: 코어에는 마지막 값(헤더 PHI의 back-edge 인자)만
+        # 남긴다. 중간 정의는 임시값처럼 읽는 쪽에서 펼친다.
+        self._final_def, self._nonfinal_versions = {}, set()
+        self._phi_base_set = set()
+        self._latch_arg = {}
+        for bb in bbs:
+            if bb.index not in self._loop_bbs:
+                continue
+            for phi in (bb.phi_nodes or []):
+                base = self._get_base_var_name(phi.lhs)
+                for arg, e in phi.args:
+                    if base and e.src.index in self._loop_bbs and isinstance(arg, gcc.SsaName):
+                        self._final_def[base] = arg.version
+                        self._phi_base_set.add(base)
+                        if bb.index == self._loop_header:
+                            self._latch_arg[phi.lhs.version] = arg
+        # 루프를 돌지 않는 변수(매 반복 새로 씀)는 실행 순서상 마지막 대입이 최종 값
+        by_idx = {bb.index: bb for bb in bbs}
+        order, seen_bb = [], set()
+
+        def visit(i):
+            if i in seen_bb or i not in self._loop_bbs:
+                return
+            seen_bb.add(i)
+            for e in by_idx[i].succs:
+                if e.dest.index != self._loop_header:
+                    visit(e.dest.index)
+            order.append(i)
+        if self._loop_header is not None:
+            visit(self._loop_header)
+        for i in reversed(order):                    # 역후위 = 위상 순서
+            for s in by_idx[i].gimple:
+                if isinstance(s, gcc.GimpleAssign) and isinstance(s.lhs, gcc.SsaName):
+                    base = self._get_base_var_name(s.lhs)
+                    if base and base not in self._phi_bases():
+                        self._final_def[base] = s.lhs.version
+        for v, s in self._loop_defs.items():
+            base = self._get_base_var_name(s.lhs)
+            if base and base in self._final_def and self._final_def[base] != v:
+                self._nonfinal_versions.add(v)
+        self._fold_pre_loop(fun)
+        self._check_post_loop(fun)
+
+    def _fold_pre_loop(self, fun):
+        """루프 이전 영역을 진입점부터 실제 실행 순서대로 해석해 상수로 접는다.
+        if 분기는 조건을 계산해 한쪽만 따라가고, 합류점의 PHI는 들어온 edge로 고른다."""
+        vals = {}
+
+        def wrap(x):
+            return ((int(x) + (1 << 31)) % (1 << 32)) - (1 << 31)
+
+        def val(n):
+            if isinstance(n, gcc.IntegerCst):
+                return int(n.constant)
+            if isinstance(n, gcc.SsaName):
+                return vals.get(n.version)
+            return None
+
+        def fail(what):
+            raise GenerationError(
+                f"Code before the loop is not compile-time constant: '{what}'")
+
+        def record(lhs, v):
+            vals[lhs.version] = v
+            base = self._get_base_var_name(lhs)
+            if base:
+                self._folded_init[base] = v
+
+        bb, prev, steps = fun.cfg.entry, None, 0
+        exit_idx = fun.cfg.exit.index
+        while bb is not None and bb.index != exit_idx and bb.index not in self._loop_bbs:
+            steps += 1
+            if steps > 100000:
+                fail(f"control flow before the loop does not terminate (BB {bb.index})")
+            for phi in (bb.phi_nodes or []):
+                for arg, e in phi.args:
+                    if prev is not None and e.src.index == prev:
+                        v = val(arg)
+                        if v is None:
+                            fail(phi)
+                        record(phi.lhs, v)
+            nxt = None
+            for s in bb.gimple:
+                if isinstance(s, gcc.GimpleAssign):
+                    if not isinstance(s.lhs, gcc.SsaName):
+                        fail(s)                      # 메모리(전역/배열) 쓰기
+                    name = getattr(s.exprcode, "__name__", "")
+                    v = None
+                    if len(s.rhs) == 1 and name in self._COPY_OPS:
+                        v = val(s.rhs[0])
+                    elif len(s.rhs) == 2 and name in self._ARITH_OPS:
+                        a, b = val(s.rhs[0]), val(s.rhs[1])
+                        op = self._ARITH_OPS[name]
+                        if a is not None and b is not None:
+                            if op in ("<<", ">>") and not (0 <= b < 32):
+                                v = None
+                            else:
+                                v = wrap({"+": lambda: a + b, "-": lambda: a - b,
+                                          "*": lambda: a * b, "<<": lambda: a << b,
+                                          ">>": lambda: a >> b}[op]())
+                    if v is None:
+                        fail(s)
+                    record(s.lhs, v)
+                elif isinstance(s, gcc.GimpleCond):
+                    a, b = val(s.lhs), val(s.rhs)
+                    op = self._CMP_OPS.get(getattr(s.exprcode, "__name__", ""))
+                    if a is None or b is None or op is None:
+                        fail(s)
+                    taken = {">": a > b, ">=": a >= b, "<": a < b, "<=": a <= b,
+                             "==": a == b, "!=": a != b}[op]
+                    for e in bb.succs:
+                        if (e.true_value and taken) or (e.false_value and not taken):
+                            nxt = e.dest
+                elif isinstance(s, gcc.GimpleReturn):
+                    return
+                elif isinstance(s, gcc.GimpleCall):
+                    fail(s)                          # 호출 결과/부수효과는 접을 수 없다
+            if nxt is None:
+                succs = list(bb.succs)
+                if len(succs) != 1:
+                    fail(f"BB {bb.index}")
+                nxt = succs[0].dest
+            prev, bb = bb.index, nxt
+
+    def _check_post_loop(self, fun):
+        """루프 이후 영역은 매핑하지 않는다. 결과에 영향을 주는 문장이 있으면 거부."""
+        ret_bases = set()
+        for bb in fun.cfg.basic_blocks:
+            for s in bb.gimple:
+                if isinstance(s, gcc.GimpleReturn) and isinstance(s.retval, gcc.SsaName):
+                    node, guard = s.retval, 0
+                    while isinstance(node, gcc.SsaName) and guard < 50:
+                        guard += 1
+                        base = self._get_base_var_name(node)
+                        if base:
+                            ret_bases.add(base)
+                        ds = getattr(node, "def_stmt", None)
+                        if isinstance(ds, gcc.GimpleAssign) and len(ds.rhs) == 1:
+                            node = ds.rhs[0]
+                        else:
+                            break
+        self._ret_bases = ret_bases
+        for bb in fun.cfg.basic_blocks:
+            if bb.index not in self._post_bbs:
+                continue
+            for s in bb.gimple:
+                if not isinstance(s, gcc.GimpleAssign):
+                    continue
+                if not isinstance(s.lhs, gcc.SsaName):
+                    raise GenerationError(f"Memory write after the loop: '{s}'")
+                base = self._get_base_var_name(s.lhs)
+                if base and base in ret_bases:
+                    raise GenerationError(
+                        f"Return value '{base}' is modified after the loop: '{s}'")
+
+    # =========================================================================
+    # v1.0: 반복 내 의존 검사 (일반 경로)
+    #   모든 코어는 이전 사이클 값을 읽는다. SSA로 보면 피연산자가
+    #     PHI 결과 / 루프 밖 정의  → 이전 반복 값  (그대로 매핑)
+    #     배열 로드                → A-bank 스트림 값
+    #     루프 안에서 먼저 정의     → 이번 반복 값
+    #   이번 반복 값은 식 펼치기로 같은 사이클에 계산할 수 있을 때만 허용한다.
+    #     '+' 연쇄 → 다입력 ADD로 평탄화 (같은 소스 중복 불가)
+    #     '-' 식   → 단항 복사가 그 식을 그대로 다시 계산 (한 단계만)
+    # =========================================================================
+    def _is_load_stmt(self, s):
+        r = s.rhs[0] if len(s.rhs) == 1 else None
+        return isinstance(r, gcc.ArrayRef) or isinstance(getattr(r, "operand", None), gcc.ArrayRef)
+
+    def _value_def(self, node, depth=0):
+        """node가 이번 반복에 계산된 산술 결과면 그 정의문 (임시 복사는 따라감).
+        PHI(이전 반복 값) / 루프 밖 정의 / 배열 로드(스트림) / 상수면 None."""
+        while isinstance(node, gcc.SsaName) and depth < 30:
+            s = self._loop_defs.get(node.version)
+            if s is None or self._is_load_stmt(s):
+                return None
+            if len(s.rhs) == 1 and getattr(s.exprcode, "__name__", "") in self._COPY_OPS:
+                node, depth = s.rhs[0], depth + 1
+                continue
+            return s
+        return None
+
+    def _sum_leaves(self, node, depth=0):
+        """'+'로만 이어진 이번 반복 값을 잎(이전 반복 값/스트림/상수) 목록으로 펼친다.
+        펼칠 수 없으면 None."""
+        d = self._value_def(node)
+        if d is None:
+            return [node]
+        if depth > 30 or len(d.rhs) != 2 or self._get_op_symbol(d.exprcode) != "+":
+            return None
+        out = []
+        for o in d.rhs:
+            sub = self._sum_leaves(o, depth + 1)
+            if sub is None:
+                return None
+            out += sub
+        return out
+
+    def _check_loop_dependencies(self, fun, reg_map):
+        loop_bbs = [bb for bb in fun.cfg.basic_blocks if bb.index in self._loop_bbs]
+        tc = self.features.get("true_consts", {})
+
+        def has_core(node):
+            if not isinstance(node, gcc.SsaName):
+                return True
+            nm = self._get_clean_name(node)
+            return nm in reg_map or nm in tc or nm.lstrip("-").isdigit()
+
+        def core_of(node):
+            nm = str(node.constant) if isinstance(node, gcc.IntegerCst) else self._get_clean_name(node)
+            return self._find_reg(nm, reg_map) or nm
+
+        def leaves_ok(leaves, where):
+            if leaves is None:
+                return False
+            for lf in leaves:
+                if not has_core(lf):
+                    raise GenerationError(
+                        f"Operand '{self._get_clean_name(lf)}' of '{where}' has no core")
+            cores = [core_of(lf) for lf in leaves]
+            if len(set(cores)) != len(cores):
+                raise GenerationError(
+                    f"'{where}' sums the same core twice after expansion (Y-mask has one bit per source)")
+            return True
+
+        read_names = set()
+        for s in self._loop_defs.values():
+            for o in s.rhs:
+                read_names.add(self._get_clean_name(o))
+
+        skip = self.features.get("skip_cond_indices", set())
+        k = 0
+        for bb in fun.cfg.basic_blocks:
+            for s in bb.gimple:
+                if not isinstance(s, gcc.GimpleCond):
+                    continue
+                idx, k = k, k + 1
+                if idx in skip or bb.index not in self._loop_bbs:
+                    continue
+                self._check_loop_cond(fun, bb, s, read_names, leaves_ok)
+
+        # 한 반복에 여러 번 대입되는 변수는 루프를 도는 값(헤더 PHI)이어야
+        # 마지막 정의를 코어 값으로 정할 수 있다
+        seen = {}
+        for s in self._loop_defs.values():
+            base = self._get_base_var_name(s.lhs)
+            if base:
+                seen[base] = seen.get(base, 0) + 1
+        for base, n in seen.items():
+            if n > 1 and base not in self._final_def:
+                raise GenerationError(
+                    f"Variable '{base}' is assigned {n} times per iteration and is not loop-carried")
+
+        for bb in loop_bbs:
+            for s in bb.gimple:
+                if not isinstance(s, gcc.GimpleAssign):
+                    continue
+                if isinstance(s.lhs, gcc.SsaName) and s.lhs.version in self._nonfinal_versions:
+                    continue                         # 중간 정의: 읽는 쪽에서 펼친다
+                name = self._get_clean_name(s.lhs)
+                if not (isinstance(s.lhs, gcc.ArrayRef) or name in reg_map):
+                    if isinstance(s.lhs, gcc.SsaName) and self._get_base_var_name(s.lhs) is None:
+                        continue                     # 임시값: 사용하는 문장에서 검사
+                    raise GenerationError(f"Assignment to '{name}' in the loop has no core")
+                if len(s.rhs) == 1 and isinstance(s.rhs[0], gcc.IntegerCst):
+                    raise GenerationError(
+                        f"Constant assignment '{name} = {s.rhs[0].constant}' inside the loop "
+                        f"(only initial values are loaded)")
+                sym = self._get_op_symbol(s.exprcode)
+                if len(s.rhs) == 2 and sym == "+":
+                    leaves = (self._sum_leaves(s.rhs[0]) or [None]) + (self._sum_leaves(s.rhs[1]) or [None])
+                    if None in leaves or not leaves_ok(leaves, name):
+                        raise GenerationError(
+                            f"'{name}' reads a value computed earlier in the same iteration "
+                            f"that cannot be expanded into one cycle")
+                    continue
+                if len(s.rhs) == 1 and isinstance(s.rhs[0], gcc.SsaName):
+                    d = self._value_def(s.rhs[0])
+                    if d is not None:
+                        dsym = self._get_op_symbol(d.exprcode)
+                        if dsym == "+":
+                            ok = leaves_ok(self._sum_leaves(s.rhs[0]), name)
+                        elif dsym == "-" and len(d.rhs) == 2:
+                            ok = all(self._value_def(o) is None for o in d.rhs) and leaves_ok(list(d.rhs), name)
+                        else:
+                            ok = False
+                        if not ok:
+                            raise GenerationError(
+                                f"'{name}' copies a value computed earlier in the same iteration "
+                                f"that cannot be expanded into one cycle")
+                        continue
+                for o in s.rhs:
+                    if self._value_def(o) is not None:
+                        raise GenerationError(
+                            f"'{name}' reads '{self._get_clean_name(o)}' computed earlier in the "
+                            f"same iteration (not mappable to one cycle)")
+                    if not has_core(o):
+                        raise GenerationError(
+                            f"Operand '{self._get_clean_name(o)}' of '{name}' has no core")
+
+    def _check_loop_cond(self, fun, bb, s, read_names, leaves_ok):
+        """루프 안 조건 하나가 종료 분기 코어로 C 의미 그대로 표현되는지 확인."""
+        loop = self._loop_bbs
+        exit_true = any(e.true_value and e.dest.index not in loop for e in bb.succs)
+        exit_false = any(e.false_value and e.dest.index not in loop for e in bb.succs)
+        if not exit_true and not exit_false:
+            raise GenerationError(
+                f"'if' inside the loop body without exit is not supported "
+                f"(conditions become loop-exit branches; no if-conversion): '{s}'")
+        if exit_true and exit_false:
+            raise GenerationError(f"Both branches of '{s}' leave the loop")
+
+        # 우변: 상수 또는 루프 불변 변수. 변수 코어는 음수로 저장되므로 계산에 쓰이면 안 된다.
+        if isinstance(s.rhs, gcc.SsaName):
+            rhs_nm = self._get_clean_name(s.rhs)
+            if self._value_def(s.rhs) is not None or rhs_nm in self._final_def:
+                raise GenerationError(f"Loop bound '{rhs_nm}' changes inside the loop: '{s}'")
+            if rhs_nm in read_names:
+                raise GenerationError(
+                    f"Loop bound '{rhs_nm}' is also used in arithmetic (it is stored negated)")
+        elif not isinstance(s.rhs, gcc.IntegerCst):
+            raise GenerationError(f"Unsupported loop bound in '{s}'")
+
+        leaves = self._cond_lhs_leaves(bb, s)
+        if not leaves_ok(leaves, str(s)):
+            raise GenerationError(f"Exit condition '{s}' cannot be expanded into one cycle")
+
+        if self._cond_next_value_mode(bb, s):
+            # 헤더 검사: 첫 검사(초기값)에서 바로 나가면 C는 몸체를 0회, EOPPP는 1회 실행한다
+            op_raw = self._CMP_OPS.get(getattr(s.exprcode, "__name__", ""))
+            init = self._folded_init.get(self._get_base_var_name(s.lhs) or "")
+            bound = int(s.rhs.constant) if isinstance(s.rhs, gcc.IntegerCst) else \
+                self._folded_init.get(self._get_clean_name(s.rhs))
+            if op_raw is None or init is None or bound is None:
+                raise GenerationError(f"Cannot verify the first loop test of '{s}'")
+            holds = {">": init > bound, ">=": init >= bound, "<": init < bound,
+                     "<=": init <= bound, "==": init == bound, "!=": init != bound}[op_raw]
+            if holds == exit_true:
+                raise GenerationError(f"Loop executes zero times (not supported): '{s}'")
+            return
+
+        # 그 외: EOPPP에서는 종료 사이클에도 몸체 전체가 실행된다.
+        # 조건 뒤(헤더 전까지) 문장이 관찰 가능한 결과를 바꾸면 C와 달라진다.
+        by_idx = {b.index: b for b in fun.cfg.basic_blocks}
+        seen, work = set(), [e.dest.index for e in bb.succs if e.dest.index in loop]
+        while work:
+            i = work.pop()
+            if i in seen or i == self._loop_header:
+                continue
+            seen.add(i)
+            for st in by_idx[i].gimple:
+                if isinstance(st, gcc.GimpleAssign):
+                    base = self._get_base_var_name(st.lhs)
+                    if isinstance(st.lhs, gcc.ArrayRef) or (base and base in self._ret_bases):
+                        raise GenerationError(
+                            f"'{st}' after exit condition '{s}' changes an observable result "
+                            f"(the whole body also runs in the exit cycle)")
+            work.extend(e.dest.index for e in by_idx[i].succs if e.dest.index in loop)
+
+    # =========================================================================
+    # v1.0: 루프 없는 함수의 종료 코어
+    #   모든 계산이 상수로 접혀 연산 슬롯에 할 일이 없지만, 종료 조건이 없으면
+    #   GPC가 다음 함수로 넘어가지 못한다. 상수 1 > 0 (GTZ + BRGPC_HOLD)로
+    #   첫 연산 사이클에 빠져나간다 (조건 코어는 Fibonacci에서 검증된 구성).
+    # =========================================================================
+    def _add_exit_core(self, core_ops, reg_map):
+        used = {v["idx"] for v in reg_map.values()}
+        free = [i for i in range(126) if i not in used]
+        if len(free) < 2:
+            raise GenerationError("Core capacity exceeded during allocation: no free core for exit")
+        c1, ce = free[0], free[1]
+        core_ops[c1].update({
+            "name": "cst_1", "var_type": "const", "init_val": 1, "is_active": True,
+            "sources": [c1], "init_comment": "1", "op_comment": "1",
+        })
+        core_ops[ce].update({
+            "name": "exit", "var_type": "cond", "init_val": self._outloop_gpc,
+            "is_active": True, "op_bits": ZOp.GTZ, "ctrl_bits": ZCtrl.BRGPC_HOLD,
+            "opcode": "02", "branch_hold": True, "sources": [c1],
+            "init_comment": f"{self._outloop_gpc} (outLoop)", "op_comment": "1>0 (exit)",
+            "op_rc": f"r{c1}>0 ? outL:inL",
+        })
+        reg_map["cst_1"] = {"reg": f"r{c1}", "idx": c1, "val": 1, "name": "1", "type": "const"}
+        reg_map["cond_exit"] = {"reg": f"r{ce}", "idx": ce, "val": self._outloop_gpc,
+                                "name": f"{self._outloop_gpc} (outLoop)", "type": "cond"}
+
+    def _plan_generic_streams(self, fun):
+        """일반 경로의 배열 접근을 A-bank 순차 스트림으로 매핑할 수 있는지 확인한다.
+        A-bank 주소는 0부터 매 사이클 1씩 증가하므로
+          - 인덱스는 루프 카운터 그 자체여야 하고 (a[i+1], a[5] 불가)
+          - 카운터는 0에서 시작해 1씩 증가해야 하며
+          - 같은 배열을 읽고 쓰면(제자리 갱신) 안 된다.
+        반환: (읽기 배열 집합, 쓰기 배열 집합). 불가하면 GenerationError.
+        (함수 호출이 있는 블록 = printf 등 출력용은 제외)"""
+        counters = set()
+        for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
+            for stmt in bb.gimple:
+                if not isinstance(stmt, gcc.GimpleAssign) or len(stmt.rhs) != 2:
+                    continue
+                if self._get_op_symbol(stmt.exprcode) != "+":
+                    continue
+                a, b = stmt.rhs
+                lhs_base = self._get_base_var_name(stmt.lhs)
+                for x, y in ((a, b), (b, a)):
+                    if (isinstance(y, gcc.IntegerCst) and int(y.constant) == 1
+                            and lhs_base and self._get_base_var_name(x) == lhs_base):
+                        counters.add(lhs_base)
+        init_vals = self.features.get("init_vals", {})
+
+        def arr_of(n):
+            if isinstance(n, gcc.ArrayRef):
+                return n
+            inner = getattr(n, "operand", None)
+            return inner if isinstance(inner, gcc.ArrayRef) else None
+
+        reads, writes = set(), set()
+        for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb) or any(isinstance(s, gcc.GimpleCall) for s in bb.gimple):
+                continue
+            for stmt in bb.gimple:
+                if not isinstance(stmt, gcc.GimpleAssign):
+                    continue
+                refs = [(stmt.lhs, True)] + [(op, False) for op in stmt.rhs]
+                for node, is_write in refs:
+                    arr = arr_of(node)
+                    if arr is None:
+                        continue
+                    base, idx = self._arrayref_parts(arr)
+                    if idx not in counters:
+                        raise GenerationError(
+                            f"Array index '{base}[{idx}]' is not the loop counter "
+                            f"(A-bank access is sequential)")
+                    if int(init_vals.get(idx, 0)) != 0:
+                        raise GenerationError(
+                            f"Loop counter '{idx}' starts at {init_vals.get(idx)} "
+                            f"(A-bank address starts at 0)")
+                    (writes if is_write else reads).add(base)
+        both = reads & writes
+        if both:
+            raise GenerationError(
+                f"Array '{sorted(both)[0]}' is both read and written "
+                f"(in-place update not supported)")
+        return reads, writes
+
+    def _apply_generic_streams(self, core_ops, reg_map):
+        """배열 원소 코어에 FIR 경로와 같은 A-bank 제어를 붙인다.
+          읽기: ADD + XD_MEM | A_BANK_RD, 주소 증가 (FIR 입력 코어와 동일)
+          쓰기: 계산 결과 + A_BANK_RD | A_BANK_WR, 주소 증가 (FIR 최종 코어와 동일)"""
+        if not self._streams:
+            return
+        reads, writes = self._streams
+        for name, info in reg_map.items():
+            m = re.match(r"^(\w+)\[\w+\]$", name)
+            if not m:
+                continue
+            i = info["idx"]
+            if m.group(1) in reads:
+                core_ops[i].update({
+                    "op_bits": ZOp.ADD, "ctrl_bits": ZCtrl.XD_MEM | ZCtrl.A_BANK_RD,
+                    "opcode": "00", "sources": [], "xd_mem": True,
+                    "a_bank_rd": True, "a_addr_mode": 1,
+                    "op_comment": f"{name} (A-bank read)", "op_rc": f"r{i}",
+                })
+            elif m.group(1) in writes:
+                core_ops[i]["ctrl_bits"] = core_ops[i].get("ctrl_bits", 0) | ZCtrl.A_BANK_RD | ZCtrl.A_BANK_WR
+                core_ops[i].update({"a_bank_rd": True, "a_bank_wr": True, "a_addr_mode": 1})
+
+    # =========================================================================
+    # v1.0: 반환값 위치 확인
+    #   v1.0 하드웨어에는 CALL/RETURN이 없어 반환값을 호출자로 전달하지 못한다(v2.0).
+    #   대신 반환값이 어느 코어에 남는지 기록하고, 어느 코어에도 없으면
+    #   (예: SSA 임시값) 값이 조용히 사라지므로 함수를 거부한다.
+    # =========================================================================
+    def _locate_return_value(self, fun, reg_map):
+        found = None
+        for bb in fun.cfg.basic_blocks:
+            for stmt in bb.gimple:
+                if not isinstance(stmt, gcc.GimpleReturn):
+                    continue
+                rv = getattr(stmt, "retval", None)
+                if rv is None:
+                    continue
+                if isinstance(rv, gcc.IntegerCst):
+                    desc = f"constant {int(rv.constant)}"
+                else:
+                    name = self._get_clean_name(rv)
+                    true_consts = self.features.get("true_consts", {})
+                    if name.lstrip("-").isdigit():
+                        # 상수를 임시 변수에 담아 반환 (GIMPLE: _2 = 7; return _2;)
+                        desc = f"constant {int(name)}"
+                    elif name not in reg_map and name in true_consts:
+                        # 초기화 후 재대입되지 않는 변수 → 컴파일 시점 상수
+                        desc = f"constant {true_consts[name]} ({name})"
+                    elif name not in reg_map:
+                        raise GenerationError(
+                            f"Return value '{name}' is not held in any core "
+                            f"(would be lost; return-value transfer is v2.0)")
+                    else:
+                        desc = f"r{reg_map[name]['idx']} ({name})"
+                if found is not None and found != desc:
+                    raise GenerationError(
+                        f"Multiple distinct return values ({found}, {desc})")
+                found = desc
+        return found
 
     # =========================================================================
     # v1.0: mesh ±16 배치 사후 검증
@@ -165,6 +786,7 @@ class EFlowGenerator:
         self._mac_managed = mac_managed
         self._pass_generic_assign(fun, core_ops, reg_map, skip_indices=mac_managed)
         self._pass_cond(fun, core_ops, reg_map)
+        self._apply_generic_streams(core_ops, reg_map)
         return core_ops
 
     # =========================================================================
@@ -299,21 +921,28 @@ class EFlowGenerator:
     def _write_metrics(self):
         path = os.path.join(self.output_dir, "metrics.log")
         reps = self.func_reports
+        W = 112
         with open(path, "w", encoding="utf-8") as f:
             f.write("EOPPP Compiler — Quantitative Metrics (v1.0)\n")
-            f.write("=" * 78 + "\n\n")
-            f.write(f"{'function':<16}{'GPC':<8}{'MAC':<5}"
-                    f"{'cores/128':<11}{'util%':<8}"
-                    f"{'meshEdges':<10}{'meshViol':<9}{'meshOK%':<9}{'maxDist':<8}\n")
-            f.write("-" * 78 + "\n")
+            f.write("=" * W + "\n\n")
+            f.write(f"{'function':<14}{'GPC':<7}{'MAC':<4}{'depth':<6}"
+                    f"{'cores':<6}{'util%':<7}{'mesh':<10}{'maxD':<5}"
+                    f"{'C LoC':<6}{'eFlow':<6}{'iters':<7}{'cycles':<7}"
+                    f"{'chk ms':<8}{'gen ms':<8}\n")
+            f.write("-" * W + "\n")
             for r in reps:
                 gpc = f"{r['init_gpc']}/{r['op_gpc']}"
-                f.write(f"{r['name'][:15]:<16}{gpc:<8}"
-                        f"{('Y' if r['is_mac'] else 'N'):<5}"
-                        f"{r['cores_used']:<11}{r['core_util_pct']:<8.1f}"
-                        f"{r['mesh_edges']:<10}{r['mesh_violations']:<9}"
-                        f"{r['mesh_ok_pct']:<9.2f}{r['mesh_max_dist']:<8}\n")
-            f.write("-" * 78 + "\n\n")
+                mesh = f"{r['mesh_edges'] - r['mesh_violations']}/{r['mesh_edges']}"
+                it = r.get("trip_count")
+                cyc = "-" if it is None else str(1 + max(it, 1))
+                f.write(f"{r['name'][:13]:<14}{gpc:<7}{('Y' if r['is_mac'] else 'N'):<4}"
+                        f"{str(r.get('mac_depth') or '-'):<6}"
+                        f"{r['cores_used']:<6}{r['core_util_pct']:<7.1f}{mesh:<10}"
+                        f"{r['mesh_max_dist']:<5}"
+                        f"{str(r.get('c_loc', '-')):<6}{2 * r['cores_used']:<6}"
+                        f"{('-' if it is None else str(it)):<7}{cyc:<7}"
+                        f"{r.get('checker_ms', 0):<8.1f}{r.get('gen_ms', 0):<8.1f}\n")
+            f.write("-" * W + "\n\n")
 
             tot_edges = sum(r["mesh_edges"] for r in reps)
             tot_viol = sum(r["mesh_violations"] for r in reps)
@@ -325,23 +954,21 @@ class EFlowGenerator:
             f.write(f"Mesh ±16 placement success: {tot_edges - tot_viol}/{tot_edges}"
                     f" edges ({ok:.2f}%)\n")
             f.write(f"Total mesh violations     : {tot_viol}"
-                    f" (sources dropped from ADD mask)\n")
+                    f" (a violation rejects the function; no MIF is emitted)\n")
             for r in reps:
                 if r.get("mac_plan_ok") is True:
                     f.write(f"MAC layout [{r['name'][:14]}]   : reduction tree depth "
                             f"{r['mac_depth']} (store -> {r['mac_depth']} adder level(s) "
                             f"-> yo[i]), mesh-valid placement found\n")
-                elif r.get("mac_plan_ok") is False:
-                    f.write(f"MAC layout [{r['name'][:14]}]   : NO mesh-valid reduction "
-                            f"tree found (fallback layout, see violations)\n")
-            if tot_viol:
-                f.write("\nViolations (dst<-src, dist):\n")
-                for r in reps:
-                    for (d, s, dist) in r["mesh_detail"]:
-                        f.write(f"  [{r['name'][:14]}] r{d} <- r{s} "
-                                f"(dist={dist:+d}, |{abs(dist)}|>16)\n")
-            f.write("\nNote: mesh window is (src-dst) ∈ [-16,+15] "
-                    "(Y-mask bit = 16+(src-dst)).\n")
+            f.write("\nColumns:\n"
+                    "  depth  : MAC reduction tree levels (store -> ... -> output)\n"
+                    "  cores  : active cores (of 126 allocatable)   mesh: in-window Y-mask edges\n"
+                    "  C LoC  : source lines of the function        eFlow: generated lines "
+                    "(init + op per active core)\n"
+                    "  iters  : static loop trip count (upper bound if the loop has a break)\n"
+                    "  cycles : op-slot cycles + 1 init cycle (WCET; MAC output latency not included)\n"
+                    "  chk/gen ms : checker / generator wall time inside the GCC plugin\n"
+                    "Note: mesh window is (src-dst) in [-16,+15] (Y-mask bit = 16+(src-dst)).\n")
 
     # =========================================================================
     # 이름 변환 헬퍼
@@ -421,6 +1048,9 @@ class EFlowGenerator:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 lhs = stmt.lhs
                 if not isinstance(lhs, gcc.SsaName): continue
+                # 이름 있는 변수(prev = arr[i])는 자기 이름을 유지한다.
+                # 의미 이름 치환은 이름 없는 임시값(_3 = arr[i])에만 적용
+                if getattr(getattr(lhs, "var", None), "name", None): continue
                 ver = getattr(lhs, "version", None)
                 if ver is None or ver in self.ssa_semantic: continue
                 if len(stmt.rhs) == 1:
@@ -442,6 +1072,9 @@ class EFlowGenerator:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 lhs = stmt.lhs
                 if not isinstance(lhs, gcc.SsaName): continue
+                # 이름 있는 변수(prev = arr[i])는 자기 이름을 유지한다.
+                # 의미 이름 치환은 이름 없는 임시값(_3 = arr[i])에만 적용
+                if getattr(getattr(lhs, "var", None), "name", None): continue
                 ver = getattr(lhs, "version", None)
                 if ver is None or ver in self.ssa_semantic: continue
                 if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.SsaName):
@@ -521,11 +1154,13 @@ class EFlowGenerator:
         for bb in fun.cfg.basic_blocks:
             for stmt in bb.gimple:
                 if isinstance(stmt, gcc.GimpleCond):
-                    if self._is_noncompute_cond(bb, stmt):
+                    # 루프 밖 조건(루프 이전은 상수로 접힘, 이후는 무시)도 매핑하지 않는다
+                    if self._is_noncompute_cond(bb, stmt) or not self._mapped(bb):
                         skip_cond_indices.add(cond_count)
                     cond_count += 1
                     continue
                 if not isinstance(stmt, gcc.GimpleAssign): continue
+                if not self._mapped(bb): continue
                 lhs_base = self._get_base_var_name(stmt.lhs)
                 if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst):
                     if lhs_base:
@@ -552,6 +1187,8 @@ class EFlowGenerator:
                         base, _ = self._arrayref_parts(arr_node)
                         input_arrays.add(str(base))
 
+        # 초기값 = 루프 이전 영역을 상수 접기한 결과 (상수 대입 포함)
+        const_assigns.update(self._folded_init)
         true_consts = {k: v for k, v in const_assigns.items() if k not in reassigned_vars}
 
         def _resolve_const(node, name):
@@ -574,6 +1211,7 @@ class EFlowGenerator:
 
         add_used_consts = set()
         for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
             for stmt in bb.gimple:
                 if isinstance(stmt, gcc.GimpleCond):
                     for operand in [stmt.lhs, stmt.rhs]:
@@ -613,6 +1251,7 @@ class EFlowGenerator:
 
         shift_count = 0
         for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 if len(stmt.rhs) != 1: continue
@@ -683,8 +1322,11 @@ class EFlowGenerator:
     # =========================================================================
     def _build_register_map(self, fun):
         reg_map = {}
+        if self.features.get("has_mac") and not self._build_mac_layout(fun, reg_map):
+            # 곱셈은 있지만 FIR 구조(탭/입력·출력 배열)가 아님 → 일반 경로로 처리
+            self.features["has_mac"] = False
+            reg_map.clear()
         if self.features.get("has_mac"):
-            self._build_mac_layout(fun, reg_map)
             mac_ignore = set(self.features.get("coeff_vars", {}).keys())
             mac_ignore.update(getattr(self, "_mac_all_var_names", set()))
             self._augment_regs_from_gimple(fun, reg_map, allow_constants=True, ignore_names=mac_ignore)
@@ -826,6 +1468,7 @@ class EFlowGenerator:
 
         mult_info = {}
         for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 sym = self._get_op_symbol(stmt.exprcode)
@@ -845,6 +1488,7 @@ class EFlowGenerator:
 
         all_single_assigns = {}
         for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 if len(stmt.rhs) != 1: continue
@@ -889,6 +1533,8 @@ class EFlowGenerator:
                 'mult_name': f"t{tap_idx}", 'store_name': f"_{tap_idx}"})
         taps.sort(key=lambda t: t['idx'])
         N = len(taps)
+        if N == 0 or not output_arrays or not input_arrays:
+            return False
 
         has_shift = self.features.get("has_shift", False)
         cores_per_group = 3 if has_shift else 2
@@ -900,12 +1546,8 @@ class EFlowGenerator:
         plan = self._plan_mac_tree(N, cores_per_group, has_shift)
         self._mac_plan_feasible = plan is not None
         if plan is None:
-            # 해 없음: 그룹을 연속 배치하고 끝에 루트 하나 (mesh 검증이 위반 보고)
-            gpos = [i * cores_per_group for i in range(N)]
-            root = N * cores_per_group
-            plan = {'depth': 1, 'gpos': gpos,
-                    'levels': [[(root, [('L0', gi) for gi in range(N)])]],
-                    'input_core': root + 1}
+            raise GenerationError(
+                f"FIR with {N} taps: no mesh-valid reduction tree fits in 126 cores")
         depth = plan['depth']
         self._mac_tree_depth = depth
 
@@ -977,6 +1619,7 @@ class EFlowGenerator:
             'input_core': input_core, 'input_key': input_key,
             'N': N, 'out_base': out_base, 'in_base': in_base,
         }
+        return True
 
     def _collect_intcst_from_node(self, node, out_set):
         if node is None: return
@@ -997,22 +1640,11 @@ class EFlowGenerator:
         def is_ignored(name): return str(name) in ignore_names
         def is_ssa(name): return re.match(r"^ssa_\d+$", str(name)) is not None
 
-        loop_counter_vars = set()
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if not isinstance(stmt, gcc.GimpleAssign): continue
-                if len(stmt.rhs) != 2: continue
-                sym = self._get_op_symbol(stmt.exprcode)
-                if sym not in ("+", "-"): continue
-                lhs_name = self._get_clean_name(stmt.lhs)
-                op1_name = self._get_clean_name(stmt.rhs[0])
-                op2_name = self._get_clean_name(stmt.rhs[1])
-                if lhs_name == op1_name or lhs_name == op2_name:
-                    loop_counter_vars.add(lhs_name)
 
         for bb in fun.cfg.basic_blocks:
             for stmt in bb.gimple:
                 if isinstance(stmt, gcc.GimpleAssign):
+                    if not self._mapped(bb): continue
                     lhs = self._get_clean_name(stmt.lhs)
                     if not is_ignored(lhs) and not is_ssa(lhs):
                         if lhs not in ("0", "unknown"): self.add_mode_vars.add(lhs)
@@ -1046,10 +1678,8 @@ class EFlowGenerator:
                     if not isinstance(stmt.rhs, gcc.IntegerCst) and not rhs.lstrip("-").isdigit():
                         self.cond_rhs_names.add(rhs)
                     if allow_constants and isinstance(stmt.rhs, gcc.IntegerCst):
-                        v = int(stmt.rhs.constant)
-                        lhs_cond = self._get_clean_name(stmt.lhs)
-                        if lhs_cond in loop_counter_vars: add_constants.add(-(v + 1))
-                        else: add_constants.add(v); add_constants.add(-v)
+                        _, c, _ = self._cond_plan(bb, stmt)
+                        add_constants.add(-c)
                     cond_count += 1
 
         used = set(v["idx"] for v in reg_map.values()) if reg_map else set()
@@ -1067,17 +1697,16 @@ class EFlowGenerator:
                 and v not in ignore_names]):
             if name in reg_map: continue
             idx = alloc_idx()
-            if idx is None: break
+            if idx is None:
+                raise GenerationError(f"Core capacity exceeded during allocation: no free core for '{name}'")
             reg_map[name] = {"reg": f"r{idx}", "idx": idx,
                 "val": int(init_vals.get(name, 0)), "name": name, "type": "var"}
 
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if isinstance(stmt, gcc.GimpleAssign):
-                    lhs = self._get_clean_name(stmt.lhs)
-                    if lhs in reg_map and len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst):
-                        raw = int(stmt.rhs[0].constant)
-                        reg_map[lhs]["val"] = -raw if lhs in self.cond_rhs_names else raw
+        # 초기값: 루프 이전 영역의 상수 접기 결과. 조건 우변 변수는 음수로 저장
+        for name, info in reg_map.items():
+            if info.get("type") == "var" and name in init_vals:
+                raw = int(init_vals[name])
+                info["val"] = -raw if name in self.cond_rhs_names else raw
 
         if allow_constants:
             for v in sorted(set(add_constants)):
@@ -1085,7 +1714,8 @@ class EFlowGenerator:
                 key = f"cst_{v}"
                 if key in reg_map: continue
                 idx = alloc_idx()
-                if idx is None: break
+                if idx is None:
+                    raise GenerationError(f"Core capacity exceeded during allocation: no free core for constant {v}")
                 reg_map[key] = {"reg": f"r{idx}", "idx": idx, "val": int(v), "name": str(v), "type": "const"}
 
         skip_set = self.features.get("skip_cond_indices", set())
@@ -1094,7 +1724,8 @@ class EFlowGenerator:
             key = f"cond_res_{k}"
             if key in reg_map: continue
             idx = alloc_idx()
-            if idx is None: break
+            if idx is None:
+                raise GenerationError(f"Core capacity exceeded during allocation: no free core for '{key}'")
             reg_map[key] = {"reg": f"r{idx}", "idx": idx, "val": self._outloop_gpc, "name": f"{self._outloop_gpc} (outLoop)", "type": "cond"}
 
     # =========================================================================
@@ -1203,46 +1834,44 @@ class EFlowGenerator:
         if skip_indices is None: skip_indices = set()
         if not getattr(fun, "cfg", None): return
  
-        expr_map = {}
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if not isinstance(stmt, gcc.GimpleAssign): continue
-                lhs = self._get_clean_name(stmt.lhs)
-                if not lhs or lhs not in reg_map: continue
-                if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst): continue
-                if len(stmt.rhs) == 2:
-                    e_op1 = self._get_clean_name(stmt.rhs[0])
-                    e_op2 = self._get_clean_name(stmt.rhs[1])
-                    e_sym = self._get_op_symbol(stmt.exprcode)
-                    if e_op1 and e_op2:
-                        expr_map[lhs] = {"op1": e_op1, "op2": e_op2, "sym": e_sym}
  
         for bb in fun.cfg.basic_blocks:
+            if not self._mapped(bb): continue
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleAssign): continue
                 lhs = self._get_clean_name(stmt.lhs)
                 if lhs not in reg_map: continue
+                if isinstance(stmt.lhs, gcc.SsaName) and stmt.lhs.version in self._nonfinal_versions:
+                    continue   # 같은 반복의 중간 정의: 마지막 정의가 펼쳐서 포함한다
                 dst = reg_map[lhs]["idx"]
                 if dst in skip_indices: continue
                 if len(stmt.rhs) == 1 and isinstance(stmt.rhs[0], gcc.IntegerCst): continue
  
                 op1, op2, sym = None, None, ""
                 _expanded_from = None
+                leaves = None   # '+' 연쇄를 평탄화한 소스 노드 (이번 반복 값 펼치기)
                 if len(stmt.rhs) == 2:
                     op1 = self._get_clean_name(stmt.rhs[0])
                     op2 = self._get_clean_name(stmt.rhs[1])
                     sym = self._get_op_symbol(stmt.exprcode)
+                    if sym == "+":
+                        l0, l1 = self._sum_leaves(stmt.rhs[0]), self._sum_leaves(stmt.rhs[1])
+                        if l0 is not None and l1 is not None and len(l0) + len(l1) > 2:
+                            leaves = l0 + l1
                 elif len(stmt.rhs) == 1:
                     rhs0 = stmt.rhs[0]
                     if isinstance(rhs0, (gcc.SsaName, gcc.VarDecl, gcc.ParmDecl,
                                          gcc.IntegerCst, gcc.ArrayRef)):
                         op1 = self._get_clean_name(rhs0)
-                        if op1 and op2 is None and op1 in expr_map:
+                        # 이번 반복에 계산된 값의 복사 → 같은 사이클에 그 식을 다시 계산
+                        d = self._value_def(rhs0) if isinstance(rhs0, gcc.SsaName) else None
+                        if d is not None and len(d.rhs) == 2:
                             _expanded_from = op1
-                            expanded = expr_map[op1]
-                            op1 = expanded["op1"]
-                            op2 = expanded["op2"]
-                            sym = expanded["sym"]
+                            sym = self._get_op_symbol(d.exprcode)
+                            op1 = self._get_clean_name(d.rhs[0])
+                            op2 = self._get_clean_name(d.rhs[1])
+                            if sym == "+":
+                                leaves = self._sum_leaves(rhs0)
                     elif hasattr(rhs0, "operand1"):
                         op1 = self._get_clean_name(rhs0.operand1)
                         op2 = (self._get_clean_name(rhs0.operand2)
@@ -1255,6 +1884,17 @@ class EFlowGenerator:
                 i1 = self._reg_idx(r1) if r1 else None
                 i2 = self._reg_idx(r2) if r2 else None
                 srcs = [x for x in (i1, i2) if x is not None]
+                if leaves:
+                    srcs = []
+                    for lf in leaves:
+                        nm = str(lf.constant) if isinstance(lf, gcc.IntegerCst) else self._get_clean_name(lf)
+                        ix = self._reg_idx(self._find_reg(nm, reg_map))
+                        if ix is not None:
+                            srcs.append(ix)
+                    op1 = "+".join(str(lf.constant) if isinstance(lf, gcc.IntegerCst)
+                                   else self._get_clean_name(lf) for lf in leaves)
+                    op2 = None
+                    r1, r2 = "+".join(f"r{x}" for x in srcs), None
  
                 # ── 공통: 매 stmt 마다 모든 플래그를 명시적으로 결정 ──
                 # 이전 stmt에서 같은 dst를 갱신했어도 플래그가 누적되지 않도록
@@ -1272,6 +1912,16 @@ class EFlowGenerator:
                     "coeff_val":    None,
                 }
  
+                if sym in ("*", "<<", ">>"):
+                    # 비합산 연산은 자기 코어의 X에 Y(상수)를 적용한다.
+                    # 다른 코어 값을 피연산자로 쓰거나 Y가 변수이면 결과가 틀린다.
+                    tc = self.features.get("true_consts", {})
+                    imm_ok = op2 is not None and (str(op2).lstrip("-").isdigit() or op2 in tc)
+                    if op1 != lhs or not imm_ok:
+                        raise GenerationError(
+                            f"'{lhs} = {op1} {sym} {op2}': non-summation op must update "
+                            f"its own core with a constant operand")
+
                 if sym == "*":
                     # ── 비합산 모드: 곱셈 ──
                     y_word = 0
@@ -1339,115 +1989,100 @@ class EFlowGenerator:
     # _pass_cond: 조건문 분기 명령                                          [v9]
     # ★ v9 핵심 변경: COND_MAP 하드코딩 → COND_OP_MAP + decide_ctrl_bits()
     # =========================================================================
+    # v1.0: 루프 조건 → 종료 분기 코어
+    #   조건 코어는 '종료 조건이 참이면 GPC를 다음으로 넘기는' 분기다(BRGPC_HOLD).
+    #   - 반전 여부는 CFG로 정한다: 참일 때 루프를 나가면(break) 그대로,
+    #     거짓일 때 나가면(계속 조건) 반전.
+    #   - 비교 값의 시점: EOPPP는 조건을 몸체와 같은 사이클에 평가하므로,
+    #     헤더 검사(헤더에서 PHI 값을 비교)는 다음 반복 값(back-edge 갱신식)으로,
+    #     그 외는 SSA상 그 시점 값(이번 반복 값이면 '+' 연쇄 펼침)으로 비교한다.
+    #   - 상수 우변: x > c 는 x >= c+1 로 (기존 인코딩 유지)
+    # =========================================================================
+    _INVERT = {"<": ">=", "<=": ">", ">": "<=", ">=": "<", "==": "!=", "!=": "=="}
+
+    def _cond_plan(self, bb, stmt):
+        """(종료 연산자, 보정된 상수 우변 또는 None, 참일 때 나가는지)"""
+        op_raw = self._CMP_OPS.get(getattr(stmt.exprcode, "__name__", "")) \
+            or self._get_op_symbol(stmt.exprcode)
+        exit_true = any(e.true_value and e.dest.index not in self._loop_bbs for e in bb.succs)
+        op_exit = op_raw if exit_true else self._INVERT.get(op_raw, op_raw)
+        c = None
+        if isinstance(stmt.rhs, gcc.IntegerCst):
+            c = int(stmt.rhs.constant)
+            if not exit_true and op_exit == ">":
+                op_exit, c = ">=", c + 1
+        return op_exit, c, exit_true
+
+    def _cond_next_value_mode(self, bb, stmt):
+        lhs = stmt.lhs
+        return (bb.index == self._loop_header and isinstance(lhs, gcc.SsaName)
+                and lhs.version in self._latch_arg)
+
+    def _cond_lhs_leaves(self, bb, stmt):
+        """조건 좌변을 같은 사이클에 계산할 소스 잎 목록. 펼칠 수 없으면 None."""
+        lhs = stmt.lhs
+        if self._cond_next_value_mode(bb, stmt):
+            return self._sum_leaves(self._latch_arg[lhs.version])
+        if self._value_def(lhs) is not None:
+            return self._sum_leaves(lhs)
+        return [lhs]
+
     def _pass_cond(self, fun, core_ops, reg_map):
         if not getattr(fun, "cfg", None): return
 
-        # ★ v9: 자동 매핑 테이블
         COND_OP_MAP = {
             ">":  ZOp.GTZ,  ">=": ZOp.GTEZ,
-            "<":  ZOp.GTEZ, "<=": ZOp.GTZ,    # 반전
+            "<":  ZOp.GTEZ, "<=": ZOp.GTZ,    # + SUM_NEG
             "==": ZOp.EQZ,  "!=": ZOp.NEQZ,
         }
         NEEDS_SUM_NEG = {"<", "<="}
-        CMD_NAMES = {
-            ZOp.GTZ: "GTZ", ZOp.GTEZ: "GEZ", ZOp.LTZ: "LTZ",
-            ZOp.LTEZ: "LEZ", ZOp.EQZ: "EQZ", ZOp.NEQZ: "NEQZ",
-        }
-        INVERT = {"<": ">=", "<=": ">", ">": "<=", ">=": "<", "==": "!=", "!=": "=="}
-
-        assign_expand = {}
-        for bb in fun.cfg.basic_blocks:
-            for stmt in bb.gimple:
-                if not isinstance(stmt, gcc.GimpleAssign): continue
-                if len(stmt.rhs) != 2: continue
-                lhs = self._get_clean_name(stmt.lhs)
-                if lhs not in reg_map: continue
-                sym = self._get_op_symbol(stmt.exprcode)
-                if sym in ("+", "-"):
-                    op1 = self._get_clean_name(stmt.rhs[0])
-                    op2 = self._get_clean_name(stmt.rhs[1])
-                    assign_expand[lhs] = (op1, op2, sym)
 
         cond_count = 0
         skip_set = self.features.get("skip_cond_indices", set())
-
         for bb in fun.cfg.basic_blocks:
             for stmt in bb.gimple:
                 if not isinstance(stmt, gcc.GimpleCond): continue
-                if cond_count in skip_set: cond_count += 1; continue
+                key = f"cond_res_{cond_count}"
+                skipped = cond_count in skip_set
+                cond_count += 1
+                if skipped or key not in reg_map: continue
+                dst = reg_map[key]["idx"]
 
-                lhs_nm = self._get_clean_name(stmt.lhs)
+                op_use, c, _ = self._cond_plan(bb, stmt)
+                leaves = self._cond_lhs_leaves(bb, stmt) or [stmt.lhs]
+                names = [str(x.constant) if isinstance(x, gcc.IntegerCst)
+                         else self._get_clean_name(x) for x in leaves]
+                lhs_srcs = []
+                for name in names:
+                    idx = self._reg_idx(self._find_reg(name, reg_map))
+                    if idx is not None: lhs_srcs.append(idx)
                 rhs_nm = self._get_clean_name(stmt.rhs)
-                op_raw = self._get_op_symbol(stmt.exprcode)
-
-                is_loop = False
-                if lhs_nm in assign_expand:
-                    exp_op1, exp_op2, _ = assign_expand[lhs_nm]
-                    if lhs_nm == exp_op1 or lhs_nm == exp_op2: is_loop = True
-
-                rhs_adjust = 0
-                if is_loop:
-                    op_use = INVERT.get(op_raw, op_raw)
-                    if op_use == ">" and isinstance(stmt.rhs, gcc.IntegerCst):
-                        op_use = ">="; rhs_adjust = 1
+                if c is not None:
+                    rhs_idx = self._reg_idx(self._find_reg(str(-c), reg_map))
                 else:
-                    op_use = op_raw
+                    rhs_idx = self._reg_idx(self._find_reg(rhs_nm, reg_map))
+                srcs = lhs_srcs + ([rhs_idx] if rhs_idx is not None else [])
+                if not srcs: srcs = [dst]
 
-                # ★ v9: 연산비트 자동 매핑 + 제어비트 자동 결정
                 op_bits = COND_OP_MAP.get(op_use, ZOp.GTEZ)
                 ctrl_bits = decide_ctrl_bits(op_bits, context='condition')
                 if op_use in NEEDS_SUM_NEG:
                     ctrl_bits |= ZCtrl.SUM_NEG
 
-                cmd_name = CMD_NAMES.get(op_bits, "GEZ")
-                opcode = f"{op_bits:02x}"
-                sum_neg = bool(ctrl_bits & ZCtrl.SUM_NEG)
-
-                key = f"cond_res_{cond_count}"
-                if key not in reg_map: cond_count += 1; continue
-                dst = reg_map[key]["idx"]
-
-                if lhs_nm in assign_expand:
-                    exp_op1, exp_op2, exp_sym = assign_expand[lhs_nm]
-                    lhs_src_names = [exp_op1, exp_op2]
-                    lhs_display = f"{exp_op1}{exp_sym}{exp_op2}"
-                else:
-                    lhs_src_names = [lhs_nm]; lhs_display = lhs_nm
-
-                lhs_srcs = []
-                for name in lhs_src_names:
-                    r = self._find_reg(name, reg_map)
-                    idx = self._reg_idx(r)
-                    if idx is not None: lhs_srcs.append(idx)
-
-                if isinstance(stmt.rhs, gcc.IntegerCst):
-                    v = int(stmt.rhs.constant) + rhs_adjust
-                    rhs_idx = self._reg_idx(self._find_reg(str(-v), reg_map))
-                else:
-                    rhs_idx = self._reg_idx(self._find_reg(rhs_nm, reg_map))
-
-                srcs = list(lhs_srcs)
-                if rhs_idx is not None: srcs.append(rhs_idx)
-                if not srcs: srcs = [dst]
-
-                if rhs_adjust and isinstance(stmt.rhs, gcc.IntegerCst):
-                    adj_v = int(stmt.rhs.constant) + rhs_adjust
-                    c_code = f"{lhs_display}{op_use}{adj_v}"
-                else:
-                    c_code = f"({lhs_display})+{rhs_nm}{op_use}0"
-
+                lhs_display = "+".join(names)
+                c_code = (f"{lhs_display}{op_use}{c}" if c is not None
+                          else f"({lhs_display})+{rhs_nm}{op_use}0")
                 lhs_regs = "+".join(f"r{i}" for i in lhs_srcs)
                 rhs_reg = f"r{rhs_idx}" if rhs_idx is not None else ""
                 rc = f"({lhs_regs})+{rhs_reg}{op_use}0 ? outL:inL"
 
                 core_ops[dst].update({
-                    "op_bits": op_bits, "ctrl_bits": ctrl_bits,   # ★ v9
-                    "opcode": opcode,
+                    "op_bits": op_bits, "ctrl_bits": ctrl_bits,
+                    "opcode": f"{op_bits:02x}",
                     "sources": srcs,
-                    "branch_hold": True, "sum_neg": sum_neg,
+                    "branch_hold": True, "sum_neg": bool(ctrl_bits & ZCtrl.SUM_NEG),
                     "op_comment": c_code, "op_rc": rc,
                 })
-                cond_count += 1
 
     # =========================================================================
     # 레지스터 검색 + MIF 출력 (원본 그대로)

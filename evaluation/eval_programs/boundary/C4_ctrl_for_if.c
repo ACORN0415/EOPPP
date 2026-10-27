@@ -7,11 +7,11 @@ void test_func(void) {
     int x66 = 45631;
     int out71 = 70;
     int i;
+    if (x66 != 31) {
+        a81 = v91 + x66;
+    }
     for (i = 0; i < 47; i++) {
         b75 = b75 + 3;
-        if (x66 != 31) {
-        a81 = v91 + x66;
-        }
     }
 }
 int main() { test_func(); return 0; }

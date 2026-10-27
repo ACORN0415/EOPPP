@@ -7,9 +7,7 @@ void test_func(void) {
     int i;
     for (i = 0; i < 67; i++) {
         cur71 = cur71 + 4;
-        if (tmp41 > -25) {
-        cur71 = cnt12 + 6;
-        }
+        if (cur71 > 200) break;
     }
 }
 int main() { test_func(); return 0; }

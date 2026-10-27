@@ -130,7 +130,7 @@ void test_func(void) {
     for (i = 0; i < 10; i++) {
         v7 = v18 + v8;
         v3 = v20 + v7;
-        v2 = v8 + v3;
+        v2 = v9 + v3;
     }
 }
 int main() { test_func(); return 0; }

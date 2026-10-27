@@ -53,7 +53,7 @@ Function: checkclkfir
     h8 = 196608
     h9 = -131072
   output_arrays: ['yo']
-  input_arrays: ['xn', 'yo']
+  input_arrays: ['xn']
   skip_cond_indices: [1] / 2 total
   reg_map (106 entries):
     r100  _store_0             type=var    val=0  pSt=3

@@ -1,0 +1,13 @@
+Suite: csmith   programs: 10000   wall: 122.3s
+PASS 0  REJECTED 10000  CRASH 0
+Rejection by module:
+  checker:TypeChecker            5726  (57.3%)
+  pre:goto                       3532  (35.3%)
+  generator:preloop_nonconst      492  (4.9%)
+  checker:OpcodeChecker           205  (2.0%)
+  checker:ConflictChecker          43  (0.4%)
+  checker:StructureChecker          2  (0.0%)
+Programs whose checker.log contains non-void return: 0
+Changes vs stored results (old -> new): PASS->REJECTED: 495
+gcc+plugin time per program: median 0.171s, max 0.928s
+pre-checker time per program: median 0.55 ms, max 40.24 ms
