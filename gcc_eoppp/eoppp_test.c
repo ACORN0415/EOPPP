@@ -89,13 +89,15 @@ void checkclkfir()
 {
     int i ;
 
-    // xv 변수를 19까지 확장 (총 20개)
+    // xv 변수를 29까지 확장 (총 30개, 30-tap FIR)
     long long int xv0, xv1, xv2, xv3, xv4, xv5, xv6, xv7, xv8, xv9;
     long long int xv10, xv11, xv12, xv13, xv14, xv15, xv16, xv17, xv18, xv19;
+    long long int xv20, xv21, xv22, xv23, xv24, xv25, xv26, xv27, xv28, xv29;
 
-    // fir tap(h) 변수도 19까지 확장
+    // fir tap(h) 변수도 29까지 확장 (총 30개)
     int h0, h1, h2, h3, h4, h5, h6, h7, h8, h9;
     int h10, h11, h12, h13, h14, h15, h16, h17, h18, h19;
+    int h20, h21, h22, h23, h24, h25, h26, h27, h28, h29;
 
 #ifdef CHECKCLK
     int k    = 0;
@@ -108,21 +110,28 @@ void checkclkfir()
 #endif
         i = 0;
 
-        // xv 초기화 (0~19)
+        // xv 초기화 (0~29)
         xv0=0; xv1=0; xv2=0; xv3=0; xv4=0; xv5=0; xv6=0; xv7=0; xv8=0; xv9=0;
         xv10=0; xv11=0; xv12=0; xv13=0; xv14=0; xv15=0; xv16=0; xv17=0; xv18=0; xv19=0;
+        xv20=0; xv21=0; xv22=0; xv23=0; xv24=0; xv25=0; xv26=0; xv27=0; xv28=0; xv29=0;
 
         // FIR Tap 계수 설정 (기존 패턴을 유지하며 임의의 값 추가)
         h0  = 0x00010000; h1  = 0xffff0000; h2  = 0x00020000; h3  = 0xffff0000;
         h4  = 0x00030000; h5  = 0xfffd0000; h6  = 0x00040000; h7  = 0xfffd0000;
         h8  = 0x00030000; h9  = 0xfffe0000; h10 = 0x00020000; h11 = 0xffff0000;
-        h12 = 0x00010000; 
+        h12 = 0x00010000;
         // 추가된 탭 (h13 ~ h19)
         h13 = 0xffff0000; h14 = 0x00010000; h15 = 0xfffe0000; h16 = 0x00020000;
         h17 = 0xfffd0000; h18 = 0x00030000; h19 = 0xfffc0000;
+        // 추가된 탭 (h20 ~ h29, 30-tap 확장)
+        h20 = 0x00020000; h21 = 0xffff0000; h22 = 0x00010000; h23 = 0xfffe0000;
+        h24 = 0x00030000; h25 = 0xfffd0000; h26 = 0x00040000; h27 = 0xfffd0000;
+        h28 = 0x00020000; h29 = 0xffff0000;
 
         for(i=0; i<32; i++){
             // 데이터 시프트 (역순으로 밀어내기)
+            xv29 = xv28; xv28 = xv27; xv27 = xv26; xv26 = xv25; xv25 = xv24;
+            xv24 = xv23; xv23 = xv22; xv22 = xv21; xv21 = xv20; xv20 = xv19;
             xv19 = xv18; xv18 = xv17; xv17 = xv16; xv16 = xv15; xv15 = xv14;
             xv14 = xv13; xv13 = xv12; xv12 = xv11; xv11 = xv10; xv10 = xv9;
             xv9  = xv8;  xv8  = xv7;  xv7  = xv6;  xv6  = xv5;  xv5  = xv4;
@@ -149,7 +158,17 @@ void checkclkfir()
                      (long long int)(h16) * xv16 +
                      (long long int)(h17) * xv17 +
                      (long long int)(h18) * xv18 +
-                     (long long int)(h19) * xv19 ) >> 31;
+                     (long long int)(h19) * xv19 +
+                     (long long int)(h20) * xv20 +
+                     (long long int)(h21) * xv21 +
+                     (long long int)(h22) * xv22 +
+                     (long long int)(h23) * xv23 +
+                     (long long int)(h24) * xv24 +
+                     (long long int)(h25) * xv25 +
+                     (long long int)(h26) * xv26 +
+                     (long long int)(h27) * xv27 +
+                     (long long int)(h28) * xv28 +
+                     (long long int)(h29) * xv29 ) >> 31;
         }
 
 #ifdef CHECKCLK

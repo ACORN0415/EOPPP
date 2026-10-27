@@ -21,7 +21,7 @@ Function: checkclkfir
   is_mac: True
   has_mac: True
   has_shift: True
-  coeff_vars (20):
+  coeff_vars (30):
     h0 = 65536
     h1 = -65536
     h10 = 131072
@@ -35,6 +35,16 @@ Function: checkclkfir
     h18 = 196608
     h19 = -262144
     h2 = 131072
+    h20 = 131072
+    h21 = -65536
+    h22 = 65536
+    h23 = -131072
+    h24 = 196608
+    h25 = -196608
+    h26 = 262144
+    h27 = -196608
+    h28 = 131072
+    h29 = -65536
     h3 = -65536
     h4 = 196608
     h5 = -196608
@@ -45,73 +55,111 @@ Function: checkclkfir
   output_arrays: ['yo']
   input_arrays: ['xn', 'yo']
   skip_cond_indices: [1] / 2 total
-  reg_map (68 entries):
-    r62   _store_0             type=var    val=0  pSt=3
-    r59   _store_1             type=var    val=0  pSt=3
-    r30   _store_10            type=var    val=0  pSt=3
-    r27   _store_11            type=var    val=0  pSt=3
-    r24   _store_12            type=var    val=0  pSt=3
-    r21   _store_13            type=var    val=0  pSt=3
-    r17   _store_14            type=var    val=0  pSt=3
-    r14   _store_15            type=var    val=0  pSt=3
-    r11   _store_16            type=var    val=0  pSt=3
-    r8    _store_17            type=var    val=0  pSt=3
-    r5    _store_18            type=var    val=0  pSt=3
-    r2    _store_19            type=var    val=0  pSt=3
-    r56   _store_2             type=var    val=0  pSt=3
-    r53   _store_3             type=var    val=0  pSt=3
-    r50   _store_4             type=var    val=0  pSt=3
-    r47   _store_5             type=var    val=0  pSt=3
-    r43   _store_6             type=var    val=0  pSt=3
-    r40   _store_7             type=var    val=0  pSt=3
-    r37   _store_8             type=var    val=0  pSt=3
-    r34   _store_9             type=var    val=0  pSt=3
-    r67   cond_res_0           type=cond   val=4
-    r65   cst_-32              type=const  val=-32
-    r66   cst_1                type=const  val=1
-    r64   i                    type=var    val=0
-    r52   ssa_11               type=var    val=0  pSt=2
-    r49   ssa_14               type=var    val=0  pSt=2
-    r46   ssa_17               type=var    val=0  pSt=2
-    r42   ssa_20               type=var    val=0  pSt=2
-    r39   ssa_23               type=var    val=0  pSt=2
-    r36   ssa_26               type=var    val=0  pSt=2
-    r33   ssa_29               type=var    val=0  pSt=2
-    r61   ssa_3                type=var    val=0  pSt=2
-    r29   ssa_32               type=var    val=0  pSt=2
-    r26   ssa_35               type=var    val=0  pSt=2
-    r23   ssa_38               type=var    val=0  pSt=2
-    r20   ssa_41               type=var    val=0  pSt=2
-    r16   ssa_44               type=var    val=0  pSt=2
-    r13   ssa_47               type=var    val=0  pSt=2
-    r58   ssa_5                type=var    val=0  pSt=2
-    r10   ssa_50               type=var    val=0  pSt=2
-    r7    ssa_53               type=var    val=0  pSt=2
-    r4    ssa_56               type=var    val=0  pSt=2
-    r1    ssa_59               type=var    val=0  pSt=2
-    r55   ssa_8                type=var    val=0  pSt=2
-    r63   xn[i]                type=var    val=0  pSt=1
-    r60   xv0                  type=var    val=0
-    r57   xv1                  type=var    val=0
-    r28   xv10                 type=var    val=0
-    r25   xv11                 type=var    val=0
-    r22   xv12                 type=var    val=0
-    r19   xv13                 type=var    val=0
-    r15   xv14                 type=var    val=0
-    r12   xv15                 type=var    val=0
-    r9    xv16                 type=var    val=0
-    r6    xv17                 type=var    val=0
-    r3    xv18                 type=var    val=0
-    r0    xv19                 type=var    val=0
-    r54   xv2                  type=var    val=0
-    r51   xv3                  type=var    val=0
-    r48   xv4                  type=var    val=0
-    r45   xv5                  type=var    val=0
-    r41   xv6                  type=var    val=0
-    r38   xv7                  type=var    val=0
-    r35   xv8                  type=var    val=0
-    r32   xv9                  type=var    val=0
-    r18   yo0[i]               type=var    val=0  pSt=3
-    r44   yo1[i]               type=var    val=0  pSt=3
-    r31   yo[i]                type=var    val=0  pSt=4
+  reg_map (106 entries):
+    r100  _store_0             type=var    val=0  pSt=3
+    r97   _store_1             type=var    val=0  pSt=3
+    r68   _store_10            type=var    val=0  pSt=3
+    r65   _store_11            type=var    val=0  pSt=3
+    r62   _store_12            type=var    val=0  pSt=3
+    r57   _store_13            type=var    val=0  pSt=3
+    r54   _store_14            type=var    val=0  pSt=3
+    r51   _store_15            type=var    val=0  pSt=3
+    r48   _store_16            type=var    val=0  pSt=3
+    r41   _store_17            type=var    val=0  pSt=3
+    r38   _store_18            type=var    val=0  pSt=3
+    r35   _store_19            type=var    val=0  pSt=3
+    r94   _store_2             type=var    val=0  pSt=3
+    r32   _store_20            type=var    val=0  pSt=3
+    r27   _store_21            type=var    val=0  pSt=3
+    r24   _store_22            type=var    val=0  pSt=3
+    r21   _store_23            type=var    val=0  pSt=3
+    r18   _store_24            type=var    val=0  pSt=3
+    r15   _store_25            type=var    val=0  pSt=3
+    r11   _store_26            type=var    val=0  pSt=3
+    r8    _store_27            type=var    val=0  pSt=3
+    r5    _store_28            type=var    val=0  pSt=3
+    r2    _store_29            type=var    val=0  pSt=3
+    r91   _store_3             type=var    val=0  pSt=3
+    r88   _store_4             type=var    val=0  pSt=3
+    r84   _store_5             type=var    val=0  pSt=3
+    r81   _store_6             type=var    val=0  pSt=3
+    r78   _store_7             type=var    val=0  pSt=3
+    r75   _store_8             type=var    val=0  pSt=3
+    r71   _store_9             type=var    val=0  pSt=3
+    r105  cond_res_0           type=cond   val=4
+    r103  cst_-32              type=const  val=-32
+    r104  cst_1                type=const  val=1
+    r102  i                    type=var    val=0
+    r90   ssa_11               type=var    val=0  pSt=2
+    r87   ssa_14               type=var    val=0  pSt=2
+    r83   ssa_17               type=var    val=0  pSt=2
+    r80   ssa_20               type=var    val=0  pSt=2
+    r77   ssa_23               type=var    val=0  pSt=2
+    r74   ssa_26               type=var    val=0  pSt=2
+    r70   ssa_29               type=var    val=0  pSt=2
+    r99   ssa_3                type=var    val=0  pSt=2
+    r67   ssa_32               type=var    val=0  pSt=2
+    r64   ssa_35               type=var    val=0  pSt=2
+    r61   ssa_38               type=var    val=0  pSt=2
+    r56   ssa_41               type=var    val=0  pSt=2
+    r53   ssa_44               type=var    val=0  pSt=2
+    r50   ssa_47               type=var    val=0  pSt=2
+    r96   ssa_5                type=var    val=0  pSt=2
+    r47   ssa_50               type=var    val=0  pSt=2
+    r40   ssa_53               type=var    val=0  pSt=2
+    r37   ssa_56               type=var    val=0  pSt=2
+    r34   ssa_59               type=var    val=0  pSt=2
+    r31   ssa_62               type=var    val=0  pSt=2
+    r26   ssa_65               type=var    val=0  pSt=2
+    r23   ssa_68               type=var    val=0  pSt=2
+    r20   ssa_71               type=var    val=0  pSt=2
+    r17   ssa_74               type=var    val=0  pSt=2
+    r14   ssa_77               type=var    val=0  pSt=2
+    r93   ssa_8                type=var    val=0  pSt=2
+    r10   ssa_80               type=var    val=0  pSt=2
+    r7    ssa_83               type=var    val=0  pSt=2
+    r4    ssa_86               type=var    val=0  pSt=2
+    r1    ssa_89               type=var    val=0  pSt=2
+    r101  xn[i]                type=var    val=0  pSt=1
+    r98   xv0                  type=var    val=0
+    r95   xv1                  type=var    val=0
+    r66   xv10                 type=var    val=0
+    r63   xv11                 type=var    val=0
+    r60   xv12                 type=var    val=0
+    r55   xv13                 type=var    val=0
+    r52   xv14                 type=var    val=0
+    r49   xv15                 type=var    val=0
+    r46   xv16                 type=var    val=0
+    r39   xv17                 type=var    val=0
+    r36   xv18                 type=var    val=0
+    r33   xv19                 type=var    val=0
+    r92   xv2                  type=var    val=0
+    r30   xv20                 type=var    val=0
+    r25   xv21                 type=var    val=0
+    r22   xv22                 type=var    val=0
+    r19   xv23                 type=var    val=0
+    r16   xv24                 type=var    val=0
+    r13   xv25                 type=var    val=0
+    r9    xv26                 type=var    val=0
+    r6    xv27                 type=var    val=0
+    r3    xv28                 type=var    val=0
+    r0    xv29                 type=var    val=0
+    r89   xv3                  type=var    val=0
+    r86   xv4                  type=var    val=0
+    r82   xv5                  type=var    val=0
+    r79   xv6                  type=var    val=0
+    r76   xv7                  type=var    val=0
+    r73   xv8                  type=var    val=0
+    r69   xv9                  type=var    val=0
+    r12   yo0[i]               type=var    val=0  pSt=3
+    r29   yo1[i]               type=var    val=0  pSt=3
+    r45   yo2[i]               type=var    val=0  pSt=3
+    r59   yo3[i]               type=var    val=0  pSt=3
+    r85   yo4[i]               type=var    val=0  pSt=3
+    r28   yoL2_0[i]            type=var    val=0  pSt=4
+    r44   yoL2_1[i]            type=var    val=0  pSt=4
+    r72   yoL2_2[i]            type=var    val=0  pSt=4
+    r42   yoL3_0[i]            type=var    val=0  pSt=5
+    r58   yoL3_1[i]            type=var    val=0  pSt=5
+    r43   yo[i]                type=var    val=0  pSt=6
 

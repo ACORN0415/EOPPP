@@ -27,6 +27,8 @@ class EFlowGenerator:
         self.add_mode_vars = set()
         self.features = {}
         self.gpc_meta = {}
+        # v1.0: 함수별 배치/사용률 지표 수집 (저널 리뷰 대응 — 정량 지표)
+        self.func_reports = []
 
     def generate(self, fun, base_gpc):
         init_gpc = base_gpc + 0
@@ -51,9 +53,64 @@ class EFlowGenerator:
             if op["is_active"] and not op["sources"]:
                 op["sources"] = [i]
 
+        # ── v1.0: mesh ±16 배치 사후 검증 (§5.2 배치 정당성 정량화) ──
+        mesh = self._verify_mesh_placement(core_ops)
         core_codes = self._encode_zy_codes(core_ops)
         self._assemble_and_emit_gpcs(core_codes, init_gpc, op_gpc)
+
+        # ── v1.0: 함수별 정량 지표 수집 ──
+        cores_used = len(reg_map)
+        self.func_reports.append({
+            "name": func_name,
+            "init_gpc": init_gpc, "op_gpc": op_gpc,
+            "is_mac": has_mac,
+            "cores_used": cores_used,
+            "core_util_pct": 100.0 * cores_used / 128.0,
+            "mesh_edges": mesh["edges"],
+            "mesh_violations": mesh["violations"],
+            "mesh_ok_pct": mesh["ok_pct"],
+            "mesh_max_dist": mesh["max_dist"],
+            "mesh_detail": mesh["detail"],
+            "op_slots": gpc_count,
+            # MAC 함수만: 환원 트리 배치 탐색 결과 (True=해 발견, False=불가)와 깊이
+            "mac_plan_ok": getattr(self, "_mac_plan_feasible", None) if has_mac else None,
+            "mac_depth": getattr(self, "_mac_tree_depth", None) if has_mac else None,
+        })
+        self._mac_plan_feasible = None
+        self._mac_tree_depth = None
         return gpc_count
+
+    # =========================================================================
+    # v1.0: mesh ±16 배치 사후 검증
+    #   합산(ADD/분기)-모드 코어의 모든 소스가 Y-마스크 윈도우
+    #   [bit 0 .. 31] ↔ (src-dst) ∈ [-16, +15] 안에 있는지 확인한다.
+    #   범위 밖 소스는 add_mask()에서 조용히 drop되어 결과가 틀리므로,
+    #   "순차 r0 배치가 실제로 mesh 범위를 만족하는가"를 정량 보고한다.
+    # =========================================================================
+    def _verify_mesh_placement(self, core_ops):
+        edges = 0
+        violations = 0
+        max_dist = 0
+        detail = []
+        for i in range(128):
+            op = core_ops[i]
+            # 합산 모드(연산비트 ≤ 0x06)만 Y-마스크 경로 스위치를 사용
+            if op.get("op_bits", ZOp.ADD) > ZOp.SUMMATION_MAX:
+                continue
+            for s in op.get("sources", []):
+                if s is None:
+                    continue
+                edges += 1
+                dist = s - i
+                if abs(dist) > max_dist:
+                    max_dist = abs(dist)
+                bit = 16 + dist
+                if not (0 <= bit <= 31):   # 윈도우 밖 → 마스크에서 drop됨
+                    violations += 1
+                    detail.append((i, s, dist))
+        ok_pct = 100.0 * (edges - violations) / edges if edges else 100.0
+        return {"edges": edges, "violations": violations,
+                "ok_pct": ok_pct, "max_dist": max_dist, "detail": detail}
 
     # =========================================================================
     # [2-b] _decide_core_operations: Step 4                                [v9]
@@ -233,6 +290,58 @@ class EFlowGenerator:
         path_y = os.path.join(self.output_dir, "total_program_y.mif")
         self._write_mif_file(path_z, self.buffer_z, self.buffer_cmt, "Z-Bank (Instruction)", None)
         self._write_mif_file(path_y, self.buffer_y, self.buffer_cmt, "Y-Bank (Data)", None)
+        self._write_metrics()
+
+    # =========================================================================
+    # v1.0: 정량 지표 리포트 (저널 Evaluation 보강용)
+    #   - 코어 사용률(/128), mesh ±16 배치 성공률, 최대 mesh 거리, GPC 슬롯 수
+    # =========================================================================
+    def _write_metrics(self):
+        path = os.path.join(self.output_dir, "metrics.log")
+        reps = self.func_reports
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("EOPPP Compiler — Quantitative Metrics (v1.0)\n")
+            f.write("=" * 78 + "\n\n")
+            f.write(f"{'function':<16}{'GPC':<8}{'MAC':<5}"
+                    f"{'cores/128':<11}{'util%':<8}"
+                    f"{'meshEdges':<10}{'meshViol':<9}{'meshOK%':<9}{'maxDist':<8}\n")
+            f.write("-" * 78 + "\n")
+            for r in reps:
+                gpc = f"{r['init_gpc']}/{r['op_gpc']}"
+                f.write(f"{r['name'][:15]:<16}{gpc:<8}"
+                        f"{('Y' if r['is_mac'] else 'N'):<5}"
+                        f"{r['cores_used']:<11}{r['core_util_pct']:<8.1f}"
+                        f"{r['mesh_edges']:<10}{r['mesh_violations']:<9}"
+                        f"{r['mesh_ok_pct']:<9.2f}{r['mesh_max_dist']:<8}\n")
+            f.write("-" * 78 + "\n\n")
+
+            tot_edges = sum(r["mesh_edges"] for r in reps)
+            tot_viol = sum(r["mesh_violations"] for r in reps)
+            ok = 100.0 * (tot_edges - tot_viol) / tot_edges if tot_edges else 100.0
+            n = len(reps)
+            avg_util = sum(r["core_util_pct"] for r in reps) / n if n else 0.0
+            f.write(f"Functions compiled        : {n}\n")
+            f.write(f"Avg core utilization      : {avg_util:.1f}% of 128\n")
+            f.write(f"Mesh ±16 placement success: {tot_edges - tot_viol}/{tot_edges}"
+                    f" edges ({ok:.2f}%)\n")
+            f.write(f"Total mesh violations     : {tot_viol}"
+                    f" (sources dropped from ADD mask)\n")
+            for r in reps:
+                if r.get("mac_plan_ok") is True:
+                    f.write(f"MAC layout [{r['name'][:14]}]   : reduction tree depth "
+                            f"{r['mac_depth']} (store -> {r['mac_depth']} adder level(s) "
+                            f"-> yo[i]), mesh-valid placement found\n")
+                elif r.get("mac_plan_ok") is False:
+                    f.write(f"MAC layout [{r['name'][:14]}]   : NO mesh-valid reduction "
+                            f"tree found (fallback layout, see violations)\n")
+            if tot_viol:
+                f.write("\nViolations (dst<-src, dist):\n")
+                for r in reps:
+                    for (d, s, dist) in r["mesh_detail"]:
+                        f.write(f"  [{r['name'][:14]}] r{d} <- r{s} "
+                                f"(dist={dist:+d}, |{abs(dist)}|>16)\n")
+            f.write("\nNote: mesh window is (src-dst) ∈ [-16,+15] "
+                    "(Y-mask bit = 16+(src-dst)).\n")
 
     # =========================================================================
     # 이름 변환 헬퍼
@@ -584,6 +693,124 @@ class EFlowGenerator:
             self._augment_regs_from_gimple(fun, reg_map, allow_constants=True, ignore_names=coeff_names)
         return reg_map
 
+    # =========================================================================
+    # v1.0: MAC 환원 트리 배치 (깊이 가변, 최소 깊이 탐색)
+    #   store(레벨 0) → 부분합(레벨 1) → 부분합의 합(레벨 2) → … → 루트(yo[i])
+    #   - 레벨 L 노드의 입력은 모두 레벨 L-1 노드다. 모든 탭이 같은 단수를 거쳐
+    #     루트에 도착하므로, 단마다 1클럭씩 흐를 때 부분합의 샘플 시점이 일치한다.
+    #   - 블록 = 탭 그룹들이 연속으로 놓이고 그 사이에 트리 노드가 끼는 구간.
+    #     블록마다 (a, b) = 출력 노드의 왼쪽/오른쪽 코어 수를 관리한다.
+    #     부모 노드 P 기준으로
+    #       왼쪽 자식 i : P - out_i = 1 + b_i + (더 가까운 왼쪽 자식들 길이 합) ≤ 16
+    #       오른쪽 자식 i: out_i - P = 1 + (더 가까운 오른쪽 자식들 길이 합) + a_i ≤ 15
+    #     (Y-마스크 윈도우 (src-dst) ∈ [-16, +15])
+    #   - 레벨별로 "탭 n개를 덮는 블록의 (a, b) 파레토 집합"을 동적계획법으로 구하고,
+    #     N개를 덮는 가장 얕은 레벨을 고른다 → 최소 깊이, 그 안에서 최소 코어.
+    # =========================================================================
+    def _plan_mac_tree(self, N, cpg, has_shift):
+        LEFT_MAX, RIGHT_MAX = 16, 15
+        if N <= 0:
+            return None
+
+        def pareto(cands):
+            cands = sorted(cands, key=lambda c: (c[0] + c[1], c[0]))
+            kept = []
+            for c in cands:
+                if not any(k[0] <= c[0] and k[1] <= c[1] for k in kept):
+                    kept.append(c)
+            return kept
+
+        def side_dp(prev, is_left):
+            # 탭 수 → (해당 쪽 자식들의 길이 합, 자식 튜플[가까운 것부터])
+            best = {0: (0, ())}
+            frontier = [0]
+            while frontier:
+                t = frontier.pop()
+                acc, ch = best[t]
+                for m, olist in prev.items():
+                    if t + m > N:
+                        continue
+                    for opt in olist:
+                        ca, cb = opt[0], opt[1]
+                        if is_left and 1 + cb + acc > LEFT_MAX:
+                            continue
+                        if not is_left and 1 + acc + ca > RIGHT_MAX:
+                            continue
+                        nl, nt = acc + ca + cb + 1, t + m
+                        if nt not in best or nl < best[nt][0]:
+                            best[nt] = (nl, ch + ((m, opt),))
+                            frontier.append(nt)
+            return best
+
+        opts = {0: {1: [(cpg - 1, 0, None)]}}      # 레벨 0 = 탭 그룹 하나 (출력 = store)
+        for depth in range(1, 9):
+            prev = opts[depth - 1]
+            left, right = side_dp(prev, True), side_dp(prev, False)
+            cur = {}
+            for n in range(1, N + 1):
+                cands = [(al, right[n - tl][0], (chl, right[n - tl][1]))
+                         for tl, (al, chl) in left.items()
+                         if (n - tl) in right and n >= 1]
+                if cands:
+                    cur[n] = pareto(cands)
+            opts[depth] = cur
+            if N in cur:
+                plan = self._build_mac_tree(cur[N][0], depth, cpg, has_shift, N)
+                if plan is not None:
+                    return plan
+        return None
+
+    def _build_mac_tree(self, root_opt, depth, cpg, has_shift, N):
+        def build(opt, level):
+            if level == 0:
+                g = {'t': 'G'}
+                return [g], g
+            chl, chr_ = opt[2]
+            items, kids = [], []
+            for _, co in reversed(chl):          # 왼쪽: 먼 것부터 배치
+                it, out = build(co, level - 1); items += it; kids.append(out)
+            nd = {'t': 'N', 'level': level}
+            items.append(nd)
+            for _, co in chr_:                   # 오른쪽: 가까운 것부터 배치
+                it, out = build(co, level - 1); items += it; kids.append(out)
+            nd['kids'] = kids
+            return items, nd
+
+        items, _ = build(root_opt, depth)
+        pos, gpos = 0, []
+        for it in items:
+            it['pos'] = pos
+            if it['t'] == 'G':
+                it['key'] = ('L0', len(gpos)); gpos.append(pos); pos += cpg
+            else:
+                pos += 1
+        input_core = pos
+        if input_core + 1 > 126:
+            return None
+
+        levels = [[] for _ in range(depth)]
+        for it in items:
+            if it['t'] == 'N':
+                lv = it['level']
+                it['key'] = ('L%d' % lv, len(levels[lv - 1]))
+                levels[lv - 1].append(it)
+        out_pos = lambda it: it['pos'] + cpg - 1 if it['t'] == 'G' else it['pos']
+
+        def ok(src, dst):
+            return -16 <= src - dst <= 15
+        for lvl in levels:
+            for nd in lvl:
+                if any(not ok(out_pos(k), nd['pos']) for k in nd['kids']):
+                    return None
+        if has_shift:
+            chain = gpos + [input_core]
+            if any(not ok(chain[i + 1], chain[i]) for i in range(N)):
+                return None
+        return {'depth': depth, 'n_cores': input_core + 1, 'gpos': gpos,
+                'levels': [[(nd['pos'], [k['key'] for k in nd['kids']]) for nd in lvl]
+                           for lvl in levels],
+                'input_core': input_core}
+
     def _build_mac_layout(self, fun, reg_map):
         coeff_vars = self.features.get("coeff_vars", {})
         mult_results = self.features.get("mult_results", set())
@@ -665,50 +892,59 @@ class EFlowGenerator:
 
         has_shift = self.features.get("has_shift", False)
         cores_per_group = 3 if has_shift else 2
-        MAX_PER_ACC = 32 // cores_per_group
-        if N <= MAX_PER_ACC: splits = [N]
-        else:
-            first = MAX_PER_ACC; second = N - first
-            if second > MAX_PER_ACC: splits = [MAX_PER_ACC, MAX_PER_ACC, N - 2 * MAX_PER_ACC]
-            else: splits = [first, second]
+
+        # v1.0: 깊이 가변 환원 트리 배치 (_plan_mac_tree 참고).
+        # 기존 휴리스틱(누적기 1단 + final)은 두 번째 누적기의 마지막 store가
+        # +18이 되어 tap 하나가 Y-마스크에서 누락되었고, 30-tap은 final이
+        # 누적기 셋에 닿지 못했다.
+        plan = self._plan_mac_tree(N, cores_per_group, has_shift)
+        self._mac_plan_feasible = plan is not None
+        if plan is None:
+            # 해 없음: 그룹을 연속 배치하고 끝에 루트 하나 (mesh 검증이 위반 보고)
+            gpos = [i * cores_per_group for i in range(N)]
+            root = N * cores_per_group
+            plan = {'depth': 1, 'gpos': gpos,
+                    'levels': [[(root, [('L0', gi) for gi in range(N)])]],
+                    'input_core': root + 1}
+        depth = plan['depth']
+        self._mac_tree_depth = depth
 
         taps_rev = list(reversed(taps))
-        core = 0
-        groups = []; accumulators = []; final_core = None; tap_ptr = 0
+        groups = []
+        for gi, t in enumerate(taps_rev):
+            p = plan['gpos'][gi]
+            if has_shift:
+                g = {'var_core': p, 'mult_core': p+1, 'store_core': p+2, 'tap': t}
+            else:
+                g = {'var_core': None, 'mult_core': p, 'store_core': p+1, 'tap': t}
+            groups.append(g)
 
-        for acc_idx, n_taps in enumerate(splits):
-            chunk_taps = taps_rev[tap_ptr:tap_ptr + n_taps]; tap_ptr += n_taps
-            n_before = min(MAX_PER_ACC // 2 + 1, n_taps) if acc_idx == 0 else min(MAX_PER_ACC // 2 - 1, n_taps)
-            n_after = n_taps - n_before
-            for t in chunk_taps[:n_before]:
-                if has_shift:
-                    g = {'var_core': core, 'mult_core': core+1, 'store_core': core+2, 'tap': t}; core += 3
+        # 환원 노드: 레벨 1 = 탭 부분합(yo0, yo1, ...), 상위 = 부분합의 합, 최상위 = yo[i]
+        node_core = {('L0', gi): g['store_core'] for gi, g in enumerate(groups)}
+        node_by_key = {}
+        red_nodes = []
+        for L, lvl in enumerate(plan['levels'], start=1):
+            for k, (core_idx, kids) in enumerate(lvl):
+                is_root = (L == depth)
+                if is_root: name = f"{out_base}[i]"
+                elif L == 1: name = f"{out_base}{k}[i]"
+                else: name = f"{out_base}L{L}_{k}[i]"
+                if L == 1:
+                    labels = [groups[c[1]]['tap']['mult_name'] for c in kids]
                 else:
-                    g = {'var_core': None, 'mult_core': core, 'store_core': core+1, 'tap': t}; core += 2
-                groups.append(g)
-            acc_core = core
-            acc_info = {'core': acc_core,
-                'name': f"{out_base}{acc_idx}[i]" if len(splits) > 1 else f"{out_base}[i]",
-                'taps': chunk_taps, 'store_cores': []}
-            core += 1
-            for t in chunk_taps[n_before:]:
-                if has_shift:
-                    g = {'var_core': core, 'mult_core': core+1, 'store_core': core+2, 'tap': t}; core += 3
-                else:
-                    g = {'var_core': None, 'mult_core': core, 'store_core': core+1, 'tap': t}; core += 2
-                groups.append(g)
-            for g in groups[-n_taps:]: acc_info['store_cores'].append(g['store_core'])
-            accumulators.append(acc_info)
-            if acc_idx == 0 and len(splits) > 1: final_core = core; core += 1
+                    labels = [node_by_key[c]['name'] for c in kids]
+                nd = {'core': core_idx, 'level': L, 'name': name, 'root': is_root,
+                      'sources': [node_core[c] for c in kids], 'labels': labels}
+                node_core[('L%d' % L, k)] = core_idx
+                node_by_key[('L%d' % L, k)] = nd
+                red_nodes.append(nd)
 
-        if len(splits) == 1: final_core = accumulators[0]['core']
-        input_core = core
+        input_core = plan['input_core']
         input_key = None
         for ia in sorted(input_arrays):
             if ia != (list(output_arrays)[0] if output_arrays else ""):
                 input_key = f"{ia}[i]"; break
         if input_key is None: input_key = f"{in_base}[i]"
-        core += 1
 
         self._mac_all_var_names = set()
         init_vals = self.features.get("init_vals", {})
@@ -730,21 +966,15 @@ class EFlowGenerator:
                 "val": int(init_vals.get(store_key, 0)), "name": t['store_name'], "type": "var", "pst": "3"}
             self._mac_all_var_names.add(store_key)
 
-        for acc in accumulators:
-            acc_key = acc['name']
-            reg_map[acc_key] = {"reg": f"r{acc['core']}", "idx": acc['core'],
-                "val": int(init_vals.get(acc_key, 0)), "name": acc_key, "type": "var", "pst": "3"}
-            self._mac_all_var_names.add(acc_key)
-
-        if len(splits) > 1:
-            final_key = f"{out_base}[i]"
-            reg_map[final_key] = {"reg": f"r{final_core}", "idx": final_core,
-                "val": int(init_vals.get(out_base, 0)), "name": final_key, "type": "var", "pst": "4"}
-            self._mac_all_var_names.add(final_key)
+        for nd in red_nodes:
+            reg_map[nd['name']] = {"reg": f"r{nd['core']}", "idx": nd['core'],
+                "val": int(init_vals.get(out_base if nd['root'] else nd['name'], 0)),
+                "name": nd['name'], "type": "var", "pst": str(2 + nd['level'])}
+            self._mac_all_var_names.add(nd['name'])
 
         self._mac_layout = {
-            'groups': groups, 'accumulators': accumulators, 'final_core': final_core,
-            'input_core': input_core, 'input_key': input_key, 'splits': splits,
+            'groups': groups, 'red_nodes': red_nodes, 'depth': depth,
+            'input_core': input_core, 'input_key': input_key,
             'N': N, 'out_base': out_base, 'in_base': in_base,
         }
 
@@ -876,9 +1106,8 @@ class EFlowGenerator:
         layout = getattr(self, "_mac_layout", None)
         if layout is None: return managed
 
-        groups = layout['groups']; accumulators = layout['accumulators']
-        final_core = layout['final_core']; input_core = layout['input_core']
-        input_key = layout['input_key']; splits = layout['splits']
+        groups = layout['groups']; red_nodes = layout['red_nodes']
+        input_core = layout['input_core']; input_key = layout['input_key']
         out_base = layout.get('out_base', 'out')
         coeff_vars = self.features.get("coeff_vars", {})
 
@@ -936,41 +1165,24 @@ class EFlowGenerator:
             })
             managed.add(uc)
 
-        for acc in accumulators:
-            ac = acc['core']; store_cores = acc['store_cores']
-            tap_names = "+".join(t['mult_name'] for t in acc['taps'])
-            r_names = "+".join(f"r{s}" for s in store_cores)
-            core_ops[ac].update({
-                "op_bits": ZOp.ADD, "ctrl_bits": 0,                      # ★ v9
-                "opcode": "00", "sources": store_cores,
-                "op_comment": f"{acc['name']}= {tap_names}", "op_rc": r_names, "pst": "3",
-            })
-            managed.add(ac)
-            if len(acc['taps']) > 6:
-                first_taps = "+".join(t['mult_name'] for t in acc['taps'][:6])
-                rest_taps = "+".join(t['mult_name'] for t in acc['taps'][6:])
-                first_regs = "+".join(f"r{s}" for s in store_cores[:6])
-                rest_regs = "+".join(f"r{s}" for s in store_cores[6:])
-                core_ops[ac]["op_comment"] = f"{acc['name']}= {first_taps}"
-                core_ops[ac]["op_rc"] = first_regs
-                core_ops[ac]["extra_cmt"] = [f"--{' '*34}+{rest_taps}{' '*12}+{rest_regs}"]
-
-        if len(splits) > 1:
-            acc_cores = [a['core'] for a in accumulators]
-            acc_names = "+".join(a['name'] for a in accumulators)
-            r_names = "+".join(f"r{c}" for c in acc_cores)
-            core_ops[final_core].update({
-                "op_bits": ZOp.ADD, "ctrl_bits": ZCtrl.A_BANK_RD | ZCtrl.A_BANK_WR,  # ★ v9
-                "opcode": "00", "sources": acc_cores,
-                "a_bank_rd": True, "a_bank_wr": True, "a_addr_mode": 1,
-                "op_comment": f"{out_base}[i]={acc_names}", "op_rc": r_names, "pst": "4",
-            })
-            managed.add(final_core)
-        else:
-            core_ops[final_core].update({
-                "a_bank_rd": True, "a_bank_wr": True, "a_addr_mode": 1, "pst": "4",
-            })
-
+        # 환원 트리 노드: 레벨마다 한 pStage. 루트가 A-bank에 yo[i]를 쓴다.
+        for nd in red_nodes:
+            c = nd['core']; srcs = nd['sources']; labels = nd['labels']
+            upd = {
+                "op_bits": ZOp.ADD, "ctrl_bits": 0, "opcode": "00", "sources": srcs,
+                "op_comment": f"{nd['name']}= " + "+".join(labels[:6]),
+                "op_rc": "+".join(f"r{s}" for s in srcs[:6]),
+                "pst": str(2 + nd['level']),
+            }
+            if nd['root']:
+                upd.update({"ctrl_bits": ZCtrl.A_BANK_RD | ZCtrl.A_BANK_WR,
+                            "a_bank_rd": True, "a_bank_wr": True, "a_addr_mode": 1})
+            core_ops[c].update(upd)
+            if len(labels) > 6:
+                rest_l = "+".join(labels[6:])
+                rest_r = "+".join(f"r{s}" for s in srcs[6:])
+                core_ops[c]["extra_cmt"] = [f"--{' '*34}+{rest_l}{' '*12}+{rest_r}"]
+            managed.add(c)
         core_ops[input_core].update({
             "op_bits": ZOp.ADD, "ctrl_bits": ZCtrl.XD_MEM | ZCtrl.A_BANK_RD,  # ★ v9
             "opcode": "00", "sources": [], "xd_mem": True,

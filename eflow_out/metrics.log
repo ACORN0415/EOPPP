@@ -1,0 +1,16 @@
+EOPPP Compiler — Quantitative Metrics (v1.0)
+==============================================================================
+
+function        GPC     MAC  cores/128  util%   meshEdges meshViol meshOK%  maxDist 
+------------------------------------------------------------------------------
+checkclkfibo    0/1     N    9          7.0     16        0        100.00   6       
+checkclkfir     2/3     Y    106        82.8    108       0        100.00   16      
+------------------------------------------------------------------------------
+
+Functions compiled        : 2
+Avg core utilization      : 44.9% of 128
+Mesh ±16 placement success: 124/124 edges (100.00%)
+Total mesh violations     : 0 (sources dropped from ADD mask)
+MAC layout [checkclkfir]   : reduction tree depth 4 (store -> 4 adder level(s) -> yo[i]), mesh-valid placement found
+
+Note: mesh window is (src-dst) ∈ [-16,+15] (Y-mask bit = 16+(src-dst)).

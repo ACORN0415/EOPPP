@@ -14,7 +14,7 @@ GCC가 GIMPLE 변환 시 제거/변환하는 패턴을 소스 레벨에서 감�
 import re
 import sys
 
-MAX_VARS = 127  # 126 코어 + 루프 변수 1개 허용 (정밀 검사는 GIMPLE checker가 수행)
+MAX_VARS = 126  # VariableChecker(§4.3)와 동일한 코어 용량 한도 (r0~r125)
 
 
 def remove_comments(code):

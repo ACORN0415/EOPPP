@@ -28,14 +28,31 @@ class OpcodeChecker(BaseChecker):
             gcc.RshiftExpr,
         ]
 
-    SUPPORTED_OPS = {"plus", "minus", "mult", "lshift", "rshift"}
+    # 정확 매칭용 whitelist 문자열 (부분문자열 매칭의 오탐 방지)
+    #   예: 부분문자열이면 "plus" ⊂ "pointer_plus_expr", "mult" ⊂ "widen_mult_expr"가
+    #   잘못 통과한다. exprcode 이름을 정규화해 집합 완전일치로만 허용한다.
+    SUPPORTED_OPS = {"plus_expr", "minus_expr", "mult_expr",
+                     "lshift_expr", "rshift_expr"}
+
+    @staticmethod
+    def _exprcode_name(exprcode):
+        """gcc exprcode(type/str) → 'plus_expr' 형태의 정규화된 이름."""
+        s = str(exprcode)
+        # "<type 'gcc.PlusExpr'>" / "gcc.PlusExpr" / "plus_expr" 등 모두 대응
+        s = s.rsplit(".", 1)[-1].strip("'>\" ")
+        # CamelCase(PlusExpr) → snake_case(plus_expr)
+        import re as _re
+        snake = _re.sub(r"(?<!^)(?=[A-Z])", "_", s).lower()
+        return snake
 
     def check(self, stmt):
         if isinstance(stmt, gcc.GimpleAssign):
             if len(stmt.rhs) == 2:
-                # exprcode를 문자열로 변환해서 연산 종류 판별
-                ec = str(stmt.exprcode).lower()
-                is_supported = any(s in ec for s in self.SUPPORTED_OPS)
+                # exprcode 타입 완전일치 우선, 실패 시 정규화 이름 완전일치
+                is_supported = stmt.exprcode in self.supported_codes
+                if not is_supported:
+                    name = self._exprcode_name(stmt.exprcode)
+                    is_supported = name in self.SUPPORTED_OPS
                 if not is_supported:
                     self.report(
                         f"Unsupported operation: {stmt.exprcode} "
@@ -89,6 +106,16 @@ class ControlChecker(BaseChecker):
                 self.report(
                     f"Unsupported control flow: goto (BB {bb.index})"
                 )
+            elif isinstance(last_stmt, gcc.GimpleReturn):
+                # 값을 반환하는 함수는 아직 코드 생성에서 반환값을 다루지 못한다.
+                # 체커가 통과시키면 "미지원 기능 수용(false acceptance)"이 되므로
+                # 비void 반환은 생성 불가로 간주하고 거부한다(§9 한계 봉합).
+                retval = getattr(last_stmt, 'retval', None)
+                if retval is not None:
+                    self.report(
+                        "Unsupported return: non-void return value "
+                        "(return-value code generation not implemented)"
+                    )
 
         self._check_nested_loops(fun)
 
