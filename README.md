@@ -1,6 +1,10 @@
-# EOPPP eFLOW Compiler (v1.0)
+# EOPPP eFLOW Compiler 2.0 (개발 브랜치)
 
 GCC Python Plugin 기반 C → EOPPP MIF 컴파일러
+
+> **이 브랜치는 `2.0`이다.** 현재 하드웨어 기준 안정 버전은 `main` 브랜치의 **v1.0**이다.
+>
+> 2.0은 v1.0에 **일반 컴파일 경로**(다중·중첩 루프, 루프 안 if, goto, 함수 인라이닝)를 더한다. 하드웨어 명세가 나오기 전에 **가정한 실행 모델**(M1–M8, M7a) 위에서 만들었으므로 실제 하드웨어에서는 검증되지 않았다. 명세가 나오면 그에 맞춰 고친다. v1.0 경로는 그대로 들어 있고, 기본 설정(`EOPPP_V2=auto`)에서 v1.0으로 되는 프로그램의 출력은 `main`과 같다.
 
 ---
 
@@ -20,6 +24,59 @@ v1.0의 원칙은 **"생성한 MIF가 C 의미를 그대로 재현할 때만 받
 
 ---
 
+## 2.0 일반 경로 (가정 실행 모델)
+
+2.0에서는 GPC를 전역 클록처럼 쓴다. 함수를 기본 블록 단위로 나눠 GPC 행들에 차례로 배치하고, 분기 코어로 행 사이를 이동한다. 그래서 v1.0이 표현하지 못하는 아래 코드를 컴파일할 수 있다.
+
+- 다중·중첩 루프
+- 루프 안 if, while, goto
+- 연쇄 산술
+- 비재귀 함수 호출: 하드웨어에 CALL/RETURN이 없으므로 인라이닝한다.
+
+하드웨어에서 확인한 사실은 세 가지다.
+
+- 아무 GPC로나 전방 분기할 수 있다.
+- 슬롯이 바뀌어도 X-bank 값이 유지된다.
+- 후방 분기가 가능하다.
+
+나머지 동작(LXY가 A-bank 주소를 0으로 되돌리는지 등)은 가정이다. 2.0 명세가 나오면 `sim.py`를 먼저 고치고, 코드 생성을 그에 맞춘다.
+
+```
+GIMPLE SSA ─ lower.py ─▶ IR ─ inline.py ─▶ 인라이닝된 IR ─ streams.py (S1–S4) ─▶ backend.py ─▶ program.py ─▶ MIF
+```
+
+- **배열 (S1–S4)**: 배열마다 접근 지점은 하나여야 한다. 그 접근은 정확히 한 루프 안에 있어야 하고, 매 반복 실행되어야 한다. 인덱스는 0에서 시작해 접근 뒤에 1씩 증가하는 유도 변수여야 한다.
+- **코어 배치**: 순서를 균등하게 분산해 초기 배치를 만들고, 정수 비용 어닐링(결정적)으로 mesh 윈도우 위반을 줄인다. 남은 위반 링크에는 중계 코어나 상수 복제 코어를 끼우고 다시 어닐링한다.
+
+### 검증 (가정 M1–M8 기준, 실제 하드웨어 미검증)
+
+```bash
+cd evaluation
+python3 v2_difftest.py                                  # 2.0 테스트 + 커널
+python3 v2_difftest.py --rtpg rtpg_eval/programs --quiet
+python3 v2_difftest.py eval_programs/boundary/*.c
+python3 v2_ir_fuzz.py 300 --seed 1                      # 랜덤 IR (시드 7도)
+```
+
+| 대상 | 일치 | 불일치 | 거부 |
+|---|---|---|---|
+| 2.0 테스트 + 커널 | 7 | 0 | 0 |
+| 경계값 39 | 17 | 0 | 22 |
+| RTPG 10,000 (v1.0 통과 2,590) | 3,472 | 0 | 6,528 |
+| 랜덤 IR 600 (시드 2개) | 370 | 0 | 230 |
+
+- RTPG 거부 사유: float, struct/union/enum, 재귀, malloc, 간접 인덱스
+- 랜덤 IR 거부 사유: 모두 코어 부족
+
+### 한계
+
+- v1.0 전용 함수(예: 64비트 FIR)와 2.0 전용 함수가 한 프로그램에 같이 있으면 MIF를 만들지 않는다.
+- 상수·분기 코어 때문에 변수가 많은(125개 이상) 함수는 v1.0은 통과해도 2.0은 실패한다.
+- 변수 × 변수 곱셈은 해당 하드웨어 연산이 없어 거부한다.
+- 자세한 내용과 하드웨어 확인 질문: [docs/EOPPP_v2_execution_model.md](docs/EOPPP_v2_execution_model.md)
+
+---
+
 ## 프로젝트 구조
 
 ```
@@ -33,9 +90,24 @@ EOPPP/
 │   ├── generator.py           # 코드 생성기 (EFlowGenerator)
 │   ├── eoppp_zcode.py         # Z/Y 코드 인코딩 (연산비트·제어비트·Y-마스크)
 │   ├── eoppp_test.c           # 검증 벤치마크: Fibonacci, 30-tap FIR
-│   └── eoppp_kernels.c        # DSP 커널: FIR 8/16-tap, 누적합, 차분, 4-샘플 이동합
+│   ├── eoppp_kernels.c        # DSP 커널: FIR 8/16-tap, 누적합, 차분, 4-샘플 이동합
+│   ├── eoppp_v2_test.c        # 2.0 테스트: 함수 인라이닝+루프 안 if, 중첩 루프, while, gcd
+│   ├── eoppp_v2_kernels.c     # 2.0 커널: 32비트 누적합, 차분, 4-샘플 이동합
+│   └── v2/                    # 2.0 일반 경로
+│       ├── lower.py           #   GIMPLE SSA → IR (out-of-SSA, PHI 복사)
+│       ├── inline.py          #   비재귀 사용자 함수 인라이닝
+│       ├── streams.py         #   A-bank 스트림 조건 S1–S4 검사
+│       ├── ir.py              #   IR 정의와 인터프리터
+│       ├── backend.py         #   마이크로 연산 선택, 행 스케줄링, 분기, 코어 배치(어닐링+중계)
+│       ├── program.py         #   함수들을 GPC 순서로 이어 MIF + symbols.json 생성
+│       └── sim.py             #   가정 모델 M1–M8의 MIF 시뮬레이터
+├── docs/
+│   └── EOPPP_v2_execution_model.md  # 2.0 가정 실행 모델, 파이프라인, 한계, 하드웨어 확인 질문
 ├── evaluation/
-│   ├── rerun_eval.py          # 저장된 평가 프로그램을 현재 컴파일러로 재실행·비교 (병렬)
+│   ├── rerun_eval.py          # 저장된 평가 프로그램을 현재 컴파일러로 재실행·비교 (병렬, v1.0 전용)
+│   ├── v2_difftest.py         # 2.0 차등 검증: 네이티브 gcc vs IR 인터프리터 vs MIF 시뮬레이터
+│   ├── v2_ir_fuzz.py          # 2.0 백엔드 퍼징: 랜덤 IR, 인터프리터 vs 시뮬레이터
+│   ├── v2_results.txt         # 2.0 검증 결과 요약
 │   ├── rtpg_label_v1.py       # RTPG v1.0 지원 범위 라벨러 (소스 텍스트 기반)
 │   ├── golden_compare.py      # 골든 MIF 비트 단위 비교
 │   ├── eval_programs/boundary # 경계값 테스트 39개 (BOUNDARY_CHANGES_v1.0.md 참고)
@@ -56,6 +128,18 @@ cd EOPPP
 
 `run.sh`는 `gcc -fplugin=./gcc-python-plugin/python.so -fplugin-arg-python-script=./main.py -O0 ...`를 실행한다. 컴파일은 **`-O0`**로 한다(GIMPLE에 소스 구조가 그대로 남아야 한다). 환경변수 `EOPPP_OUT_DIR`로 출력 폴더를 바꿀 수 있다(평가 스크립트의 병렬 실행용).
 
+환경변수 `EOPPP_V2`로 2.0 경로 사용 방식을 고른다.
+
+| 값 | 동작 |
+|---|---|
+| `auto` (기본) | 모든 함수가 v1.0을 통과하면 v1.0 출력, 하나라도 실패하면 프로그램 전체를 2.0으로 |
+| `off` | v1.0만 |
+| `force` | 2.0만 |
+
+```bash
+EOPPP_V2=force ./run.sh eoppp_v2_test.c
+```
+
 ### 출력 (`eflow_out/`)
 
 | 파일 | 내용 |
@@ -66,10 +150,12 @@ cd EOPPP
 | `checker.log` | 함수별 PASS/FAIL과 위반 사유 (체커 + 생성 단계) |
 | `generator.log` | feature, 레지스터 맵, 반환값 위치 |
 | `metrics.log` | 정량 지표 (아래 참고) |
+| `v2.log` | (2.0) 함수별 처리 결과, GPC 범위·코어 수, 인라이닝 후 IR(JSON) |
+| `symbols.json` | (2.0) 함수별 GPC 범위, 반환값·배열의 코어 위치, 사용 코어 수, 정지 GPC |
 
 ---
 
-## 컴파일 파이프라인
+## v1.0 컴파일 파이프라인
 
 ```
 C 소스
@@ -127,7 +213,7 @@ store(레벨 0) → 부분합(레벨 1) → … → 루트(`yo[i]`, A-bank 쓰�
 
 ---
 
-## 평가
+## v1.0 평가
 
 ```bash
 cd evaluation
@@ -155,11 +241,11 @@ RTPG의 v1.0 라벨(`rtpg_label_v1.py`)은 기능 태그에 두 구조 조건(�
 
 **지원**: 32비트 정수, `+ - * << >>`(곱셈·시프트는 자기 코어 × 상수, 또는 FIR MAC), 비교 `> >= < <= == !=`(루프 종료 조건으로), 함수당 계산 루프 1개(0부터 1씩 증가하는 카운터), 루프 이전 상수 계산과 if, 루프 인덱스 순차 1차원 배열 스트림, break, FIR(최대 36탭)
 
-**v2.0 / 하드웨어 확인 필요**
+**v2.0 / 하드웨어 확인 필요** (✓ = `2.0` 브랜치에서 가정 모델로 구현)
 
-- 함수 호출·반환값 전달 (CALL/RETURN)
+- 함수 호출·반환값 전달 (CALL/RETURN) — ✓ 인라이닝으로 대체 (재귀는 거부)
 - 부동소수점 (FP32 core cascading)
-- 루프 안 if(조건부 선택), 다중·중첩 루프(GPC 슬롯 간 분기)
+- 루프 안 if(조건부 선택), 다중·중첩 루프(GPC 슬롯 간 분기) — ✓
 - 다른 코어 값을 피연산자로 쓰는 곱셈·시프트 (이웃 배치 필요)
 - `SUM_NEG` 의미 확인: 뺄셈 `a - b`와 조건 `<`, `<=`가 `ADD/GTEZ/GTZ + SUM_NEG`로 인코딩되지만 하드웨어 동작이 문서화되지 않았고 FPGA 검증된 벤치마크(Fibonacci·FIR)는 이 경로를 쓰지 않는다
 - 비트 연산: `eoppp_zcode.py`에 opcode(0x0C–0x0F)가 정의돼 있으나 OpcodeChecker가 거부 (하드웨어 지원 여부 확인 필요)
